@@ -1,9 +1,8 @@
-
 --创建数据库
 CREATE DATABASE  GRWEBSITE--个人网站
  --用户表
  CREATE TABLE Sys_Users(
- UserId uniqueidentifier DEFAULT newid() NOT NULL ,--主键 用户id
+ UserId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键 用户id
  UserName NVARCHAR(20) NOT NULL UNIQUE,--用户帐号
  UserNikeName NVARCHAR(20),--用户昵称
  UserPwd NVARCHAR(50) DEFAULT substring(sys.fn_sqlvarbasetostr(HashBytes('MD5','123456')),3,32) NOT NULL,--用户密码
@@ -27,13 +26,13 @@ CREATE DATABASE  GRWEBSITE--个人网站
  insert into Dict_UserStatus(UserStatusName) values('正常'),('停用');
  --角色表
  CREATE TABLE Sys_Role(
- RoleId uniqueidentifier DEFAULT newid() NOT NULL ,--主键 角色Id
+ RoleId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键 角色Id
  RoleName NVARCHAR(50) NOT NULL,--角色名
  Note NVARCHAR(2048) NULL--备注
  )
  --权限表
  CREATE TABLE Sys_Authority(
- AuthorityId uniqueidentifier DEFAULT newid() NOT NULL ,--主键
+ AuthorityId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
  AuthorityType INT NOT NULL,--权限类型
  Note NVARCHAR(2048) NULL--备注
  )
@@ -46,25 +45,25 @@ CREATE DATABASE  GRWEBSITE--个人网站
   insert into Dict_AuthorityType(AuthorityTypeName) values('菜单权限'),('数据读写权限');
  --用户角色关联表
  CREATE TABLE Sys_UrRelated(
- UrRelatedId uniqueidentifier DEFAULT newid() NOT NULL ,--主键
+ UrRelatedId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
  UserId uniqueidentifier NOT NULL,--用户id
  RoleId uniqueidentifier NOT NULL--角色id
  )
   --角色权限关联表
  CREATE TABLE Sys_RaRelated(
- RaRelatedId uniqueidentifier DEFAULT newid() NOT NULL ,--主键
+ RaRelatedId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
  RoleId uniqueidentifier NOT NULL,--角色id
  AuthorityId uniqueidentifier NOT NULL--权限id
  )
  --用户组表
  CREATE TABLE Sys_UserGroup(
- UserGroupId uniqueidentifier DEFAULT newid() NOT NULL ,--主键
+ UserGroupId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
  UserGroupName NVARCHAR(50) NOT NULL, --用户组名称
   ParentUserGroupId uniqueidentifier NULL,--父用户组id
  )
  --菜单表
  CREATE TABLE Sys_Menu(
- MenuId uniqueidentifier DEFAULT newid() NOT NULL ,--主键
+ MenuId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
  MenuName NVARCHAR(50) NOT NULL,--菜单名称
  MenuUrl varchar(80) NULL,--菜单url
  ParentMenuId uniqueidentifier NULL,--父菜单id
@@ -72,7 +71,7 @@ CREATE DATABASE  GRWEBSITE--个人网站
  )
  --权限菜单关联表
  CREATE TABLE Sys_AmRelated(
- AmRelatedId uniqueidentifier DEFAULT newid() NOT NULL ,--主键
+ AmRelatedId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
  RoleId uniqueidentifier NOT NULL,--权限id
  MenuId uniqueidentifier NOT NULL--菜单id
  )
