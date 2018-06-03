@@ -7,7 +7,7 @@ using System.Text;
 
 namespace DAL.Interface
 {
-   public interface IBaseDAL<T> where T : class, new()
+    public interface IBaseDAL<T> where T : class, new()
     {
         void Add(T t);
         void Delete(T t);

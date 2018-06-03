@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Model.Entity.Models;
-using BLL;
 
 namespace ZhouliSystem
 {
@@ -26,10 +25,14 @@ namespace ZhouliSystem
         {
             // 数据库连接字符串
             var conStr = Configuration.GetConnectionString("DataConnection");
+            //注入ef对象
             services.AddDbContext<GRWEBSITEContext>(options => options.UseSqlServer(conStr));
-            //注入依赖注入
-            DIBllRegister dIBllRegister = new DIBllRegister();
-            dIBllRegister.DIRegister(services);
+            //BLL层设置依赖注入关系
+            BLL.DIBLLRegister.BLLRegister(services);
+            //DAL层设置依赖注入关系
+            DAL.DIDALRegister.DALRegister(services);
+            services.AddSession();
+            //mvc框架
             services.AddMvc();
         }
 
@@ -45,9 +48,9 @@ namespace ZhouliSystem
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseStatusCodePages();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

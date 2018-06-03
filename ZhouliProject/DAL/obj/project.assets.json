@@ -924,7 +924,7 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "Model.Entity/1.0.0": {
+      "Zhouli.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
@@ -933,10 +933,10 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.3"
         },
         "compile": {
-          "bin/placeholder/Model.Entity.dll": {}
+          "bin/placeholder/Zhouli.Entity.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Model.Entity.dll": {}
+          "bin/placeholder/Zhouli.Entity.dll": {}
         }
       }
     }
@@ -3462,16 +3462,16 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "Model.Entity/1.0.0": {
+    "Zhouli.Entity/1.0.0": {
       "type": "project",
-      "path": "../Model.Entity/Model.Entity.csproj",
-      "msbuildProject": "../Model.Entity/Model.Entity.csproj"
+      "path": "../Model.Entity/Zhouli.Entity.csproj",
+      "msbuildProject": "../Model.Entity/Zhouli.Entity.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.NETCore.App >= 2.0.0",
-      "Model.Entity >= 1.0.0"
+      "Zhouli.Entity >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3481,9 +3481,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\DAL.csproj",
-      "projectName": "DAL",
-      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\DAL.csproj",
+      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj",
+      "projectName": "Zhouli.DAL",
+      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
       "outputPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\obj\\",
       "projectStyle": "PackageReference",
@@ -3504,8 +3504,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Model.Entity.csproj": {
-              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Model.Entity.csproj"
+            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Zhouli.Entity.csproj": {
+              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Zhouli.Entity.csproj"
             }
           }
         }

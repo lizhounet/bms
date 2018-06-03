@@ -12,33 +12,22 @@ namespace ZhouliSystem.Controllers
 {
     public class HomeController : Controller
     {
-        private IUsersBLL usersBLL;
-        public HomeController(IUsersBLL usersBLL) {
+        private ISysUsersBLL usersBLL;
+        private ISysUserGroupBLL userGroupBLL;
+        public HomeController(ISysUsersBLL usersBLL, ISysUserGroupBLL userGroupBLL)
+        {
             this.usersBLL = usersBLL;
+            this.userGroupBLL = userGroupBLL;
         }
         public IActionResult Index()
         {
-            bool bb = usersBLL.Add(new SysUsers
-            {
-                UserName="admin"
-            });
+            string sss = usersBLL.show();
             return View();
         }
-
-        public IActionResult About()
+        public IActionResult welcome()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

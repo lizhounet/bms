@@ -3,12 +3,6 @@ F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\ZhouliSystem.runtimeconfig.dev.json
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\ZhouliSystem.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\ZhouliSystem.pdb
-F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\BLL.dll
-F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\DAL.dll
-F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Model.Entity.dll
-F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\BLL.pdb
-F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Model.Entity.pdb
-F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\DAL.pdb
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.0\ZhouliSystem.csprojAssemblyReference.cache
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.0\ZhouliSystem.csproj.CoreCompileInputs.cache
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.0\ZhouliSystem.AssemblyInfoInputs.cache
@@ -16,3 +10,11 @@ F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.0\ZhouliSystem.csproj.CopyComplete
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.0\ZhouliSystem.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.0\ZhouliSystem.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.BLL.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.DAL.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.Entity.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.BLL.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.Entity.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.DAL.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.Common.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.Common.pdb

@@ -10,7 +10,7 @@ using Model.Entity.Models;
 
 namespace DAL.Implements
 {
-    public class BaseDAL<T>: IBaseDAL<T> where T : class, new()
+    public class BaseDAL<T> where T : class, new()
     {
         /// <summary>
         /// 数据库上下文

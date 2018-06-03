@@ -1,0 +1,12 @@
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\bin\Debug\netcoreapp2.0\Zhouli.DAL.deps.json
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\bin\Debug\netcoreapp2.0\Zhouli.DAL.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\bin\Debug\netcoreapp2.0\Zhouli.DAL.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\bin\Debug\netcoreapp2.0\Zhouli.Entity.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\bin\Debug\netcoreapp2.0\Zhouli.Entity.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\obj\Debug\netcoreapp2.0\Zhouli.DAL.csprojAssemblyReference.cache
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\obj\Debug\netcoreapp2.0\Zhouli.DAL.csproj.CoreCompileInputs.cache
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\obj\Debug\netcoreapp2.0\Zhouli.DAL.AssemblyInfoInputs.cache
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\obj\Debug\netcoreapp2.0\Zhouli.DAL.AssemblyInfo.cs
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\obj\Debug\netcoreapp2.0\Zhouli.DAL.csproj.CopyComplete
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\obj\Debug\netcoreapp2.0\Zhouli.DAL.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\DAL\obj\Debug\netcoreapp2.0\Zhouli.DAL.pdb

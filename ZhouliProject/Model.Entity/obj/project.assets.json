@@ -3463,9 +3463,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Model.Entity.csproj",
-      "projectName": "Model.Entity",
-      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Model.Entity.csproj",
+      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Zhouli.Entity.csproj",
+      "projectName": "Zhouli.Entity",
+      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Zhouli.Entity.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
       "outputPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\obj\\",
       "projectStyle": "PackageReference",

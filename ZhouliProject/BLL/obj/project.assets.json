@@ -924,20 +924,20 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "DAL/1.0.0": {
+      "Zhouli.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
-          "Model.Entity": "1.0.0"
+          "Zhouli.Entity": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/DAL.dll": {}
+          "bin/placeholder/Zhouli.DAL.dll": {}
         },
         "runtime": {
-          "bin/placeholder/DAL.dll": {}
+          "bin/placeholder/Zhouli.DAL.dll": {}
         }
       },
-      "Model.Entity/1.0.0": {
+      "Zhouli.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
@@ -946,10 +946,10 @@
           "Microsoft.EntityFrameworkCore.Tools": "2.0.3"
         },
         "compile": {
-          "bin/placeholder/Model.Entity.dll": {}
+          "bin/placeholder/Zhouli.Entity.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Model.Entity.dll": {}
+          "bin/placeholder/Zhouli.Entity.dll": {}
         }
       }
     }
@@ -3475,22 +3475,22 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "DAL/1.0.0": {
+    "Zhouli.DAL/1.0.0": {
       "type": "project",
-      "path": "../DAL/DAL.csproj",
-      "msbuildProject": "../DAL/DAL.csproj"
+      "path": "../DAL/Zhouli.DAL.csproj",
+      "msbuildProject": "../DAL/Zhouli.DAL.csproj"
     },
-    "Model.Entity/1.0.0": {
+    "Zhouli.Entity/1.0.0": {
       "type": "project",
-      "path": "../Model.Entity/Model.Entity.csproj",
-      "msbuildProject": "../Model.Entity/Model.Entity.csproj"
+      "path": "../Model.Entity/Zhouli.Entity.csproj",
+      "msbuildProject": "../Model.Entity/Zhouli.Entity.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
-      "DAL >= 1.0.0",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Model.Entity >= 1.0.0"
+      "Zhouli.DAL >= 1.0.0",
+      "Zhouli.Entity >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -3500,9 +3500,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\BLL\\BLL.csproj",
-      "projectName": "BLL",
-      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\BLL\\BLL.csproj",
+      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\BLL\\Zhouli.BLL.csproj",
+      "projectName": "Zhouli.BLL",
+      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\BLL\\Zhouli.BLL.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
       "outputPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\BLL\\obj\\",
       "projectStyle": "PackageReference",
@@ -3523,11 +3523,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\DAL.csproj": {
-              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\DAL.csproj"
+            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj": {
+              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj"
             },
-            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Model.Entity.csproj": {
-              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Model.Entity.csproj"
+            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Zhouli.Entity.csproj": {
+              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Model.Entity\\Zhouli.Entity.csproj"
             }
           }
         }

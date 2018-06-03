@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -13,8 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BLL\BLL.csproj" />
-    <ProjectReference Include="..\Model.Entity\Model.Entity.csproj" />
+    <ProjectReference Include="..\BLL\Zhouli.BLL.csproj" />
+    <ProjectReference Include="..\Model.Entity\Zhouli.Entity.csproj" />
+    <ProjectReference Include="..\Zhouli.Common\Zhouli.Common.csproj" />
   </ItemGroup>
 
 </Project>
