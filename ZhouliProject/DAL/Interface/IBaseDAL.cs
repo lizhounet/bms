@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DAL.Interface
+namespace Zhouli.DAL.Interface
 {
     public interface IBaseDAL<T> where T : class, new()
     {

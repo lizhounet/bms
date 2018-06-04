@@ -1,12 +1,12 @@
-﻿using BLL.Interface;
-using DAL.Interface;
+﻿using Zhouli.BLL.Interface;
+using Zhouli.DAL.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace BLL.Implements
+namespace Zhouli.BLL.Implements
 {
     public class BaseBLL<T> : IBaseBLL<T> where T : class, new()
     {

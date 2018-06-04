@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DAL\Zhouli.DAL.csproj" />
     <ProjectReference Include="..\Model.Entity\Zhouli.Entity.csproj" />
   </ItemGroup>

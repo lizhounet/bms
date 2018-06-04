@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace BLL.Interface
+namespace Zhouli.BLL.Interface
 {
     public interface IBaseBLL<T> where T : class, new()
     {

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
-using BLL.Interface;
-using DAL.Interface;
-using Model.Entity.Models;
+using Zhouli.BLL.Interface;
+using Zhouli.DAL.Interface;
+using Zhouli.Entity.Models;
 
-namespace BLL.Implements
+namespace Zhouli.BLL.Implements
 {
     public class SysUsersBLL : BaseBLL<SysUsers>, ISysUsersBLL
     {
@@ -18,10 +19,15 @@ namespace BLL.Implements
         {
             this.usersDAL = usersDAL;
         }
-
-        public string show()
+        #region
+        /// <summary>
+        /// 获取需要登录的用户所有信息
+        /// </summary>
+        /// <returns></returns>
+        public SysUsers GetLoginSysUsers(Expression<Func<SysUsers, bool>> WhereLambda)
         {
-            return usersDAL.show();
+            return usersDAL.GetLoginSysUsers(WhereLambda);
         }
+        #endregion
     }
 }

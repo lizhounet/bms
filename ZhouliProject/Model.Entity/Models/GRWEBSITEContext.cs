@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Model.Entity.Models
+namespace Zhouli.Entity.Models
 {
     public partial class GRWEBSITEContext : DbContext
     {

@@ -4052,6 +4052,7 @@
       },
       "Zhouli.BLL/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Http": "2.1.0",
           "Zhouli.DAL": "1.0.0",
           "Zhouli.Entity": "1.0.0"
         },

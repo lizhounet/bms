@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model.Entity.Models;
+using Zhouli.Entity.Models;
 
-namespace BLL.Interface
+namespace Zhouli.BLL.Interface
 {
     public interface ISysAmRelatedBLL : IBaseBLL<SysAmRelated>
     {

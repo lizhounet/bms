@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Model.Entity.Models;
+using Zhouli.Entity.Models;
 
-namespace DAL.Interface
+namespace Zhouli.DAL.Interface
 {
     public interface ISysUserGroupDAL: IBaseDAL<SysUserGroup>
     {

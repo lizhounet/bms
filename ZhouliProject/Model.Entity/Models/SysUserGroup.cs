@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Model.Entity.Models
+namespace Zhouli.Entity.Models
 {
     public partial class SysUserGroup
     {

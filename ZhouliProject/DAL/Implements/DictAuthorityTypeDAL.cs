@@ -1,10 +1,10 @@
-﻿using DAL.Interface;
-using Model.Entity.Models;
+﻿using Zhouli.DAL.Interface;
+using Zhouli.Entity.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL.Implements
+namespace Zhouli.DAL.Implements
 {
     public class DictAuthorityTypeDAL : BaseDAL<DictAuthorityType>, IDictAuthorityTypeDAL
     {

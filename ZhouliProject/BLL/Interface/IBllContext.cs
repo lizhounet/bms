@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Zhouli.Entity.Models;
 
 namespace Zhouli.BLL.Interface
 {
-    public interface IDictAuthorityTypeBLL : IBaseBLL<DictAuthorityType>
+    public interface IBllContext
     {
+        T GetBllClass<T>();
     }
 }

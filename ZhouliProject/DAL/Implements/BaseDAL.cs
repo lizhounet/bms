@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using DAL.Interface;
+using Zhouli.DAL.Interface;
 using Microsoft.EntityFrameworkCore;
-using Model.Entity.Models;
+using Zhouli.Entity.Models;
 
-namespace DAL.Implements
+namespace Zhouli.DAL.Implements
 {
     public class BaseDAL<T> where T : class, new()
     {
