@@ -39,6 +39,7 @@ namespace ZhouliSystem.Controllers
                     HttpContext.Session.SetSession("UserLogin", sysUsers);
                     message.StateCode = StatesCode.success;
                     message.Messages = "登陆成功";
+                    message.JsonData = new { baseUrl = "/Home/Index" };
                 }
 
             }

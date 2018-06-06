@@ -8,6 +8,12 @@
             $.post("/User/UserLogin", data.field, function (res) {
                 layer.close(index);
                 console.log(res);
+                if (res.stateCode == 200) {
+                    location.href = res.jsonData.baseUrl;
+                }
+                else {
+                    layer.msg(res.messages);
+                }
             }, 'json');
             return false;
         });

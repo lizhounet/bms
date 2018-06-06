@@ -12,3 +12,17 @@ F:\CODE\后台管理系统\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.
 F:\CODE\后台管理系统\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.BLL.csproj.CopyComplete
 F:\CODE\后台管理系统\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.BLL.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.BLL.pdb
+E:\zhouli\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.0\Zhouli.BLL.deps.json
+E:\zhouli\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.0\Zhouli.BLL.dll
+E:\zhouli\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.0\Zhouli.BLL.pdb
+E:\zhouli\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.0\Zhouli.DAL.dll
+E:\zhouli\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.0\Zhouli.Entity.dll
+E:\zhouli\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.0\Zhouli.DAL.pdb
+E:\zhouli\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.0\Zhouli.Entity.pdb
+E:\zhouli\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.BLL.csprojAssemblyReference.cache
+E:\zhouli\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.BLL.csproj.CoreCompileInputs.cache
+E:\zhouli\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.BLL.AssemblyInfoInputs.cache
+E:\zhouli\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.BLL.AssemblyInfo.cs
+E:\zhouli\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.BLL.csproj.CopyComplete
+E:\zhouli\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.BLL.dll
+E:\zhouli\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.0\Zhouli.BLL.pdb

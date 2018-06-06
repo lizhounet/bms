@@ -1,5 +1,6 @@
 --创建数据库
-CREATE DATABASE  GRWEBSITE--个人网站
+CREATE DATABASE  GRWEBSITE --个人网站
+use GRWEBSITE
  --用户表
  CREATE TABLE Sys_Users(
  UserId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键 用户id
@@ -18,6 +19,7 @@ CREATE DATABASE  GRWEBSITE--个人网站
  UserEditTime DATETIME  ,--修改时间
  Note NVARCHAR(2048) NULL--备注
  )
+ insert into Sys_Users (UserName) values('17783042962');
  --用户状态表
  CREATE TABLE Dict_UserStatus(
  Id int identity(1,1) primary key NOT NULL ,--主键Id
@@ -61,6 +63,7 @@ CREATE DATABASE  GRWEBSITE--个人网站
  UserGroupName NVARCHAR(50) NOT NULL, --用户组名称
   ParentUserGroupId uniqueidentifier NULL,--父用户组id
  )
+ insert into  Sys_UserGroup(UserGroupName) values('超级管理员');
  --用户与用户组关联表
 
   CREATE TABLE Sys_UuRelated(
@@ -68,6 +71,10 @@ CREATE DATABASE  GRWEBSITE--个人网站
  UserId uniqueidentifier NOT NULL, --用户id
  UserGroupId uniqueidentifier NOT NULL,--用户组id
  )
+ insert into Sys_UuRelated(UserId,UserGroupId)values((select UserId from Sys_Users where UserName='17783042962'),
+ (select UserGroupId from  Sys_UserGroup where UserGroupName='超级管理员')) 
+
+ 
  --菜单表
  CREATE TABLE Sys_Menu(
  MenuId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
@@ -83,3 +90,4 @@ CREATE DATABASE  GRWEBSITE--个人网站
  RoleId uniqueidentifier NOT NULL,--权限id
  MenuId uniqueidentifier NOT NULL--菜单id
  )
+ 

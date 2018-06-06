@@ -22,23 +22,19 @@ namespace Zhouli.DAL.Implements
         /// <returns></returns>
         public SysUsersLogin GetLoginSysUsers(Expression<Func<SysUsers, bool>> WhereLambda)
         {
-            var users = (from user in gRWEBSITEContext.SysUsers
-                         join uu in gRWEBSITEContext.SysUuRelated
-                         on user.UserId equals uu.UserId into result
-                         from r in result.DefaultIfEmpty()
-                         select new
-                         {
-                             user,
-                             sysUserGroups = (from userGroup in gRWEBSITEContext.SysUserGroup
-                                              where userGroup.UserGroupId.Equals(r.UserGroupId)
-                                              select userGroup).ToList()
-
-                         }).ToList().FirstOrDefault();
-
+            var users = (from user in gRWEBSITEContext.Set<SysUsers>().Where(WhereLambda)
+                        join uu in gRWEBSITEContext.Set<SysUuRelated>() on user.UserId equals uu.UserId
+                        select new
+                        {
+                            sysUsers = user,
+                            sysUserGroups = (from userGroup in gRWEBSITEContext.Set<SysUserGroup>()
+                                            where userGroup.UserGroupId == uu.UserGroupId
+                                            select userGroup).ToList()
+                        }).FirstOrDefault();
             return new SysUsersLogin
             {
-                //sysUsers = users.user,
-                //sysUserGroups = users.sysUserGroups
+                sysUsers = users.sysUsers,
+                sysUserGroups = users.sysUserGroups
             };
         }
         #endregion
