@@ -3,11 +3,13 @@ F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\ZhouliSystem.runtimeconfig.dev.json
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\ZhouliSystem.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\ZhouliSystem.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\DInjectionProvider.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.BLL.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.Common.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.DAL.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.Entity.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.BLL.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\DInjectionProvider.pdb
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.Entity.pdb
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.Common.pdb
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.0\Zhouli.DAL.pdb

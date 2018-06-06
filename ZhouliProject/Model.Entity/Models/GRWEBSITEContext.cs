@@ -7,9 +7,8 @@ namespace Zhouli.Entity.Models
     public partial class GRWEBSITEContext : DbContext
     {
         public GRWEBSITEContext(DbContextOptions<GRWEBSITEContext> options)
-       : base(options)
-        {
-        }
+    : base(options)
+        { }
         public virtual DbSet<DictAuthorityType> DictAuthorityType { get; set; }
         public virtual DbSet<DictUserStatus> DictUserStatus { get; set; }
         public virtual DbSet<SysAmRelated> SysAmRelated { get; set; }
@@ -20,14 +19,8 @@ namespace Zhouli.Entity.Models
         public virtual DbSet<SysUrRelated> SysUrRelated { get; set; }
         public virtual DbSet<SysUserGroup> SysUserGroup { get; set; }
         public virtual DbSet<SysUsers> SysUsers { get; set; }
+        public virtual DbSet<SysUuRelated> SysUuRelated { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseSqlServer(@"Server=.;Database=GRWEBSITE;Integrated Security=True;");
-        //    }
-        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -78,6 +71,8 @@ namespace Zhouli.Entity.Models
                 entity.ToTable("Sys_Menu");
 
                 entity.Property(e => e.MenuId).HasDefaultValueSql("(newid())");
+
+                entity.Property(e => e.MenuIcon).HasMaxLength(10);
 
                 entity.Property(e => e.MenuName)
                     .IsRequired()
@@ -143,7 +138,7 @@ namespace Zhouli.Entity.Models
                 entity.ToTable("Sys_Users");
 
                 entity.HasIndex(e => e.UserName)
-                    .HasName("UQ__Sys_User__C9F28456C6913481")
+                    .HasName("UQ__Sys_User__C9F28456C2A3AF19")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasDefaultValueSql("(newid())");
@@ -179,7 +174,7 @@ namespace Zhouli.Entity.Models
                 entity.Property(e => e.UserPwd)
                     .IsRequired()
                     .HasMaxLength(50)
-                    .HasDefaultValueSql("(substring([sys].[fn_sqlvarbasetostr](hashbytes('MD5','123456')),(3),(32)))");
+                    .HasDefaultValueSql("(upper(substring([sys].[fn_sqlvarbasetostr](hashbytes('MD5','123456')),(3),(32))))");
 
                 entity.Property(e => e.UserQq)
                     .HasColumnName("UserQQ")
@@ -192,6 +187,15 @@ namespace Zhouli.Entity.Models
                     .HasColumnName("UserWX")
                     .HasMaxLength(30)
                     .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<SysUuRelated>(entity =>
+            {
+                entity.HasKey(e => e.UuRelatedId);
+
+                entity.ToTable("Sys_UuRelated");
+
+                entity.Property(e => e.UuRelatedId).HasDefaultValueSql("(newid())");
             });
         }
     }

@@ -5,7 +5,7 @@ CREATE DATABASE  GRWEBSITE--个人网站
  UserId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键 用户id
  UserName NVARCHAR(20) NOT NULL UNIQUE,--用户帐号
  UserNikeName NVARCHAR(20),--用户昵称
- UserPwd NVARCHAR(50) DEFAULT substring(sys.fn_sqlvarbasetostr(HashBytes('MD5','123456')),3,32) NOT NULL,--用户密码
+ UserPwd NVARCHAR(50) DEFAULT upper(substring(sys.fn_sqlvarbasetostr(HashBytes('MD5','123456')),3,32)) NOT NULL,--用户密码
  UserSex int  NULL,--用户性别
  UserBirthday DATE  NULL,--用户出生年月日
  UserEmail VARCHAR(15)  NULL,--用户邮箱
@@ -61,10 +61,18 @@ CREATE DATABASE  GRWEBSITE--个人网站
  UserGroupName NVARCHAR(50) NOT NULL, --用户组名称
   ParentUserGroupId uniqueidentifier NULL,--父用户组id
  )
+ --用户与用户组关联表
+
+  CREATE TABLE Sys_UuRelated(
+ UuRelatedId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
+ UserId uniqueidentifier NOT NULL, --用户id
+ UserGroupId uniqueidentifier NOT NULL,--用户组id
+ )
  --菜单表
  CREATE TABLE Sys_Menu(
  MenuId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
  MenuName NVARCHAR(50) NOT NULL,--菜单名称
+ MenuIcon NVARCHAR(10) NULL,--菜单图标(只支持layui图标)
  MenuUrl varchar(80) NULL,--菜单url
  ParentMenuId uniqueidentifier NULL,--父菜单id
  Note NVARCHAR(2048) NULL--备注

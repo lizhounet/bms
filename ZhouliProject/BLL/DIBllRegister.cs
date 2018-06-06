@@ -13,7 +13,6 @@ namespace BLL
         public static void BLLRegister(IServiceCollection services)
         {
             // 配置依赖注入映射关系 
-            services.AddSingleton(typeof(IBllContext), typeof(BLLContext));
             services.AddScoped(typeof(ISysUsersBLL), typeof(SysUsersBLL));
             services.AddScoped(typeof(ISysUserGroupBLL), typeof(SysUserGroupBLL));
             

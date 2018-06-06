@@ -7,17 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 using ZhouliSystem.Models;
 using Zhouli.BLL.Interface;
 using Zhouli.Entity.Models;
+using DInjectionProvider;
 
 namespace ZhouliSystem.Controllers
 {
     public class HomeController : Controller
     {
-        private ISysUsersBLL usersBLL;
-        private ISysUserGroupBLL userGroupBLL;
-        public HomeController(ISysUsersBLL usersBLL, ISysUserGroupBLL userGroupBLL)
+        private IDInjectionProvider provider;
+        public HomeController(IDInjectionProvider _provider)
         {
-            this.usersBLL = usersBLL;
-            this.userGroupBLL = userGroupBLL;
+            this.provider = _provider;
         }
         public IActionResult Index()
         {

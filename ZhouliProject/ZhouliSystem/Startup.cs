@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DInjectionProvider;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -31,7 +32,10 @@ namespace ZhouliSystem
             BLL.DIBLLRegister.BLLRegister(services);
             //DAL层设置依赖注入关系
             DAL.DIDALRegister.DALRegister(services);
+            //添加session中间件
             services.AddSession();
+            //设置依赖注入提供者类关系
+            services.AddSingleton(typeof(IDInjectionProvider), typeof(DInjectionProvider.DInjectionProvider));
             //mvc框架
             services.AddMvc();
         }

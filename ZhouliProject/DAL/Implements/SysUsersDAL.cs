@@ -20,11 +20,26 @@ namespace Zhouli.DAL.Implements
         /// 获取需要登录的用户所有信息
         /// </summary>
         /// <returns></returns>
-        public SysUsers GetLoginSysUsers(Expression<Func<SysUsers, bool>> WhereLambda)
+        public SysUsersLogin GetLoginSysUsers(Expression<Func<SysUsers, bool>> WhereLambda)
         {
-            SysUsers users = gRWEBSITEContext.SysUsers.Where(WhereLambda).FirstOrDefault();
-            return users;
+            var users = (from user in gRWEBSITEContext.SysUsers
+                         join uu in gRWEBSITEContext.SysUuRelated
+                         on user.UserId equals uu.UserId into result
+                         from r in result.DefaultIfEmpty()
+                         select new
+                         {
+                             user,
+                             sysUserGroups = (from userGroup in gRWEBSITEContext.SysUserGroup
+                                              where userGroup.UserGroupId.Equals(r.UserGroupId)
+                                              select userGroup).ToList()
 
+                         }).ToList().FirstOrDefault();
+
+            return new SysUsersLogin
+            {
+                //sysUsers = users.user,
+                //sysUserGroups = users.sysUserGroups
+            };
         }
         #endregion
     }

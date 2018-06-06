@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BLL\Zhouli.BLL.csproj" />
+    <ProjectReference Include="..\DInjectionProvider\DInjectionProvider.csproj" />
     <ProjectReference Include="..\Model.Entity\Zhouli.Entity.csproj" />
     <ProjectReference Include="..\Zhouli.Common\Zhouli.Common.csproj" />
   </ItemGroup>
