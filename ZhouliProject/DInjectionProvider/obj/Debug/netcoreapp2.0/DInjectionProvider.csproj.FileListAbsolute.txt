@@ -1,11 +1,3 @@
-F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.0\DInjectionProvider.deps.json
-F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.0\DInjectionProvider.dll
-F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.0\DInjectionProvider.pdb
-F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.csproj.CoreCompileInputs.cache
-F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.AssemblyInfoInputs.cache
-F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.AssemblyInfo.cs
-F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.dll
-F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.pdb
 E:\zhouli\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.0\DInjectionProvider.deps.json
 E:\zhouli\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.0\DInjectionProvider.dll
 E:\zhouli\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.0\DInjectionProvider.pdb
@@ -15,3 +7,11 @@ E:\zhouli\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectio
 E:\zhouli\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.AssemblyInfo.cs
 E:\zhouli\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.dll
 E:\zhouli\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.0\DInjectionProvider.deps.json
+F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.0\DInjectionProvider.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.0\DInjectionProvider.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.csproj.CoreCompileInputs.cache
+F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.AssemblyInfoInputs.cache
+F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.AssemblyInfo.cs
+F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\obj\Debug\netcoreapp2.0\DInjectionProvider.pdb

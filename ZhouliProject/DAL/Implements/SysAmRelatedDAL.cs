@@ -8,10 +8,10 @@ namespace Zhouli.DAL.Implements
 {
     public class SysAmRelatedDAL : BaseDAL<SysAmRelated>, ISysAmRelatedDAL
     {
-        private GRWEBSITEContext gRWEBSITEContext;
-        public SysAmRelatedDAL(GRWEBSITEContext gRWEBSITEContext) : base(gRWEBSITEContext)
+        private ZhouLiContext db;
+        public SysAmRelatedDAL(ZhouLiContext db) : base(db)
         {
-            this.gRWEBSITEContext = gRWEBSITEContext;
+            this.db = db;
         }
        
     }

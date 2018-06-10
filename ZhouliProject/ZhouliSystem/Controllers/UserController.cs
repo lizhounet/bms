@@ -1,4 +1,23 @@
-﻿using System.Linq;
+﻿#region 版权声明
+/**************************************************************** 
+ * 作    者：周黎 
+ * CLR 版本：4.0.30319.42000 
+ * 创建时间：2018/6/8 21:41:11 
+ * 当前版本：1.0.0.1 
+ *  
+ * 描述说明： 
+ * 
+ * 修改历史： 
+ * 
+***************************************************************** 
+ * Copyright @ ZhouLi 2018 All rights reserved 
+ *┌──────────────────────────────────┐
+ *│　此技术信息周黎的机密信息，未经本人书面同意禁止向第三方披露．　│
+ *│　版权所有：周黎 　　　　　　　　　　　　　　│
+ *└──────────────────────────────────┘
+*****************************************************************/
+#endregion
+using System.Linq;
 using DInjectionProvider;
 using Microsoft.AspNetCore.Mvc;
 using Zhouli.BLL.Interface;
@@ -8,10 +27,10 @@ namespace ZhouliSystem.Controllers
 {
     public class UserController : Controller
     {
-        private IDInjectionProvider provider;
-        public UserController(IDInjectionProvider _provider)
+        private WholeInjection injection;
+        public UserController(WholeInjection injection)
         {
-            this.provider = _provider;
+            this.injection = injection;
         }
         public IActionResult Login()
         {
@@ -21,7 +40,7 @@ namespace ZhouliSystem.Controllers
         public IActionResult UserLogin(string username, string password)
         {
             var message = new ResponseMessage();
-            var sysUsers = provider.GetExamples<ISysUsersBLL>().GetLoginSysUsers(t => t.UserName.Equals(username));
+            var sysUsers = injection.GetExamples<ISysUserBLL>().GetLoginSysUser(t => t.UserName.Equals(username));
             if (sysUsers == null)
             {
                 message.StateCode = StatesCode.failure;

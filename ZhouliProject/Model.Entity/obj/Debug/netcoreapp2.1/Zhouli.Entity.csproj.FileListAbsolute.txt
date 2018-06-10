@@ -1,0 +1,8 @@
+F:\CODE\后台管理系统\bms\ZhouliProject\Model.Entity\bin\Debug\netcoreapp2.1\Zhouli.Entity.deps.json
+F:\CODE\后台管理系统\bms\ZhouliProject\Model.Entity\bin\Debug\netcoreapp2.1\Zhouli.Entity.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\Model.Entity\bin\Debug\netcoreapp2.1\Zhouli.Entity.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\Model.Entity\obj\Debug\netcoreapp2.1\Zhouli.Entity.csproj.CoreCompileInputs.cache
+F:\CODE\后台管理系统\bms\ZhouliProject\Model.Entity\obj\Debug\netcoreapp2.1\Zhouli.Entity.AssemblyInfoInputs.cache
+F:\CODE\后台管理系统\bms\ZhouliProject\Model.Entity\obj\Debug\netcoreapp2.1\Zhouli.Entity.AssemblyInfo.cs
+F:\CODE\后台管理系统\bms\ZhouliProject\Model.Entity\obj\Debug\netcoreapp2.1\Zhouli.Entity.dll
+F:\CODE\后台管理系统\bms\ZhouliProject\Model.Entity\obj\Debug\netcoreapp2.1\Zhouli.Entity.pdb

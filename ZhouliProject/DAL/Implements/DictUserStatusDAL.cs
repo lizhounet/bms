@@ -8,10 +8,10 @@ namespace Zhouli.DAL.Implements
 {
     public class DictUserStatusDAL : BaseDAL<DictUserStatus>, IDictUserStatusDAL
     {
-        private GRWEBSITEContext gRWEBSITEContext;
-        public DictUserStatusDAL(GRWEBSITEContext gRWEBSITEContext) : base(gRWEBSITEContext)
+        private ZhouLiContext db;
+        public DictUserStatusDAL(ZhouLiContext db) : base(db)
         {
-            this.gRWEBSITEContext = gRWEBSITEContext;
+            this.db = db;
         }
         
     }

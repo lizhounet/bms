@@ -5,7 +5,7 @@ namespace Zhouli.Entity.Models
 {
     public partial class DictUserStatus
     {
-        public int Id { get; set; }
+        public int UserStatusId { get; set; }
         public string UserStatusName { get; set; }
     }
 }

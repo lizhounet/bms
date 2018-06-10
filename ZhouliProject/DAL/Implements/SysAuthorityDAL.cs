@@ -8,10 +8,10 @@ namespace Zhouli.DAL.Implements
 {
     public class SysAuthorityDAL : BaseDAL<SysAuthority>, ISysAuthorityDAL
     {
-        private GRWEBSITEContext gRWEBSITEContext;
-        public SysAuthorityDAL(GRWEBSITEContext gRWEBSITEContext) : base(gRWEBSITEContext)
+        private ZhouLiContext db;
+        public SysAuthorityDAL(ZhouLiContext db) : base(db)
         {
-            this.gRWEBSITEContext = gRWEBSITEContext;
+            this.db = db;
         }
       
     }

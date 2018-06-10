@@ -8,10 +8,10 @@ namespace Zhouli.DAL.Implements
 {
     public class DictAuthorityTypeDAL : BaseDAL<DictAuthorityType>, IDictAuthorityTypeDAL
     {
-        private GRWEBSITEContext gRWEBSITEContext;
-        public DictAuthorityTypeDAL(GRWEBSITEContext gRWEBSITEContext) : base(gRWEBSITEContext)
+        private ZhouLiContext db;
+        public DictAuthorityTypeDAL(ZhouLiContext db) : base(db)
         {
-            this.gRWEBSITEContext = gRWEBSITEContext;
+            this.db = db;
         }
         
     }

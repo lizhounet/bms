@@ -8,10 +8,10 @@ namespace Zhouli.DAL.Implements
 {
     public class SysMenuDAL : BaseDAL<SysMenu>, ISysMenuDAL
     {
-        private GRWEBSITEContext gRWEBSITEContext;
-        public SysMenuDAL(GRWEBSITEContext gRWEBSITEContext) : base(gRWEBSITEContext)
+        private ZhouLiContext db;
+        public SysMenuDAL(ZhouLiContext db) : base(db)
         {
-            this.gRWEBSITEContext = gRWEBSITEContext;
+            this.db = db;
         }
       
     }

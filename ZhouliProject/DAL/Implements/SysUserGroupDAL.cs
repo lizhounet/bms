@@ -8,10 +8,10 @@ namespace Zhouli.DAL.Implements
 {
     public class SysUserGroupDAL : BaseDAL<SysUserGroup>, ISysUserGroupDAL
     {
-        private GRWEBSITEContext gRWEBSITEContext;
-        public SysUserGroupDAL(GRWEBSITEContext gRWEBSITEContext) : base(gRWEBSITEContext)
+        private ZhouLiContext db;
+        public SysUserGroupDAL(ZhouLiContext db) : base(db)
         {
-            this.gRWEBSITEContext = gRWEBSITEContext;
+            this.db = db;
         }
     }
 }

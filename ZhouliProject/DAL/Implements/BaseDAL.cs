@@ -15,32 +15,32 @@ namespace Zhouli.DAL.Implements
         /// <summary>
         /// 数据库上下文
         /// </summary>
-        private GRWEBSITEContext _GRWEBSITEContext;
+        private ZhouLiContext _ZhouLiContext;
         /// <summary>
         /// 构造函数依赖注入
         /// </summary>
-        /// <param name="GRWEBSITEContext"></param>
-        public BaseDAL(GRWEBSITEContext GRWEBSITEContext)
+        /// <param name="ZhouLiContext"></param>
+        public BaseDAL(ZhouLiContext ZhouLiContext)
         {
-            this._GRWEBSITEContext = GRWEBSITEContext;
+            this._ZhouLiContext = ZhouLiContext;
         }
         public void Add(T t)
         {
-            _GRWEBSITEContext.Set<T>().Add(t);
+            _ZhouLiContext.Set<T>().Add(t);
         }
         public void Delete(T t)
         {
-            _GRWEBSITEContext.Set<T>().Remove(t);
+            _ZhouLiContext.Set<T>().Remove(t);
         }
 
         public void Update(T t)
         {
-            _GRWEBSITEContext.Set<T>().Attach(t);
-            _GRWEBSITEContext.Entry<T>(t).State = EntityState.Modified;
+            _ZhouLiContext.Set<T>().Attach(t);
+            _ZhouLiContext.Entry<T>(t).State = EntityState.Modified;
         }
         public IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda)
         {
-            return _GRWEBSITEContext.Set<T>().Where(whereLambda);
+            return _ZhouLiContext.Set<T>().Where(whereLambda);
         }
         public IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc,
             Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda)
@@ -48,16 +48,16 @@ namespace Zhouli.DAL.Implements
             //是否升序
             if (isAsc)
             {
-                return _GRWEBSITEContext.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return _ZhouLiContext.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
             else
             {
-                return _GRWEBSITEContext.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return _ZhouLiContext.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
         }
         public bool SaveChanges()
         {
-            return _GRWEBSITEContext.SaveChanges() > 0;
+            return _ZhouLiContext.SaveChanges() > 0;
         }
     }
 }

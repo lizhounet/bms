@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Zhouli.Entity.Models
 {
-    public  class SysUsersLogin
+    public  class SysUserLogin
     {
         /// <summary>
         /// 用户信息
         /// </summary>
-        public SysUsers sysUsers { set; get; }
+        public SysUser sysUsers { set; get; }
         /// <summary>
         /// 用户组
         /// </summary>
