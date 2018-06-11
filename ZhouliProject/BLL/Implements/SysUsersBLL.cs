@@ -24,7 +24,7 @@ namespace Zhouli.BLL.Implements
         /// 获取需要登录的用户所有信息
         /// </summary>
         /// <returns></returns>
-        public SysUserLogin GetLoginSysUser(Expression<Func<SysUser, bool>> WhereLambda)
+        public SysUser GetLoginSysUser(Expression<Func<SysUser, bool>> WhereLambda)
         {
             return usersDAL.GetLoginSysUser(WhereLambda);
         }

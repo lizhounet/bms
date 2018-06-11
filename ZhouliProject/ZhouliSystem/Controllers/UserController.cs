@@ -48,7 +48,7 @@ namespace ZhouliSystem.Controllers
             }
             else
             {
-                if (!MD5Encrypt.Get32MD5Two(password).Equals(sysUsers.sysUsers.UserPwd))
+                if (!MD5Encrypt.Get32MD5Two(password).Equals(sysUsers.UserPwd))
                 {
                     message.StateCode = StatesCode.failure;
                     message.Messages = "密码错误";

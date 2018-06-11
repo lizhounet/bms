@@ -6,6 +6,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Zhouli.BLL.Implements;
+using Zhouli.BLL.Interface;
+using Zhouli.DAL.Implements;
+using Zhouli.DAL.Interface;
 using Zhouli.Entity.Models;
 using ZhouliSystem.Filters;
 
@@ -17,7 +21,6 @@ namespace ZhouliSystem
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -35,13 +38,14 @@ namespace ZhouliSystem
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //mvc框架 注册全局异常过滤器
-            services.AddMvc(o=>o.Filters.Add<HttpGlobalExceptionFilter>());
-            
+            services.AddMvc(o => o.Filters.Add<HttpGlobalExceptionFilter>());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
             if (env.IsDevelopment())//开发环境
             {
                 app.UseBrowserLink();

@@ -55,7 +55,7 @@ namespace ZhouliSystem.Filters
                    .Any(a => a.GetType().Equals(typeof(NoVerificationLoginAttribute)));
             }
             if (isDefined) return;
-            SysUserLogin sysUsersLogin = context.HttpContext.Session.GetSession<SysUserLogin>("UserLogin");
+            SysUser sysUsersLogin = context.HttpContext.Session.GetSession<SysUser>("UserLogin");
             if (sysUsersLogin == null)
             {
                 context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "User", action = "Login" }));

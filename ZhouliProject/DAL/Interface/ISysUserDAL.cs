@@ -13,7 +13,7 @@ namespace Zhouli.DAL.Interface
         /// 获取需要登录的用户所有信息
         /// </summary>
         /// <returns></returns>
-        SysUserLogin GetLoginSysUser(Expression<Func<SysUser, bool>> WhereLambda);
+        SysUser GetLoginSysUser(Expression<Func<SysUser, bool>> WhereLambda);
         #endregion
     }
 }

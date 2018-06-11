@@ -20,22 +20,35 @@ namespace Zhouli.DAL.Implements
         /// 获取需要登录的用户所有信息
         /// </summary>
         /// <returns></returns>
-        public SysUserLogin GetLoginSysUser(Expression<Func<SysUser, bool>> WhereLambda)
+        public SysUser GetLoginSysUser(Expression<Func<SysUser, bool>> WhereLambda)
         {
-            var users = (from user in db.Set<SysUser>().Where(WhereLambda)
-                         join uu in db.Set<SysUuRelated>() on user.UserId equals uu.UserId
-                         select new
-                         {
-                             sysUsers = user,
-                             sysUserGroups = (from userGroup in db.Set<SysUserGroup>()
-                                              where userGroup.UserGroupId == uu.UserGroupId
-                                              select userGroup).ToList()
-                         }).FirstOrDefault();
-            return users is null ? null : new SysUserLogin
+            var user = db.SysUser.Where(WhereLambda).SingleOrDefault();
+            var v = (from sug in db.SysUserGroup
+                                  join sur in db.SysUuRelated
+                                  on sug.UserGroupId equals sur.UserGroupId
+                                  where sur.UserId.Equals(user.UserId)
+                                  select sug
+                                  ).ToList();
+            if (user.sysUserGroups != null)
             {
-                sysUsers = users.sysUsers,
-                sysUserGroups = users.sysUserGroups
-            };
+                foreach (var item in user.sysUserGroups)
+                {
+                    item.sysRoles = (from sur in db.SysUgrRelated
+                                     join sr in db.SysRole
+                                     on sur.RoleId equals sr.RoleId
+                                     where sur.UserGroupId.Equals(item.UserGroupId)
+                                     select sr
+                                 ).ToList();
+
+                }
+            }
+            user.sysRoles = (from sur in db.SysUrRelated
+                             join sr in db.SysRole
+                             on sur.RoleId equals sr.RoleId
+                             where sur.UserId.Equals(user.UserId)
+                             select sr
+                                 ).ToList();
+            return user;
         }
         #endregion
     }
