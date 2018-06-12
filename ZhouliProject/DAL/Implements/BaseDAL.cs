@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using Zhouli.DAL.Interface;
 using Microsoft.EntityFrameworkCore;
-using Zhouli.Entity.Models;
+using Zhouli.DbEntity.Models;
 
 namespace Zhouli.DAL.Implements
 {

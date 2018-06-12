@@ -24,7 +24,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
 using Zhouli.Common;
-using Zhouli.Entity.Models;
+using Zhouli.DbEntity.Models;
 
 namespace ZhouliSystem.Filters
 {
@@ -33,14 +33,12 @@ namespace ZhouliSystem.Filters
     /// </summary>
     public class VerificationLoginAttribute : Attribute, IResourceFilter
     {
-        
         /// <summary>
         /// action执行之后
         /// </summary>
         /// <param name="context"></param>
         public void OnResourceExecuted(ResourceExecutedContext context)
         {
-            throw new NotImplementedException();
         }
         /// <summary>
         /// action执行之前

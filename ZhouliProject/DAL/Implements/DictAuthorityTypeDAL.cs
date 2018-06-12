@@ -1,5 +1,5 @@
 ﻿using Zhouli.DAL.Interface;
-using Zhouli.Entity.Models;
+using Zhouli.DbEntity.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

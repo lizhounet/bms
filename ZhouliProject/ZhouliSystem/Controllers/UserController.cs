@@ -22,6 +22,7 @@ using DInjectionProvider;
 using Microsoft.AspNetCore.Mvc;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
+using ZhouliSystem.Data;
 
 namespace ZhouliSystem.Controllers
 {
@@ -32,15 +33,21 @@ namespace ZhouliSystem.Controllers
         {
             this.injection = injection;
         }
+        [ResponseCache(CacheProfileName = "default")]
         public IActionResult Login()
         {
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult UserLogin(string username, string password)
         {
             var message = new ResponseMessage();
-            var sysUsers = injection.GetExamples<ISysUserBLL>().GetLoginSysUser(t => t.UserName.Equals(username));
+            var sysUsers = injection.GetExamples<ISysUserBLL>().GetModels(t =>
+                t.UserName.Equals(username) ||
+                t.UserEmail.Equals(username) ||
+                t.UserPhone.Equals(username)
+            ).FirstOrDefault();
             if (sysUsers == null)
             {
                 message.StateCode = StatesCode.failure;
@@ -55,7 +62,7 @@ namespace ZhouliSystem.Controllers
                 }
                 else
                 {
-                    HttpContext.Session.SetSession("UserLogin", sysUsers);
+                    injection.GetExamples<UserAccount>().Login(injection.GetExamples<ISysUserBLL>().GetLoginSysUser(sysUsers));
                     message.StateCode = StatesCode.success;
                     message.Messages = "登陆成功";
                     message.JsonData = new { baseUrl = "/Home/Index" };

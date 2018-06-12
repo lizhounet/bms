@@ -22,8 +22,9 @@
                 <p>周黎的管理系统</p>
             </div>
             <form method="post" class="layui-form">
-                <input name="username" type="text" lay-verify="required" placeholder="用户名" id="username">
+                <input name="username" type="text" lay-verify="required" placeholder="用户名/邮箱/电话" id="username">
                 <input name="password" type="password" lay-verify="required" placeholder="密码" id="password" />
+                @Html.AntiForgeryToken()
                 <input value="登录" style="width:100%;" lay-submit lay-filter="login" type="submit">
             </form>
         </div>

@@ -18,16 +18,16 @@
 *****************************************************************/
 #endregion
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Zhouli.Entity.Models
 {
-
     /// <summary>
     /// 用户组
     /// </summary>
     public partial class SysUserGroup
     {
-        public List<SysRole> sysRoles { set; get; }
+      
+       // public List<SysRole> sysRoles { set; get; }
     }
 }

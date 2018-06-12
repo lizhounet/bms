@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
-using Zhouli.Entity.Models;
+using Zhouli.DbEntity.Models;
 
 namespace Zhouli.BLL.Interface
 {
@@ -13,7 +13,7 @@ namespace Zhouli.BLL.Interface
         /// 获取需要登录的用户所有信息
         /// </summary>
         /// <returns></returns>
-        SysUser GetLoginSysUser(Expression<Func<SysUser, bool>> WhereLambda);
+        SysUser GetLoginSysUser(SysUser sysUsers);
         #endregion
     }
 }

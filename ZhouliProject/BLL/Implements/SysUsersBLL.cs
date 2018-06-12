@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Text;
 using Zhouli.BLL.Interface;
 using Zhouli.DAL.Interface;
-using Zhouli.Entity.Models;
+using Zhouli.DbEntity.Models;
 
 namespace Zhouli.BLL.Implements
 {
@@ -24,9 +24,9 @@ namespace Zhouli.BLL.Implements
         /// 获取需要登录的用户所有信息
         /// </summary>
         /// <returns></returns>
-        public SysUser GetLoginSysUser(Expression<Func<SysUser, bool>> WhereLambda)
+        public SysUser GetLoginSysUser(SysUser user)
         {
-            return usersDAL.GetLoginSysUser(WhereLambda);
+            return usersDAL.GetLoginSysUser(user);
         }
         #endregion
     }

@@ -27,10 +27,9 @@ namespace DInjectionProvider
     /// </summary>
     public class WholeInjection
     {
-        private IHttpContextAccessor httpContextAccessor;
         public WholeInjection(IHttpContextAccessor _httpContextAccessor)
         {
-            httpContextAccessor = _httpContextAccessor;
+            GetHttpContext = _httpContextAccessor;
         }
         /// <summary>
         /// 可以获取.net core 配置了依赖注入关系的所有实例
@@ -39,7 +38,8 @@ namespace DInjectionProvider
         /// <returns></returns>
         public T GetExamples<T>()
         {
-            return (T)httpContextAccessor.HttpContext.RequestServices.GetService(typeof(T));
+            return (T)GetHttpContext.HttpContext.RequestServices.GetService(typeof(T));
         }
+        public IHttpContextAccessor GetHttpContext { get; }
     }
 }

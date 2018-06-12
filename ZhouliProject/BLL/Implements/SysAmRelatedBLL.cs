@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using Zhouli.BLL.Interface;
 using Zhouli.DAL.Interface;
-using Zhouli.Entity.Models;
+using Zhouli.DbEntity.Models;
 
 namespace Zhouli.BLL.Implements
 {

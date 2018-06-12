@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\Zhouli.DAL.csproj" />
-    <ProjectReference Include="..\Model.Entity\Zhouli.Entity.csproj" />
+    <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using Zhouli.Entity.Models;
+﻿using Zhouli.DbEntity.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +13,7 @@ namespace Zhouli.DAL.Interface
         /// 获取需要登录的用户所有信息
         /// </summary>
         /// <returns></returns>
-        SysUser GetLoginSysUser(Expression<Func<SysUser, bool>> WhereLambda);
+        SysUser GetLoginSysUser(SysUser user);
         #endregion
     }
 }

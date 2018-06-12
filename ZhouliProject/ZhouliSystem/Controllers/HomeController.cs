@@ -24,9 +24,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ZhouliSystem.Models;
-using Zhouli.Entity.Models;
+using Zhouli.DbEntity.Models;
 using DInjectionProvider;
 using ZhouliSystem.Filters;
+using ZhouliSystem.Data;
 
 namespace ZhouliSystem.Controllers
 {
@@ -40,7 +41,7 @@ namespace ZhouliSystem.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            return View(injection.GetExamples<UserAccount>().GetUserInfo());
         }
         public IActionResult Welcome()
         {

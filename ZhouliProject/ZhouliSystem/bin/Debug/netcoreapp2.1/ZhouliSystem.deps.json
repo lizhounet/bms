@@ -26,11 +26,13 @@
         "dependencies": {
           "DInjectionProvider": "1.0.0",
           "Microsoft.AspNetCore.All": "2.1.0",
+          "Microsoft.AspNetCore.ResponseCaching": "2.1.0",
+          "Microsoft.AspNetCore.ResponseCompression": "2.1.0",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.0",
           "Zhouli.BLL": "1.0.0",
           "Zhouli.Common": "1.0.0",
-          "Zhouli.Entity": "1.0.0"
+          "Zhouli.DbEntity": "1.0.0"
         },
         "runtime": {
           "ZhouliSystem.dll": {}
@@ -563,7 +565,7 @@
       "Zhouli.BLL/1.0.0": {
         "dependencies": {
           "Zhouli.DAL": "1.0.0",
-          "Zhouli.Entity": "1.0.0"
+          "Zhouli.DbEntity": "1.0.0"
         },
         "runtime": {
           "Zhouli.BLL.dll": {}
@@ -586,7 +588,7 @@
       },
       "Zhouli.DAL/1.0.0": {
         "dependencies": {
-          "Zhouli.Entity": "1.0.0"
+          "Zhouli.DbEntity": "1.0.0"
         },
         "runtime": {
           "Zhouli.DAL.dll": {}
@@ -595,17 +597,17 @@
           "Zhouli.DAL.dll": {}
         }
       },
-      "Zhouli.Entity/1.0.0": {
+      "Zhouli.DbEntity/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "2.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.0",
-          "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.5",
-          "Microsoft.EntityFrameworkCore.Tools": "2.1.0"
+          "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.5"
         },
         "runtime": {
-          "Zhouli.Entity.dll": {}
+          "Zhouli.DbEntity.dll": {}
         },
         "compile": {
-          "Zhouli.Entity.dll": {}
+          "Zhouli.DbEntity.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -4320,7 +4322,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Zhouli.Entity/1.0.0": {
+    "Zhouli.DbEntity/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -5532,7 +5534,7 @@
     "Microsoft.Extensions.PlatformAbstractions/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-H6ZsQzxYw/6k2DfEQRXdC+vQ6obd6Uba3uGJrnJ2vG4PRXjQZ7seB13JdCfE72abp8E6Fk3gGgDzfJiLZi5ZpQ==",
+      "sha512": "sha512-UMlN++q5qqzQ2HH+uOrKxN5fmBXMQDhrYkSaPJxhmyzfJaFPirrVr1raim/Ocq1psAZoB9+7JSAf0GDAX35wUg==",
       "path": "microsoft.extensions.platformabstractions/1.1.0",
       "hashPath": "microsoft.extensions.platformabstractions.1.1.0.nupkg.sha512"
     },
