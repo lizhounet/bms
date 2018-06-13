@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>d7879f25-2dca-42fa-b15c-bd04111dad49</UserSecretsId>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,10 @@
     <ProjectReference Include="..\DInjectionProvider\DInjectionProvider.csproj" />
     <ProjectReference Include="..\Zhouli.Common\Zhouli.Common.csproj" />
     <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\Home\" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,9 @@
 ﻿@charset "utf-8";
-
-a{
-	text-decoration: none;
+#houtaihome + i {
+    display:none;
+}
+a {
+    text-decoration: none;
 }
 html{
 	width: 100%;

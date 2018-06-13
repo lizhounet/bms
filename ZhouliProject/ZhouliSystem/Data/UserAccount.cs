@@ -1,10 +1,6 @@
 ﻿using DInjectionProvider;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Zhouli.DbEntity.Models;
-using Zhouli.Common;
+using Microsoft.AspNetCore.Http;
 
 namespace ZhouliSystem.Data
 {

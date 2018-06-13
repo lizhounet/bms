@@ -19,11 +19,11 @@
 #endregion
 using System;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
-using Zhouli.Common;
 using Zhouli.DbEntity.Models;
 
 namespace ZhouliSystem.Filters

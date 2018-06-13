@@ -15,9 +15,9 @@ namespace Zhouli.DAL.Implements
         {
             this.db = db;
         }
-        #region 获取需要登录的用户所有信息
+        #region 设置用户的用户组,角色信息
         /// <summary>
-        /// 获取需要登录的用户所有信息
+        /// 设置用户的用户组,角色信息
         /// </summary>
         /// <returns></returns>
         public SysUser GetLoginSysUser(SysUser user)

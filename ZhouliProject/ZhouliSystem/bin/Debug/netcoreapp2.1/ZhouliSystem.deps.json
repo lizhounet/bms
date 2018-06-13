@@ -576,7 +576,6 @@
       },
       "Zhouli.Common/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Http": "2.1.0",
           "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {

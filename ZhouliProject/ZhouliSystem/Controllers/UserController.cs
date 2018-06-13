@@ -39,7 +39,7 @@ namespace ZhouliSystem.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]//防伪标记 预防坏蛋攻击
         public IActionResult UserLogin(string username, string password)
         {
             var message = new ResponseMessage();
