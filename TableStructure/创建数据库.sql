@@ -54,12 +54,6 @@ use ZhouLi;
  CREATE TABLE Dict_AuthorityType(
  AuthorityTypeId int identity(1,1) primary key NOT NULL ,--主键Id
  AuthorityTypeName nvarchar(20) not null,--权限类型名称
- CreateUserId uniqueidentifier,--创建者ID(对应Sys_Users表UserId字段)
- CreateTime DATETIME  DEFAULT CONVERT(varchar, getdate(), 120 )  NOT NULL,--创建时间
- EditTime DATETIME  NULL ,--修改时间
- DeleteSign int DEFAULT 0 not null,--0 未删除 1 已删除
- DeleteTime DATETIME NULL,--删除时间
- Note NVARCHAR(2048) NULL--备注
  )
  --用户角色关联表
  CREATE TABLE Sys_UrRelated(
@@ -116,5 +110,5 @@ use ZhouLi;
  CREATE TABLE Sys_UgrRelated(
  UgrRelatedId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
  UserGroupId uniqueidentifier NOT NULL,--用户组id
-RoleId uniqueidentifier NOT NULL--角色id
+ RoleId uniqueidentifier NOT NULL--角色id
  )

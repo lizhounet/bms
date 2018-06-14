@@ -8,10 +8,10 @@ namespace Zhouli.DAL.Implements
 {
     public class SysRoleDAL : BaseDAL<SysRole>, ISysRoleDAL
     {
-        private ZhouLiContext db;
-        public SysRoleDAL(ZhouLiContext db) : base(db)
+        private DapperContext dapper;
+        public SysRoleDAL(DapperContext dapper) : base(dapper)
         {
-            this.db = db;
+            this.dapper = dapper;
         }
     }
 }

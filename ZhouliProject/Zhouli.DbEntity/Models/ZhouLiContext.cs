@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -11,7 +12,9 @@ namespace Zhouli.DbEntity.Models
         }
 
         public ZhouLiContext(DbContextOptions<ZhouLiContext> options)
-            : base(options) { }
+            : base(options)
+        {
+        }
 
         public virtual DbSet<DictAuthorityType> DictAuthorityType { get; set; }
         public virtual DbSet<DictUserStatus> DictUserStatus { get; set; }
@@ -26,14 +29,14 @@ namespace Zhouli.DbEntity.Models
         public virtual DbSet<SysUserGroup> SysUserGroup { get; set; }
         public virtual DbSet<SysUuRelated> SysUuRelated { get; set; }
 
-        //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //        {
-        //            if (!optionsBuilder.IsConfigured)
-        //            {
-        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-        //                optionsBuilder.UseSqlServer("Server=.;Database=ZhouLi;Trusted_Connection=True;");
-        //            }
-        //        }
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseSqlServer("Server=.;Database=ZhouLi;Trusted_Connection=True;");
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,16 +49,6 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.AuthorityTypeName)
                     .IsRequired()
                     .HasMaxLength(20);
-
-                entity.Property(e => e.CreateTime)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
-
-                entity.Property(e => e.DeleteTime).HasColumnType("datetime");
-
-                entity.Property(e => e.EditTime).HasColumnType("datetime");
-
-                entity.Property(e => e.Note).HasMaxLength(2048);
             });
 
             modelBuilder.Entity<DictUserStatus>(entity =>
@@ -183,7 +176,7 @@ namespace Zhouli.DbEntity.Models
                 entity.ToTable("Sys_User");
 
                 entity.HasIndex(e => e.UserName)
-                    .HasName("UQ__Sys_User__C9F28456023D5A04")
+                    .HasName("UQ__Sys_User__C9F2845676F5F1D5")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasDefaultValueSql("(newid())");

@@ -8,11 +8,11 @@ namespace Zhouli.DAL.Implements
 {
     public class DictAuthorityTypeDAL : BaseDAL<DictAuthorityType>, IDictAuthorityTypeDAL
     {
-        private ZhouLiContext db;
-        public DictAuthorityTypeDAL(ZhouLiContext db) : base(db)
+        private DapperContext dapper;
+        public DictAuthorityTypeDAL(DapperContext dapper) : base(dapper)
         {
-            this.db = db;
+            this.dapper = dapper;
         }
-        
+
     }
 }

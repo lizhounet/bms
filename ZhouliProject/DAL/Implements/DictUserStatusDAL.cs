@@ -8,11 +8,11 @@ namespace Zhouli.DAL.Implements
 {
     public class DictUserStatusDAL : BaseDAL<DictUserStatus>, IDictUserStatusDAL
     {
-        private ZhouLiContext db;
-        public DictUserStatusDAL(ZhouLiContext db) : base(db)
+        private DapperContext dapper;
+        public DictUserStatusDAL(DapperContext dapper) : base(dapper)
         {
-            this.db = db;
+            this.dapper = dapper;
         }
-        
+
     }
 }

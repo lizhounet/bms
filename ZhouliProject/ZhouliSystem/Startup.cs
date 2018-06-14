@@ -22,20 +22,21 @@ namespace ZhouliSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // 数据库连接字符串
+            var conStr = Configuration.GetConnectionString("DataConnection");
             #region 自定义的配置关系
             //注入全局依赖注入提供者类
             services.AddSingleton(typeof(WholeInjection));
             services.AddSingleton(typeof(UserAccount));
+            services.AddSingleton(new Zhouli.DAL.DapperContext(conStr,1));
             services.ResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
             #endregion
             #region 系统的配置关系
-            // 数据库连接字符串
-            var conStr = Configuration.GetConnectionString("DataConnection");
             //注入ef对象
             services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(conStr));
             //添加session中间件
             services.AddSession();
-            
+
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //注入gzip压缩中间件
@@ -56,7 +57,7 @@ namespace ZhouliSystem
                 {
                     Duration = 60 * 60,  // 1 hour
                                          //Location = Microsoft.AspNetCore.Mvc.ResponseCacheLocation.Any,
-                                        //NoStore = true,
+                                         //NoStore = true,
                                          //VaryByHeader = "User-Agent",
                                          //VaryByQueryKeys = new string[] { "aaa" }
                 });
@@ -92,7 +93,7 @@ namespace ZhouliSystem
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
             //初始化数据库
-            //Zhouli.Entity.InitSystem.InitDB(app.ApplicationServices);
+            Zhouli.DbEntity.InitSystem.InitDB(app.ApplicationServices);
         }
     }
 }

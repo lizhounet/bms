@@ -10,10 +10,10 @@ namespace Zhouli.DAL.Implements
 {
     public class SysUserDAL : BaseDAL<SysUser>, ISysUserDAL
     {
-        private ZhouLiContext db;
-        public SysUserDAL(ZhouLiContext db) : base(db)
+        private DapperContext dapper;
+        public SysUserDAL(DapperContext dapper) : base(dapper)
         {
-            this.db = db;
+            this.dapper = dapper;
         }
         #region 设置用户的用户组,角色信息
         /// <summary>
@@ -22,63 +22,7 @@ namespace Zhouli.DAL.Implements
         /// <returns></returns>
         public SysUser GetLoginSysUser(SysUser user)
         {
-            user.sysUserGroups = (from sug in db.SysUserGroup
-                                  join sur in db.SysUuRelated
-                                  on sug.UserGroupId equals sur.UserGroupId
-                                  where sur.UserId.Equals(user.UserId)
-                                  select new SysUserGroup
-                                  {
-                                      UserGroupId = sug.UserGroupId,
-                                      UserGroupName = sug.UserGroupName,
-                                      ParentUserGroupId = sug.ParentUserGroupId,
-                                      CreateUserId = sug.CreateUserId,
-                                      DeleteSign = sug.DeleteSign,
-                                      CreateTime = sug.CreateTime,
-                                      DeleteTime = sug.DeleteTime,
-                                      EditTime = sug.EditTime,
-                                      Note = sug.Note
-
-                                  }).ToList();
-            if (user.sysUserGroups != null)
-            {
-                foreach (var item in user.sysUserGroups)
-                {
-                    item.sysRoles = (from sur in db.SysUgrRelated
-                                     join sr in db.SysRole
-                                     on sur.RoleId equals sr.RoleId
-                                     where sur.UserGroupId.Equals(item.UserGroupId)
-                                     select new SysRole
-                                     {
-                                         RoleId = sr.RoleId,
-                                         RoleName = sr.RoleName,
-                                         CreateUserId = sr.CreateUserId,
-                                         DeleteSign = sr.DeleteSign,
-                                         CreateTime = sr.CreateTime,
-                                         DeleteTime = sr.DeleteTime,
-                                         EditTime = sr.EditTime,
-                                         Note = sr.Note
-                                     }
-                                 ).ToList();
-
-                }
-            }
-            user.sysRoles = (from sur in db.SysUrRelated
-                             join sr in db.SysRole
-                             on sur.RoleId equals sr.RoleId
-                             where sur.UserId.Equals(user.UserId)
-                             select new SysRole
-                             {
-                                 RoleId = sr.RoleId,
-                                 RoleName = sr.RoleName,
-                                 CreateUserId = sr.CreateUserId,
-                                 DeleteSign = sr.DeleteSign,
-                                 CreateTime = sr.CreateTime,
-                                 DeleteTime = sr.DeleteTime,
-                                 EditTime = sr.EditTime,
-                                 Note = sr.Note
-                             }
-                                 ).ToList();
-            return user;
+            return null;
         }
         #endregion
     }

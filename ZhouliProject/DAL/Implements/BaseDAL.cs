@@ -1,63 +1,94 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Dapper;
+using LambdaToSQL;
 using System.Text;
-using Zhouli.DAL.Interface;
-using Microsoft.EntityFrameworkCore;
-using Zhouli.DbEntity.Models;
 
 namespace Zhouli.DAL.Implements
 {
     public class BaseDAL<T> where T : class, new()
     {
+
         /// <summary>
         /// 数据库上下文
         /// </summary>
-        private ZhouLiContext _ZhouLiContext;
+        private DapperContext db;
         /// <summary>
         /// 构造函数依赖注入
         /// </summary>
-        /// <param name="ZhouLiContext"></param>
-        public BaseDAL(ZhouLiContext ZhouLiContext)
+        /// <param name="db"></param>
+        public BaseDAL(DapperContext db)
         {
-            this._ZhouLiContext = ZhouLiContext;
+            this.db = db;
         }
-        public void Add(T t)
+        public int Add(T t)
         {
-            _ZhouLiContext.Set<T>().Add(t);
+            StringBuilder builder = new StringBuilder(10);
+            var type = t.GetType();
+            builder.AppendLine($"INERT INTO {type.FullName} (");
+            builder.AppendLine($"{string.Join(",", type.GetProperties().Select(q => q.Name).ToArray())} ) VALUES(");
+            builder.AppendLine($" {string.Join("','", type.GetProperties().Select(q => q.GetValue(t, null)).ToArray())} )");
+            using (var con = db.GetConnection)
+            {
+                return con.Execute(builder.ToString(), t);
+            }
         }
-        public void Delete(T t)
+        public int Delete(T t)
         {
-            _ZhouLiContext.Set<T>().Remove(t);
+            using (var con = db.GetConnection)
+            {
+                // con.Insert(t);
+                return 1;
+            }
         }
-
-        public void Update(T t)
+        public int Update(T t)
         {
-            _ZhouLiContext.Set<T>().Attach(t);
-            _ZhouLiContext.Entry<T>(t).State = EntityState.Modified;
+            using (var con = db.GetConnection)
+            {
+                //con.Update(t);
+                return 1;
+            }
         }
-        public IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda)
+        public IEnumerable<T> GetModelList(Expression<Func<T, bool>> whereLambda)
         {
-            return _ZhouLiContext.Set<T>().Where(whereLambda);
+            using (var con = db.GetConnection)
+            {
+                LambdaExpConditions<T> lambda = new LambdaExpConditions<T>();
+                lambda.Add(u => u.Where(whereLambda));
+                return con.Query<T>($" SELECT * FROM {typeof(T).FullName} " +
+                    $"{lambda.Where() }");
+            }
+        }
+        public T GetModels(Expression<Func<T, bool>> whereLambda)
+        {
+            using (var con = db.GetConnection)
+            {
+                LambdaExpConditions<T> lambda = new LambdaExpConditions<T>();
+                lambda.Add(u => u.Where(whereLambda));
+                return con.Query<T>($" SELECT * FROM {typeof(T).FullName} " +
+                    $"{lambda.Where() }").FirstOrDefault();
+            }
         }
         public IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc,
-            Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda)
+            Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> whereLambda)
         {
-            //是否升序
-            if (isAsc)
+            using (var con = db.GetConnection)
             {
-                return _ZhouLiContext.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
-            }
-            else
-            {
-                return _ZhouLiContext.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return null;
             }
         }
-        public bool SaveChanges()
-        {
-            return _ZhouLiContext.SaveChanges() > 0;
-        }
+        //public IQueryable<T> FromSql(String sql, params object[] parameters)
+        //{
+        //    if (parameters.Length > 0)
+        //        return db.Set<T>().FromSql(sql, parameters);
+        //    else
+        //        return db.Set<T>().FromSql(sql);
+        //}
+        //public bool SaveChanges()
+        //{
+        //    return db.SaveChanges() > 0;
+        //}
     }
 }
