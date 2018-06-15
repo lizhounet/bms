@@ -9,9 +9,11 @@ namespace Zhouli.DAL.Implements
     public class SysUserGroupDAL : BaseDAL<SysUserGroup>, ISysUserGroupDAL
     {
         private DapperContext dapper;
-        public SysUserGroupDAL(DapperContext dapper) : base(dapper)
+        private ZhouLiContext db;
+        public SysUserGroupDAL(DapperContext dapper, ZhouLiContext db) : base(db)
         {
             this.dapper = dapper;
+            this.db = db;
         }
     }
 }

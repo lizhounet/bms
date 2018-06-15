@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using Zhouli.BLL.Interface;
 using Zhouli.DAL.Interface;
+using Zhouli.DbEntity.ModelDto;
 using Zhouli.DbEntity.Models;
 
 namespace Zhouli.BLL.Implements
@@ -19,6 +20,11 @@ namespace Zhouli.BLL.Implements
         public SysMenuBLL(ISysMenuDAL sysMenuDAL) : base(sysMenuDAL)
         {
             this.sysMenuDAL = sysMenuDAL;
+        }
+
+        public List<SysMenuDto> GetMenusBy(Guid userId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

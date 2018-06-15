@@ -35,8 +35,8 @@ namespace Zhouli.DAL
         /// <summary>
         /// 数据库类型(1=sqlserver,2=mysql)
         /// </summary>
-        private readonly int dataBaseType;
-        public DapperContext(string sqlConnection, int dataBaseType)
+        private readonly string dataBaseType;
+        public DapperContext(string sqlConnection, string dataBaseType)
         {
             this.sqlConnection = sqlConnection;
             this.dataBaseType = dataBaseType;
@@ -46,9 +46,9 @@ namespace Zhouli.DAL
             get
             {
                 IDbConnection conn = null;
-                if (dataBaseType == 0)
+                if (dataBaseType == "0")
                     conn = new SqlConnection(sqlConnection);
-                else if (dataBaseType == 1)
+                else if (dataBaseType == "1")
                     conn = new SqlConnection(sqlConnection);
                 conn.Open();
                 return conn;

@@ -36,7 +36,6 @@ namespace ZhouliSystem.Controllers
         [ResponseCache(CacheProfileName = "default")]
         public IActionResult Login()
         {
-            bool i = injection.GetExamples<ISysUserBLL>().Add(new Zhouli.DbEntity.Models.SysUser { UserName = "admin" });
             return View();
         }
         [HttpPost]
@@ -49,7 +48,7 @@ namespace ZhouliSystem.Controllers
                 t.UserName.Equals(username) ||
                 t.UserEmail.Equals(username) ||
                 t.UserPhone.Equals(username)
-            );
+            ).FirstOrDefault();
             if (sysUsers == null)
             {
                 message.StateCode = StatesCode.failure;

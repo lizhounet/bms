@@ -23,20 +23,20 @@ namespace ZhouliSystem
         public void ConfigureServices(IServiceCollection services)
         {
             // 数据库连接字符串
-            var conStr = Configuration.GetConnectionString("DataConnection");
+            var conStr = Configuration.GetConnectionString("dataConnection");
+            var conDataType = Configuration.GetConnectionString("dataBaseType");
             #region 自定义的配置关系
             //注入全局依赖注入提供者类
             services.AddSingleton(typeof(WholeInjection));
             services.AddSingleton(typeof(UserAccount));
-            services.AddSingleton(new Zhouli.DAL.DapperContext(conStr,1));
+            services.AddSingleton(new Zhouli.DAL.DapperContext(conStr, conDataType));
             services.ResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
             #endregion
             #region 系统的配置关系
             //注入ef对象
-            services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(conStr));
+            services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(conStr),ServiceLifetime.Singleton);
             //添加session中间件
             services.AddSession();
-
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //注入gzip压缩中间件

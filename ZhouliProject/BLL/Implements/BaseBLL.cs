@@ -17,20 +17,20 @@ namespace Zhouli.BLL.Implements
         }
         public bool Add(T t)
         {
-            
-            return Dal.Add(t)>0;
+            Dal.Add(t);
+            return Dal.SaveChanges();
         }
         public bool Delete(T t)
         {
-            
-            return Dal.Delete(t)>0;
+            Dal.Delete(t);
+            return Dal.SaveChanges();
         }
         public bool Update(T t)
         {
-            
-            return Dal.Update(t)>0;
+            Dal.Update(t);
+            return Dal.SaveChanges();
         }
-        public T GetModels(Expression<Func<T, bool>> whereLambda)
+        public IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda)
         {
             return Dal.GetModels(whereLambda);
         }

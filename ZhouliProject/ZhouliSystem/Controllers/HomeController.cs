@@ -28,6 +28,7 @@ using Zhouli.DbEntity.Models;
 using DInjectionProvider;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Data;
+using Zhouli.BLL.Interface;
 
 namespace ZhouliSystem.Controllers
 {
@@ -41,12 +42,14 @@ namespace ZhouliSystem.Controllers
         }
         public IActionResult Index()
         {
-            return View(injection.GetExamples<UserAccount>().GetUserInfo());
+            var User = injection.GetExamples<UserAccount>().GetUserInfo();
+            var list = injection.GetExamples<ISysAuthorityBLL>().GetSysAuthorities(User, AuthorityType.Menu);
+            return View(User);
         }
         public IActionResult Welcome()
         {
             return View();
         }
-      
+
     }
 }

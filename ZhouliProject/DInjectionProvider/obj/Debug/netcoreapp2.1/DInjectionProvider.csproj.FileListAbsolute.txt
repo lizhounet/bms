@@ -32,3 +32,5 @@ F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcor
 F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
 F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
+E:\zhouli\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
+E:\zhouli\bms\ZhouliProject\DInjectionProvider\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb

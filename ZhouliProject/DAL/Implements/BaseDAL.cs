@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Dapper;
-using LambdaToSQL;
-using System.Text;
 
 namespace Zhouli.DAL.Implements
 {
@@ -14,81 +11,50 @@ namespace Zhouli.DAL.Implements
         /// <summary>
         /// 数据库上下文
         /// </summary>
-        private DapperContext db;
+        private Zhouli.DbEntity.Models.ZhouLiContext db;
         /// <summary>
         /// 构造函数依赖注入
         /// </summary>
         /// <param name="db"></param>
-        public BaseDAL(DapperContext db)
+        public BaseDAL(Zhouli.DbEntity.Models.ZhouLiContext db)
         {
             this.db = db;
         }
-        public int Add(T t)
+        public void Add(T t)
         {
-            StringBuilder builder = new StringBuilder(10);
-            var type = t.GetType();
-            builder.AppendLine($"INERT INTO {type.FullName} (");
-            builder.AppendLine($"{string.Join(",", type.GetProperties().Select(q => q.Name).ToArray())} ) VALUES(");
-            builder.AppendLine($" {string.Join("','", type.GetProperties().Select(q => q.GetValue(t, null)).ToArray())} )");
-            using (var con = db.GetConnection)
-            {
-                return con.Execute(builder.ToString(), t);
-            }
+            db.Set<T>().Add(t);
         }
-        public int Delete(T t)
+        public void Delete(T t)
         {
-            using (var con = db.GetConnection)
-            {
-                // con.Insert(t);
-                return 1;
-            }
+            db.Set<T>().Remove(t);
         }
-        public int Update(T t)
+
+        public void Update(T t)
         {
-            using (var con = db.GetConnection)
-            {
-                //con.Update(t);
-                return 1;
-            }
+            db.Set<T>().Update(t);
         }
-        public IEnumerable<T> GetModelList(Expression<Func<T, bool>> whereLambda)
+
+        public IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda)
         {
-            using (var con = db.GetConnection)
-            {
-                LambdaExpConditions<T> lambda = new LambdaExpConditions<T>();
-                lambda.Add(u => u.Where(whereLambda));
-                return con.Query<T>($" SELECT * FROM {typeof(T).FullName} " +
-                    $"{lambda.Where() }");
-            }
-        }
-        public T GetModels(Expression<Func<T, bool>> whereLambda)
-        {
-            using (var con = db.GetConnection)
-            {
-                LambdaExpConditions<T> lambda = new LambdaExpConditions<T>();
-                lambda.Add(u => u.Where(whereLambda));
-                return con.Query<T>($" SELECT * FROM {typeof(T).FullName} " +
-                    $"{lambda.Where() }").FirstOrDefault();
-            }
+            return db.Set<T>().Where(whereLambda);
         }
         public IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc,
-            Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> whereLambda)
+            Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda)
         {
-            using (var con = db.GetConnection)
+            //是否升序
+            if (isAsc)
             {
-                return null;
+                return db.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            }
+            else
+            {
+                return db.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
         }
-        //public IQueryable<T> FromSql(String sql, params object[] parameters)
-        //{
-        //    if (parameters.Length > 0)
-        //        return db.Set<T>().FromSql(sql, parameters);
-        //    else
-        //        return db.Set<T>().FromSql(sql);
-        //}
-        //public bool SaveChanges()
-        //{
-        //    return db.SaveChanges() > 0;
-        //}
+
+        public bool SaveChanges()
+        {
+            return db.SaveChanges() > 0;
+        }
     }
 }

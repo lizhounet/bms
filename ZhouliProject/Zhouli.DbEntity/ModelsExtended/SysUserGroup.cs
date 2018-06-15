@@ -27,7 +27,7 @@ namespace Zhouli.DbEntity.Models
     /// </summary>
     public partial class SysUserGroup
     {
-      
+        [NotMapped]
         public List<SysRole> sysRoles { set; get; }
     }
 }
