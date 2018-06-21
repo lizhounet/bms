@@ -118,11 +118,15 @@ namespace Zhouli.DbEntity
                             //----------------------------系统管理菜单begin
                             var entityMenu = context.SysMenu.Add(new SysMenu
                             {
-                                MenuName = "系统管理"
+                                MenuName = "系统管理",
+                                MenuSort = 1,
+                                MenuId = Guid.NewGuid()
+
                             });
                             var entityAuthority = context.SysAuthority.Add(new SysAuthority
                             {
-                                AuthorityType = 1
+                                AuthorityType = 1,
+                                AuthorityId = Guid.NewGuid()
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
@@ -134,11 +138,14 @@ namespace Zhouli.DbEntity
                             var entityMenu1 = context.SysMenu.Add(new SysMenu
                             {
                                 MenuName = "权限管理",
-                                ParentMenuId = entityMenu.Entity.MenuId
+                                ParentMenuId = entityMenu.Entity.MenuId,
+                                MenuId = Guid.NewGuid()
+
                             });
                             var entityAuthority1 = context.SysAuthority.Add(new SysAuthority
                             {
-                                AuthorityType = 1
+                                AuthorityType = 1,
+                                AuthorityId = Guid.NewGuid()
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
@@ -150,11 +157,14 @@ namespace Zhouli.DbEntity
                             var entityMenu2 = context.SysMenu.Add(new SysMenu
                             {
                                 MenuName = "菜单管理",
-                                ParentMenuId = entityMenu.Entity.MenuId
+                                ParentMenuId = entityMenu.Entity.MenuId,
+                                MenuId = Guid.NewGuid()
                             });
                             var entityAuthority2 = context.SysAuthority.Add(new SysAuthority
                             {
-                                AuthorityType = 1
+                                AuthorityType = 1,
+                                AuthorityId = Guid.NewGuid()
+
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
@@ -166,11 +176,13 @@ namespace Zhouli.DbEntity
                             var entityMenu3 = context.SysMenu.Add(new SysMenu
                             {
                                 MenuName = "角色管理",
-                                ParentMenuId = entityMenu.Entity.MenuId
+                                ParentMenuId = entityMenu.Entity.MenuId,
+                                MenuId = Guid.NewGuid()
                             });
                             var entityAuthority3 = context.SysAuthority.Add(new SysAuthority
                             {
-                                AuthorityType = 1
+                                AuthorityType = 1,
+                                AuthorityId = Guid.NewGuid()
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
@@ -182,11 +194,13 @@ namespace Zhouli.DbEntity
                             var entityMenu4 = context.SysMenu.Add(new SysMenu
                             {
                                 MenuName = "用户管理",
-                                ParentMenuId = entityMenu.Entity.MenuId
+                                ParentMenuId = entityMenu.Entity.MenuId,
+                                MenuId = Guid.NewGuid()
                             });
                             var entityAuthority4 = context.SysAuthority.Add(new SysAuthority
                             {
-                                AuthorityType = 1
+                                AuthorityType = 1,
+                                AuthorityId = Guid.NewGuid()
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {

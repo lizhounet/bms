@@ -9,6 +9,7 @@ namespace Zhouli.DbEntity.Models
         public string MenuName { get; set; }
         public string MenuIcon { get; set; }
         public string MenuUrl { get; set; }
+        public int MenuSort { get; set; }
         public Guid? ParentMenuId { get; set; }
         public Guid? CreateUserId { get; set; }
         public DateTime CreateTime { get; set; }

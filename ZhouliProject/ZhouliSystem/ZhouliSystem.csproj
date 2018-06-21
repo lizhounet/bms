@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\js\Home\**" />
+    <Content Remove="wwwroot\js\Home\**" />
+    <EmbeddedResource Remove="wwwroot\js\Home\**" />
+    <None Remove="wwwroot\js\Home\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.ResponseCaching" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.1.0" />
@@ -22,10 +29,6 @@
     <ProjectReference Include="..\DInjectionProvider\DInjectionProvider.csproj" />
     <ProjectReference Include="..\Zhouli.Common\Zhouli.Common.csproj" />
     <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\js\Home\" />
   </ItemGroup>
 
 </Project>

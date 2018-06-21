@@ -31,10 +31,12 @@ namespace ZhouliSystem
             services.AddSingleton(typeof(UserAccount));
             services.AddSingleton(new Zhouli.DAL.DapperContext(conStr, conDataType));
             services.ResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
+            //初始化映射关系
+            Zhouli.BLL.ZhouliMapper.Initialize();
             #endregion
             #region 系统的配置关系
             //注入ef对象
-            services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(conStr),ServiceLifetime.Singleton);
+            services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(conStr), ServiceLifetime.Singleton);
             //添加session中间件
             services.AddSession();
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册
@@ -79,7 +81,7 @@ namespace ZhouliSystem
             {
                 app.UseExceptionHandler("/Error/Index");
             }
-            app.UseStatusCodePages();
+           // app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
             //gzip压缩中间件
@@ -88,6 +90,10 @@ namespace ZhouliSystem
             app.UseResponseCaching();
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                  name: "areas",
+                  template: "{area:exists}/{controller}/{action=Index}/{id?}"
+                );
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

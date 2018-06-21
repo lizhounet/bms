@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Zhouli.DbEntity.ModelDto;
 using Zhouli.DbEntity.Models;
 
 namespace Zhouli.BLL.Interface
@@ -14,8 +13,8 @@ namespace Zhouli.BLL.Interface
         /// <summary>
         /// 根据用户获取功能菜单
         /// </summary>
-        /// <param name="userId">用户ID</param>
+        /// <param name="user">用户实体</param>
         /// <returns></returns>
-        List<SysMenuDto> GetMenusBy(Guid userId);
+        List<SysMenuDto> GetMenusBy(SysUser user);
     }
 }

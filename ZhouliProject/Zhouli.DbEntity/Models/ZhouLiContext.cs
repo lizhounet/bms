@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -117,6 +116,8 @@ namespace Zhouli.DbEntity.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Note).HasMaxLength(2048);
+
+                entity.Property(e => e.ParentMenuId).HasDefaultValueSql("(CONVERT([uniqueidentifier],CONVERT([binary],(0))))");
             });
 
             modelBuilder.Entity<SysRaRelated>(entity =>
@@ -176,7 +177,7 @@ namespace Zhouli.DbEntity.Models
                 entity.ToTable("Sys_User");
 
                 entity.HasIndex(e => e.UserName)
-                    .HasName("UQ__Sys_User__C9F2845676F5F1D5")
+                    .HasName("UQ__Sys_User__C9F2845684AEB869")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasDefaultValueSql("(newid())");

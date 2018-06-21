@@ -91,7 +91,8 @@ use ZhouLi;
  MenuName NVARCHAR(50) NOT NULL,--菜单名称
  MenuIcon NVARCHAR(10) NULL,--菜单图标(只支持layui图标)
  MenuUrl varchar(80) NULL,--菜单url
- ParentMenuId uniqueidentifier NULL,--父菜单id
+ MenuSort int NOT NULL,--菜单排序号
+ ParentMenuId uniqueidentifier DEFAULT CAST(CAST(0 AS BINARY) AS UNIQUEIDENTIFIER)   NULL,--父菜单id
  CreateUserId uniqueidentifier,--创建者ID(对应Sys_Users表UserId字段)
  CreateTime DATETIME  DEFAULT CONVERT(varchar, getdate(), 120 )  NOT NULL,--创建时间
  EditTime DATETIME  NULL ,--修改时间

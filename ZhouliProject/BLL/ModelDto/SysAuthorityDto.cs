@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Zhouli.DbEntity.Models;
 
-namespace Zhouli.DbEntity.ModelDto
+namespace Zhouli.BLL
 {
     /// <summary>
     /// 权限表Dto

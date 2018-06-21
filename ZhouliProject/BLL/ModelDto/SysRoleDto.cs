@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zhouli.DbEntity.ModelDto
+namespace Zhouli.BLL
 {
     public class SysRoleDto
     {

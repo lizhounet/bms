@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zhouli.DbEntity.ModelDto
+namespace Zhouli.BLL
 {
-   public  class SysMenuDto
+    public class SysMenuDto
     {
         /// <summary>
         /// 菜单Id
@@ -26,5 +26,13 @@ namespace Zhouli.DbEntity.ModelDto
         /// 父级菜单
         /// </summary>
         public Guid? ParentMenuId { get; set; }
+        /// <summary>
+        /// 菜单排序号
+        /// </summary>
+        public Int32 MenuSort { set; get; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<SysMenuDto> children { set; get; }
     }
 }
