@@ -83,3 +83,6 @@ F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\Index.g.cshtml.cs
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\User\Index.g.cshtml.cs
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Ordinary.g.cshtml.cs
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\Index.g.cshtml.cs
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\User\Index.g.cshtml.cs
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Ordinary.g.cshtml.cs

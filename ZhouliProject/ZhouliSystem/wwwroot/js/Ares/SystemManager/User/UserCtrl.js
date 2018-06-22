@@ -12,25 +12,31 @@ require(["jquery", 'layui'], function ($) {
         //用户列表
         var tableIns = table.render({
             elem: '#userList',
-            url: '../../json/userList.json',
+            url: 'GetUserList',
             cellMinWidth: 95,
             page: true,
             height: "full-125",
             limits: [10, 15, 20, 25],
             limit: 20,
             id: "userListTable",
+            done: function (res, curr, count) {
+                //如果是异步请求数据方式，res即为你接口返回的信息。
+                //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+                console.log(res);
+            },
             cols: [[
                 { type: "checkbox", fixed: "left", width: 50 },
-                { field: 'userName', title: '用户名', minWidth: 100, align: "center" },
+                { field: 'UserName', title: '用户名', minWidth: 100, align: "center" },
+                { field: 'UserNikeName', title: '用户昵称', align: 'center', minWidth: 150 },
                 {
-                    field: 'userEmail', title: '用户邮箱', minWidth: 200, align: 'center', templet: function (d) {
-                        return '<a class="layui-blue" href="mailto:' + d.userEmail + '">' + d.userEmail + '</a>';
+                    field: 'UserEmail', title: '用户邮箱', minWidth: 200, align: 'center', templet: function (d) {
+                        return '<a class="layui-blue" href="mailto:' + d.UserEmail + '">' + d.UserEmail + '</a>';
                     }
                 },
-                { field: 'userSex', title: '用户性别', align: 'center' },
+                { field: 'UserSex', title: '用户性别', align: 'center' },
                 {
-                    field: 'userStatus', title: '用户状态', align: 'center', templet: function (d) {
-                        return d.userStatus == "0" ? "正常使用" : "限制使用";
+                    field: 'UserStatus', title: '用户状态', align: 'center', templet: function (d) {
+                        return d.userStatus == "0" ? "正常" : "停用";
                     }
                 },
                 {
@@ -48,11 +54,9 @@ require(["jquery", 'layui'], function ($) {
                         }
                     }
                 },
-                { field: 'userEndTime', title: '最后登录时间', align: 'center', minWidth: 150 },
                 { title: '操作', minWidth: 175, templet: '#userListBar', fixed: "right", align: "center" }
             ]]
         });
-
         //搜索【此功能需要后台配合，所以暂时没有动态效果演示】
         $(".search_btn").on("click", function () {
             if ($(".searchVal").val() != '') {
@@ -61,7 +65,7 @@ require(["jquery", 'layui'], function ($) {
                         curr: 1 //重新从第 1 页开始
                     },
                     where: {
-                        key: $(".searchVal").val()  //搜索的关键字
+                        searchstr: $(".searchVal").val()  //搜索的关键字
                     }
                 })
             } else {

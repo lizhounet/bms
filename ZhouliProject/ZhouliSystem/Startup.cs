@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -36,7 +37,8 @@ namespace ZhouliSystem
             #endregion
             #region 系统的配置关系
             //注入ef对象
-            services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(conStr), ServiceLifetime.Singleton);
+            services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(conStr, b => b.UseRowNumberForPaging()),
+                ServiceLifetime.Singleton);
             //添加session中间件
             services.AddSession();
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册
@@ -45,6 +47,14 @@ namespace ZhouliSystem
             services.AddResponseCompression();
             //注入Response 缓存中间件
             services.AddResponseCaching();
+            //重置区域匹配路径规则
+            services.Configure<RazorViewEngineOptions>(options =>
+            {
+                options.AreaViewLocationFormats.Clear();
+                options.AreaViewLocationFormats.Add("/Areas/{2}Manager/Views/{1}/{0}.cshtml");
+                options.AreaViewLocationFormats.Add("/Areas/{2}Manager/Views/Shared/{0}.cshtml");
+                options.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
+            });
             //mvc框架 
             services.AddMvc(o =>
             {
@@ -81,7 +91,7 @@ namespace ZhouliSystem
             {
                 app.UseExceptionHandler("/Error/Index");
             }
-           // app.UseStatusCodePages();
+            app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
             //gzip压缩中间件

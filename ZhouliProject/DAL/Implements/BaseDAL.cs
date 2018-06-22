@@ -28,7 +28,10 @@ namespace Zhouli.DAL.Implements
         {
             db.Set<T>().Remove(t);
         }
-
+        public int GetCount(Expression<Func<T, bool>> WhereLambda)
+        {
+            return db.Set<T>().Count(WhereLambda);
+        }
         public void Update(T t)
         {
             db.Set<T>().Update(t);

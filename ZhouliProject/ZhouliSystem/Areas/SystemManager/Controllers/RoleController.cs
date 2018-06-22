@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
 {
-    [Area("SystemManager")]
+    [Area("System")]
     public class RoleController : Controller
     {
         public IActionResult Index()

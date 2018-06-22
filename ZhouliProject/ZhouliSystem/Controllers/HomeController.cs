@@ -43,13 +43,12 @@ namespace ZhouliSystem.Controllers
         public IActionResult Index()
         {
             var User = injection.GetExamples<UserAccount>().GetUserInfo();
-            var list = injection.GetExamples<ISysAuthorityBLL>().GetSysAuthorities(User, AuthorityType.Menu);
             return View(User);
         }
         public IActionResult Welcome()
         {
             return View();
         }
-
+       
     }
 }

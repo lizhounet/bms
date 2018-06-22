@@ -10,6 +10,7 @@ namespace Zhouli.DAL.Interface
         void Add(T t);
         void Delete(T t);
         void Update(T t);
+        int GetCount(Expression<Func<T, bool>> WhereLambda);
         IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda);
         IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc, Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda);
         /// <summary>

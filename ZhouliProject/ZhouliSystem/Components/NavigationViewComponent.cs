@@ -1,12 +1,13 @@
 ﻿using DInjectionProvider;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Zhouli.BLL.Interface;
+using ZhouliSystem.Filters;
 
 namespace ZhouliSystem.Components
 {
     [ViewComponent(Name = "Navigation")]
+    [VerificationLogin]
     public class NavigationViewComponent: ViewComponent
     {
         private readonly WholeInjection injection;
