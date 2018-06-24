@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,14 +21,16 @@ namespace Zhouli.Common
             return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json);
         }
         /// <summary>
-        /// 对象转换为json字符串
+        /// 对象转换为json字符串 (序列化时间格式,默认("yyyy-MM-dd HH:mm:ss"))
         /// </summary>
-        /// <typeparam name="object"></typeparam>
         /// <param name="t"></param>
+        /// <param name="timeFormat">序列化时间格式,默认("yyyy-MM-dd HH:mm:ss")</param>
         /// <returns></returns>
-        public static string ObjectToJson(object t)
+        public static string ObjectToJson(object t, string timeFormat = "yyyy-MM-dd HH:mm:ss")
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(t);
+            IsoDateTimeConverter tFormat = new IsoDateTimeConverter();
+            tFormat.DateTimeFormat = timeFormat;
+            return Newtonsoft.Json.JsonConvert.SerializeObject(t, Newtonsoft.Json.Formatting.Indented, tFormat);
         }
     }
 }

@@ -22,7 +22,9 @@ using DInjectionProvider;
 using Microsoft.AspNetCore.Mvc;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
+using Zhouli.DbEntity.Models;
 using ZhouliSystem.Data;
+using ZhouliSystem.Models;
 
 namespace ZhouliSystem.Controllers
 {
@@ -42,12 +44,11 @@ namespace ZhouliSystem.Controllers
         [ValidateAntiForgeryToken]//防伪标记 预防坏蛋攻击
         public IActionResult UserLogin(string username, string password)
         {
-            var message = new ResponseMessage();
-
+            var message = new ResponseModel();
             var sysUsers = injection.GetExamples<ISysUserBLL>().GetModels(t =>
-                t.UserName.Equals(username) ||
+                (t.UserName.Equals(username) ||
                 t.UserEmail.Equals(username) ||
-                t.UserPhone.Equals(username)
+                t.UserPhone.Equals(username) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted))
             ).FirstOrDefault();
             if (sysUsers == null)
             {
@@ -56,15 +57,19 @@ namespace ZhouliSystem.Controllers
             }
             else
             {
-                if (!MD5Encrypt.Get32MD5Two(password).Equals(sysUsers.UserPwd))
+                if (sysUsers.UserStatus.Equals(UserStatus.Status_Discontinuation))
+                {
+                    message.StateCode = StatesCode.failure;
+                    message.Messages = "账户已停用,请联系管理员解除(17783042962)";
+                }
+                else if (!MD5Encrypt.Get32MD5Two(password).Equals(sysUsers.UserPwd))
                 {
                     message.StateCode = StatesCode.failure;
                     message.Messages = "密码错误";
                 }
                 else
                 {
-                    injection.GetExamples<UserAccount>().Login(injection.GetExamples<ISysUserBLL>().GetLoginSysUser(sysUsers));
-                    message.StateCode = StatesCode.success;
+                    injection.GetExamples<UserAccount>().Login(injection.GetExamples<ISysUserBLL>().GetLoginSysUser(sysUsers).Data);
                     message.Messages = "登陆成功";
                     message.JsonData = new { baseUrl = "/Home/Index" };
                 }

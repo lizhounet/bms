@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -8,9 +9,11 @@ namespace Zhouli.DAL.Interface
     public interface IBaseDAL<T> where T : class
     {
         void Add(T t);
+        void AddRange(IEnumerable<T> t);
         void Delete(T t);
         void Update(T t);
         int GetCount(Expression<Func<T, bool>> WhereLambda);
+        int ExecuteSql(string sql, SqlParameter parameter);
         IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda);
         IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc, Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda);
         /// <summary>

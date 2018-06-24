@@ -2,7 +2,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "后台管理系统主页";
-    
+
 }
 <div class="layui-layout layui-layout-admin">
     <!-- 顶部 -->
@@ -46,133 +46,133 @@
             <p>您好！<span class="userName">@Model.UserNikeName</span>, 欢迎登录</p>
         </div>
         @*<div class="navbar layui-side-scroll" id="navbar">
-            <ul class="layui-nav layui-nav-tree">
-                <li class="layui-nav-item layui-this">
-                    <a href="javascript:;" data-url="/home/welcome"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a href="javascript:;" data-url="/home/welcome"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
-                </li>
-                <li class="layui-nav-item ">
-                    <a href="javascript:;" data-url="/home/welcome"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
-                </li>
-            </ul>
-        </div>*@
+                <ul class="layui-nav layui-nav-tree">
+                    <li class="layui-nav-item layui-this">
+                        <a href="javascript:;" data-url="/home/welcome"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
+                    </li>
+                    <li class="layui-nav-item ">
+                        <a href="javascript:;" data-url="/home/welcome"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
+                    </li>
+                    <li class="layui-nav-item ">
+                        <a href="javascript:;" data-url="/home/welcome"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
+                    </li>
+                </ul>
+            </div>*@
         <div class="left-nav">
             <div id="side-nav">
                 @await Component.InvokeAsync("Navigation")
                 @*<ul id="nav">
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont">&#xe6b8;</i>
-                            <cite>会员管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a _href="member-list.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员列表</cite>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="iconfont">&#xe6b8;</i>
+                                <cite>会员管理</cite>
+                                <i class="iconfont nav_right">&#xe697;</i>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a _href="member-list.html">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>会员列表</cite>
 
-                                </a>
-                            </li>
-                            <li>
-                                <a _href="member-del.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>会员删除</cite>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a _href="member-del.html">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>会员删除</cite>
 
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="iconfont">&#xe70b;</i>
-                                    <cite>会员管理</cite>
-                                    <i class="iconfont nav_right">&#xe697;</i>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a _href="xxx.html">
-                                            <i class="iconfont">&#xe6a7;</i>
-                                            <cite>会员列表</cite>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="iconfont">&#xe70b;</i>
+                                        <cite>会员管理</cite>
+                                        <i class="iconfont nav_right">&#xe697;</i>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <a _href="xxx.html">
+                                                <i class="iconfont">&#xe6a7;</i>
+                                                <cite>会员列表</cite>
 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a _href="xx.html">
-                                            <i class="iconfont">&#xe6a7;</i>
-                                            <cite>会员删除</cite>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a _href="xx.html">
+                                                <i class="iconfont">&#xe6a7;</i>
+                                                <cite>会员删除</cite>
 
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a _href="xx.html">
-                                            <i class="iconfont">&#xe6a7;</i>
-                                            <cite>等级管理</cite>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a _href="xx.html">
+                                                <i class="iconfont">&#xe6a7;</i>
+                                                <cite>等级管理</cite>
 
-                                        </a>
-                                    </li>
+                                            </a>
+                                        </li>
 
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont">&#xe723;</i>
-                            <cite>订单管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a _href="order-list.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>订单列表</cite>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <i class="iconfont">&#xe726;</i>
-                            <cite>管理员管理</cite>
-                            <i class="iconfont nav_right">&#xe697;</i>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a _href="admin-list.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>管理员列表</cite>
-                                </a>
-                            </li>
-                            <li>
-                                <a _href="admin-role.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>角色管理</cite>
-                                </a>
-                            </li>
-                            <li>
-                                <a _href="admin-cate.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>权限分类</cite>
-                                </a>
-                            </li>
-                            <li>
-                                <a _href="admin-rule.html">
-                                    <i class="iconfont">&#xe6a7;</i>
-                                    <cite>权限管理</cite>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>*@
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="iconfont">&#xe723;</i>
+                                <cite>订单管理</cite>
+                                <i class="iconfont nav_right">&#xe697;</i>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a _href="order-list.html">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>订单列表</cite>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <i class="iconfont">&#xe726;</i>
+                                <cite>管理员管理</cite>
+                                <i class="iconfont nav_right">&#xe697;</i>
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a _href="admin-list.html">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>管理员列表</cite>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a _href="admin-role.html">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>角色管理</cite>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a _href="admin-cate.html">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>权限分类</cite>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a _href="admin-rule.html">
+                                        <i class="iconfont">&#xe6a7;</i>
+                                        <cite>权限管理</cite>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>*@
             </div>
         </div>
     </div>
     <!-- 右侧内容 -->
     <div class="layui-body layui-form">
-        <div class="layui-tab mag0" lay-filter="bodyTab" lay-allowClose="true"  id="top_tabs_box">
+        <div class="layui-tab mag0" lay-filter="bodyTab" lay-allowClose="true" id="top_tabs_box">
             <ul class="layui-tab-title top_tab" id="top_tabs">
-                <li class="layui-this" lay-id=""><i class="layui-icon">&#xe68e;</i><cite id="houtaihome" >后台首页</cite></li>
+                <li class="layui-this" lay-id=""><i class="layui-icon">&#xe68e;</i><cite id="houtaihome">后台首页</cite></li>
             </ul>
             <ul class="layui-nav closeBox">
                 <li class="layui-nav-item">
@@ -193,7 +193,7 @@
     </div>
     <!-- 底部 -->
     <div class="layui-footer footer">
-        <p><span>copyright 2018 作者:周黎</span>
+        <p><span style="color: black;">copyright 2018 作者:周黎</span>
     </div>
 </div>
 <!-- 移动导航 -->

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -24,6 +26,10 @@ namespace Zhouli.DAL.Implements
         {
             db.Set<T>().Add(t);
         }
+        public void AddRange(IEnumerable<T> t)
+        {
+            db.AddRange(t);
+        }
         public void Delete(T t)
         {
             db.Set<T>().Remove(t);
@@ -34,6 +40,16 @@ namespace Zhouli.DAL.Implements
         }
         public void Update(T t)
         {
+            //var newt = db.Set<T>().First();
+            //foreach (var item in newt.GetType().GetProperties())
+            //{
+            //    //传进来的属性值
+            //    var pvalue = t.GetType().GetProperty(item.Name).GetValue(t, null);
+            //    //属性类型的默认值
+            //    var obj = t.GetType().GetProperty(item.Name).PropertyType.IsValueType ? Activator.CreateInstance(t.GetType().GetProperty(item.Name).PropertyType) : null;
+            //    if (pvalue != obj)
+            //        item.SetValue(newt, pvalue);
+            //}
             db.Set<T>().Update(t);
         }
 
@@ -53,6 +69,13 @@ namespace Zhouli.DAL.Implements
             {
                 return db.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
+        }
+        public int ExecuteSql(string sql, SqlParameter parameter)
+        {
+            if (parameter == null)
+                return db.Database.ExecuteSqlCommand(sql);
+            else
+                return db.Database.ExecuteSqlCommand(sql, parameter);
         }
 
         public bool SaveChanges()

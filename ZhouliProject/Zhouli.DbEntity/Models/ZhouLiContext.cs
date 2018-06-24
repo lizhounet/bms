@@ -16,7 +16,6 @@ namespace Zhouli.DbEntity.Models
         }
 
         public virtual DbSet<DictAuthorityType> DictAuthorityType { get; set; }
-        public virtual DbSet<DictUserStatus> DictUserStatus { get; set; }
         public virtual DbSet<SysAmRelated> SysAmRelated { get; set; }
         public virtual DbSet<SysAuthority> SysAuthority { get; set; }
         public virtual DbSet<SysMenu> SysMenu { get; set; }
@@ -46,17 +45,6 @@ namespace Zhouli.DbEntity.Models
                 entity.ToTable("Dict_AuthorityType");
 
                 entity.Property(e => e.AuthorityTypeName)
-                    .IsRequired()
-                    .HasMaxLength(20);
-            });
-
-            modelBuilder.Entity<DictUserStatus>(entity =>
-            {
-                entity.HasKey(e => e.UserStatusId);
-
-                entity.ToTable("Dict_UserStatus");
-
-                entity.Property(e => e.UserStatusName)
                     .IsRequired()
                     .HasMaxLength(20);
             });
@@ -177,7 +165,7 @@ namespace Zhouli.DbEntity.Models
                 entity.ToTable("Sys_User");
 
                 entity.HasIndex(e => e.UserName)
-                    .HasName("UQ__Sys_User__C9F2845684AEB869")
+                    .HasName("UQ__Sys_User__C9F284562DDB7794")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasDefaultValueSql("(newid())");
@@ -185,6 +173,8 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.CreateTime)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
+
+                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 

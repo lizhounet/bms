@@ -33,17 +33,20 @@ namespace Zhouli.DAL.Implements
                                     FROM Sys_Authority SAT");
             if (!isAdmin)
             {
+                var roleList = roles.Select(t => t.RoleId).ToList();
+                if (roleList.Count() == 0)
+                    roleList.Add(Guid.Empty);
                 builder.AppendLine($@"INNER JOIN (
                                 SELECT srar.AuthorityId
                                 FROM Sys_Role srol, Sys_RaRelated srar
                                 WHERE srol.RoleId = srar.RoleId
-                                    AND srol.RoleId IN ('{string.Join("','", roles.Select(t => t.RoleId))})
+                                    AND srol.RoleId IN ('{string.Join("','", roleList)}')
                             ) t
                             ON t.AuthorityId = SAT.AuthorityId");
             }
             switch (authorityType)
             {
-                case AuthorityType.Menu:
+                case AuthorityType.Type_Menu:
                     builder.AppendLine($@") SAT
                                 INNER JOIN Sys_AmRelated SAR ON SAR.AuthorityId = SAT.AuthorityId
                                 LEFT JOIN Sys_Menu SM ON SAR.MenuId = SM.MenuId

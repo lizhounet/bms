@@ -8117,7 +8117,7 @@
       ]
     },
     "Microsoft.Extensions.PlatformAbstractions/1.1.0": {
-      "sha512": "UMlN++q5qqzQ2HH+uOrKxN5fmBXMQDhrYkSaPJxhmyzfJaFPirrVr1raim/Ocq1psAZoB9+7JSAf0GDAX35wUg==",
+      "sha512": "H6ZsQzxYw/6k2DfEQRXdC+vQ6obd6Uba3uGJrnJ2vG4PRXjQZ7seB13JdCfE72abp8E6Fk3gGgDzfJiLZi5ZpQ==",
       "type": "package",
       "path": "microsoft.extensions.platformabstractions/1.1.0",
       "files": [
@@ -14534,23 +14534,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\z1021\\.nuget\\packages\\": {},
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\zhouli\\bms\\ZhouliProject\\ZhouliSystem\\ZhouliSystem.csproj",
+      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\ZhouliSystem\\ZhouliSystem.csproj",
       "projectName": "ZhouliSystem",
-      "projectPath": "E:\\zhouli\\bms\\ZhouliProject\\ZhouliSystem\\ZhouliSystem.csproj",
-      "packagesPath": "C:\\Users\\z1021\\.nuget\\packages\\",
-      "outputPath": "E:\\zhouli\\bms\\ZhouliProject\\ZhouliSystem\\obj\\",
+      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\ZhouliSystem\\ZhouliSystem.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\ZhouliSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\z1021\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -14563,17 +14563,17 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "E:\\zhouli\\bms\\ZhouliProject\\BLL\\Zhouli.BLL.csproj": {
-              "projectPath": "E:\\zhouli\\bms\\ZhouliProject\\BLL\\Zhouli.BLL.csproj"
+            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\BLL\\Zhouli.BLL.csproj": {
+              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\BLL\\Zhouli.BLL.csproj"
             },
-            "E:\\zhouli\\bms\\ZhouliProject\\DInjectionProvider\\DInjectionProvider.csproj": {
-              "projectPath": "E:\\zhouli\\bms\\ZhouliProject\\DInjectionProvider\\DInjectionProvider.csproj"
+            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DInjectionProvider\\DInjectionProvider.csproj": {
+              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DInjectionProvider\\DInjectionProvider.csproj"
             },
-            "E:\\zhouli\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj": {
-              "projectPath": "E:\\zhouli\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj"
+            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj": {
+              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj"
             },
-            "E:\\zhouli\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj": {
-              "projectPath": "E:\\zhouli\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj"
+            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj": {
+              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj"
             }
           }
         }

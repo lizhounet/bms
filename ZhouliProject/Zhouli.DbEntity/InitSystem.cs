@@ -49,15 +49,6 @@ namespace Zhouli.DbEntity
                         {
                             #region 初始化字典表
                             //初始化字典表---------------------------------------------------------开始
-                            //添加用户状态
-                            context.DictUserStatus.AddRange(new DictUserStatus
-                            {
-                                UserStatusName = "正常",
-                            }, new DictUserStatus
-                            {
-                                UserStatusName = "停用",
-                            }
-                        );
                             //添加权限类型
                             context.DictAuthorityType.AddRange(new DictAuthorityType
                             {

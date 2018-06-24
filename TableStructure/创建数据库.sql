@@ -18,15 +18,11 @@ use ZhouLi;
  CreateUserId uniqueidentifier ,--创建者ID(对应Sys_Users表UserId字段)
  CreateTime DATETIME  DEFAULT CONVERT(varchar, getdate(), 120 )  NOT NULL,--创建时间
  EditTime DATETIME  NULL ,--修改时间
- DeleteSign int DEFAULT 0 not null,--0 未删除 1 已删除
+ DeleteSign int DEFAULT 1 not null,--1 未删除 2 已删除
  DeleteTime DATETIME NULL,--删除时间
  Note NVARCHAR(2048) NULL--备注
  )
- --用户状态表
- CREATE TABLE Dict_UserStatus(
- UserStatusId int identity(1,1) primary key NOT NULL ,--主键Id
- UserStatusName nvarchar(20) not null--用户状态名称
- )
+
  --角色表
  CREATE TABLE Sys_Role(
  RoleId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键 角色Id
@@ -34,7 +30,7 @@ use ZhouLi;
  CreateUserId uniqueidentifier,--创建者ID(对应Sys_Users表UserId字段)
  CreateTime DATETIME  DEFAULT CONVERT(varchar, getdate(), 120 )  NOT NULL,--创建时间
  EditTime DATETIME  NULL ,--修改时间
- DeleteSign int DEFAULT 0 not null,--0 未删除 1 已删除
+ DeleteSign int DEFAULT 1 not null,--1 未删除 2 已删除
  DeleteTime DATETIME NULL,--删除时间
  Note NVARCHAR(2048) NULL--备注
  )
@@ -46,7 +42,7 @@ use ZhouLi;
  CreateUserId uniqueidentifier,--创建者ID(对应Sys_Users表UserId字段)
  CreateTime DATETIME  DEFAULT CONVERT(varchar, getdate(), 120 )  NOT NULL,--创建时间
  EditTime DATETIME  NULL ,--修改时间
- DeleteSign int DEFAULT 0 not null,--0 未删除 1 已删除
+ DeleteSign int DEFAULT 1 not null,--1 未删除 2 已删除
  DeleteTime DATETIME NULL,--删除时间
  Note NVARCHAR(2048) NULL--备注
  )
@@ -75,7 +71,7 @@ use ZhouLi;
   CreateUserId uniqueidentifier,--创建者ID(对应Sys_Users表UserId字段)
  CreateTime DATETIME  DEFAULT CONVERT(varchar, getdate(), 120 )  NOT NULL,--创建时间
  EditTime DATETIME  NULL ,--修改时间
- DeleteSign int DEFAULT 0 not null,--0 未删除 1 已删除
+ DeleteSign int DEFAULT 1 not null,--1 未删除 2 已删除
  DeleteTime DATETIME NULL,--删除时间
  Note NVARCHAR(2048) NULL--备注
  )
@@ -96,7 +92,7 @@ use ZhouLi;
  CreateUserId uniqueidentifier,--创建者ID(对应Sys_Users表UserId字段)
  CreateTime DATETIME  DEFAULT CONVERT(varchar, getdate(), 120 )  NOT NULL,--创建时间
  EditTime DATETIME  NULL ,--修改时间
- DeleteSign int DEFAULT 0 not null,--0 未删除 1 已删除
+ DeleteSign int DEFAULT 1 not null,--1 未删除 2 已删除
  DeleteTime DATETIME NULL,--删除时间
  Note NVARCHAR(2048) NULL--备注
  )

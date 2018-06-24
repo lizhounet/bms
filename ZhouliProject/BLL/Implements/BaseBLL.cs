@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Data.SqlClient;
 
 namespace Zhouli.BLL.Implements
 {
@@ -20,6 +21,11 @@ namespace Zhouli.BLL.Implements
             Dal.Add(t);
             return Dal.SaveChanges();
         }
+        public bool AddRange(IEnumerable<T> t)
+        {
+            Dal.AddRange(t);
+            return Dal.SaveChanges();
+        }
         public bool Delete(T t)
         {
             Dal.Delete(t);
@@ -29,6 +35,10 @@ namespace Zhouli.BLL.Implements
         {
             Dal.Update(t);
             return Dal.SaveChanges();
+        }
+        public int ExecuteSql(string sql, SqlParameter parameter = null)
+        {
+            return Dal.ExecuteSql(sql, parameter);
         }
         public IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda)
         {

@@ -11,7 +11,7 @@ namespace Zhouli.DAL.Implements
         private DapperContext dapper;
         private ZhouLiContext db;
         public SysUrRelatedDAL(DapperContext dapper, ZhouLiContext db) : base(db)
-        {
+        { 
             this.dapper = dapper;
             this.db = db;
         }

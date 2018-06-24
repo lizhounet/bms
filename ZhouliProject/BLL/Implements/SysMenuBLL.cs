@@ -35,7 +35,7 @@ namespace Zhouli.BLL.Implements
         public List<SysMenuDto> GetMenusBy(SysUser user)
         {
             var listMenuDto = new List<SysMenuDto>();
-            listMenuDtos = Mapper.Map<List<SysMenuDto>>(sysAuthorityBLL.GetSysAuthorities(user, AuthorityType.Menu).Select(t => t.sysMenu).ToList());
+            listMenuDtos = Mapper.Map<List<SysMenuDto>>(sysAuthorityBLL.GetSysAuthorities(user, AuthorityType.Type_Menu).Select(t => t.sysMenu).ToList());
             //找出所有一级菜单
             listMenuDto.AddRange(listMenuDtos.Where(t => t.ParentMenuId.Equals(Guid.Empty)).OrderByDescending(t=>t.MenuSort));
             foreach (var item in listMenuDto)

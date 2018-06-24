@@ -19,6 +19,7 @@
 #endregion
 namespace Zhouli.DbEntity.Models
 {
+    //此处枚举包含了系统所有枚举
     #region 用户状态
     /// <summary>
     /// 用户状态
@@ -28,11 +29,11 @@ namespace Zhouli.DbEntity.Models
         /// <summary>
         /// 正常
         /// </summary>
-        normal = 1,
+        Status_normal = 1,
         /// <summary>
         /// 停用
         /// </summary>
-        Discontinuation = 0
+        Status_Discontinuation = 2
     }
     #endregion
     #region 权限类型
@@ -44,7 +45,23 @@ namespace Zhouli.DbEntity.Models
         /// <summary>
         /// 菜单类型
         /// </summary>
-        Menu = 1
+        Type_Menu = 1
+    }
+    #endregion
+    #region 删除标识
+    /// <summary>
+    /// 删除标识
+    /// </summary>
+    public enum DeleteSign
+    {
+        /// <summary>
+        /// 未删除
+        /// </summary>
+        Sing_Deleted = 1, 
+        /// <summary>
+        /// 已删除
+        /// </summary>
+        Sign_Undeleted = 2
     }
     #endregion
 }
