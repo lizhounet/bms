@@ -14,3 +14,4 @@ F:\CODE\后台管理系统\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreap
 F:\CODE\后台管理系统\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.AssemblyInfo.cs
 F:\CODE\后台管理系统\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
+F:\CODE\后台管理系统\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.csprojAssemblyReference.cache

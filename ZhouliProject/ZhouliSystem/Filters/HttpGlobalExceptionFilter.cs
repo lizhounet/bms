@@ -18,10 +18,12 @@
 *****************************************************************/
 #endregion
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ZhouliSystem.Data;
 
 namespace ZhouliSystem.Filters
 {
@@ -32,7 +34,7 @@ namespace ZhouliSystem.Filters
     {
         public void OnException(ExceptionContext context)
         {
-            System.Diagnostics.Debug.Write("报错了");
+            Log4netHelper.Error(null,context.Exception.Message,context.Exception);
         }
     }
 }

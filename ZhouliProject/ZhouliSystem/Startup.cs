@@ -1,4 +1,7 @@
 ﻿using DInjectionProvider;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -7,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using System.IO;
 using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 
@@ -19,6 +23,7 @@ namespace ZhouliSystem
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
+        public static ILoggerRepository repository { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -91,6 +96,9 @@ namespace ZhouliSystem
             {
                 app.UseExceptionHandler("/Error/Index");
             }
+            //日志记录中间件
+            repository = LogManager.CreateRepository("NETCoreRepository");
+            XmlConfigurator.Configure(repository, new FileInfo("log4net.config"));
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();

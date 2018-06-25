@@ -73,7 +73,6 @@ E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.pd
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
-F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
@@ -87,3 +86,4 @@ E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Sys
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\User\Index.g.cshtml.cs
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Ordinary.g.cshtml.cs
 F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\User\UserAdd.g.cshtml.cs
+F:\CODE\后台管理系统\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
