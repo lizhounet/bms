@@ -34,7 +34,7 @@ namespace ZhouliSystem.Filters
     {
         public void OnException(ExceptionContext context)
         {
-            Log4netHelper.Error(null,context.Exception.Message,context.Exception);
+            Log4netHelper.Error(typeof(HttpGlobalExceptionFilter),context.Exception);
         }
     }
 }

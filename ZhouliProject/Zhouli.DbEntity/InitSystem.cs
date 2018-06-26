@@ -62,10 +62,11 @@ namespace Zhouli.DbEntity
                             //初始化用户(添加超级管理员:zhouli)
                             var entityUser = context.SysUser.Add(new SysUser
                             {
+                                UserAvatar= "http://m.qpic.cn/psb?/V13yJM6M20tLSi/KoY4u80DdIT7qrmqep1VPlSOjQwfHkhd8rotU*h1X5w!/b/dFcAAAAAAAAA&bo=gAKAAgAAAAARBzA!&rf=viewer_4",
                                 UserName = "zhouli",
                                 UserEmail = "zl_2962@foxmail.com",
                                 UserPhone = "17783042962",
-                                UserQq = "17783042962",
+                                UserQq = "1021907330",
                                 UserWx = "17783042962",
                                 UserNikeName = "感谢有梦",
                                 Note = "系统初始化自动添加的"
@@ -129,6 +130,7 @@ namespace Zhouli.DbEntity
                             var entityMenu1 = context.SysMenu.Add(new SysMenu
                             {
                                 MenuName = "权限管理",
+                                MenuUrl = "/System/Authority/Index",
                                 ParentMenuId = entityMenu.Entity.MenuId,
                                 MenuId = Guid.NewGuid()
 
@@ -148,6 +150,7 @@ namespace Zhouli.DbEntity
                             var entityMenu2 = context.SysMenu.Add(new SysMenu
                             {
                                 MenuName = "菜单管理",
+                                MenuUrl = "/System/Menu/Index",
                                 ParentMenuId = entityMenu.Entity.MenuId,
                                 MenuId = Guid.NewGuid()
                             });
@@ -167,6 +170,7 @@ namespace Zhouli.DbEntity
                             var entityMenu3 = context.SysMenu.Add(new SysMenu
                             {
                                 MenuName = "角色管理",
+                                MenuUrl = "/System/Role/Index",
                                 ParentMenuId = entityMenu.Entity.MenuId,
                                 MenuId = Guid.NewGuid()
                             });
@@ -185,6 +189,7 @@ namespace Zhouli.DbEntity
                             var entityMenu4 = context.SysMenu.Add(new SysMenu
                             {
                                 MenuName = "用户管理",
+                                MenuUrl="/System/User/Index",
                                 ParentMenuId = entityMenu.Entity.MenuId,
                                 MenuId = Guid.NewGuid()
                             });
@@ -199,6 +204,25 @@ namespace Zhouli.DbEntity
                                 AuthorityId = entityAuthority4.Entity.AuthorityId
                             });
                             //----------------------------用户管理菜单end
+                            //----------------------------用户组菜单begin
+                            var entityMenu5 = context.SysMenu.Add(new SysMenu
+                            {
+                                MenuName = "用户组管理",
+                                MenuUrl = "/System/UserGroup/Index",
+                                ParentMenuId = entityMenu.Entity.MenuId,
+                                MenuId = Guid.NewGuid()
+                            });
+                            var entityAuthority5 = context.SysAuthority.Add(new SysAuthority
+                            {
+                                AuthorityType = 1,
+                                AuthorityId = Guid.NewGuid()
+                            });
+                            context.SysAmRelated.Add(new SysAmRelated
+                            {
+                                MenuId = entityMenu5.Entity.MenuId,
+                                AuthorityId = entityAuthority5.Entity.AuthorityId
+                            });
+                            //----------------------------用户组菜单end
                             #endregion
                             #endregion
                             context.SaveChanges();

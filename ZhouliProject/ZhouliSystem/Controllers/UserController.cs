@@ -38,7 +38,6 @@ namespace ZhouliSystem.Controllers
         [ResponseCache(CacheProfileName = "default")]
         public IActionResult Login()
         {
-            throw new System.Exception("我报错了");
             return View();
         }
         [HttpPost]

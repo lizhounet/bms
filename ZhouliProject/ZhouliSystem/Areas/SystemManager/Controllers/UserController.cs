@@ -91,8 +91,9 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             return JsonHelper.ObjectToJson(resModel);
         }
         #endregion
+        #region 批量删除用户
         /// <summary>
-        /// 
+        /// 删除用户
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns></returns>
@@ -105,5 +106,6 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             resModel.Messages = model.Message;
             return JsonHelper.ObjectToJson(resModel);
         }
+        #endregion
     }
 }

@@ -37,7 +37,7 @@ namespace ZhouliSystem
             services.AddSingleton(typeof(UserAccount));
             services.AddSingleton(new Zhouli.DAL.DapperContext(conStr, conDataType));
             services.ResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
-            //初始化映射关系
+            //初始化Dto与实体映射关系
             Zhouli.BLL.ZhouliMapper.Initialize();
             #endregion
             #region 系统的配置关系
