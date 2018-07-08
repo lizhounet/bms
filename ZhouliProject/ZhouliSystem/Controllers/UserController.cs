@@ -20,6 +20,8 @@
 using System.Linq;
 using DInjectionProvider;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Zhouli.BLL;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
 using Zhouli.DbEntity.Models;
@@ -40,15 +42,21 @@ namespace ZhouliSystem.Controllers
         {
             return View();
         }
+        public IActionResult UserInfo()
+        {
+            ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(injection.GetExamples<ISysUserBLL>().GetModels(t=>t.UserId.Equals(injection.GetExamples<UserAccount>().GetUserInfo().UserId)).SingleOrDefault());
+            return View();
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]//防伪标记 预防坏蛋攻击
         public IActionResult UserLogin(string username, string password)
         {
+            
             var message = new ResponseModel();
             var sysUsers = injection.GetExamples<ISysUserBLL>().GetModels(t =>
                 (t.UserName.Equals(username) ||
                 t.UserEmail.Equals(username) ||
-                t.UserPhone.Equals(username) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted))
+                t.UserPhone.Equals(username) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted))
             ).FirstOrDefault();
             if (sysUsers == null)
             {
@@ -57,7 +65,7 @@ namespace ZhouliSystem.Controllers
             }
             else
             {
-                if (sysUsers.UserStatus.Equals(UserStatus.Status_Discontinuation))
+                if (sysUsers.UserStatus.Equals((int)ZhouLiEnum.Enum_UserStatus.Status_Discontinuation))
                 {
                     message.StateCode = StatesCode.failure;
                     message.Messages = "账户已停用,请联系管理员解除(17783042962)";
@@ -69,7 +77,8 @@ namespace ZhouliSystem.Controllers
                 }
                 else
                 {
-                    injection.GetExamples<UserAccount>().Login(injection.GetExamples<ISysUserBLL>().GetLoginSysUser(sysUsers).Data);
+                    var user = injection.GetExamples<ISysUserBLL>().GetLoginSysUser(sysUsers).Data;
+                    injection.GetExamples<UserAccount>().Login(user);
                     message.Messages = "登陆成功";
                     message.JsonData = new { baseUrl = "/Home/Index" };
                 }

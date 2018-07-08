@@ -34,13 +34,42 @@ namespace Zhouli.BLL.Implements
         {
             var messageModel = new MessageModel();
             var pageModel = new PageModel();
-            Expression<Func<SysUserGroup, bool>> expression = t => (string.IsNullOrEmpty(searchstr) || t.UserGroupName.Contains(searchstr)) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted);
+            Expression<Func<SysUserGroup, bool>> expression = t => (string.IsNullOrEmpty(searchstr) || t.UserGroupName.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted);
             pageModel.RowCount = userGroupDAL.GetCount(expression);
-            pageModel.Data = Mapper.Map<List<SysUserGroupDto>>(userGroupDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page),
-                false, t => t.CreateTime,
-                expression).ToList());
+            int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
+            var list = userGroupDAL.SqlQuery<SysUserGroupDto>($@"SELECT * FROM (SELECT ROW_NUMBER() OVER               (ORDER BY T1.CreateTime) RN,T1.UserGroupId,
+                             T1.UserGroupName,
+                             T1.ParentUserGroupId,
+                            T2.UserGroupName ParentUserGroupName, T1.CreateTime, T1.Note 
+                            FROM Sys_UserGroup T1
+                            LEFT JOIN Sys_UserGroup T2
+                            ON T1.ParentUserGroupId=T2.UserGroupId
+                            WHERE  (T1.UserGroupName LIKE '%{searchstr}%' 
+                            OR T2.UserGroupName LIKE '%{searchstr}%')
+                            AND T1.DeleteSign=1) T
+                            WHERE RN BETWEEN {iBeginRow} AND {iEndRow} ");
+
+            pageModel.Data = list;
             messageModel.Data = pageModel;
             return messageModel;
+        }
+        #endregion
+        #region 删除用户组(批量删除)
+        /// <summary>
+        /// 删除用户(批量删除)
+        /// </summary>
+        /// <param name="UserGroupId"></param>
+        /// <returns></returns>
+        public MessageModel DelUserGroup(IEnumerable<Guid> UserGroupId)
+        {
+            var model = new MessageModel();
+            StringBuilder builder = new StringBuilder(20);
+            builder.AppendLine(value: $"UPDATE SYS_USERGroup SET DeleteSign={(Int32)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted},DeleteTime='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' WHERE UserGroupId IN (");
+            builder.AppendLine($"'{String.Join("','", UserGroupId)}')");
+            bool bResult = ExecuteSql(builder.ToString()) > 0;
+            model.Result = bResult;
+            model.Message = bResult ? "删除成功" : "删除失败";
+            return model;
         }
         #endregion
     }

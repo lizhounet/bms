@@ -51,18 +51,14 @@ require(["jquery", 'layui'], function ($) {
         });
         //搜索【此功能需要后台配合，所以暂时没有动态效果演示】
         $(".search_btn").on("click", function () {
-            if ($(".searchVal").val() != '') {
-                table.reload("userListTable", {
-                    page: {
-                        curr: 1 //重新从第 1 页开始
-                    },
-                    where: {
-                        searchstr: $(".searchVal").val()  //搜索的关键字
-                    }
-                });
-            } else {
-                layer.msg("请输入搜索的内容");
-            }
+            table.reload("userListTable", {
+                page: {
+                    curr: 1 //重新从第 1 页开始
+                },
+                where: {
+                    searchstr: $(".searchVal").val()  //搜索的关键字
+                }
+            });
         });
 
         //添加用户
@@ -82,7 +78,7 @@ require(["jquery", 'layui'], function ($) {
                         body.find(".userWx").val(edit.UserWx);  //微信
                         body.find(".userPhone").val(edit.UserPhone);  //手机号
                         body.find(".userEmail").val(edit.UserEmail);  //昵称
-                        body.find(".userGroup").val(edit.UserGroup);  //所属用户组
+                        body.find(".userGroupId").val(edit.UserGroupId);  //所属用户组
                         body.find(".userSex input[value=" + edit.userSex + "]").prop("checked", "checked");  //性别
                         body.find(".note").text(edit.Note);    //用户简介
                         form.render();
@@ -117,7 +113,7 @@ require(["jquery", 'layui'], function ($) {
                     }, function (res) {
                         layer.msg(res.Messages);
                         layer.close(index);
-                        if (res.StateCode = 200) {
+                        if (res.StateCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");
@@ -168,7 +164,7 @@ require(["jquery", 'layui'], function ($) {
                     }, function (res) {
                         layer.msg(res.Messages);
                         layer.close(index);
-                        if (res.StateCode = 200) {
+                        if (res.StateCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");

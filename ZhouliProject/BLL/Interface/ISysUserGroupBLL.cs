@@ -17,5 +17,14 @@ namespace Zhouli.BLL.Interface
         /// <returns></returns>
         MessageModel GetUserGroupList(string page, string limit, string searchstr);
         #endregion
+        #region 删除用户组(批量删除)
+        /// <summary>
+        /// 删除用户(批量删除)
+        /// </summary>
+        /// <param name="UserGroupId"></param>
+        /// <returns></returns>
+        MessageModel DelUserGroup(IEnumerable<Guid> UserGroupId);
+       
+        #endregion
     }
 }

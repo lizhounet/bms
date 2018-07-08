@@ -14,15 +14,13 @@ namespace Zhouli.BLL.Implements
     public class SysUserBLL : BaseBLL<SysUser>, ISysUserBLL
     {
         private ISysUserDAL usersDAL;
-        private ISysUuRelatedDAL uuRelatedDAL;
         /// <summary>
         /// 用于实例化父级，usersDAL变量
         /// </summary>
         /// <param name="usersDAL"></param>
-        public SysUserBLL(ISysUserDAL usersDAL, ISysUuRelatedDAL uuRelatedDAL) : base(usersDAL)
+        public SysUserBLL(ISysUserDAL usersDAL) : base(usersDAL)
         {
             this.usersDAL = usersDAL;
-            this.uuRelatedDAL = uuRelatedDAL;
         }
         #region 获取需要登录的用户所有信息
         /// <summary>
@@ -32,7 +30,7 @@ namespace Zhouli.BLL.Implements
         public MessageModel GetLoginSysUser(SysUser user)
         {
             var messageModel = new MessageModel();
-            messageModel.Data = usersDAL.GetLoginSysUser(user);
+            messageModel.Data = usersDAL.SetLoginSysUser(user);
             return messageModel;
         }
         #endregion
@@ -53,11 +51,23 @@ namespace Zhouli.BLL.Implements
                 t.UserPhone.Contains(searchstr) ||
                 t.UserQq.Contains(searchstr) ||
                 t.UserWx.Contains(searchstr) ||
-                t.UserEmail.Contains(searchstr)) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted);
+                t.UserEmail.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted);
             PageModel.RowCount = usersDAL.GetCount(expression);
-            PageModel.Data = Mapper.Map<List<SysUserDto>>(usersDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page),
-                false, t => t.CreateTime,
-                expression).ToList());
+            int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
+            var list = usersDAL.SqlQuery<SysUserDto>($@"
+                                           SELECT *
+                                FROM (
+                                    SELECT ROW_NUMBER() OVER (ORDER BY T1.CREATETIME DESC) AS RN, T1.*
+                                    FROM Sys_User T1
+                                    WHERE (T1.UserNikeName LIKE '%{searchstr}%'
+                                            OR T1.UserPhone LIKE '%{searchstr}%'
+                                            OR T1.UserQq LIKE '%{searchstr}%'
+                                            OR T1.UserWx LIKE '%{searchstr}%'
+                                            OR T1.UserEmail LIKE '%{searchstr}%')
+                                        AND T1.DeleteSign = 1
+                                ) T
+                                WHERE RN BETWEEN {iBeginRow} AND {iEndRow}");
+            PageModel.Data = list;
             messageModel.Data = PageModel;
             return messageModel;
         }
@@ -73,7 +83,7 @@ namespace Zhouli.BLL.Implements
         {
             var messageModel = new MessageModel();
             var user = Mapper.Map<SysUser>(userDto);
-            int intcount = usersDAL.GetCount(t => (t.UserName.Equals(user.UserName) || t.UserEmail.Equals(user.UserEmail == null ? "0" : user.UserEmail) || t.UserPhone.Equals(user.UserPhone == null ? "0" : user.UserPhone)) && !t.UserId.Equals(user.UserId) && t.DeleteSign.Equals(DeleteSign.Sing_Deleted));
+            int intcount = usersDAL.GetCount(t => (t.UserName.Equals(user.UserName) || t.UserEmail.Equals(user.UserEmail == null ? "0" : user.UserEmail) || t.UserPhone.Equals(user.UserPhone == null ? "0" : user.UserPhone)) && !t.UserId.Equals(user.UserId) && t.DeleteSign.Equals(ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
             if (intcount == 0)
             {
                 //添加
@@ -84,23 +94,6 @@ namespace Zhouli.BLL.Implements
                     //添加用户
                     if (Add(user))
                     {
-                        var listSysUuRelated = new List<SysUuRelated>();//用户组与用户关联表集合
-                        if (!string.IsNullOrEmpty(userDto.UserGroup))
-                        {
-                            foreach (var item in userDto.UserGroup.Split(','))
-                            {
-                                listSysUuRelated.Add(new SysUuRelated
-                                {
-                                    UserId = user.UserId,
-                                    UserGroupId = Guid.Parse(item)
-                                });
-                            }
-                            if (listSysUuRelated.Count > 0)
-                            {
-                                uuRelatedDAL.AddRange(listSysUuRelated);
-                                uuRelatedDAL.SaveChanges();
-                            }
-                        }
                         messageModel.Message = "添加成功";
                     }
                     else
@@ -121,6 +114,8 @@ namespace Zhouli.BLL.Implements
                     user_edit.UserQq = user.UserQq;
                     user_edit.UserWx = user.UserWx;
                     user_edit.UserPhone = user.UserPhone;
+                    user_edit.UserGroupId = user.UserGroupId;
+                    user_edit.Note = user.Note;
                     user_edit.EditTime = DateTime.Now;
                     if (Update(user_edit))
                     {
@@ -151,7 +146,7 @@ namespace Zhouli.BLL.Implements
         {
             var model = new MessageModel();
             StringBuilder builder = new StringBuilder(20);
-            builder.AppendLine(value: $"UPDATE SYS_USER SET DeleteSign={(Int32)DeleteSign.Sign_Undeleted},DeleteTime='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' WHERE USERID IN (");
+            builder.AppendLine(value: $"UPDATE SYS_USER SET DeleteSign={(Int32)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted},DeleteTime='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' WHERE USERID IN (");
             builder.AppendLine($"'{String.Join("','", UserId)}')");
             bool bResult = ExecuteSql(builder.ToString()) > 0;
             model.Result = bResult;

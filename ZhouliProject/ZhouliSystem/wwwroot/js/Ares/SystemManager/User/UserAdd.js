@@ -1,10 +1,10 @@
 ﻿require.config({
     paths: {
     }
-})
+});
 require(["jquery", 'layui'], function ($) {
     layui.use(['form', 'layer', 'laydate'], function () {
-        var form = layui.form
+        var form = layui.form;
         var laydate = layui.laydate;
         layer = parent.layer === undefined ? layui.layer : top.layer,
             $ = layui.jquery;
@@ -15,17 +15,18 @@ require(["jquery", 'layui'], function ($) {
         form.on("submit(addUser)", function (data) {
             //弹出loading
             var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: false, shade: 0.8 });
+            console.log($(".userGroupId").val());
             // 实际使用时的提交信息
             $.post("/System/User/AddorEditUser", {
                 UserId: $(".userId").val(),  //用户id
-                UserName: $(".userName").val(),  //登录名
+                UserName: $(".userName").val(),  //用户名
                 UserNikeName: $(".userNikeName").val(),  //昵称
                 UserBirthday: $(".userBirthday").val(),  //出生日期
-                UserQq: $(".userQq").val(),  //登录名
+                UserQq: $(".userQq").val(),  //qq
                 UserEmail: $(".userEmail").val(),  //邮箱
                 UserWx: $(".userWx").val(),  //邮箱
                 UserPhone: $(".userPhone").val(),  //手机号
-                UserGroup: $(".userGroup").val(),  //所属用户组
+                UserGroupId: $(".userGroupId").val(),  //所属用户组
                 UserSex: data.field.sex,  //性别
                 Note: $(".note").text()    //备注
             }, function (res) {
@@ -38,9 +39,9 @@ require(["jquery", 'layui'], function ($) {
                     parent.location.reload();
                 }
 
-            },'json')
+            }, 'json');
             return false;
-        })
+        });
         //自定义验证规则
         form.verify({
             username: function (value, item) { //value：表单的值、item：表单的DOM对象
@@ -76,5 +77,5 @@ require(["jquery", 'layui'], function ($) {
                 }
             }
         });
-    })
-})
+    });
+});

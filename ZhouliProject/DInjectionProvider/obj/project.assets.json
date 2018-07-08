@@ -3914,11 +3914,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DInjectionProvider\\DInjectionProvider.csproj",
+      "projectUniqueName": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\DInjectionProvider\\DInjectionProvider.csproj",
       "projectName": "DInjectionProvider",
-      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DInjectionProvider\\DInjectionProvider.csproj",
+      "projectPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\DInjectionProvider\\DInjectionProvider.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DInjectionProvider\\obj\\",
+      "outputPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\DInjectionProvider\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3937,11 +3937,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\BLL\\Zhouli.BLL.csproj": {
-              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\BLL\\Zhouli.BLL.csproj"
+            "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\BLL\\Zhouli.BLL.csproj": {
+              "projectPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\BLL\\Zhouli.BLL.csproj"
             },
-            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj": {
-              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj"
+            "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj": {
+              "projectPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj"
             }
           }
         }

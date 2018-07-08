@@ -8,12 +8,9 @@ namespace Zhouli.DAL.Implements
 {
     public class SysRaRelatedDAL : BaseDAL<SysRaRelated>, ISysRaRelatedDAL
     {
-        private DapperContext dapper;
-        private ZhouLiContext db;
-        public SysRaRelatedDAL(DapperContext dapper, ZhouLiContext db) : base(db)
+        public SysRaRelatedDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db)
         {
-            this.dapper = dapper;
-            this.db = db;
+        
         }
 
     }

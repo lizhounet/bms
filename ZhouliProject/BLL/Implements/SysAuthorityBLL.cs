@@ -26,15 +26,12 @@ namespace Zhouli.BLL.Implements
         /// <param name="user"></param>
         /// <param name="authorityType"></param>
         /// <returns></returns>
-        public List<SysAuthority> GetSysAuthorities(SysUser user, AuthorityType authorityType)
+        public List<SysAuthority> GetSysAuthorities(SysUser user, ZhouLiEnum.Enum_AuthorityType authorityType)
         {
-            Boolean isAdmin = user.UserName.Equals("zhouli") ? true : false;
             List<SysRole> roles = new List<SysRole>(user.sysRoles);
-            foreach (var item in user.sysUserGroups)
-            {
-                roles.AddRange(item.sysRoles);
-            }
-            return sysAuthorityDAL.GetSysAuthorities(isAdmin, roles.Distinct().ToList(), authorityType);
+            if (user.sysUserGroup != null)
+                roles.AddRange(user.sysUserGroup.sysRoles);
+            return sysAuthorityDAL.GetSysAuthorities(user.isAdministrctor, roles.Distinct().ToList(), authorityType);
         }
     }
 }

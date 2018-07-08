@@ -7,13 +7,14 @@ use ZhouLi;
  UserName NVARCHAR(20) NOT NULL UNIQUE,--用户帐号
  UserNikeName NVARCHAR(20),--用户昵称
  UserPwd NVARCHAR(50) DEFAULT upper(substring(sys.fn_sqlvarbasetostr(HashBytes('MD5','123456')),3,32)) NOT NULL,--用户密码
- UserSex int  NULL,--用户性别
+ UserSex int DEFAULT 1 NULL,--用户性别 1男 2女
  UserBirthday DATE  NULL,--用户出生年月日
  UserEmail VARCHAR(50)  NULL,--用户邮箱
- UserQQ VARCHAR(15)  NULL,--用户QQ
- UserWX VARCHAR(50)  NULL,--用户微信
+ UserQq VARCHAR(15)  NULL,--用户QQ
+ UserWx VARCHAR(50)  NULL,--用户微信
  UserAvatar VARCHAR(150)  NULL,--用户头像
  UserPhone VARCHAR(11) NULL,--用户手机
+ UserGroupId uniqueidentifier NULL,--所属用户组
  UserStatus INT  DEFAULT 1 NOT NULL,--用户状态(与Dict_UserStatus的id关联)
  CreateUserId uniqueidentifier ,--创建者ID(对应Sys_Users表UserId字段)
  CreateTime DATETIME  DEFAULT CONVERT(varchar, getdate(), 120 )  NOT NULL,--创建时间
@@ -22,7 +23,6 @@ use ZhouLi;
  DeleteTime DATETIME NULL,--删除时间
  Note NVARCHAR(2048) NULL--备注
  )
-
  --角色表
  CREATE TABLE Sys_Role(
  RoleId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键 角色Id
@@ -75,12 +75,12 @@ use ZhouLi;
  DeleteTime DATETIME NULL,--删除时间
  Note NVARCHAR(2048) NULL--备注
  )
- --用户与用户组关联表
-  CREATE TABLE Sys_UuRelated(
- UuRelatedId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
- UserId uniqueidentifier NOT NULL, --用户id
- UserGroupId uniqueidentifier NOT NULL,--用户组id
- )
+ ----用户与用户组关联表
+ -- CREATE TABLE Sys_UuRelated(
+ --UuRelatedId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
+ --UserId uniqueidentifier NOT NULL, --用户id
+ --UserGroupId uniqueidentifier NOT NULL,--用户组id
+ --)
  --菜单表
  CREATE TABLE Sys_Menu(
  MenuId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键

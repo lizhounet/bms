@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using System.IO;
 using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
+using ZhouliSystem.Models;
 
 namespace ZhouliSystem
 {
@@ -31,16 +32,7 @@ namespace ZhouliSystem
             // 数据库连接字符串
             var conStr = Configuration.GetConnectionString("dataConnection");
             var conDataType = Configuration.GetConnectionString("dataBaseType");
-            #region 自定义的配置关系
-            //注入全局依赖注入提供者类
-            services.AddSingleton(typeof(WholeInjection));
-            services.AddSingleton(typeof(UserAccount));
-            services.AddSingleton(new Zhouli.DAL.DapperContext(conStr, conDataType));
-            services.ResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
-            //初始化Dto与实体映射关系
-            Zhouli.BLL.ZhouliMapper.Initialize();
-            #endregion
-            #region 系统的配置关系
+            #region 框架的配置关系
             //注入ef对象
             services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(conStr, b => b.UseRowNumberForPaging()),
                 ServiceLifetime.Singleton);
@@ -79,7 +71,19 @@ namespace ZhouliSystem
                                          //VaryByQueryKeys = new string[] { "aaa" }
                 });
             });
+
             #endregion
+            #region 自定义的配置关系
+            //注入全局依赖注入提供者类
+            services.AddSingleton(typeof(WholeInjection));
+            services.AddSingleton(typeof(UserAccount));
+            services.AddSingleton(new Zhouli.DAL.DapperContext(conStr, conDataType));
+            services.ResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
+            //初始化Dto与实体映射关系
+            Zhouli.BLL.ZhouliMapper.Initialize();
+            services.AddOptions().Configure<CustomConfiguration>(Configuration.GetSection("CustomConfiguration"));
+            #endregion
+
 
         }
 
@@ -117,7 +121,7 @@ namespace ZhouliSystem
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
             //初始化数据库
-            Zhouli.DbEntity.InitSystem.InitDB(app.ApplicationServices);
+            InitSystem.InitDB(app.ApplicationServices);
         }
     }
 }

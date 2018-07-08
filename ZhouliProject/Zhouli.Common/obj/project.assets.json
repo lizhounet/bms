@@ -725,11 +725,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj",
+      "projectUniqueName": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj",
       "projectName": "Zhouli.Common",
-      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj",
+      "projectPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.Common\\obj\\",
+      "outputPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

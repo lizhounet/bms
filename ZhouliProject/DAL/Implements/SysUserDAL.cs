@@ -10,59 +10,36 @@ namespace Zhouli.DAL.Implements
 {
     public class SysUserDAL : BaseDAL<SysUser>, ISysUserDAL
     {
-        private DapperContext dapper;
-        private ZhouLiContext db;
-        public SysUserDAL(DapperContext dapper, ZhouLiContext db) : base(db)
-        {
-            this.dapper = dapper;
-            this.db = db;
-        }
-        #region 设置用户的用户组,角色信息
+        public SysUserDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db) { }
+
+        #region 设置登录用户的用户组,角色信息
         /// <summary>
-        /// 设置用户的用户组,角色信息
+        /// 设置用户的登录用户用户组,角色信息
         /// </summary>
         /// <returns></returns>
-        public SysUser GetLoginSysUser(SysUser user)
+        public SysUser SetLoginSysUser(SysUser user)
         {
-            user.sysUserGroups = (from sug in db.SysUserGroup
-                                  join sur in db.SysUuRelated
-                                  on sug.UserGroupId equals sur.UserGroupId
-                                  where sur.UserId.Equals(user.UserId)
-                                  select new SysUserGroup
-                                  {
-                                      UserGroupId = sug.UserGroupId,
-                                      UserGroupName = sug.UserGroupName,
-                                      ParentUserGroupId = sug.ParentUserGroupId,
-                                      CreateUserId = sug.CreateUserId,
-                                      DeleteSign = sug.DeleteSign,
-                                      CreateTime = sug.CreateTime,
-                                      DeleteTime = sug.DeleteTime,
-                                      EditTime = sug.EditTime,
-                                      Note = sug.Note
-
-                                  }).ToList();
-            if (user.sysUserGroups != null)
+            user.sysUserGroup = (from t1 in db.Set<SysUserGroup>() where t1.UserGroupId.Equals(user.UserGroupId) select t1).FirstOrDefault();
+            if (user.sysUserGroup != null)
             {
-                foreach (var item in user.sysUserGroups)
-                {
-                    item.sysRoles = (from sur in db.SysUgrRelated
-                                     join sr in db.SysRole
-                                     on sur.RoleId equals sr.RoleId
-                                     where sur.UserGroupId.Equals(item.UserGroupId)
-                                     select new SysRole
-                                     {
-                                         RoleId = sr.RoleId,
-                                         RoleName = sr.RoleName,
-                                         CreateUserId = sr.CreateUserId,
-                                         DeleteSign = sr.DeleteSign,
-                                         CreateTime = sr.CreateTime,
-                                         DeleteTime = sr.DeleteTime,
-                                         EditTime = sr.EditTime,
-                                         Note = sr.Note
-                                     }
-                                 ).ToList();
 
-                }
+                user.sysUserGroup.sysRoles = (from sur in db.SysUgrRelated
+                                 join sr in db.SysRole
+                                 on sur.RoleId equals sr.RoleId
+                                 where sur.UserGroupId.Equals(user.sysUserGroup.UserGroupId)
+                                 select new SysRole
+                                 {
+                                     RoleId = sr.RoleId,
+                                     RoleName = sr.RoleName,
+                                     CreateUserId = sr.CreateUserId,
+                                     DeleteSign = sr.DeleteSign,
+                                     CreateTime = sr.CreateTime,
+                                     DeleteTime = sr.DeleteTime,
+                                     EditTime = sr.EditTime,
+                                     Note = sr.Note
+                                 }
+                             ).ToList();
+
             }
             user.sysRoles = (from sur in db.SysUrRelated
                              join sr in db.SysRole

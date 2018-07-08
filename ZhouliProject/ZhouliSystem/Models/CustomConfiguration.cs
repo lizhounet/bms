@@ -2,7 +2,7 @@
 /**************************************************************** 
  * 作    者：周黎 
  * CLR 版本：4.0.30319.42000 
- * 创建时间：2018/6/23 16:26:23 
+ * 创建时间：2018/7/7 14:53:41 
  * 当前版本：1.0.0.1 
  *  
  * 描述说明： 
@@ -15,19 +15,23 @@
  *│　此技术信息周黎的机密信息，未经本人书面同意禁止向第三方披露．　│
  *│　版权所有：周黎 　　　　　　　　　　　　　　│
  *└──────────────────────────────────┘
-*****************************************************************/
+*****************************************************************/  
 #endregion
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-
-namespace AutoMapper
+namespace ZhouliSystem.Models
 {
-
     /// <summary>
-    /// AutoMapper扩展类
+    /// 自定义配置类
     /// </summary>
-    public static class Map
+    public class CustomConfiguration
     {
-       
+        /// <summary>
+        /// 超级管理账户
+        /// </summary>
+        public string adminAccount { set; get; }
     }
 }

@@ -3577,11 +3577,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj",
+      "projectUniqueName": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj",
       "projectName": "Zhouli.DAL",
-      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj",
+      "projectPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\DAL\\Zhouli.DAL.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\DAL\\obj\\",
+      "outputPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3600,11 +3600,11 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj": {
-              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj"
+            "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj": {
+              "projectPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj"
             },
-            "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.LamdbaToSql\\Zhouli.LamdbaToSql.csproj": {
-              "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.LamdbaToSql\\Zhouli.LamdbaToSql.csproj"
+            "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.LamdbaToSql\\Zhouli.LamdbaToSql.csproj": {
+              "projectPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.LamdbaToSql\\Zhouli.LamdbaToSql.csproj"
             }
           }
         }

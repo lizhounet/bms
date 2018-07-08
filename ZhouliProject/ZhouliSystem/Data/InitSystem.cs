@@ -2,7 +2,7 @@
 /**************************************************************** 
  * 作    者：周黎 
  * CLR 版本：4.0.30319.42000 
- * 创建时间：2018/6/10 21:35:15 
+ * 创建时间：2018/7/8 16:02:42 
  * 当前版本：1.0.0.1 
  *  
  * 描述说明： 
@@ -22,9 +22,8 @@ using System;
 using System.Linq;
 using Zhouli.DbEntity.Models;
 
-namespace Zhouli.DbEntity
+namespace ZhouliSystem.Data
 {
-
     /// <summary>
     /// 初始化系统数据库
     /// </summary>
@@ -62,7 +61,7 @@ namespace Zhouli.DbEntity
                             //初始化用户(添加超级管理员:zhouli)
                             var entityUser = context.SysUser.Add(new SysUser
                             {
-                                UserAvatar= "http://m.qpic.cn/psb?/V13yJM6M20tLSi/KoY4u80DdIT7qrmqep1VPlSOjQwfHkhd8rotU*h1X5w!/b/dFcAAAAAAAAA&bo=gAKAAgAAAAARBzA!&rf=viewer_4",
+                                UserAvatar = "http://m.qpic.cn/psb?/V13yJM6M20tLSi/KoY4u80DdIT7qrmqep1VPlSOjQwfHkhd8rotU*h1X5w!/b/dFcAAAAAAAAA&bo=gAKAAgAAAAARBzA!&rf=viewer_4",
                                 UserName = "zhouli",
                                 UserEmail = "zl_2962@foxmail.com",
                                 UserPhone = "17783042962",
@@ -189,7 +188,7 @@ namespace Zhouli.DbEntity
                             var entityMenu4 = context.SysMenu.Add(new SysMenu
                             {
                                 MenuName = "用户管理",
-                                MenuUrl="/System/User/Index",
+                                MenuUrl = "/System/User/Index",
                                 ParentMenuId = entityMenu.Entity.MenuId,
                                 MenuId = Guid.NewGuid()
                             });

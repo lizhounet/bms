@@ -10,12 +10,9 @@ namespace Zhouli.DAL.Implements
 {
     public class SysAuthorityDAL : BaseDAL<SysAuthority>, ISysAuthorityDAL
     {
-        private DapperContext dapper;
-        private ZhouLiContext db;
-        public SysAuthorityDAL(DapperContext dapper, ZhouLiContext db) : base(db)
+       
+        public SysAuthorityDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db)
         {
-            this.dapper = dapper;
-            this.db = db;
         }
         /// <summary>
         /// 获取角色的权限集合
@@ -24,7 +21,7 @@ namespace Zhouli.DAL.Implements
         /// <param name="roles">角色集合</param>
         /// <param name="authorityType">权限类型</param>
         /// <returns></returns>
-        public List<SysAuthority> GetSysAuthorities(Boolean isAdmin, List<SysRole> roles, AuthorityType authorityType)
+        public List<SysAuthority> GetSysAuthorities(Boolean isAdmin, List<SysRole> roles, ZhouLiEnum.Enum_AuthorityType authorityType)
         {
             StringBuilder builder = new StringBuilder(20);
             builder.AppendLine(@"SELECT SAT.*, SM.*
@@ -46,7 +43,7 @@ namespace Zhouli.DAL.Implements
             }
             switch (authorityType)
             {
-                case AuthorityType.Type_Menu:
+                case ZhouLiEnum.Enum_AuthorityType.Type_Menu:
                     builder.AppendLine($@") SAT
                                 INNER JOIN Sys_AmRelated SAR ON SAR.AuthorityId = SAT.AuthorityId
                                 LEFT JOIN Sys_Menu SM ON SAR.MenuId = SM.MenuId

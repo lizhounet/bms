@@ -55,9 +55,9 @@ namespace Zhouli.BLL
         /// </summary>
         public DateTime CreateTime { set; get; }
         /// <summary>
-        /// 用户组
+        /// 所属用户组
         /// </summary>
-        public string UserGroup { set; get; }
+        public Guid? UserGroupId { set; get; }
         /// <summary>
         /// 备注
         /// </summary>

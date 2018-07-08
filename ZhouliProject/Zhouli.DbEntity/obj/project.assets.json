@@ -3483,11 +3483,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj",
+      "projectUniqueName": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj",
       "projectName": "Zhouli.DbEntity",
-      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj",
+      "projectPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.DbEntity\\obj\\",
+      "outputPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.DbEntity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

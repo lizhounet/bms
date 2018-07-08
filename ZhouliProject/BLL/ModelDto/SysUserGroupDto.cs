@@ -18,13 +18,13 @@ namespace Zhouli.BLL
         /// </summary>
         public Guid? ParentUserGroupId { get; set; }
         /// <summary>
-        /// 创建用户Id
+        /// 父用户组名称
         /// </summary>
-        public Guid? CreateUserId { get; set; }
+        public string ParentUserGroupName { set; get; }
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreateTime { get; set; }
+        public DateTime CreateTime { set; get; }
         /// <summary>
         /// 备注
         /// </summary>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
+using Zhouli.DbEntity.Models;
 using ZhouliSystem.Models;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
@@ -25,6 +26,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         }
         public IActionResult UserAdd()
         {
+            ViewBag.UserGroupList = injection.GetExamples<ISysUserGroupBLL>().GetModels(t => t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
             return View();
         }
         #region 获取用户列表

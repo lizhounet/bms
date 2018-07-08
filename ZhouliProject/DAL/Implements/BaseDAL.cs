@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
+using Dapper;
 
 namespace Zhouli.DAL.Implements
 {
@@ -13,13 +14,15 @@ namespace Zhouli.DAL.Implements
         /// <summary>
         /// 数据库上下文
         /// </summary>
-        private Zhouli.DbEntity.Models.ZhouLiContext db;
+        protected DapperContext dapper;
+        protected Zhouli.DbEntity.Models.ZhouLiContext db;
         /// <summary>
         /// 构造函数依赖注入
         /// </summary>
         /// <param name="db"></param>
-        public BaseDAL(Zhouli.DbEntity.Models.ZhouLiContext db)
+        public BaseDAL(DapperContext dapper, Zhouli.DbEntity.Models.ZhouLiContext db)
         {
+            this.dapper = dapper;
             this.db = db;
         }
         public void Add(T t)
@@ -77,7 +80,14 @@ namespace Zhouli.DAL.Implements
             else
                 return db.Database.ExecuteSqlCommand(sql, parameter);
         }
+        public IEnumerable<TR> SqlQuery<TR>(string sql)
+        {
+            using (var conn = dapper.GetConnection)
+            {
+                return conn.Query<TR>(sql);
+            }
 
+        }
         public bool SaveChanges()
         {
             return db.SaveChanges() > 0;

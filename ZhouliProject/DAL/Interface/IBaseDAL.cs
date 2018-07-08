@@ -14,6 +14,7 @@ namespace Zhouli.DAL.Interface
         void Update(T t);
         int GetCount(Expression<Func<T, bool>> WhereLambda);
         int ExecuteSql(string sql, SqlParameter parameter);
+        IEnumerable<TR> SqlQuery<TR>(string sql);
         IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda);
         IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc, Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda);
         /// <summary>

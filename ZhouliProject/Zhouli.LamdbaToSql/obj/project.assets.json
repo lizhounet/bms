@@ -687,11 +687,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.LamdbaToSql\\Zhouli.LamdbaToSql.csproj",
+      "projectUniqueName": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.LamdbaToSql\\Zhouli.LamdbaToSql.csproj",
       "projectName": "Zhouli.LamdbaToSql",
-      "projectPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.LamdbaToSql\\Zhouli.LamdbaToSql.csproj",
+      "projectPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.LamdbaToSql\\Zhouli.LamdbaToSql.csproj",
       "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "F:\\CODE\\后台管理系统\\bms\\ZhouliProject\\Zhouli.LamdbaToSql\\obj\\",
+      "outputPath": "F:\\CODE\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.LamdbaToSql\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -16,6 +16,7 @@ namespace Zhouli.DbEntity.Models
         public string UserWx { get; set; }
         public string UserAvatar { get; set; }
         public string UserPhone { get; set; }
+        public Guid? UserGroupId { get; set; }
         public int UserStatus { get; set; }
         public Guid? CreateUserId { get; set; }
         public DateTime CreateTime { get; set; }

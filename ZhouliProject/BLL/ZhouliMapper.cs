@@ -42,6 +42,8 @@ namespace Zhouli.BLL
                 cfg.CreateMap<SysMenuDto, SysMenu>();
                 cfg.CreateMap<SysUser, SysUserDto>();
                 cfg.CreateMap<SysUserDto, SysUser>();
+                cfg.CreateMap<SysUserGroup, SysUserGroupDto>();
+                cfg.CreateMap<SysUserGroupDto, SysUserGroup>();
             });
         }
     }

@@ -8,13 +8,8 @@ namespace Zhouli.DAL.Implements
 {
     public class SysMenuDAL : BaseDAL<SysMenu>, ISysMenuDAL
     {
-        private DapperContext dapper;
-        private ZhouLiContext db;
-        public SysMenuDAL(DapperContext dapper, ZhouLiContext db) : base(db)
+        public SysMenuDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db)
         {
-            this.dapper = dapper;
-            this.db = db;
         }
-
     }
 }

@@ -7,13 +7,18 @@ namespace Zhouli.DbEntity.Models
     {
         [NotMapped]
         /// <summary>
-        /// 用户组
+        /// 所属用户组
         /// </summary>
-        public List<SysUserGroup> sysUserGroups { set; get; }
+        public SysUserGroup sysUserGroup { set; get; }
         [NotMapped]
         /// <summary>
         /// 用户所拥有的角色
         /// </summary>
         public List<SysRole> sysRoles { set; get; }
+        [NotMapped]
+        /// <summary>
+        /// 是否超级管理员
+        /// </summary>
+        public bool isAdministrctor { set; get; }
     }
 }

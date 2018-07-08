@@ -25,7 +25,6 @@ namespace Zhouli.DbEntity.Models
         public virtual DbSet<SysUrRelated> SysUrRelated { get; set; }
         public virtual DbSet<SysUser> SysUser { get; set; }
         public virtual DbSet<SysUserGroup> SysUserGroup { get; set; }
-        public virtual DbSet<SysUuRelated> SysUuRelated { get; set; }
 
 //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //        {
@@ -70,6 +69,8 @@ namespace Zhouli.DbEntity.Models
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
 
+                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
@@ -88,6 +89,8 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.CreateTime)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
+
+                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
@@ -129,6 +132,8 @@ namespace Zhouli.DbEntity.Models
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
 
+                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
@@ -165,7 +170,7 @@ namespace Zhouli.DbEntity.Models
                 entity.ToTable("Sys_User");
 
                 entity.HasIndex(e => e.UserName)
-                    .HasName("UQ__Sys_User__C9F284562DDB7794")
+                    .HasName("UQ__Sys_User__C9F284568B704BD5")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasDefaultValueSql("(newid())");
@@ -232,6 +237,8 @@ namespace Zhouli.DbEntity.Models
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
 
+                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
@@ -241,15 +248,6 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.UserGroupName)
                     .IsRequired()
                     .HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<SysUuRelated>(entity =>
-            {
-                entity.HasKey(e => e.UuRelatedId);
-
-                entity.ToTable("Sys_UuRelated");
-
-                entity.Property(e => e.UuRelatedId).HasDefaultValueSql("(newid())");
             });
         }
     }

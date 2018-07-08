@@ -13,9 +13,11 @@ namespace Zhouli.BLL.Interface
         bool AddRange(IEnumerable<T> t);
         bool Delete(T t);
         bool Update(T t);
+        int GetCount(Expression<Func<T, bool>> WhereLambda);
         int ExecuteSql(string sql, SqlParameter parameter);
-        IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda);
-        IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc, Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda);
+        IEnumerable<T> SqlQuery(string sql);
+        List<T> GetModels(Expression<Func<T, bool>> whereLambda);
+        List<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc, Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda);
 
     }
 }
