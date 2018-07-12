@@ -90,6 +90,7 @@
         <input type="text" style="display:none;" class="userId">
         <div class="layui-form-item layui-row layui-col-xs12">
             <div class="layui-input-block">
+                @Html.AntiForgeryToken()
                 <button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="addUser">保存</button>
                 <button type="reset" class="layui-btn layui-btn-sm layui-btn-primary">取消</button>
             </div>

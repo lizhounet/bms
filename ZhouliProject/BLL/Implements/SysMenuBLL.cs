@@ -32,17 +32,20 @@ namespace Zhouli.BLL.Implements
         /// </summary>
         /// <param name="user">用户实体</param>
         /// <returns></returns>
-        public List<SysMenuDto> GetMenusBy(SysUser user)
+        public MessageModel GetMenusBy(SysUser user)
         {
             var listMenuDto = new List<SysMenuDto>();
-            listMenuDtos = Mapper.Map<List<SysMenuDto>>(sysAuthorityBLL.GetSysAuthorities(user, ZhouLiEnum.Enum_AuthorityType.Type_Menu).Select(t => t.sysMenu).ToList());
+            listMenuDtos = Mapper.Map<List<SysMenuDto>>(((List<SysAuthority>)(sysAuthorityBLL.GetSysAuthorities(user, ZhouLiEnum.Enum_AuthorityType.Type_Menu).Data)).Select(t => t.sysMenu).ToList());
             //找出所有一级菜单
-            listMenuDto.AddRange(listMenuDtos.Where(t => t.ParentMenuId.Equals(Guid.Empty)).OrderByDescending(t=>t.MenuSort));
+            listMenuDto.AddRange(listMenuDtos.Where(t => t.ParentMenuId.Equals(Guid.Empty)).OrderByDescending(t => t.MenuSort));
             foreach (var item in listMenuDto)
             {
                 item.children = GetMenuChildren(item.MenuId);
             }
-            return listMenuDto;
+            return new MessageModel
+            {
+                Data = listMenuDto
+            };
         }
         private List<SysMenuDto> GetMenuChildren(Guid ParentMenuId)
         {

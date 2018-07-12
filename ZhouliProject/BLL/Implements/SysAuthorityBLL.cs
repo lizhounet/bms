@@ -26,12 +26,15 @@ namespace Zhouli.BLL.Implements
         /// <param name="user"></param>
         /// <param name="authorityType"></param>
         /// <returns></returns>
-        public List<SysAuthority> GetSysAuthorities(SysUser user, ZhouLiEnum.Enum_AuthorityType authorityType)
+        public MessageModel GetSysAuthorities(SysUser user, ZhouLiEnum.Enum_AuthorityType authorityType)
         {
             List<SysRole> roles = new List<SysRole>(user.sysRoles);
             if (user.sysUserGroup != null)
                 roles.AddRange(user.sysUserGroup.sysRoles);
-            return sysAuthorityDAL.GetSysAuthorities(user.isAdministrctor, roles.Distinct().ToList(), authorityType);
+            return new MessageModel
+            {
+                Data = sysAuthorityDAL.GetSysAuthorities(user.isAdministrctor, roles.Distinct().ToList(), authorityType)
+            };
         }
     }
 }

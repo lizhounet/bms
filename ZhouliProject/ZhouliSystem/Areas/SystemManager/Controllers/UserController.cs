@@ -56,6 +56,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <param name="userDto"></param>
         /// <returns></returns>
+        [ValidateAntiForgeryToken]//防伪标记 预防坏蛋攻击
         public string AddorEditUser(SysUserDto userDto)
         {
             var resModel = new ResponseModel();

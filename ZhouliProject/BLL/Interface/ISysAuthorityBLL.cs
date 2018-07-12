@@ -16,6 +16,6 @@ namespace Zhouli.BLL.Interface
         /// <param name="user">当前登陆用户</param>
         /// <param name="authorityType"></param>
         /// <returns></returns>
-        List<SysAuthority> GetSysAuthorities(SysUser user, ZhouLiEnum.Enum_AuthorityType authorityType);
+        MessageModel GetSysAuthorities(SysUser user, ZhouLiEnum.Enum_AuthorityType authorityType);
     }
 }

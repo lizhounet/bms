@@ -1,10 +1,10 @@
 ﻿require.config({
     paths: {
     }
-})
+});
 require(["jquery", 'layui'], function ($) {
     layui.use(['form', 'layer'], function () {
-        var form = layui.form
+        var form = layui.form;
         layer = parent.layer === undefined ? layui.layer : top.layer,
             $ = layui.jquery;
         form.on("submit(addUserGroup)", function (data) {
@@ -26,9 +26,9 @@ require(["jquery", 'layui'], function ($) {
                     parent.location.reload();
                 }
 
-            }, 'json')
+            }, 'json');
             return false;
-        })
+        });
         //自定义验证规则
         form.verify({
             username: function (value, item) { //value：表单的值、item：表单的DOM对象
@@ -64,5 +64,5 @@ require(["jquery", 'layui'], function ($) {
                 }
             }
         });
-    })
-})
+    });
+});

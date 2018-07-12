@@ -137,3 +137,4 @@ F:\CODE\资料文档\个人项目\bms\ZhouliProject\ZhouliSystem\obj\Debug\netco
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.csproj.CopyComplete
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.dll
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.pdb
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Views\User\UserChagePwd.g.cshtml.cs

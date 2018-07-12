@@ -15,6 +15,6 @@ namespace Zhouli.BLL.Interface
         /// </summary>
         /// <param name="user">用户实体</param>
         /// <returns></returns>
-        List<SysMenuDto> GetMenusBy(SysUser user);
+        MessageModel GetMenusBy(SysUser user);
     }
 }

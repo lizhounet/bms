@@ -90,7 +90,7 @@ require(["jquery", 'layui'], function ($) {
                     }, function (res) {
                         layer.msg(res.Messages);
                         layer.close(index);
-                        if (res.StateCode = 200) {
+                        if (res.StateCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");
@@ -112,7 +112,7 @@ require(["jquery", 'layui'], function ($) {
                     }, function (res) {
                         layer.msg(res.Messages);
                         layer.close(index);
-                        if (res.StateCode = 200) {
+                        if (res.StateCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");

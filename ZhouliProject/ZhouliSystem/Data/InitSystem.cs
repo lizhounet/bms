@@ -61,7 +61,7 @@ namespace ZhouliSystem.Data
                             //初始化用户(添加超级管理员:zhouli)
                             var entityUser = context.SysUser.Add(new SysUser
                             {
-                                UserAvatar = "http://m.qpic.cn/psb?/V13yJM6M20tLSi/KoY4u80DdIT7qrmqep1VPlSOjQwfHkhd8rotU*h1X5w!/b/dFcAAAAAAAAA&bo=gAKAAgAAAAARBzA!&rf=viewer_4",
+                                UserAvatar = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1952694735,1793739098&fm=27&gp=0.jpg",
                                 UserName = "zhouli",
                                 UserEmail = "zl_2962@foxmail.com",
                                 UserPhone = "17783042962",

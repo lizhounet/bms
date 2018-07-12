@@ -54,7 +54,7 @@ namespace DInjectionProvider
                         foreach (var typeArray in interfaceType)
                         {
                             if (!typeArray.IsGenericType)
-                                services.AddScoped(typeArray, item);
+                                services.AddSingleton(typeArray, item);
                         }
                     }
                 }

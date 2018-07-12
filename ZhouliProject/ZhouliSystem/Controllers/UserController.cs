@@ -38,20 +38,59 @@ namespace ZhouliSystem.Controllers
             this.injection = injection;
         }
         [ResponseCache(CacheProfileName = "default")]
-        public IActionResult Login()
-        {
-            return View();
-        }
+        public IActionResult Login() => View();
         public IActionResult UserInfo()
         {
-            ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(injection.GetExamples<ISysUserBLL>().GetModels(t=>t.UserId.Equals(injection.GetExamples<UserAccount>().GetUserInfo().UserId)).SingleOrDefault());
+            ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(injection.GetExamples<ISysUserBLL>().GetModels(t => t.UserId.Equals(injection.GetExamples<UserAccount>().GetUserInfo().UserId)).SingleOrDefault());
             return View();
         }
+        public IActionResult UserChagePwd() => View();
+        [HttpPost]
+        [ValidateAntiForgeryToken]//防伪标记 预防坏蛋攻击
+        public string UserChagePwd(string useroldpwd, string usernewpwd)
+        {
+            var response = new ResponseModel();
+            var userlogin = injection.GetExamples<UserAccount>().GetUserInfo();
+            if (!userlogin.UserPwd.Equals(MD5Encrypt.Get32MD5One(useroldpwd)))
+            {
+                response.Messages = "原密码不正确,请重新输入";
+                response.StateCode = StatesCode.failure;
+                return JsonHelper.ObjectToJson(response);
+            }
+            var user = injection.GetExamples<ISysUserBLL>().GetModels(t => t.UserId.Equals(userlogin.UserId)).SingleOrDefault();
+            if (user != null)
+            {
+                user.UserPwd = MD5Encrypt.Get32MD5One(usernewpwd);
+                if (injection.GetExamples<ISysUserBLL>().Update(user))
+                {
+                    response.Messages = "密码修改成功";
+                    response.StateCode = StatesCode.success;
+                    //密码修改成功 重新登录
+                    injection.GetExamples<UserAccount>().Login(user);
+                }
+                else {
+                    response.Messages = "密码修改失败";
+                    response.StateCode = StatesCode.failure;
+                }
+            }
+            else
+            {
+                response.Messages = "账户不存在,请联系管理员!";
+                response.StateCode = StatesCode.failure;
+            }
+            return JsonHelper.ObjectToJson(response);
+        }
+        /// <summary>
+        /// 后台登录
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]//防伪标记 预防坏蛋攻击
         public IActionResult UserLogin(string username, string password)
         {
-            
+
             var message = new ResponseModel();
             var sysUsers = injection.GetExamples<ISysUserBLL>().GetModels(t =>
                 (t.UserName.Equals(username) ||
@@ -61,7 +100,7 @@ namespace ZhouliSystem.Controllers
             if (sysUsers == null)
             {
                 message.StateCode = StatesCode.failure;
-                message.Messages = "该用户不存在";
+                message.Messages = "该账户不存在";
             }
             else
             {
