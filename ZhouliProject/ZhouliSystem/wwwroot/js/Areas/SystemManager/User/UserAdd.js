@@ -28,7 +28,7 @@ require(["jquery", 'layui'], function ($) {
                 UserPhone: $(".userPhone").val(),  //手机号
                 UserGroupId: $(".userGroupId").val(),  //所属用户组
                 UserSex: data.field.sex,  //性别
-                Note: $(".note").text()    //备注
+                Note: $(".note").val()    //备注
             }, function (res) {
                 console.log(res);
                 top.layer.close(index);

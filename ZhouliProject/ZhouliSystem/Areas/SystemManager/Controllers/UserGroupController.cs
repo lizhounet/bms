@@ -63,7 +63,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             string sMessage = "保存成功";
             var userGroupBLL = injection.GetExamples<ISysUserGroupBLL>();
             var userGroup = AutoMapper.Mapper.Map<SysUserGroup>(userGroupDto);
-            if (userGroupBLL.GetCount(t => t.UserGroupName.Equals(userGroupDto.UserGroupName) && !t.UserGroupId.Equals(userGroupDto.UserGroupId)) > 0)
+            if (userGroupBLL.GetCount(t => t.UserGroupName.Equals(userGroupDto.UserGroupName) && !t.UserGroupId.Equals(userGroupDto.UserGroupId)&&t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)) > 0)
             {
                 sMessage = "用户组名称不能重复";
                 bResult = !bResult;

@@ -37,7 +37,7 @@ namespace Zhouli.BLL.Implements
             Expression<Func<SysUserGroup, bool>> expression = t => (string.IsNullOrEmpty(searchstr) || t.UserGroupName.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted);
             pageModel.RowCount = userGroupDAL.GetCount(expression);
             int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
-            var list = userGroupDAL.SqlQuery<SysUserGroupDto>($@"SELECT * FROM (SELECT ROW_NUMBER() OVER               (ORDER BY T1.CreateTime) RN,T1.UserGroupId,
+            var list = userGroupDAL.SqlQuery<SysUserGroupDto>($@"SELECT * FROM (SELECT ROW_NUMBER() OVER  (ORDER BY T1.CreateTime) RN,T1.UserGroupId,
                              T1.UserGroupName,
                              T1.ParentUserGroupId,
                             T2.UserGroupName ParentUserGroupName, T1.CreateTime, T1.Note 

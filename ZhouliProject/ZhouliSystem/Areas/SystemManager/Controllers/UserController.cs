@@ -56,18 +56,15 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <param name="userDto"></param>
         /// <returns></returns>
-        [ValidateAntiForgeryToken]//防伪标记 预防坏蛋攻击
         public string AddorEditUser(SysUserDto userDto)
         {
             var resModel = new ResponseModel();
             var userLogin = injection.GetExamples<Data.UserAccount>().GetUserInfo();
             var mModel = injection.GetExamples<ISysUserBLL>().AddorEditUser(userDto, userLogin.UserId);
-
             resModel.StateCode = mModel.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = mModel.Message;
             resModel.JsonData = mModel.Data;
             return JsonHelper.ObjectToJson(resModel);
-
         }
         #endregion
         #region 禁用/启用用户

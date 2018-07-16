@@ -36,7 +36,7 @@ namespace ZhouliSystem.Data
         public bool Login(SysUser user)
         {
             user.isAdministrctor = judgeUserAdmin(user);
-            injection.GetHttpContext.HttpContext.Session.SetSession("UserLogin", user);
+            injection.GetHttpContext.HttpContext.Session.SetSession(USER_COOKIE_NAME, user);
             return true;
         }
         /// <summary>

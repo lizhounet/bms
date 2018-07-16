@@ -20,6 +20,8 @@
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using Zhouli.DbEntity.Models;
 
@@ -32,19 +34,34 @@ namespace Zhouli.BLL
     public class ZhouliMapper
     {
         /// <summary>
-        /// 初始化映射关系
+        /// 配置DTO映射关系
         /// </summary>
         public static void Initialize()
         {
-            Mapper.Initialize(cfg =>
+            //利用反射动态映射
+            Mapper.Initialize(MappingAutoMapper);
+        }
+        private static void MappingAutoMapper(IMapperConfigurationExpression cfg)
+        {
+            string[] assemblyNames = { "Zhouli.BLL", "Zhouli.DbEntity" };
+            //先找出Model所有实体类
+            List<Type> modelTypes = Assembly.Load("Zhouli.DbEntity").GetTypes().Where(t=>t.Namespace.Equals("Zhouli.DbEntity.Models")).ToList();
+            //model对应的Dto实体(注意:这里我做了命名约定,所有对应实体的Dto对象都以Dto结尾)
+            List<Type> modelDtoTypes = Assembly.Load("Zhouli.BLL").GetTypes().Where(t => t.Name.EndsWith("Dto")).ToList();
+            foreach (var item in modelDtoTypes)
             {
-                cfg.CreateMap<SysMenu, SysMenuDto>();
-                cfg.CreateMap<SysMenuDto, SysMenu>();
-                cfg.CreateMap<SysUser, SysUserDto>();
-                cfg.CreateMap<SysUserDto, SysUser>();
-                cfg.CreateMap<SysUserGroup, SysUserGroupDto>();
-                cfg.CreateMap<SysUserGroupDto, SysUserGroup>();
-            });
+               // cfg.CreateMap<item, SysMenuDto>();
+               // cfg.CreateMap<SysMenuDto, SysMenu>();
+            }
+
+            cfg.CreateMap<SysMenu, SysMenuDto>();
+            cfg.CreateMap<SysMenuDto, SysMenu>();
+            cfg.CreateMap<SysUser, SysUserDto>();
+            cfg.CreateMap<SysUserDto, SysUser>();
+            cfg.CreateMap<SysRole, SysRoleDto>();
+            cfg.CreateMap<SysRoleDto, SysRole>();
+            cfg.CreateMap<SysUserGroup, SysUserGroupDto>();
+            cfg.CreateMap<SysUserGroupDto, SysUserGroup>();
         }
     }
 }

@@ -33,15 +33,16 @@ namespace Zhouli.DbEntity.Models
         /// </summary>
         public enum Enum_UserStatus
         {
-            [Description("正常")]
+
             /// <summary>
             /// 正常
             /// </summary>
+            [Description("正常")]
             Status_normal = 1,
-            [Description("停用")]
             /// <summary>
             /// 停用
             /// </summary>
+            [Description("停用")]
             Status_Discontinuation = 2
         }
         #endregion
@@ -51,10 +52,10 @@ namespace Zhouli.DbEntity.Models
         /// </summary>
         public enum Enum_AuthorityType
         {
-            [Description("菜单类型")]
             /// <summary>
             /// 菜单类型
             /// </summary>
+            [Description("菜单类型")]
             Type_Menu = 1
         }
         #endregion
@@ -64,15 +65,15 @@ namespace Zhouli.DbEntity.Models
         /// </summary>
         public enum Enum_DeleteSign
         {
-            [Description("未删除")]
             /// <summary>
             /// 未删除
             /// </summary>
+            [Description("未删除")]
             Sing_Deleted = 1,
-            [Description("已删除")]
             /// <summary>
             /// 已删除
             /// </summary>
+            [Description("已删除")]
             Sign_Undeleted = 2
         }
         #endregion
@@ -82,15 +83,15 @@ namespace Zhouli.DbEntity.Models
         /// </summary>
         public enum Enum_Sex
         {
-            [Description("男孩")]
             /// <summary>
             /// 男孩
             /// </summary>
+            [Description("男孩")]
             Boy = 1,
-            [Description("女孩")]
             /// <summary>
             /// 女孩
             /// </summary>
+            [Description("女孩")]
             Girl = 2
         }
         #endregion
