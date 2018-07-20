@@ -9,7 +9,7 @@ namespace ZhouliSystem.Data
     /// <summary>
     /// 关于用户信息的操作
     /// </summary>
-    public class UserAccount
+    public  class UserAccount
     {
         private WholeInjection injection;
         public UserAccount(WholeInjection injection)
@@ -19,7 +19,7 @@ namespace ZhouliSystem.Data
         /// <summary>
         /// COOKIE名常量
         /// </summary>
-        private const string USER_COOKIE_NAME = "UserLogin";
+        private const  string USER_COOKIE_NAME = "UserLogin";
         /// <summary>
         /// 得到用户登录数据
         /// </summary>
@@ -46,7 +46,7 @@ namespace ZhouliSystem.Data
         /// <returns></returns>
         public bool judgeUserAdmin(SysUser user)
         {
-            var adminAccount = injection.GetExamples<IOptionsSnapshot<CustomConfiguration>>().Value.adminAccount;
+            var adminAccount = injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value.adminAccount;
             return user.UserName.Equals(adminAccount) ? true : false;
         }
     }

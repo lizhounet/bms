@@ -17,8 +17,8 @@ namespace ZhouliSystem.Components
         }
         public IViewComponentResult Invoke()
         {
-            var user = injection.GetExamples<UserAccount>().GetUserInfo();
-            var MenuDto = injection.GetExamples<ISysMenuBLL>().GetMenusBy(user).Data;
+            var user = injection.GetT<UserAccount>().GetUserInfo();
+            var MenuDto = injection.GetT<ISysMenuBLL>().GetMenusBy(user).Data;
             return View(MenuDto);
         }
     }

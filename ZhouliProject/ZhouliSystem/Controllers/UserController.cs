@@ -26,6 +26,7 @@ using Zhouli.BLL.Interface;
 using Zhouli.Common;
 using Zhouli.DbEntity.Models;
 using ZhouliSystem.Data;
+using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
 
 namespace ZhouliSystem.Controllers
@@ -41,7 +42,7 @@ namespace ZhouliSystem.Controllers
         public IActionResult Login() => View();
         public IActionResult UserInfo()
         {
-            ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(injection.GetExamples<ISysUserBLL>().GetModels(t => t.UserId.Equals(injection.GetExamples<UserAccount>().GetUserInfo().UserId)).SingleOrDefault());
+            ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(injection.GetT<UserAccount>().GetUserInfo().UserId)).SingleOrDefault());
             return View();
         }
         public IActionResult UserChagePwd() => View();
@@ -50,23 +51,23 @@ namespace ZhouliSystem.Controllers
         public string UserChagePwd(string useroldpwd, string usernewpwd)
         {
             var response = new ResponseModel();
-            var userlogin = injection.GetExamples<UserAccount>().GetUserInfo();
+            var userlogin = injection.GetT<UserAccount>().GetUserInfo();
             if (!userlogin.UserPwd.Equals(MD5Encrypt.Get32MD5One(useroldpwd)))
             {
                 response.Messages = "原密码不正确,请重新输入";
                 response.StateCode = StatesCode.failure;
                 return JsonHelper.ObjectToJson(response);
             }
-            var user = injection.GetExamples<ISysUserBLL>().GetModels(t => t.UserId.Equals(userlogin.UserId)).SingleOrDefault();
+            var user = injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(userlogin.UserId)).SingleOrDefault();
             if (user != null)
             {
                 user.UserPwd = MD5Encrypt.Get32MD5One(usernewpwd);
-                if (injection.GetExamples<ISysUserBLL>().Update(user))
+                if (injection.GetT<ISysUserBLL>().Update(user))
                 {
                     response.Messages = "密码修改成功";
                     response.StateCode = StatesCode.success;
                     //密码修改成功 重新登录
-                    injection.GetExamples<UserAccount>().Login(user);
+                    injection.GetT<UserAccount>().Login(user);
                 }
                 else {
                     response.Messages = "密码修改失败";
@@ -92,7 +93,7 @@ namespace ZhouliSystem.Controllers
         {
 
             var message = new ResponseModel();
-            var sysUsers = injection.GetExamples<ISysUserBLL>().GetModels(t =>
+            var sysUsers = injection.GetT<ISysUserBLL>().GetModels(t =>
                 (t.UserName.Equals(username) ||
                 t.UserEmail.Equals(username) ||
                 t.UserPhone.Equals(username) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted))
@@ -116,8 +117,8 @@ namespace ZhouliSystem.Controllers
                 }
                 else
                 {
-                    var user = injection.GetExamples<ISysUserBLL>().GetLoginSysUser(sysUsers).Data;
-                    injection.GetExamples<UserAccount>().Login(user);
+                    var user = injection.GetT<ISysUserBLL>().GetLoginSysUser(sysUsers).Data;
+                    injection.GetT<UserAccount>().Login(user);
                     message.Messages = "登陆成功";
                     message.JsonData = new { baseUrl = "/Home/Index" };
                 }

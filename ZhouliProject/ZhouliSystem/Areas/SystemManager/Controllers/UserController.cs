@@ -8,10 +8,12 @@ using Zhouli.BLL;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
 using Zhouli.DbEntity.Models;
+using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
 {
+    [VerificationLogin]
     [Area("System")]
     public class UserController : Controller
     {
@@ -26,7 +28,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         }
         public IActionResult UserAdd()
         {
-            ViewBag.UserGroupList = injection.GetExamples<ISysUserGroupBLL>().GetModels(t => t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+            ViewBag.UserGroupList = injection.GetT<ISysUserGroupBLL>().GetModels(t => t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
             return View();
         }
         #region 获取用户列表
@@ -39,7 +41,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public string GetUserList(string page, string limit, string searchstr)
         {
-            var messageModel = injection.GetExamples<ISysUserBLL>()
+            var messageModel = injection.GetT<ISysUserBLL>()
                 .GetUserList(page, limit, searchstr);
             return JsonHelper.ObjectToJson(new
             {
@@ -59,8 +61,8 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public string AddorEditUser(SysUserDto userDto)
         {
             var resModel = new ResponseModel();
-            var userLogin = injection.GetExamples<Data.UserAccount>().GetUserInfo();
-            var mModel = injection.GetExamples<ISysUserBLL>().AddorEditUser(userDto, userLogin.UserId);
+            var userLogin = injection.GetT<Data.UserAccount>().GetUserInfo();
+            var mModel = injection.GetT<ISysUserBLL>().AddorEditUser(userDto, userLogin.UserId);
             resModel.StateCode = mModel.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = mModel.Message;
             resModel.JsonData = mModel.Data;
@@ -78,9 +80,9 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             var resModel = new ResponseModel();
             if (!UserId.Equals(default(Guid)))
             {
-                var user = injection.GetExamples<ISysUserBLL>().GetModels(t => t.UserId.Equals(UserId)).SingleOrDefault();
+                var user = injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(UserId)).SingleOrDefault();
                 user.UserStatus = user.UserStatus == 0 ? 1 : 0;
-                injection.GetExamples<ISysUserBLL>().Update(user);
+                injection.GetT<ISysUserBLL>().Update(user);
                 resModel.Messages = user.UserStatus == 1 ? "启用成功" : "禁用成功";
             }
             else
@@ -101,7 +103,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = injection.GetExamples<ISysUserBLL>().DelUser(UserId);
+            MessageModel model = injection.GetT<ISysUserBLL>().DelUser(UserId);
             resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = model.Message;
             return JsonHelper.ObjectToJson(resModel);

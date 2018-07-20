@@ -35,12 +35,12 @@ namespace ZhouliSystem.Models
         public StatesCode StateCode { set; get; } = StatesCode.success;
 
         /// <summary>
-        /// 响应提示消息
+        /// 响应提示消息(默认:"ok")
         /// </summary>
-        public string Messages { set; get; } = "OK";
+        public string Messages { set; get; } = "ok";
 
         /// <summary>
-        /// 响应json数据
+        /// 响应json数据(默认:"[]")
         /// </summary>
         public Object JsonData { set; get; } = "[]";
     }

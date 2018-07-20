@@ -4,35 +4,35 @@
 基于.net core实现的权限管理平台,包含：管理员列表、角色管理、菜单管理、权限管理、日志管理、集成七牛云存储
 
 
-#### 软件架构
-软件架构说明
+#### 开发阶段
+后台管理系统开发日志
 
-
-#### 安装教程
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 使用说明
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 参与贡献
-
-1. Fork 本项目
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
-
-
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [http://git.mydoc.io/](http://git.mydoc.io/)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+2018.05.26 
+   1.项目框架初步搭建(.net core+ef core +sqlserver +三层架构设计模式)
+2018.06.03
+   1.后台主页集成(主要采用layui)
+   2.后台登录页面集成
+   3.require.js 使用
+   4.扩展.net core session 方法
+2018.06.04
+   1.增加依赖注入提供类(就不需要控制器需要多少个类就注入多少个实例,直接从提供类获取即可)
+2018.06.08
+   1.实现自动配置依赖注入
+2018.06.10
+   1.增加初始化权限管理关系表结构类
+   2.表结构字段一些更新
+2018.06.19
+   1..netcore中AutoMapper的使用
+2018.06.21
+   1.导航菜单根据用户权限动态加载展示
+   2..net core 缓存中间件以及gzip压缩中间件使用
+2018.06.24
+   1.用户增删改查
+   1.用户组增删改查
+2018.07.08
+   1.系统架构数据库访问层加入Dapper ORM框架(工作比较忙,更新比较慢)
+   2..net core 中Log4net的使用
+   3..net core mvc 全局异常过滤器使用
+2018.07.17
+   1.角色增删查改
+   2.实现AutoMapper自动映射实体与Dto转换关系 

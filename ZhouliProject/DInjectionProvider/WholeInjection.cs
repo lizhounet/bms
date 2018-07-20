@@ -36,10 +36,11 @@ namespace DInjectionProvider
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public T GetExamples<T>()
+        public T GetT<T>()
         {
             return (T)GetHttpContext.HttpContext.RequestServices.GetService(typeof(T));
         }
         public IHttpContextAccessor GetHttpContext { get; }
+
     }
 }

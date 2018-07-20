@@ -144,3 +144,4 @@ E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\Sys
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Views\User\UserChagePwd.g.cshtml.cs
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Views\User\UserInfo.g.cshtml.cs
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\RoleAdd.g.cshtml.cs
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Menu\Index.g.cshtml.cs

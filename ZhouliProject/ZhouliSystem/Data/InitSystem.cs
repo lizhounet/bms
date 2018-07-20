@@ -128,7 +128,7 @@ namespace ZhouliSystem.Data
                             //----------------------------权限管理菜单begin
                             var entityMenu1 = context.SysMenu.Add(new SysMenu
                             {
-                                MenuName = "权限管理",
+                                MenuName = "角色授权",
                                 MenuUrl = "/System/Authority/Index",
                                 ParentMenuId = entityMenu.Entity.MenuId,
                                 MenuId = Guid.NewGuid()

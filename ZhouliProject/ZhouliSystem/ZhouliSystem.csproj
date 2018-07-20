@@ -26,6 +26,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\lib\ztree\js\jquery.min.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.all.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.all.min.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.core.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.core.min.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.excheck.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.excheck.min.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.exedit.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.exedit.min.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.exhide.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.exhide.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BLL\Zhouli.BLL.csproj" />
     <ProjectReference Include="..\DInjectionProvider\DInjectionProvider.csproj" />
     <ProjectReference Include="..\Zhouli.Common\Zhouli.Common.csproj" />

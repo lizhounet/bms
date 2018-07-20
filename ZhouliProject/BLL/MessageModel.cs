@@ -31,11 +31,11 @@ namespace Zhouli.BLL
     public class MessageModel
     {
         /// <summary>
-        /// 结果
+        /// 结果(默认:true)
         /// </summary>
         public bool Result { set; get; } = true;
         /// <summary>
-        /// 提示信息
+        /// 提示信息(默认:"成功")
         /// </summary>
         public string Message { set; get; } = "成功";
         /// <summary>

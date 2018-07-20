@@ -42,7 +42,7 @@ namespace ZhouliSystem.Controllers
         }
         public IActionResult Index()
         {
-            var User = injection.GetExamples<UserAccount>().GetUserInfo();
+            var User = injection.GetT<UserAccount>().GetUserInfo();
             return View(User);
         }
         public IActionResult Welcome()

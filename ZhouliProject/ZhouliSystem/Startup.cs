@@ -81,6 +81,7 @@ namespace ZhouliSystem
             services.ResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
             //初始化Dto与实体映射关系
             Zhouli.BLL.ZhouliMapper.Initialize();
+            //注入配置文件类
             services.AddOptions().Configure<CustomConfiguration>(Configuration.GetSection("CustomConfiguration"));
             #endregion
 

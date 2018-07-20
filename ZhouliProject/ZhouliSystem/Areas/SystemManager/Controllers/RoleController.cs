@@ -9,9 +9,11 @@ using Zhouli.BLL.Interface;
 using Zhouli.DbEntity.Models;
 using ZhouliSystem.Data;
 using ZhouliSystem.Models;
+using ZhouliSystem.Filters;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
 {
+    [VerificationLogin]
     [Area("System")]
     public class RoleController : Controller
     {
@@ -35,7 +37,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public string GetRoleList(string page, string limit, string searchstr)
         {
-            var messageModel = injection.GetExamples<ISysRoleBLL>()
+            var messageModel = injection.GetT<ISysRoleBLL>()
                  .GetRoleList(page, limit, searchstr);
             return JsonHelper.ObjectToJson(new
             {
@@ -56,7 +58,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             bool bResult = true;
             string sMessage = "保存成功";
-            var roleBLL = injection.GetExamples<ISysRoleBLL>();
+            var roleBLL = injection.GetT<ISysRoleBLL>();
             var role = AutoMapper.Mapper.Map<SysRole>(roleDto);
             if (roleBLL.GetCount(t => t.RoleName.Equals(role.RoleName) && !t.RoleId.Equals(role.RoleId) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)) > 0)
             {
@@ -70,7 +72,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 {
 
                     role.DeleteSign = (Int32)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
-                    role.CreateUserId = injection.GetExamples<UserAccount>().GetUserInfo().UserId;
+                    role.CreateUserId = injection.GetT<UserAccount>().GetUserInfo().UserId;
                     bResult = roleBLL.Add(role);
 
                 }
@@ -100,7 +102,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = injection.GetExamples<ISysRoleBLL>().DelRole(RoleId);
+            MessageModel model = injection.GetT<ISysRoleBLL>().DelRole(RoleId);
             resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = model.Message;
             return JsonHelper.ObjectToJson(resModel);

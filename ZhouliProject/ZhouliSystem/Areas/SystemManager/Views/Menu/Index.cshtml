@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/Ordinary.cshtml";
+    ViewData["Title"] = "角色管理";
+
+}
+@section css{
+    <link href="~/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/lib/ztree/bootstrapStyle/bootstrapStyle.css" rel="stylesheet" />
+}
+<div class="childrenBody">
+    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+        <legend>菜单管理</legend>
+    </fieldset>
+    <div style="padding: 20px; background-color: #F2F2F2;height:100%">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md6">
+                <div class="layui-card">
+                    <div class="layui-card-header">菜单</div>
+                    <div class="layui-card-body">
+                        <ul id="treeMenu" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md6">
+                <div class="layui-card">
+                    <div class="layui-card-header">操作</div>
+                    <div class="layui-card-body">
+                        <form class="layui-form layui-form-pane" action="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">菜单名称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="MenuName" autocomplete="off" placeholder="请输入菜单名称" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">长输入框</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <button class="layui-btn" lay-submit="" lay-filter="demo2">跳转式提交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/lib/ztree/js/jquery.min.js"></script>
+<script src="~/lib/ztree/js/jquery.ztree.core.min.js"></script>
+<script src="~/lib/ztree/js/jquery.ztree.excheck.min.js"></script>
+<script src="~/lib/ztree/js/jquery.ztree.exedit.min.js"></script>
+<script src="~/lib/layui/layui.js"></script>
+<script src="~/js/Areas/SystemManager/Menu/MenuCtrl.js"></script>
