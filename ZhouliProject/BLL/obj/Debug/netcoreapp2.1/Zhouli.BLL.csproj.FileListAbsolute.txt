@@ -30,10 +30,6 @@ F:\CODE\后台管理系统\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\Zhouli.
 F:\CODE\后台管理系统\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
 E:\zhouli\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
 E:\zhouli\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.csprojAssemblyReference.cache
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.csproj.CoreCompileInputs.cache
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.AssemblyInfoInputs.cache
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.AssemblyInfo.cs
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\Zhouli.BLL.deps.json
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\Zhouli.BLL.dll
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\Zhouli.BLL.pdb
@@ -43,6 +39,10 @@ F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\Zhouli.DAL.pdb
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.csprojAssemblyReference.cache
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.csproj.CoreCompileInputs.cache
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.AssemblyInfoInputs.cache
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.AssemblyInfo.cs
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.csproj.CopyComplete
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.dll
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.pdb

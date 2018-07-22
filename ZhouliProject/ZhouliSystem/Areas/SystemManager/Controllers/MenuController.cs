@@ -31,6 +31,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// 获取菜单列表
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public string GetMenuList() {
             var menuList = (List<SysMenuDto>)(injection.GetT<ISysMenuBLL>().GetMenusBy(injection.GetT<UserAccount>().GetUserInfo()).Data);
             
