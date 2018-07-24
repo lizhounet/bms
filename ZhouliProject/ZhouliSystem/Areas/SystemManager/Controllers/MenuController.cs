@@ -32,12 +32,27 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public string GetMenuList() {
+        public string GetMenuList()
+        {
             var menuList = (List<SysMenuDto>)(injection.GetT<ISysMenuBLL>().GetMenusBy(injection.GetT<UserAccount>().GetUserInfo()).Data);
-            
+
             return JsonHelper.ObjectToJson(new ResponseModel
             {
                 JsonData = menuList
+            });
+        }
+        /// <summary>
+        /// 添加一个菜单
+        /// </summary>
+        /// <param name="menuDto"></param>
+        /// <returns></returns>
+        public string AddMenu(SysMenuDto menuDto)
+        {
+            var bResult = injection.GetT<ISysMenuBLL>().Add(AutoMapper.Mapper.Map<SysMenu>(menuDto));
+            return JsonHelper.ObjectToJson(new ResponseModel
+            {
+                StateCode = bResult ? StatesCode.success : StatesCode.failure,
+                Messages = bResult ? "添加成功" : "添加失败"
             });
         }
     }
