@@ -1,4 +1,4 @@
-require(["jquery", 'layui'], function ($, layui) {
+require(["jquery", 'layui'], function ($) {
     layui.use(['form', 'layer'], function () {
         var form = layui.form,
             layer = parent.layer === undefined ? layui.layer : top.layer;

@@ -8,28 +8,19 @@
         layer.msg(JSON.stringify(data.field));
         return false;
     });
-    //添加根节点
-    $("#addRootnode").on('click', function () {
-        var ztree = zhouliMenu.getZtreeObj();
-        var selectedNodes = ztree.getSelectedNodes();
-        if (selectedNodes.length == 0) {
-            layer.msg("请先选中一个菜单节点");
-            return;
-        }
-        var node = {
-            MenuName: $("").val(),
-            MenuSort: "",
-            MenuUrl: "",
-            ParentMenuId: "",
-            MenuIcon: ""
-        };
-        $.post("test.php", node,
-            function (res) {
-                console.log(res);
-            }, "json");
-    });
-    //添加子节点
-    $("#addSubnode").on('click', function () {
+    $("#MenuIcon").on("click", function () {
+        layer.open({
+            type: 2,
+            content: '/System/Menu/SelectMenuIcon', //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+            area: ['100%', '100%'],
+            success: function (layero, index) {
+                var body = layui.layer.getChildFrame('body', index);
+                setTimeout(function () {
+                    layer.msg("双击选择图标");
+                }, 500);
+            }
+        }); 
+
     });
 });
 //ztree配置
@@ -57,7 +48,12 @@ var setting = {
         enable: true
     },
     callback: {
-        beforeRename: editBeforeName//用于捕获节点编辑名称结束（Input 失去焦点 或 按下 Enter 键）之后，更新节点名称数据之前的事件回调函数，并且根据返回值确定是否允许更改名称的操作
+        // 用于捕获节点编辑名称结束（Input 失去焦点 或 按下 Enter 键）之后，更新节点名称数据之前的事件回调函数，并且根据返回值确定是否允许更改名称的操作
+        beforeRename: editBeforeName,
+        //用于捕获单击节点之前的事件回调函数，并且根据返回值确定是否允许单击操作
+        beforeClick: zTreeBeforeClick,
+        //用于捕获节点被删除之前的事件回调函数，并且根据返回值确定是否允许删除操作
+        beforeRemove: zTreeBeforeRemove
     }
 };
 //添加菜单
@@ -65,30 +61,52 @@ function addHoverDom(treeId, treeNode) {
     var sObj = $("#" + treeNode.tId + "_span");
     if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
     var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
-        + "' title='add node' onfocus='this.blur();'></span>";
+        + "' title='添加菜单' onfocus='this.blur();'></span>";
     sObj.after(addStr);
     var btn = $("#addBtn_" + treeNode.tId);
+    btn.next('.edit').attr('title', '编辑');
+    btn.next('.edit').next('.remove').attr('title', '删除');
     if (btn) btn.bind("click", function () {
         var zTree = $.fn.zTree.getZTreeObj("treeMenu");
-        var node = { MenuId: createGuid(), ParentMenuId: treeNode.MenuId, MenuName: "新建菜单1" }
+        var node = { MenuId: createGuid(), ParentMenuId: treeNode.MenuId, MenuName: "新建菜单1" };
         zTree.addNodes(treeNode, node);
         //添加之后启用编辑状态
         zTree.editName(zTree.getNodeByParam("MenuId", node.MenuId, null));
         return false;
     });
-};
+}
 //移除菜单
 function removeHoverDom(treeId, treeNode) {
     $("#addBtn_" + treeNode.tId).unbind().remove();
-};
+}
+//编辑确定事件
 function editBeforeName(treeId, treeNode, newName, isCancel) {
-    console.log(treeNode);
     $("#MenuId").val(treeNode.MenuId);
     $("#MenuName").val(newName);
     $("#ParentMenuId").val(treeNode.ParentMenuId);
     $("#MenuUrl").val(treeNode.MenuUrl);
     $("#MenuSort").val(treeNode.MenuSort);
     $("#Note").val(treeNode.Note);
+    var postData = {
+    };
+    $.post("/system/menu/addoreditmenu", postData, function (res) {
+    }, "json");
+    return true;
+}
+//节点单击事件
+function zTreeBeforeClick(treeId, treeNode, clickFlag) {
+    $("#MenuId").val(treeNode.MenuId);
+    $("#MenuName").val(treeNode.MenuName);
+    $("#ParentMenuId").val(treeNode.ParentMenuId);
+    $("#MenuUrl").val(treeNode.MenuUrl);
+    $("#MenuSort").val(treeNode.MenuSort);
+    $("#Note").val(treeNode.Note);
+    return true;
+}
+//节点删除之前的事件
+function zTreeBeforeRemove(treeId, treeNode) {
+    console.log(treeNode);
+    return false;
 }
 //js生成guid
 function createGuid() {

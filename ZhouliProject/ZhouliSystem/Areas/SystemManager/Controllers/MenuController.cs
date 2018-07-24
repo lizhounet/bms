@@ -27,6 +27,9 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             return View();
         }
+        public IActionResult SelectMenuIcon() {
+            return View();
+        }
         /// <summary>
         /// 获取菜单列表
         /// </summary>
@@ -42,13 +45,22 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             });
         }
         /// <summary>
-        /// 添加一个菜单
+        /// 添加/修改 一个菜单
         /// </summary>
         /// <param name="menuDto"></param>
         /// <returns></returns>
-        public string AddMenu(SysMenuDto menuDto)
+        public string AddOrEditMenu(SysMenuDto menuDto)
         {
-            var bResult = injection.GetT<ISysMenuBLL>().Add(AutoMapper.Mapper.Map<SysMenu>(menuDto));
+            bool bResult = false;
+            //添加
+            if (menuDto.MenuId == Guid.Empty)
+            {
+                bResult = injection.GetT<ISysMenuBLL>().Add(AutoMapper.Mapper.Map<SysMenu>(menuDto));
+            }
+            else
+            {
+                bResult = injection.GetT<ISysMenuBLL>().Update(AutoMapper.Mapper.Map<SysMenu>(menuDto));
+            }
             return JsonHelper.ObjectToJson(new ResponseModel
             {
                 StateCode = bResult ? StatesCode.success : StatesCode.failure,

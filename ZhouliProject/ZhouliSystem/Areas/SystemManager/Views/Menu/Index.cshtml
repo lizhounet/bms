@@ -33,6 +33,12 @@
                                 </div>
                             </div>
                             <div class="layui-form-item">
+                                <label class="layui-form-label">菜单ID</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="MenuId" id="MenuId" disabled class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
                                 <label class="layui-form-label">父级菜单ID</label>
                                 <div class="layui-input-block">
                                     <input type="text" name="ParentMenuId" id="ParentMenuId" disabled class="layui-input">
@@ -53,7 +59,7 @@
                             <div class="layui-form-item">
                                 <label class="layui-form-label">菜单图标</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="MenuIcon" id="MenuIcon" autocomplete="off" placeholder="请输入标题" class="layui-input">
+                                    <input type="text" name="MenuIcon" id="MenuIcon" autocomplete="off" placeholder="请点击此处选择图标" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item layui-form-text">
@@ -63,12 +69,12 @@
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <button class="layui-btn" type="button" id="addRootnode">
-                                    <i class="layui-icon">&#xe608;</i>添加根节点
-                                </button>
-                                <button class="layui-btn layui-btn-normal" id="addSubnode" lay-filter="saveMenu" type="button" >
-                                    <i class="layui-icon">&#xe669;</i>添加子节点
-                                </button>
+                                @*<button class="layui-btn" type="button" id="addRootnode">
+                <i class="layui-icon">&#xe608;</i>添加根节点
+            </button>
+            <button class="layui-btn layui-btn-normal" id="addSubnode" lay-filter="saveMenu" type="button" >
+                <i class="layui-icon">&#xe669;</i>添加子节点
+            </button>*@
                                 <button class="layui-btn layui-btn-warm" lay-submit lay-filter="saveMenu">
                                     <i class="layui-icon">&#xe605;</i>保存
                                 </button>
