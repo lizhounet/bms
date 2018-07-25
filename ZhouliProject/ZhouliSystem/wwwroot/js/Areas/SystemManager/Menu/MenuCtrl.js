@@ -1,4 +1,5 @@
-﻿layui.use(['form', 'layer'], function () {
+﻿
+layui.use(['form', 'layer'], function () {
     var form = layui.form,
         $ = layui.jquery,
         layer = layui.layer; //获取form模块
@@ -6,21 +7,25 @@
     //监听提交
     form.on('submit(saveMenu)', function (data) {
         layer.msg(JSON.stringify(data.field));
+        $.post("/system/menu/addoreditmenu", data.field, function (res) {
+            console.log(res);
+        }, "json");
         return false;
     });
     $("#MenuIcon").on("click", function () {
-        layer.open({
+        var index = layer.open({
             type: 2,
-            content: '/System/Menu/SelectMenuIcon', //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-            area: ['100%', '100%'],
+            title: "选择图标",
+            content: '/system/menu/selectmenuicon', //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+            area: ['90%', '90%'],
             success: function (layero, index) {
                 var body = layui.layer.getChildFrame('body', index);
                 setTimeout(function () {
-                    layer.msg("双击选择图标");
+                    layer.msg("双击选择图标", { time: 500 });
                 }, 500);
             }
-        }); 
-
+        });
+        layui.layer.full(index);
     });
 });
 //ztree配置
@@ -53,7 +58,9 @@ var setting = {
         //用于捕获单击节点之前的事件回调函数，并且根据返回值确定是否允许单击操作
         beforeClick: zTreeBeforeClick,
         //用于捕获节点被删除之前的事件回调函数，并且根据返回值确定是否允许删除操作
-        beforeRemove: zTreeBeforeRemove
+        beforeRemove: zTreeBeforeRemove,
+        //用于捕获节点拖拽操作结束之前的事件回调函数，并且根据返回值确定是否允许此拖拽操作
+        beforeDrop: zTreeBeforeDrop
     }
 };
 //添加菜单
@@ -88,8 +95,16 @@ function editBeforeName(treeId, treeNode, newName, isCancel) {
     $("#MenuSort").val(treeNode.MenuSort);
     $("#Note").val(treeNode.Note);
     var postData = {
+        MenuId: treeNode.MenuId,
+        MenuName: newName,
+        ParentMenuId: treeNode.ParentMenuId,
+        MenuUrl: treeNode.MenuUrl,
+        MenuSort: treeNode.MenuSort,
+        MenuIcon: treeNode.MenuIcon,
+        Note: treeNode.Note
     };
     $.post("/system/menu/addoreditmenu", postData, function (res) {
+        console.log(res);
     }, "json");
     return true;
 }
@@ -100,14 +115,45 @@ function zTreeBeforeClick(treeId, treeNode, clickFlag) {
     $("#ParentMenuId").val(treeNode.ParentMenuId);
     $("#MenuUrl").val(treeNode.MenuUrl);
     $("#MenuSort").val(treeNode.MenuSort);
+    $("#MenuIcon").val(treeNode.MenuIcon);
     $("#Note").val(treeNode.Note);
     return true;
 }
 //节点删除之前的事件
 function zTreeBeforeRemove(treeId, treeNode) {
     console.log(treeNode);
-    return false;
+    layer.confirm('确定要删除此节点吗?', function (index) {
+        $.ajax({
+            url: "/system/menu/delmenu",
+            type: "post",
+            data: { MenuId: treeNode.MenuId },
+            dataType: "json",
+            async: false,
+            success: function (res) {
+                layer.close(index);
+                if (res.StateCode != 200) {
+                    layer.msg(res.Messages);
+                    zhouliMenu.loadMenu();
+                }
+            },
+            error: function (err) {
+                layer.close(index);
+                layer.msg("服务器出错");
+            }
+        });
+    });
 }
+//拖拽后的事件
+function zTreeBeforeDrop(treeId, treeNodes, targetNode, moveType) {
+    if (moveType == "inner" || treeNodes[0].ParentMenuId != targetNode.ParentMenuId) {
+        layer.msg("不允许跨级拖放", { time: 1000 });
+        return false;
+    }
+    console.log(treeNodes);
+    console.log(targetNode);
+    console.log(moveType);
+    return true;
+};
 //js生成guid
 function createGuid() {
     var s = [];

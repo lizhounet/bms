@@ -24,10 +24,10 @@ namespace Zhouli.DAL.Implements
         public List<SysAuthority> GetSysAuthorities(Boolean isAdmin, List<SysRole> roles, ZhouLiEnum.Enum_AuthorityType authorityType)
         {
             StringBuilder builder = new StringBuilder(20);
-            builder.AppendLine(@"SELECT SAT.*, SM.*
+            builder.AppendLine($@"SELECT SAT.*, SM.*
                                 FROM(
                                     SELECT SAT.*
-                                    FROM Sys_Authority SAT");
+                                    FROM Sys_Authority SAT WHERE DeleteSign={(int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted}");
             if (!isAdmin)
             {
                 var roleList = roles.Select(t => t.RoleId).ToList();

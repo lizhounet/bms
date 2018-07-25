@@ -16,5 +16,11 @@ namespace Zhouli.BLL.Interface
         /// <param name="user">用户实体</param>
         /// <returns></returns>
         MessageModel GetMenusBy(SysUser user);
+        /// <summary>
+        /// 删除菜单
+        /// </summary>
+        /// <param name="MenuId"></param>
+        /// <returns></returns>
+        MessageModel DelMenu(Guid MenuId);
     }
 }

@@ -27,7 +27,8 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             return View();
         }
-        public IActionResult SelectMenuIcon() {
+        public IActionResult SelectMenuIcon()
+        {
             return View();
         }
         /// <summary>
@@ -52,19 +53,67 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public string AddOrEditMenu(SysMenuDto menuDto)
         {
             bool bResult = false;
+            int menuCount = injection.GetT<ISysMenuBLL>().GetCount(t => t.MenuId.Equals(menuDto.MenuId));
             //添加
-            if (menuDto.MenuId == Guid.Empty)
+            if (menuCount == 0)
             {
-                bResult = injection.GetT<ISysMenuBLL>().Add(AutoMapper.Mapper.Map<SysMenu>(menuDto));
+                var AuthorityId = Guid.NewGuid();
+                using (var tran = injection.GetT<ZhouLiContext>().Database.BeginTransaction())
+                {
+                    int i = 0;
+                    //添加权限
+                    bResult = injection.GetT<ISysAuthorityBLL>().Add(new SysAuthority
+                    {
+                        AuthorityType = (int)ZhouLiEnum.Enum_AuthorityType.Type_Menu,
+                        AuthorityId = AuthorityId
+                    });
+                    if (bResult) i++;
+                    bResult = injection.GetT<ISysAmRelatedBLL>().Add(new SysAmRelated
+                    {
+                        AuthorityId = AuthorityId,
+                        MenuId = menuDto.MenuId
+                    });
+                    if (bResult) i++;
+                    bResult = injection.GetT<ISysMenuBLL>().Add(AutoMapper.Mapper.Map<SysMenu>(menuDto));
+                    if (bResult) i++;
+                    if (i == 3)
+                        tran.Commit();
+                    else
+                    {
+                        tran.Rollback();
+                        bResult = false;
+                    }
+
+                }
             }
             else
             {
-                bResult = injection.GetT<ISysMenuBLL>().Update(AutoMapper.Mapper.Map<SysMenu>(menuDto));
+                var menu = injection.GetT<ISysMenuBLL>().GetModels(t => t.MenuId.Equals(menuDto.MenuId)).SingleOrDefault();
+                menu.MenuName = menuDto.MenuName;
+                menu.MenuIcon = menuDto.MenuIcon;
+                menu.MenuSort = menuDto.MenuSort;
+                menu.Note = menuDto.Note;
+                menu.ParentMenuId = menuDto.ParentMenuId;
+                bResult = injection.GetT<ISysMenuBLL>().Update(menu);
             }
             return JsonHelper.ObjectToJson(new ResponseModel
             {
                 StateCode = bResult ? StatesCode.success : StatesCode.failure,
                 Messages = bResult ? "添加成功" : "添加失败"
+            });
+        }
+        /// <summary>
+        /// 删除菜单(同时删除权限表对应的菜单权限)
+        /// </summary>
+        /// <param name="MenuId"></param>
+        /// <returns></returns>
+        public string DelMenu(Guid MenuId)
+        {
+            var messageModel = injection.GetT<ISysMenuBLL>().DelMenu(MenuId);
+            return JsonHelper.ObjectToJson(new ResponseModel
+            {
+                Messages = messageModel.Message,
+                StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
             });
         }
     }
