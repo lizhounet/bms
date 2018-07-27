@@ -35,6 +35,10 @@ namespace Zhouli.BLL
         /// </summary>
         public List<SysMenuDto> children { set; get; }
         /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateTime { set; get; }
+        /// <summary>
         /// 备注
         /// </summary>
         public string Note { set; get; }

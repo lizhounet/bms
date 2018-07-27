@@ -6,9 +6,14 @@ layui.use(['form', 'layer'], function () {
     zhouliMenu.loadMenu();//加载菜单
     //监听提交
     form.on('submit(saveMenu)', function (data) {
-        layer.msg(JSON.stringify(data.field));
+        //layer.msg(JSON.stringify(data.field));
         $.post("/system/menu/addoreditmenu", data.field, function (res) {
-            console.log(res);
+            if (res.StateCode == 200) {
+                zhouliMenu.loadMenu();
+            }
+            else {
+                layer.msg(res.Messages);
+            }
         }, "json");
         return false;
     });
@@ -68,14 +73,14 @@ function addHoverDom(treeId, treeNode) {
     var sObj = $("#" + treeNode.tId + "_span");
     if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
     var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
-        + "' title='添加菜单' onfocus='this.blur();'></span>";
+        + "' title='添加子菜单' onfocus='this.blur();'></span>";
     sObj.after(addStr);
     var btn = $("#addBtn_" + treeNode.tId);
     btn.next('.edit').attr('title', '编辑');
     btn.next('.edit').next('.remove').attr('title', '删除');
     if (btn) btn.bind("click", function () {
         var zTree = $.fn.zTree.getZTreeObj("treeMenu");
-        var node = { MenuId: createGuid(), ParentMenuId: treeNode.MenuId, MenuName: "新建菜单1" };
+        var node = { MenuId: createGuid(), ParentMenuId: treeNode.MenuId, MenuName: "新建菜单1",MenuIcon:"layui-icon-file"};
         zTree.addNodes(treeNode, node);
         //添加之后启用编辑状态
         zTree.editName(zTree.getNodeByParam("MenuId", node.MenuId, null));
@@ -88,11 +93,13 @@ function removeHoverDom(treeId, treeNode) {
 }
 //编辑确定事件
 function editBeforeName(treeId, treeNode, newName, isCancel) {
+    console.log(treeNode);
     $("#MenuId").val(treeNode.MenuId);
     $("#MenuName").val(newName);
     $("#ParentMenuId").val(treeNode.ParentMenuId);
     $("#MenuUrl").val(treeNode.MenuUrl);
     $("#MenuSort").val(treeNode.MenuSort);
+    $("#MenuIcon").val(treeNode.MenuIcon);
     $("#Note").val(treeNode.Note);
     var postData = {
         MenuId: treeNode.MenuId,
@@ -122,25 +129,25 @@ function zTreeBeforeClick(treeId, treeNode, clickFlag) {
 //节点删除之前的事件
 function zTreeBeforeRemove(treeId, treeNode) {
     console.log(treeNode);
-    layer.confirm('确定要删除此节点吗?', function (index) {
-        $.ajax({
-            url: "/system/menu/delmenu",
-            type: "post",
-            data: { MenuId: treeNode.MenuId },
-            dataType: "json",
-            async: false,
-            success: function (res) {
-                layer.close(index);
-                if (res.StateCode != 200) {
-                    layer.msg(res.Messages);
-                    zhouliMenu.loadMenu();
-                }
-            },
-            error: function (err) {
-                layer.close(index);
-                layer.msg("服务器出错");
+    $.ajax({
+        url: "/system/menu/delmenu",
+        type: "post",
+        data: { MenuId: treeNode.MenuId },
+        dataType: "json",
+        async: false,
+        success: function (res) {
+            if (res.StateCode != 200) {
+                layer.msg(res.Messages);
+                return false;
             }
-        });
+            else
+                return true;
+        },
+        error: function (err) {
+            layer.close(index);
+            layer.msg("服务器出错");
+            return false;
+        }
     });
 }
 //拖拽后的事件
@@ -152,8 +159,47 @@ function zTreeBeforeDrop(treeId, treeNodes, targetNode, moveType) {
     console.log(treeNodes);
     console.log(targetNode);
     console.log(moveType);
+    var menuNode = treeNodes[0];
+    if (menuNode) {
+        if (moveType === "prev") {
+            menuNode.MenuSort = parseInt(targetNode.MenuSort) + 1;
+        } else {
+            menuNode.MenuSort = parseInt(targetNode.MenuSort) - 1;
+        }
+        $.ajax({
+            url: "/system/menu/addoreditmenu",
+            type: "post",
+            data: menuNode,
+            dataType: "json",
+            async: false,
+            success: function (res) {
+                if (res.StateCode != 200) {
+                    layer.msg(res.Messages);
+                    zhouliMenu.loadMenu();
+                }
+            },
+            error: function (err) {
+                layer.msg("服务器出错");
+            }
+        });
+    }
     return true;
 };
+//添加根节点
+function addRootNode() {
+    var ztree = zhouliMenu.getZtreeObj();
+    var nodes = ztree.getSelectedNodes();
+    if (nodes && nodes.length > 0) {
+        var node = { MenuId: createGuid(), ParentMenuId: nodes[0].ParentMenuId, MenuName: "新建菜单1", MenuIcon: "layui-icon-file"  };
+        ztree.addNodes(nodes[0].getParentNode(), node);
+        //添加之后启用编辑状态
+        ztree.editName(ztree.getNodeByParam("MenuId", node.MenuId, null));
+
+    } else {
+        layer.msg("请先选择一个节点");
+    }
+
+}
 //js生成guid
 function createGuid() {
     var s = [];

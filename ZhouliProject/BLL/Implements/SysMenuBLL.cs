@@ -40,7 +40,7 @@ namespace Zhouli.BLL.Implements
             var listMenuDto = new List<SysMenuDto>();
             listMenuDtos = Mapper.Map<List<SysMenuDto>>(((List<SysAuthority>)(sysAuthorityBLL.GetSysAuthorities(user, ZhouLiEnum.Enum_AuthorityType.Type_Menu).Data)).Select(t => t.sysMenu).ToList());
             //找出所有一级菜单
-            listMenuDto.AddRange(listMenuDtos.Where(t => t.ParentMenuId.Equals(Guid.Empty)).OrderByDescending(t => t.MenuSort));
+            listMenuDto.AddRange(listMenuDtos.Where(t => t.ParentMenuId.Equals(Guid.Empty)).OrderByDescending(t => t.MenuSort).ThenBy(t=>t.CreateTime));
             foreach (var item in listMenuDto)
             {
                 item.children = GetMenuChildren(item.MenuId);
@@ -57,7 +57,7 @@ namespace Zhouli.BLL.Implements
         /// <returns></returns>
         private List<SysMenuDto> GetMenuChildren(Guid ParentMenuId)
         {
-            var listMenuDto = listMenuDtos.Where(t => t.ParentMenuId.Equals(ParentMenuId)).OrderByDescending(t => t.MenuSort).ToList();
+            var listMenuDto = listMenuDtos.Where(t => t.ParentMenuId.Equals(ParentMenuId)).OrderByDescending(t => t.MenuSort).ThenBy(t => t.CreateTime).ToList();
             foreach (var item in listMenuDto)
             {
                 item.children = GetMenuChildren(item.MenuId);

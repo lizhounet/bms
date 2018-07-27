@@ -85,7 +85,7 @@ use ZhouLi;
  CREATE TABLE Sys_Menu(
  MenuId uniqueidentifier primary key DEFAULT newid() NOT NULL ,--主键
  MenuName NVARCHAR(50) NOT NULL,--菜单名称
- MenuIcon NVARCHAR(10) NULL,--菜单图标(只支持layui图标)
+ MenuIcon NVARCHAR(50) NULL,--菜单图标(只支持layui图标)
  MenuUrl varchar(80) NULL,--菜单url
  MenuSort int NOT NULL,--菜单排序号
  ParentMenuId uniqueidentifier DEFAULT CAST(CAST(0 AS BINARY) AS UNIQUEIDENTIFIER)   NULL,--父菜单id
