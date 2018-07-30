@@ -104,7 +104,7 @@ namespace ZhouliSystem
             //日志记录中间件
             repository = LogManager.CreateRepository("NETCoreRepository");
             XmlConfigurator.Configure(repository, new FileInfo("log4net.config"));
-            //app.UseStatusCodePages();
+            app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();
             //gzip压缩中间件

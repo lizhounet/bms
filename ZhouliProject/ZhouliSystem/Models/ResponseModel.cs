@@ -23,10 +23,10 @@ using System.Text;
 
 namespace ZhouliSystem.Models
 {
+    [Serializable]
     /// <summary>
     /// http普通请求响应客户端消息model
     /// </summary>
-    [Serializable]
     public class ResponseModel
     {
         /// <summary>

@@ -12,13 +12,29 @@ namespace Zhouli.BLL.Implements
     public class SysAuthorityBLL : BaseBLL<SysAuthority>, ISysAuthorityBLL
     {
         private ISysAuthorityDAL sysAuthorityDAL;
+        private ISysRoleBLL sysRoleBLL;
         /// <summary>
         /// 用于实例化父级，sysAuthorityDAL
         /// </summary>
         /// <param name="sysAuthorityDAL"></param>
-        public SysAuthorityBLL(ISysAuthorityDAL sysAuthorityDAL) : base(sysAuthorityDAL)
+        public SysAuthorityBLL(ISysAuthorityDAL sysAuthorityDAL, ISysRoleBLL sysRoleBLL) : base(sysAuthorityDAL)
         {
             this.sysAuthorityDAL = sysAuthorityDAL;
+            this.sysRoleBLL = sysRoleBLL;
+        }
+        /// <summary>
+        /// 获取角色的权限集合
+        /// </summary>
+        /// <param name="RoleId">角色Id</param>
+        /// <param name="authorityType">权限类型</param>
+        /// <returns></returns>
+        public MessageModel GetRoleAuthoritieList(Guid RoleId, ZhouLiEnum.Enum_AuthorityType authorityType)
+        {
+            var RoleList = sysRoleBLL.GetModels(t => t.RoleId.Equals(RoleId));
+            return new MessageModel
+            {
+                Data = sysAuthorityDAL.GetSysAuthorities(false, RoleList, authorityType)
+            };
         }
         /// <summary>
         /// 获取用户权限集合

@@ -148,3 +148,5 @@ E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.Vi
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.csproj.CopyComplete
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.dll
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.pdb
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Authority\Index.g.cshtml.cs
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\RoleAssignment.g.cshtml.cs

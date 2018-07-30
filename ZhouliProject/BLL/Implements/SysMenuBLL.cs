@@ -65,6 +65,11 @@ namespace Zhouli.BLL.Implements
 
             return listMenuDto;
         }
+        /// <summary>
+        /// 删除菜单(逻辑删除)
+        /// </summary>
+        /// <param name="MenuId"></param>
+        /// <returns></returns>
         public MessageModel DelMenu(Guid MenuId)
         {
             bool bResult = false;
@@ -99,6 +104,19 @@ namespace Zhouli.BLL.Implements
             {
                 Message = "删除失败",
                 Result = bResult
+            };
+        }
+        /// <summary>
+        /// 获取角色的菜单
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <returns></returns>
+        public MessageModel GetRoleMenuList(Guid RoleId) {
+
+            var list = Mapper.Map<List<SysMenuDto>>(((List<SysAuthority>)sysAuthorityBLL.GetRoleAuthoritieList(RoleId, ZhouLiEnum.Enum_AuthorityType.Type_Menu).Data).Select(t => t.sysMenu).ToList());
+            return new MessageModel
+            {
+                Data = list
             };
         }
     }

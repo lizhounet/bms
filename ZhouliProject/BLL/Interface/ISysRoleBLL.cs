@@ -25,5 +25,14 @@ namespace Zhouli.BLL.Interface
         /// <returns></returns>
         MessageModel DelRole(IEnumerable<Guid> RoleId);
         #endregion
+        #region 为角色添加功能菜单
+        /// <summary>
+        /// 为角色添加功能菜单
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="menuDtos"></param>
+        /// <returns></returns>
+        MessageModel AddRoleMenu(Guid RoleId,List<SysMenuDto> menuDtos);
+        #endregion
     }
 }

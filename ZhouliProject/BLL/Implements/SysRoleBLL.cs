@@ -62,5 +62,19 @@ namespace Zhouli.BLL.Implements
             };
         }
         #endregion
+        #region 为角色添加功能菜单
+        /// <summary>
+        /// 为角色添加功能菜单
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="menuDtos"></param>
+        /// <returns></returns>
+        public MessageModel AddRoleMenu(Guid RoleId, List<SysMenuDto> menuDtos) {
+            return new MessageModel
+            {
+                Result = sysRoleDAL.AddRoleMenu(RoleId, AutoMapper.Mapper.Map<List<SysMenu>>(menuDtos))
+            };
+        }
+        #endregion
     }
 }

@@ -20,5 +20,4 @@ namespace Zhouli.DAL.Interface
         /// <returns></returns>
         List<SysAuthority> GetSysAuthorities(Boolean isAdmin, List<SysRole> roles,ZhouLiEnum.Enum_AuthorityType authorityType);
     }
-    
 }

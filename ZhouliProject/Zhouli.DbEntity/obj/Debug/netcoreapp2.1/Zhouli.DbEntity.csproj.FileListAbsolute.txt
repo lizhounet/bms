@@ -23,3 +23,4 @@ E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEnt
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.AssemblyInfo.cs
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
+E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.csprojAssemblyReference.cache

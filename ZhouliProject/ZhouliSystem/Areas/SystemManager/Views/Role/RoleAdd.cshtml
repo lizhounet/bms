@@ -6,9 +6,13 @@
 @section css{
     <link href="~/lib/layui/css/layui.css" rel="stylesheet" />
     <link href="~/css/public.css" rel="stylesheet" />
+    <link href="~/lib/ztree/bootstrapStyle/bootstrapStyle.css" rel="stylesheet" />
 }
 <div style="padding:20px;">
     <form class="layui-form" style="width:80%;">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>基本信息</legend>
+        </fieldset>
         <div class="layui-form-item layui-row layui-col-xs12">
             <label class="layui-form-label">角色名称<i style="color:red;">*</i></label>
             <div class="layui-input-block">
@@ -22,6 +26,13 @@
             </div>
         </div>
         <input type="text" style="display:none;" class="roleId">
+        <!--菜单授权部分-->
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>授权功能菜单</legend>
+        </fieldset>
+        <div class="layui-form-item layui-row layui-col-xs12">
+            <ul id="treeMenu" class="ztree"></ul>
+        </div>
         <div class="layui-form-item layui-row layui-col-xs12">
             <div class="layui-input-block">
                 <button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="addRole">保存</button>
@@ -30,6 +41,11 @@
         </div>
     </form>
 </div>
-<script src="~/lib/main.js"></script>
-<script src="~/lib/require/require.js" data-main="../js/Areas/SystemManager/Role/RoleAdd"></script>
+
+<script src="~/lib/ztree/js/jquery.min.js"></script>
+<script src="~/lib/ztree/js/jquery.ztree.core.min.js"></script>
+<script src="~/lib/ztree/js/jquery.ztree.excheck.min.js"></script>
+<script src="~/lib/ztree/js/jquery.ztree.exedit.min.js"></script>
+<script src="~/lib/layui/layui.js"></script>
+<script src="~/js/Areas/SystemManager/Role/RoleAdd.js"></script>
 

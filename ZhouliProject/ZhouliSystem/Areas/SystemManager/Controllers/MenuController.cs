@@ -39,7 +39,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public string GetMenuList()
         {
             var menuList = (List<SysMenuDto>)(injection.GetT<ISysMenuBLL>().GetMenusBy(injection.GetT<UserAccount>().GetUserInfo()).Data);
-
+           
             return JsonHelper.ObjectToJson(new ResponseModel
             {
                 JsonData = menuList
@@ -93,6 +93,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 menu.MenuIcon = menuDto.MenuIcon;
                 menu.MenuSort = menuDto.MenuSort;
                 menu.Note = menuDto.Note;
+                menu.MenuUrl = menuDto.MenuUrl;
                 menu.ParentMenuId = menuDto.ParentMenuId;
                 bResult = injection.GetT<ISysMenuBLL>().Update(menu);
             }
@@ -116,5 +117,6 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
             });
         }
+        
     }
 }

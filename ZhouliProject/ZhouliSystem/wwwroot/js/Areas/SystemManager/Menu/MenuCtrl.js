@@ -1,5 +1,4 @@
-﻿
-layui.use(['form', 'layer'], function () {
+﻿layui.use(['form', 'layer'], function () {
     var form = layui.form,
         $ = layui.jquery,
         layer = layui.layer; //获取form模块
