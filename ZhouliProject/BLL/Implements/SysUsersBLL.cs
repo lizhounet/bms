@@ -29,9 +29,10 @@ namespace Zhouli.BLL.Implements
         /// <returns></returns>
         public MessageModel GetLoginSysUser(SysUser user)
         {
-            var messageModel = new MessageModel();
-            messageModel.Data = usersDAL.SetLoginSysUser(user);
-            return messageModel;
+            return new MessageModel
+            {
+                Data = usersDAL.SetLoginSysUser(user)
+            };
         }
         #endregion
         #region 获取用户列表
@@ -106,7 +107,7 @@ namespace Zhouli.BLL.Implements
                 else
                 {
                     var user_edit = GetModels(t => t.UserId.Equals(user.UserId)).SingleOrDefault();
-                    user_edit.UserName= user.UserName;
+                    user_edit.UserName = user.UserName;
                     user_edit.UserNikeName = user.UserNikeName;
                     user_edit.UserSex = user.UserSex;
                     user_edit.UserBirthday = user.UserBirthday;

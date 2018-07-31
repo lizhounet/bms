@@ -22,5 +22,6 @@ namespace Zhouli.DAL.Interface
         /// <returns></returns>
         bool AddRoleMenu(Guid RoleId, List<SysMenu> menus);
         #endregion
+      
     }
 }

@@ -41,6 +41,7 @@ namespace Zhouli.DAL
             this.sqlConnection = sqlConnection;
             this.dataBaseType = dataBaseType;
         }
+        private static IDbConnection conn;
         public IDbConnection GetConnection
         {
             get

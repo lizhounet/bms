@@ -1,10 +1,11 @@
-﻿layui.use(['form', 'layer'], function () {
+﻿layui.use(['form', 'layer','element'], function () {
     var form = layui.form;
+    element = layui.element;
     layer = parent.layer === undefined ? layui.layer : top.layer,
         $ = layui.jquery;
-    $(".roleId").change(function () {
-        // 这里可以写些验证代码
-        console.log("幼稚了");
+    //选项卡切换事件
+    element.on('tab(RoleAuthTab)', function (data) {
+        console.log(data);
     });
     form.on("submit(addRole)", function (data) {
         //弹出loading

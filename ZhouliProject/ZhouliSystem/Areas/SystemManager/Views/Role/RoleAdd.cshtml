@@ -26,12 +26,19 @@
             </div>
         </div>
         <input type="text" style="display:none;" class="roleId">
-        <!--菜单授权部分-->
+        <!--角色授权部分-->
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>授权功能菜单</legend>
+            <legend>角色授权</legend>
         </fieldset>
-        <div class="layui-form-item layui-row layui-col-xs12">
-            <ul id="treeMenu" class="ztree"></ul>
+        <div class="layui-tab layui-tab-brief" lay-filter="RoleAuthTab">
+            <ul class="layui-tab-title">
+                <li class="layui-this">菜单权限</li>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <ul id="treeMenu" class="ztree"></ul>
+                </div>
+            </div>
         </div>
         <div class="layui-form-item layui-row layui-col-xs12">
             <div class="layui-input-block">

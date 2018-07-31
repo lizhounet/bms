@@ -32,7 +32,33 @@ namespace Zhouli.BLL.Interface
         /// <param name="RoleId"></param>
         /// <param name="menuDtos"></param>
         /// <returns></returns>
-        MessageModel AddRoleMenu(Guid RoleId,List<SysMenuDto> menuDtos);
+        MessageModel AddRoleMenu(Guid RoleId, List<SysMenuDto> menuDtos);
+        #endregion
+        #region 获取角色所分配的用户
+        /// <summary>
+        /// 获取角色所分配的用户
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <returns></returns>
+        MessageModel GetRoleUserList(Guid RoleId, string page, string limit, string searchstr);
+        #endregion
+        #region 为角色分配用户
+        /// <summary>
+        /// 为角色分配用户
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserIds"></param>
+        /// <returns></returns>
+        MessageModel AssignmentRoleUser(Guid RoleId, List<Guid> UserIds);
+        #endregion
+        #region 取消用户角色
+        /// <summary>
+        /// 取消用户角色
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserIds"></param>
+        /// <returns></returns>
+        MessageModel CancelAssignment(Guid RoleId, List<Guid> UserIds);
         #endregion
     }
 }

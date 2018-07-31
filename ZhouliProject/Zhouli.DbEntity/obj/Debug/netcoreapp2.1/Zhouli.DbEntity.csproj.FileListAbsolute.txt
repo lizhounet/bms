@@ -18,9 +18,9 @@ F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\ne
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.deps.json
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
+E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.csprojAssemblyReference.cache
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.csproj.CoreCompileInputs.cache
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.AssemblyInfoInputs.cache
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.AssemblyInfo.cs
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
 E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
-E:\zhouli\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.csprojAssemblyReference.cache

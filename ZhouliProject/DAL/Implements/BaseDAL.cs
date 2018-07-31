@@ -73,7 +73,7 @@ namespace Zhouli.DAL.Implements
                 return db.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
         }
-        public int ExecuteSql(string sql, SqlParameter parameter)
+        public int ExecuteSql(string sql, SqlParameter parameter = null)
         {
             if (parameter == null)
                 return db.Database.ExecuteSqlCommand(sql);

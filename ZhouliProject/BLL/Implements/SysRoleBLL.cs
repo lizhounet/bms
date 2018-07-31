@@ -12,14 +12,18 @@ namespace Zhouli.BLL.Implements
 {
     public class SysRoleBLL : BaseBLL<SysRole>, ISysRoleBLL
     {
-        private ISysRoleDAL sysRoleDAL;
+        private readonly ISysRoleDAL sysRoleDAL;
+        private readonly ISysUserDAL sysUserDAL;
+        private readonly ISysUrRelatedDAL sysUrRelatedDAL;
         /// <summary>
         /// 用于实例化父级，sysRoleDAL
         /// </summary>
         /// <param name="sysRoleDAL"></param>
-        public SysRoleBLL(ISysRoleDAL sysRoleDAL) : base(sysRoleDAL)
+        public SysRoleBLL(ISysRoleDAL sysRoleDAL, ISysUserDAL sysUserDAL, ISysUrRelatedDAL sysUrRelatedDAL) : base(sysRoleDAL)
         {
             this.sysRoleDAL = sysRoleDAL;
+            this.sysUserDAL = sysUserDAL;
+            this.sysUrRelatedDAL = sysUrRelatedDAL;
         }
         #region 删除角色(批量删除)
         /// <summary>
@@ -50,7 +54,7 @@ namespace Zhouli.BLL.Implements
         public MessageModel GetRoleList(string page, string limit, string searchstr)
         {
             var query = sysRoleDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime,
-                t => t.RoleName.Contains(searchstr) || string.IsNullOrEmpty(searchstr) 
+                t => t.RoleName.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
                 && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
             return new MessageModel
             {
@@ -69,10 +73,92 @@ namespace Zhouli.BLL.Implements
         /// <param name="RoleId"></param>
         /// <param name="menuDtos"></param>
         /// <returns></returns>
-        public MessageModel AddRoleMenu(Guid RoleId, List<SysMenuDto> menuDtos) {
+        public MessageModel AddRoleMenu(Guid RoleId, List<SysMenuDto> menuDtos)
+        {
             return new MessageModel
             {
                 Result = sysRoleDAL.AddRoleMenu(RoleId, AutoMapper.Mapper.Map<List<SysMenu>>(menuDtos))
+            };
+        }
+        #endregion
+        #region 获取角色所分配的用户
+        /// <summary>
+        /// 获取角色所分配的用户
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <returns></returns>
+        public MessageModel GetRoleUserList(Guid RoleId, string page, string limit, string searchstr)
+        {
+            var messageModel = new MessageModel();
+            var PageModel = new PageModel();
+            var urRelateds = sysUrRelatedDAL.GetModels(t => t.RoleId.Equals(RoleId)).ToList();
+            Expression<Func<SysUser, bool>> expression = t => (string.IsNullOrEmpty(searchstr) || t.UserName.Contains(searchstr) ||
+                t.UserNikeName.Contains(searchstr) ||
+                t.UserPhone.Contains(searchstr) ||
+                t.UserQq.Contains(searchstr) ||
+                t.UserWx.Contains(searchstr) ||
+                t.UserEmail.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)
+                && urRelateds.Any(x => x.UserId == t.UserId);
+            PageModel.RowCount = sysUserDAL.GetCount(expression);
+            int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
+            var list = sysUserDAL.SqlQuery<SysUserDto>($@"
+                                           SELECT *
+                                FROM (
+                                    SELECT ROW_NUMBER() OVER (ORDER BY T1.CREATETIME DESC) AS RN, T1.*
+                                    FROM Sys_User T1
+                                    WHERE (T1.UserNikeName LIKE '%{searchstr}%'
+                                            OR T1.UserPhone LIKE '%{searchstr}%'
+                                            OR T1.UserQq LIKE '%{searchstr}%'
+                                            OR T1.UserWx LIKE '%{searchstr}%'
+                                            OR T1.UserEmail LIKE '%{searchstr}%')
+                                        AND T1.DeleteSign = 1
+                                        AND T1.UserId IN('{String.Join("','", urRelateds.Count == 0 ? new Guid[] { Guid.Empty } : urRelateds.Select(t => t.UserId))}')
+                                ) T
+                                WHERE RN BETWEEN {iBeginRow} AND {iEndRow}");
+            PageModel.Data = list;
+            messageModel.Data = PageModel;
+            return messageModel;
+        }
+        #endregion
+        #region 为角色分配用户
+        /// <summary>
+        /// 为角色分配用户
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserIds"></param>
+        /// <returns></returns>
+        public MessageModel AssignmentRoleUser(Guid RoleId, List<Guid> UserIds)
+        {
+            StringBuilder builderDelSql = new StringBuilder(20);
+            builderDelSql.AppendLine($"DELETE FROM Sys_UrRelated WHERE RoleId = '{RoleId}'");
+            builderDelSql.AppendLine("INSERT INTO Sys_UrRelated(UserId,RoleId) ");
+            foreach (var item in UserIds)
+            {
+                builderDelSql.AppendLine($"SELECT '{item}', '{RoleId}' UNION ALL");
+            }
+            var sql = builderDelSql.ToString().Remove(builderDelSql.ToString().LastIndexOf("UNION ALL"));
+            bool bReuslt = sysRoleDAL.ExecuteSql(sql) > 0;
+            return new MessageModel
+            {
+                Message = bReuslt ? "分配成功" : "分配失败",
+                Result = bReuslt
+            };
+        }
+        #endregion
+        #region 取消用户角色
+        /// <summary>
+        /// 取消用户角色
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserIds"></param>
+        /// <returns></returns>
+        public MessageModel CancelAssignment(Guid RoleId, List<Guid> UserIds)
+        {
+            bool bReuslt = sysRoleDAL.ExecuteSql($"DELETE FROM Sys_UrRelated WHERE RoleId='{RoleId}' AND UserId IN('{String.Join("','", UserIds)}')") > 0;
+            return new MessageModel
+            {
+                Message = bReuslt ? "取消授权成功" : "取消授权失败",
+                Result = bReuslt
             };
         }
         #endregion

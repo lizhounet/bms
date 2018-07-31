@@ -125,6 +125,7 @@ E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.As
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.TagHelpers.input.cache
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.TagHelpers.output.cache
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.RazorCoreGenerate.cache
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Authority\Index.g.cshtml.cs
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Menu\Index.g.cshtml.cs
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Menu\SelectMenuIcon.g.cshtml.cs
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\Index.g.cshtml.cs
@@ -148,5 +149,6 @@ E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.Vi
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.csproj.CopyComplete
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.dll
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.pdb
-E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Authority\Index.g.cshtml.cs
-E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\RoleAssignment.g.cshtml.cs
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\RoleAssignmentUser.g.cshtml.cs
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\RoleAssignmentUserGroup.g.cshtml.cs
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\SelectUser.g.cshtml.cs

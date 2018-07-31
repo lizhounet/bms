@@ -29,7 +29,7 @@ using Zhouli.DbEntity.Models;
 namespace ZhouliSystem.Filters
 {
     /// <summary>
-    /// 登陆验证过滤器(检测用户是否登录)
+    /// 登陆验证过滤器(检测用户是否登录;不需要验证的时候加上NoVerificationLogin即可)
     /// </summary>
     public class VerificationLoginAttribute : Attribute, IResourceFilter
     {

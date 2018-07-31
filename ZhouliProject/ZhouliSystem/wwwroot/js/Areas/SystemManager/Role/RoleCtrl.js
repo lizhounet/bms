@@ -115,7 +115,41 @@ require(["jquery", 'layui'], function ($) {
                     }, "json");
                 });
             }
+            else if (layEvent === 'roleassignment') {//角色分配
+                layer.confirm('', { title: '选择分配', btn: ['分配用户', '分配用户组'], btnAlign: 'c' }, function (i, layero) {
+                    layer.close(i);
+                    var index = layui.layer.open({
+                        title: "分配用户(" + data.RoleName + ")",
+                        type: 2,
+                        content: "/System/Role/RoleAssignmentUser?RoleId=" + (data != undefined ? data.RoleId : ""),
+                        success: function (layero, index) {
+                            var body = layui.layer.getChildFrame('body', index);
+                            setTimeout(function () {
+                                layui.layer.tips('点击此处返回角色列表', '.layui-layer-setwin .layui-layer-close', {
+                                    tips: 3
+                                });
+                            }, 500);
+                        }
+                    });
+                    layui.layer.full(index);
+                }, function (i) {
+                    layer.close(i);
+                    var index = layui.layer.open({
+                        title: "分配用户组(" + data.RoleName + ")",
+                        type: 2,
+                        content: "/System/Role/RoleAssignmentUserGroup?RoleId=" + (data != undefined ? data.RoleId : ""),
+                        success: function (layero, index) {
+                            var body = layui.layer.getChildFrame('body', index);
+                            setTimeout(function () {
+                                layui.layer.tips('点击此处返回角色列表', '.layui-layer-setwin .layui-layer-close', {
+                                    tips: 3
+                                });
+                            }, 500);
+                        }
+                    });
+                    layui.layer.full(index);
+                });
+            }
         });
-
     });
 });

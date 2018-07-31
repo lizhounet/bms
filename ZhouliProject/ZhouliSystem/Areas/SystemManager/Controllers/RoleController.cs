@@ -10,7 +10,6 @@ using Zhouli.DbEntity.Models;
 using ZhouliSystem.Data;
 using ZhouliSystem.Models;
 using ZhouliSystem.Filters;
-using System.Collections;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
 {
@@ -24,20 +23,31 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             this.injection = injection;
         }
         #region 视图部分
-        public IActionResult Index()
-        {
-            return View();
-        }
+        /// <summary>
+        /// 主页
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult Index() => View();
         /// <summary>
         /// 添加角色视图
         /// </summary>
         /// <returns></returns>
         public IActionResult RoleAdd() => View();
         /// <summary>
-        /// 角色分配
+        /// 角色分配给用户
         /// </summary>
         /// <returns></returns>
-        public IActionResult RoleAssignment() => View();
+        public IActionResult RoleAssignmentUser() => View();
+        /// <summary>
+        /// 角色分配给用户组
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult RoleAssignmentUserGroup() => View();
+        /// <summary>
+        /// 选择用户
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult SelectUser() => View();
         #endregion
         #region 获取分页角色数据
         /// <summary>
@@ -141,6 +151,52 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                     MenuList = menuList,
                     RoleMenuList = roleMenuList
                 }
+            });
+        }
+        #endregion
+        #region 获取角色所分配的用户
+        public string GetRoleUserList(Guid RoleId, string page, string limit, string searchstr)
+        {
+            var messageModel = injection.GetT<ISysRoleBLL>().GetRoleUserList(RoleId, page, limit, searchstr);
+            return JsonHelper.ObjectToJson(new
+            {
+                code = 0,
+                msg = "获取成功",
+                count = messageModel.Data.RowCount,
+                data = messageModel.Data.Data
+            });
+        }
+        #endregion
+        #region 为角色分配用户
+        /// <summary>
+        /// 为角色分配用户
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserIds"></param>
+        /// <returns></returns>
+        public string AssignmentRoleUser(Guid RoleId, List<Guid> UserIds)
+        {
+            var messageModel = injection.GetT<ISysRoleBLL>().AssignmentRoleUser(RoleId, UserIds);
+            return JsonHelper.ObjectToJson(new ResponseModel
+            {
+                Messages = messageModel.Message,
+                StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
+            });
+        }
+        #endregion
+        #region 取消用户角色
+        /// <summary>
+        /// 取消用户角色
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserIds"></param>
+        public string CancelAssignment(Guid RoleId, List<Guid> UserIds)
+        {
+            var messageModel = injection.GetT<ISysRoleBLL>().CancelAssignment(RoleId, UserIds);
+            return JsonHelper.ObjectToJson(new ResponseModel
+            {
+                Messages = messageModel.Message,
+                StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
             });
         }
         #endregion
