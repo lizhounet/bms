@@ -40,7 +40,7 @@ namespace Zhouli.BLL.Implements
             var listMenuDto = new List<SysMenuDto>();
             listMenuDtos = Mapper.Map<List<SysMenuDto>>(((List<SysAuthority>)(sysAuthorityBLL.GetSysAuthorities(user, ZhouLiEnum.Enum_AuthorityType.Type_Menu).Data)).Select(t => t.sysMenu).ToList());
             //找出所有一级菜单
-            listMenuDto.AddRange(listMenuDtos.Where(t => t.ParentMenuId.Equals(Guid.Empty)).OrderByDescending(t => t.MenuSort).ThenBy(t=>t.CreateTime));
+            listMenuDto.AddRange(listMenuDtos.Where(t => t.ParentMenuId.Equals(Guid.Empty)).OrderByDescending(t => t.MenuSort).ThenBy(t => t.CreateTime));
             foreach (var item in listMenuDto)
             {
                 item.children = GetMenuChildren(item.MenuId);
@@ -111,7 +111,8 @@ namespace Zhouli.BLL.Implements
         /// </summary>
         /// <param name="RoleId"></param>
         /// <returns></returns>
-        public MessageModel GetRoleMenuList(Guid RoleId) {
+        public MessageModel GetRoleMenuList(Guid RoleId)
+        {
 
             var list = Mapper.Map<List<SysMenuDto>>(((List<SysAuthority>)sysAuthorityBLL.GetRoleAuthoritieList(RoleId, ZhouLiEnum.Enum_AuthorityType.Type_Menu).Data).Select(t => t.sysMenu).ToList());
             return new MessageModel

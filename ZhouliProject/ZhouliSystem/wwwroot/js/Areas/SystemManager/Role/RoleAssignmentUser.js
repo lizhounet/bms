@@ -62,7 +62,7 @@
             title: "选择用户",
             type: 2,
             area: ["90%", "90%"],
-            content: "/System/Role/SelectUser?RoleId=" + (getQueryString("RoleId")),
+            content: "/System/Role/SelectUser?RoleId=" + getQueryString("RoleId"),
             success: function (layero, index) {
                 var body = layui.layer.getChildFrame('body', index);
                 setTimeout(function () {
@@ -86,25 +86,25 @@
         }
         var roleId = getQueryString("RoleId");
         if (roleId)
-            cancelAssignment(roleId, UserIds);
+            CancelUserAssignment(roleId, UserIds);
         else
             layer.msg("页面参数有误,请刷新页面后重试!");
 
-    })
+    });
     table.on('tool(userList)', function (obj) {
         console.log(obj);
-        if (obj.event == 'cancelAssignment') {
+        if (obj.event == 'cancelUserAssignment') {
             var roleId = getQueryString("RoleId");
             if (roleId)
-                cancelAssignment(roleId, obj.data.UserId);
+                CancelUserAssignment(roleId, obj.data.UserId);
             else
                 layer.msg("页面参数有误,请刷新页面后重试!");
         }
     });
-    function cancelAssignment(RoleId, UserIds) {
+    function CancelUserAssignment(RoleId, UserIds) {
         layer.confirm('确认取消授权吗?', { icon: 3, title: '温馨提示' }, function (index) {
             layer.close(index);
-            $.post("/System/Role/CancelAssignment", { RoleId: RoleId, UserIds: UserIds }, function (res) {
+            $.post("/System/Role/CancelUserAssignment", { RoleId: RoleId, UserIds: UserIds }, function (res) {
                 layer.msg(res.Messages);
                 if (res.StateCode == 200) {
                     table.reload("userListTable", {

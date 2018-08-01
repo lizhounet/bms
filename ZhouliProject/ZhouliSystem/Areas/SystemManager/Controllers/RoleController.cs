@@ -48,6 +48,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <returns></returns>
         public IActionResult SelectUser() => View();
+        /// <summary>
+        /// 选择用户组
+        /// </summary>
+        /// <returns></returns>
+        public IActionResult SelectUserGroup() => View();
         #endregion
         #region 获取分页角色数据
         /// <summary>
@@ -190,9 +195,63 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <param name="RoleId"></param>
         /// <param name="UserIds"></param>
-        public string CancelAssignment(Guid RoleId, List<Guid> UserIds)
+        public string CancelUserAssignment(Guid RoleId, List<Guid> UserIds)
         {
-            var messageModel = injection.GetT<ISysRoleBLL>().CancelAssignment(RoleId, UserIds);
+            var messageModel = injection.GetT<ISysRoleBLL>().CancelUserAssignment(RoleId, UserIds);
+            return JsonHelper.ObjectToJson(new ResponseModel
+            {
+                Messages = messageModel.Message,
+                StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
+            });
+        }
+        #endregion
+        #region 获取角色所分配的用户组
+        /// <summary>
+        /// 获取角色所分配的用户组
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="page"></param>
+        /// <param name="limit"></param>
+        /// <param name="searchstr"></param>
+        /// <returns></returns>
+        public string GetRoleUserGroupList(Guid RoleId, string page, string limit, string searchstr)
+        {
+            var messageModel = injection.GetT<ISysRoleBLL>().GetRoleUserGroupList(RoleId, page, limit, searchstr);
+            return JsonHelper.ObjectToJson(new
+            {
+                code = 0,
+                msg = "获取成功",
+                count = messageModel.Data.RowCount,
+                data = messageModel.Data.Data
+            });
+        }
+        #endregion
+        #region 为角色分配用户组
+        /// <summary>
+        /// 为角色分配用户
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserGroupIds"></param>
+        /// <returns></returns>
+        public string AssignmentRoleUserGroup(Guid RoleId, List<Guid> UserGroupIds)
+        {
+            var messageModel = injection.GetT<ISysRoleBLL>().AssignmentRoleUserGroup(RoleId, UserGroupIds);
+            return JsonHelper.ObjectToJson(new ResponseModel
+            {
+                Messages = messageModel.Message,
+                StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
+            });
+        }
+        #endregion
+        #region 取消用户组角色
+        /// <summary>
+        /// 取消用户角色
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserGroupIds"></param>
+        public string CancelUserGroupAssignment(Guid RoleId, List<Guid> UserGroupIds)
+        {
+            var messageModel = injection.GetT<ISysRoleBLL>().CancelUserGroupAssignment(RoleId, UserGroupIds);
             return JsonHelper.ObjectToJson(new ResponseModel
             {
                 Messages = messageModel.Message,

@@ -11,7 +11,7 @@ namespace Zhouli.BLL.Implements
 {
     public class SysAmRelatedBLL : BaseBLL<SysAmRelated>, ISysAmRelatedBLL
     {
-        private ISysAmRelatedDAL sysAmRelated;
+        private readonly ISysAmRelatedDAL sysAmRelated;
         /// <summary>
         /// 用于实例化父级，sysAmRelated
         /// </summary>

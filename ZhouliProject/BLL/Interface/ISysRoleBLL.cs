@@ -58,7 +58,33 @@ namespace Zhouli.BLL.Interface
         /// <param name="RoleId"></param>
         /// <param name="UserIds"></param>
         /// <returns></returns>
-        MessageModel CancelAssignment(Guid RoleId, List<Guid> UserIds);
+        MessageModel CancelUserAssignment(Guid RoleId, List<Guid> UserIds);
+        #endregion
+        #region 获取角色所分配的用户组
+        /// <summary>
+        /// 获取角色所分配的用户组
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <returns></returns>
+        MessageModel GetRoleUserGroupList(Guid RoleId, string page, string limit, string searchstr);
+        #endregion
+        #region 为角色分配用户组
+        /// <summary>
+        /// 为角色分配用户组
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserGroupIds"></param>
+        /// <returns></returns>
+        MessageModel AssignmentRoleUserGroup(Guid RoleId, List<Guid> UserGroupIds);
+        #endregion
+        #region 取消用户组角色
+        /// <summary>
+        /// 取消用户组角色
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="UserIds"></param>
+        /// <returns></returns>
+        MessageModel CancelUserGroupAssignment(Guid RoleId, List<Guid> UserGroupIds);
         #endregion
     }
 }

@@ -18,6 +18,6 @@ namespace Zhouli.DAL.Interface
         /// <param name="roles">角色集合</param>
         /// <param name="authorityType">权限类型</param>
         /// <returns></returns>
-        List<SysAuthority> GetSysAuthorities(Boolean isAdmin, List<SysRole> roles,ZhouLiEnum.Enum_AuthorityType authorityType);
+        List<SysAuthority> GetSysAuthorities(Boolean isAdmin,List<SysRole> roles,ZhouLiEnum.Enum_AuthorityType authorityType);
     }
 }

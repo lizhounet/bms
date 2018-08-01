@@ -91,7 +91,8 @@ namespace Zhouli.BLL.Implements
                 if (user.UserId.Equals(default(Guid)))
                 {
                     user.UserId = Guid.NewGuid();
-                    user.CreateUserId = userId;//创建人id
+                    //创建人id
+                    user.CreateUserId = userId;
                     //添加用户
                     if (Add(user))
                     {

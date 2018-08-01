@@ -3,6 +3,7 @@ using Zhouli.DbEntity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using ZhouliSystem.Models;
+using Zhouli.Common;
 
 namespace ZhouliSystem.Data
 {
@@ -35,7 +36,7 @@ namespace ZhouliSystem.Data
         /// <returns></returns>
         public bool Login(SysUser user)
         {
-            user.isAdministrctor = judgeUserAdmin(user);
+            user.isAdministrctor = JudgeUserAdmin(user);
             injection.GetHttpContext.HttpContext.Session.SetSession(USER_COOKIE_NAME, user);
             return true;
         }
@@ -44,7 +45,7 @@ namespace ZhouliSystem.Data
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public bool judgeUserAdmin(SysUser user)
+        public bool JudgeUserAdmin(SysUser user)
         {
             var adminAccount = injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value.adminAccount;
             return user.UserName.Equals(adminAccount) ? true : false;

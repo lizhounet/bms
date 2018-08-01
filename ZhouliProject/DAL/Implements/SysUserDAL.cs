@@ -22,7 +22,6 @@ namespace Zhouli.DAL.Implements
             user.sysUserGroup = (from t1 in db.Set<SysUserGroup>() where t1.UserGroupId.Equals(user.UserGroupId) select t1).FirstOrDefault();
             if (user.sysUserGroup != null)
             {
-
                 user.sysUserGroup.sysRoles = (from sur in db.SysUgrRelated
                                  join sr in db.SysRole
                                  on sur.RoleId equals sr.RoleId
@@ -39,7 +38,6 @@ namespace Zhouli.DAL.Implements
                                      Note = sr.Note
                                  }
                              ).ToList();
-
             }
             user.sysRoles = (from sur in db.SysUrRelated
                              join sr in db.SysRole

@@ -152,3 +152,4 @@ E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.pd
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\RoleAssignmentUser.g.cshtml.cs
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\RoleAssignmentUserGroup.g.cshtml.cs
 E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\SelectUser.g.cshtml.cs
+E:\zhouli\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\Razor\Areas\SystemManager\Views\Role\SelectUserGroup.g.cshtml.cs
