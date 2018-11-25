@@ -1,13 +1,14 @@
 ﻿@{
     Layout = "~/Views/Shared/Ordinary.cshtml";
-    ViewData["Title"] = "角色管理";
+    ViewData["Title"] = "菜单管理";
 
 }
 @section css{
     <link href="~/lib/layui/css/layui.css" rel="stylesheet" />
     <link href="~/lib/ztree/bootstrapStyle/bootstrapStyle.css" rel="stylesheet" />
 }
-<div class="childrenBody">
+
+<div style="padding:20px;">
     <div style="padding: 20px; background-color: #F2F2F2;height:100%">
         <div class="layui-row layui-col-space15">
             <div class="layui-col-md6">
@@ -16,6 +17,9 @@
                     <div class="layui-card-body">
                         <button class="layui-btn layui-btn-sm layui-btn-normal" onclick="zhouliMenu.loadMenu()">
                             <i class="layui-icon">&#xe669;</i> 刷新菜单树
+                        </button>
+                        <button class="layui-btn layui-btn-sm layui-btn-normal" onclick="addRootNode()">
+                            <i class="layui-icon">&#xe654;</i> 添加根节点
                         </button>
                         <ul id="treeMenu" class="ztree"></ul>
                     </div>
@@ -27,27 +31,27 @@
                     <div class="layui-card-body">
                         <form class="layui-form layui-form-pane" action="">
                             <div class="layui-form-item">
-                                <label class="layui-form-label">菜单名称</label>
+                                <label class="layui-form-label">菜单名称<i style="color:red;">*</i></label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="MenuName" id="MenuName" autocomplete="off" placeholder="请输入菜单名称" class="layui-input">
+                                    <input type="text" name="MenuName" id="MenuName" lay-verify="required" autocomplete="off" placeholder="请输入菜单名称" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
-                                <label class="layui-form-label">菜单ID</label>
+                                <label class="layui-form-label">菜单ID<i style="color:red;">*</i></label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="MenuId" id="MenuId" disabled class="layui-input">
+                                    <input type="text" name="MenuId" id="MenuId" lay-verify="required" disabled class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">父级菜单ID</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="ParentMenuId" id="ParentMenuId" disabled class="layui-input">
+                                    <input type="text" name="ParentMenuId" id="ParentMenuId"  disabled class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">菜单Url</label>
                                 <div class="layui-input-block">
-                                    <input type="text" name="MenuUrl" id="MenuUrl" autocomplete="off" placeholder="请输入菜单Url" class="layui-input">
+                                    <input type="text" name="MenuUrl" id="MenuUrl"  autocomplete="off" placeholder="请输入菜单Url" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item">

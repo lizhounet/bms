@@ -24,10 +24,10 @@ namespace Zhouli.DAL.Implements
         public List<SysAuthority> GetSysAuthorities(Boolean isAdmin, List<SysRole> roles, ZhouLiEnum.Enum_AuthorityType authorityType)
         {
             StringBuilder builder = new StringBuilder(20);
-            builder.AppendLine(@"SELECT SAT.*, SM.*
+            builder.AppendLine($@"SELECT SAT.*, SM.*
                                 FROM(
                                     SELECT SAT.*
-                                    FROM Sys_Authority SAT");
+                                    FROM Sys_Authority SAT WHERE DeleteSign={(int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted} ) SAT");
             if (!isAdmin)
             {
                 var roleList = roles.Select(t => t.RoleId).ToList();
@@ -44,7 +44,7 @@ namespace Zhouli.DAL.Implements
             switch (authorityType)
             {
                 case ZhouLiEnum.Enum_AuthorityType.Type_Menu:
-                    builder.AppendLine($@") SAT
+                    builder.AppendLine($@"
                                 INNER JOIN Sys_AmRelated SAR ON SAR.AuthorityId = SAT.AuthorityId
                                 LEFT JOIN Sys_Menu SM ON SAR.MenuId = SM.MenuId
                             WHERE AuthorityType = {(int)authorityType}");

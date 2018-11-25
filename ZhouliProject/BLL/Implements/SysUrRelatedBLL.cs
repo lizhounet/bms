@@ -11,7 +11,7 @@ namespace Zhouli.BLL.Implements
 {
     public class SysUrRelatedBLL : BaseBLL<SysUrRelated>, ISysUrRelatedBLL
     {
-        private ISysUrRelatedDAL sysUrRelated;
+        private readonly ISysUrRelatedDAL sysUrRelated;
         /// <summary>
         /// 用于实例化父级，sysUrRelated
         /// </summary>

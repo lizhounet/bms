@@ -5,8 +5,7 @@ using Zhouli.DbEntity.Models;
 
 namespace Zhouli.DAL.Interface
 {
-    public interface ISysUserGroupDAL: IBaseDAL<SysUserGroup>
+    public interface ISysUserGroupDAL:IBaseDAL<SysUserGroup>
     {
-       
     }
 }

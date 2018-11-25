@@ -96,7 +96,7 @@ namespace Zhouli.DbEntity.Models
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.MenuIcon).HasMaxLength(10);
+                entity.Property(e => e.MenuIcon).HasMaxLength(50);
 
                 entity.Property(e => e.MenuName)
                     .IsRequired()
@@ -108,7 +108,7 @@ namespace Zhouli.DbEntity.Models
 
                 entity.Property(e => e.Note).HasMaxLength(2048);
 
-                entity.Property(e => e.ParentMenuId).HasDefaultValueSql("(CONVERT([uniqueidentifier],CONVERT([binary],(0))))");
+                entity.Property(e => e.ParentMenuId).HasDefaultValueSql("(CONVERT([uniqueidentifier],CONVERT([binary],(0),0),0))");
             });
 
             modelBuilder.Entity<SysRaRelated>(entity =>
@@ -170,7 +170,7 @@ namespace Zhouli.DbEntity.Models
                 entity.ToTable("Sys_User");
 
                 entity.HasIndex(e => e.UserName)
-                    .HasName("UQ__Sys_User__C9F284568B704BD5")
+                    .HasName("UQ__Sys_User__C9F28456023D5A04")
                     .IsUnique();
 
                 entity.Property(e => e.UserId).HasDefaultValueSql("(newid())");
@@ -213,14 +213,14 @@ namespace Zhouli.DbEntity.Models
                     .HasDefaultValueSql("(upper(substring([sys].[fn_sqlvarbasetostr](hashbytes('MD5','123456')),(3),(32))))");
 
                 entity.Property(e => e.UserQq)
-                    .HasColumnName("UserQQ")
                     .HasMaxLength(15)
                     .IsUnicode(false);
+
+                entity.Property(e => e.UserSex).HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.UserStatus).HasDefaultValueSql("((1))");
 
                 entity.Property(e => e.UserWx)
-                    .HasColumnName("UserWX")
                     .HasMaxLength(50)
                     .IsUnicode(false);
             });

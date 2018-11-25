@@ -25,11 +25,11 @@
             </ul>
             <!-- 顶部右侧菜单 -->
             <ul class="layui-nav top_menu">
-                <li class="layui-nav-item lockcms" pc>
+                @*<li class="layui-nav-item lockcms" pc>
                     <a href="javascript:;"><i class="seraph icon-lock"></i><cite>锁屏</cite></a>
-                </li>
+                </li>*@
                 <li class="layui-nav-item" id="userInfo">
-                    <a href="javascript:;"><img src="@Model.UserAvatar" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">@Model.UserNikeName</cite></a>
+                    <a href="javascript:;"><img src="@Model.UserAvatar" class="layui-nav-img userAvatar" id="userAvatar" width="35" height="35"><cite class="adminName">@Model.UserNikeName</cite></a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" data-url="/User/UserInfo"><i class="seraph icon-ziliao" data-icon="icon-ziliao"></i><cite>个人资料</cite></a></dd>
                         <dd><a href="javascript:;" data-url="/User/UserChagePwd"><i class="seraph icon-xiugai" data-icon="icon-xiugai"></i><cite>修改密码</cite></a></dd>
@@ -170,7 +170,7 @@
     </div>
     <!-- 右侧内容 -->
     <div class="layui-body layui-form">
-        <div class="layui-tab mag0" lay-filter="bodyTab" lay-allowClose="true" id="top_tabs_box">
+        <div class="layui-tab mag0" lay-filter="bodyTab" lay-allowClose="true" id="top_tabs_box" style="margin-top:0px;">
             <ul class="layui-tab-title top_tab" id="top_tabs">
                 <li class="layui-this" lay-id=""><i class="layui-icon">&#xe68e;</i><cite id="houtaihome">后台首页</cite></li>
             </ul>

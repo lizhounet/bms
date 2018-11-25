@@ -11,7 +11,7 @@ namespace Zhouli.BLL.Implements
 {
     public class DictAuthorityTypeBLL : BaseBLL<DictAuthorityType>, IDictAuthorityTypeBLL
     {
-        private IDictAuthorityTypeDAL dictAuthorityType;
+        private readonly IDictAuthorityTypeDAL dictAuthorityType;
         /// <summary>
         /// 用于实例化父级，dictAuthorityType
         /// </summary>

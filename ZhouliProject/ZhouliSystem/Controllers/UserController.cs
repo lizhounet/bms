@@ -39,7 +39,10 @@ namespace ZhouliSystem.Controllers
             this.injection = injection;
         }
         [ResponseCache(CacheProfileName = "default")]
-        public IActionResult Login() => View();
+        public IActionResult Login() {
+            
+            return View();
+        }
         public IActionResult UserInfo()
         {
             ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(injection.GetT<UserAccount>().GetUserInfo().UserId)).SingleOrDefault());

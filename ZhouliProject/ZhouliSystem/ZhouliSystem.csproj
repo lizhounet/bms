@@ -26,6 +26,26 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\lib\layui\font\iconfont.svg" />
+    <None Include="wwwroot\lib\layui\layui.all.js" />
+    <None Include="wwwroot\lib\layui\layui.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\carousel.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\code.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\element.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\flow.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\form.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\jquery.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\laydate.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\layedit.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\layer.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\laypage.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\laytpl.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\mobile.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\rate.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\table.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\tree.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\upload.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\util.js" />
     <None Include="wwwroot\lib\ztree\js\jquery.min.js" />
     <None Include="wwwroot\lib\ztree\js\jquery.ztree.all.js" />
     <None Include="wwwroot\lib\ztree\js\jquery.ztree.all.min.js" />
@@ -47,8 +67,15 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Areas\BlogManager\Controllers\" />
     <Folder Include="Areas\BlogManager\Views\" />
+=======
+    <Content Update="wwwroot\js\Areas\SystemManager\Role\RoleAdd.js">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Content>
+>>>>>>> a808b5f182f18453e1ebf432cc67fcb426ed8f37
   </ItemGroup>
 
 </Project>

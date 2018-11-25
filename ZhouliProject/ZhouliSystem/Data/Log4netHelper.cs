@@ -27,7 +27,7 @@ using System.Threading.Tasks;
 namespace ZhouliSystem.Data
 {
     /// <summary>
-    /// 功能说明
+    /// Log4net封装类
     /// </summary>
     public class Log4netHelper
     {

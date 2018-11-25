@@ -13,5 +13,15 @@ namespace Zhouli.DAL.Interface
         /// </summary>
         /// <returns></returns>
         //List<SysRole> SetRolePowerList(List<SysRole> sysRoles);
+        #region 为角色添加功能菜单
+        /// <summary>
+        /// 为角色添加功能菜单
+        /// </summary>
+        /// <param name="RoleId"></param>
+        /// <param name="menuDtos"></param>
+        /// <returns></returns>
+        bool AddRoleMenu(Guid RoleId, List<SysMenu> menus);
+        #endregion
+      
     }
 }
