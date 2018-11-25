@@ -51,7 +51,6 @@ namespace ZhouliSystem.Filters
             if (_hostingEnvironment.IsDevelopment())
             {
                 //开发环境
-                // do nothing
                 return;
             }
             //记录错误日志
@@ -62,6 +61,7 @@ namespace ZhouliSystem.Filters
                 StateCode = StatesCode.failure,
                 Messages = "服务器出现故障啦,请联系管理员查看错误日志!"
             });
+            //代表错误已经被处理了
             context.ExceptionHandled = true;
         }
     }

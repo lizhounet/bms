@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Zhouli.DbEntity.Views
 {
+    /// <summary>
+    /// 分页Model
+    /// </summary>
    public class PageModel
     {
         #region 当前页号

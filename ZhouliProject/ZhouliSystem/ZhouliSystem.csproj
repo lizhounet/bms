@@ -46,4 +46,9 @@
     <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\BlogManager\Controllers\" />
+    <Folder Include="Areas\BlogManager\Views\" />
+  </ItemGroup>
+
 </Project>

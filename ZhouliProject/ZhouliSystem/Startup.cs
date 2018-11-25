@@ -30,11 +30,11 @@ namespace ZhouliSystem
         public void ConfigureServices(IServiceCollection services)
         {
             // 数据库连接字符串
-            var conStr = Configuration.GetConnectionString("dataConnection");
-            var conDataType = Configuration.GetConnectionString("dataBaseType");
+            var srtConnection = Configuration.GetConnectionString("dataConnection");
+            var srtdataBaseType = Configuration.GetConnectionString("dataBaseType");
             #region 框架的配置关系
             //注入ef对象
-            services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(conStr, b => b.UseRowNumberForPaging()),
+            services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(srtConnection, b => b.UseRowNumberForPaging()),
                 ServiceLifetime.Singleton);
             //添加session中间件
             services.AddSession();
@@ -77,7 +77,7 @@ namespace ZhouliSystem
             //注入全局依赖注入提供者类
             services.AddSingleton(typeof(WholeInjection));
             services.AddSingleton(typeof(UserAccount));
-            services.AddSingleton(new Zhouli.DAL.DapperContext(conStr, conDataType));
+            services.AddSingleton(new Zhouli.DAL.DapperContext(srtConnection, srtdataBaseType));
             services.ResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
             //初始化Dto与实体映射关系
             Zhouli.BLL.ZhouliMapper.Initialize();
