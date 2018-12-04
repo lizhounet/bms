@@ -7,15 +7,6 @@ F:\CODE\后台管理系统\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcor
 F:\CODE\后台管理系统\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
 F:\CODE\后台管理系统\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
 F:\CODE\后台管理系统\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.csprojAssemblyReference.cache
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.deps.json
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.csproj.CoreCompileInputs.cache
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.AssemblyInfoInputs.cache
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.AssemblyInfo.cs
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.csprojAssemblyReference.cache
 E:\zhouli\bms\ZhouliProject\Zhouli.LamdbaToSql\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.deps.json
 E:\zhouli\bms\ZhouliProject\Zhouli.LamdbaToSql\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
 E:\zhouli\bms\ZhouliProject\Zhouli.LamdbaToSql\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
@@ -24,3 +15,11 @@ E:\zhouli\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.La
 E:\zhouli\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.AssemblyInfo.cs
 E:\zhouli\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
 E:\zhouli\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.deps.json
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.csproj.CoreCompileInputs.cache
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.AssemblyInfoInputs.cache
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.AssemblyInfo.cs
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
+F:\CODE\资料文档\个人项目\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb

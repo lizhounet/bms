@@ -3,7 +3,6 @@ F:\CODE\资料文档\个人项目\bms\ZhouliProject\BlogWebApi\bin\Debug\netcore
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BlogWebApi\bin\Debug\netcoreapp2.1\BlogWebApi.runtimeconfig.dev.json
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BlogWebApi\bin\Debug\netcoreapp2.1\BlogWebApi.dll
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BlogWebApi\bin\Debug\netcoreapp2.1\BlogWebApi.pdb
-F:\CODE\资料文档\个人项目\bms\ZhouliProject\BlogWebApi\obj\Debug\netcoreapp2.1\BlogWebApi.csprojAssemblyReference.cache
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BlogWebApi\obj\Debug\netcoreapp2.1\BlogWebApi.csproj.CoreCompileInputs.cache
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BlogWebApi\obj\Debug\netcoreapp2.1\BlogWebApi.RazorAssemblyInfo.cache
 F:\CODE\资料文档\个人项目\bms\ZhouliProject\BlogWebApi\obj\Debug\netcoreapp2.1\BlogWebApi.RazorAssemblyInfo.cs
