@@ -37,6 +37,10 @@ namespace Zhouli.DAL.Implements
         {
             db.Set<T>().Remove(t);
         }
+        public void Delete(IEnumerable<T> t)
+        {
+            db.Set<T>().RemoveRange(t);
+        }
         public int GetCount(Expression<Func<T, bool>> WhereLambda)
         {
             return db.Set<T>().Count(WhereLambda);

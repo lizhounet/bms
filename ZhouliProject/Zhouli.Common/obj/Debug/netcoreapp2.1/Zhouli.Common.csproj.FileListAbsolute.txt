@@ -32,3 +32,4 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Co
 D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.csprojAssemblyReference.cache

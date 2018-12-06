@@ -28,7 +28,7 @@
                 field: 'CreateTime', title: '创建时间', align: 'center', Width: '20%'
             },
             { field: 'Note', title: '备注', align: 'center', Width: '20%' },
-            { title: '操作', minWidth: 100, templet: '#userGroupListBar', fixed: "right", align: "center" }
+            { title: '操作', templet: '#userGroupListBar', Width: '35%',  align: "center" }
         ]]
     });
     //搜索【此功能需要后台配合，所以暂时没有动态效果演示】

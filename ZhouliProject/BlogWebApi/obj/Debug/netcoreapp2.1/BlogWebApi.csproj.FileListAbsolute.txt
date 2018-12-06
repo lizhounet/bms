@@ -24,3 +24,4 @@ D:\周黎\code\bms\ZhouliProject\BlogWebApi\obj\Debug\netcoreapp2.1\BlogWebApi.A
 D:\周黎\code\bms\ZhouliProject\BlogWebApi\obj\Debug\netcoreapp2.1\BlogWebApi.RazorTargetAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\BlogWebApi\obj\Debug\netcoreapp2.1\BlogWebApi.dll
 D:\周黎\code\bms\ZhouliProject\BlogWebApi\obj\Debug\netcoreapp2.1\BlogWebApi.pdb
+D:\周黎\code\bms\ZhouliProject\BlogWebApi\obj\Debug\netcoreapp2.1\BlogWebApi.csprojAssemblyReference.cache

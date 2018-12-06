@@ -54,12 +54,12 @@ namespace DInjectionProvider
                         foreach (var typeArray in interfaceType)
                         {
                             if (!typeArray.IsGenericType)
-                                services.AddSingleton(typeArray, item);
+                                services.AddScoped(typeArray, item);
                         }
                     }
                 }
-                services.AddSingleton(typeof(IBaseDAL<>), typeof(BaseDAL<>));
-                services.AddSingleton(typeof(IBaseBLL<>), typeof(BaseBLL<>));
+                services.AddScoped(typeof(IBaseDAL<>), typeof(BaseDAL<>));
+                services.AddScoped(typeof(IBaseBLL<>), typeof(BaseBLL<>));
                 //注意这里:上面两行代码是.net core 正常配置代码（为什么这里使用了反射自动配置还要加入此代码,我在这里解释一下,因为上面两个是泛型类和泛型接口,我也不知道为什么这里用反射配置泛型的时候会报错,暂时没找到解决办法,所以这里采用一个傻的办法 就是手写一遍这两个的依赖注入关系）
             }
         }

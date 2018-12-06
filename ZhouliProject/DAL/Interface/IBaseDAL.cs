@@ -11,6 +11,7 @@ namespace Zhouli.DAL.Interface
         void Add(T t);
         void AddRange(IEnumerable<T> t);
         void Delete(T t);
+        void Delete(IEnumerable<T> t);
         void Update(T t);
         int GetCount(Expression<Func<T, bool>> WhereLambda);
         int ExecuteSql(string sql, SqlParameter parameter = null);

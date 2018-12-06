@@ -35,7 +35,7 @@ namespace ZhouliSystem
             #region 框架的配置关系
             //注入ef对象
             services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(srtConnection, b => b.UseRowNumberForPaging()),
-                ServiceLifetime.Singleton);
+                ServiceLifetime.Scoped);
             //添加session中间件
             services.AddSession();
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册

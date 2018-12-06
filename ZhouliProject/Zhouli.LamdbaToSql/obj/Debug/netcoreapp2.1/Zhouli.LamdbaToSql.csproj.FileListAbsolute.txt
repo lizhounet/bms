@@ -31,3 +31,4 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhou
 D:\周黎\code\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.LamdbaToSql\obj\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.csprojAssemblyReference.cache
