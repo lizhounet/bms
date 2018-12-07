@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
-using Zhouli.DbEntity.Views;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Views;
+using Zhouli.MsSql.DbEntity.Models;
 
 namespace Zhouli.BLL.Interface
 {

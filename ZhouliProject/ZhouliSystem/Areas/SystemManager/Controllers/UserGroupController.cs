@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
@@ -44,13 +44,13 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var messageModel = injection.GetT<ISysUserGroupBLL>()
                  .GetUserGroupList(page, limit, searchstr);
-            return JsonHelper.ObjectToJson(new
+            return new
             {
                 code = 0,
                 msg = "获取成功",
                 count = messageModel.Data.RowCount,
                 data = messageModel.Data.Data
-            });
+            }.Json();
         }
         #endregion
         #region 添加/修改用户组
@@ -90,11 +90,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                     bResult = userGroupBLL.Update(userGroup_Edit);
                 }
             }
-            return JsonHelper.ObjectToJson(new ResponseModel
+            return new ResponseModel
             {
                 StateCode = bResult ? StatesCode.success : StatesCode.failure,
                 Messages = sMessage
-            });
+            }.Json();
         }
         #endregion
         #region 批量删除用户组
@@ -110,7 +110,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             MessageModel model = injection.GetT<ISysUserGroupBLL>().DelUserGroup(UserGroupId);
             resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = model.Message;
-            return JsonHelper.ObjectToJson(resModel);
+            return resModel.Json();
         }
         #endregion
     }

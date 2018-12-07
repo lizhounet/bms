@@ -3500,9 +3500,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj",
-      "projectName": "Zhouli.DbEntity",
-      "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj",
+      "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.MsSql.DbEntity.csproj",
+      "projectName": "Zhouli.MsSql.DbEntity",
+      "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.MsSql.DbEntity.csproj",
       "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
       "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\obj\\",
       "projectStyle": "PackageReference",

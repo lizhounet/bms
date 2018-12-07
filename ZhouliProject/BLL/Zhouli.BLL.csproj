@@ -9,7 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\Zhouli.DAL.csproj" />
-    <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
+    <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.MsSql.DbEntity.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using Zhouli.DbEntity.Models;
+﻿using Zhouli.MsSql.DbEntity.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

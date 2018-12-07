@@ -6,8 +6,8 @@ using System.Linq.Expressions;
 using System.Text;
 using Zhouli.BLL.Interface;
 using Zhouli.DAL.Interface;
-using Zhouli.DbEntity.Models;
-using Zhouli.DbEntity.Views;
+using Zhouli.MsSql.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Views;
 
 namespace Zhouli.BLL.Implements
 {
@@ -43,13 +43,16 @@ namespace Zhouli.BLL.Implements
         public MessageModel DelRole(IEnumerable<Guid> RoleId)
         {
             var model = new MessageModel();
+            //查出需要删除的角色
             var sysRoles = sysRoleDAL.GetModels(t => RoleId.Any(a => a.Equals(t.RoleId)));
             foreach (var item in sysRoles)
             {
+                //逻辑删除角色
                 item.DeleteSign = (int)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted;
                 item.DeleteTime = DateTime.Now;
                 sysRoleDAL.Update(item);
             }
+            //最后一起提交数据库
             bool bResult = sysRoleDAL.SaveChanges();
             model.Result = bResult;
             model.Message = bResult ? "删除成功" : "删除失败";
@@ -105,6 +108,7 @@ namespace Zhouli.BLL.Implements
             var messageModel = new MessageModel();
             var PageModel = new PageModel();
             var urRelateds = sysUrRelatedDAL.GetModels(t => t.RoleId.Equals(RoleId)).ToList();
+            //构建条件
             Expression<Func<SysUser, bool>> expression = t => (string.IsNullOrEmpty(searchstr) || t.UserName.Contains(searchstr) ||
                 t.UserNikeName.Contains(searchstr) ||
                 t.UserPhone.Contains(searchstr) ||
@@ -113,21 +117,6 @@ namespace Zhouli.BLL.Implements
                 t.UserEmail.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)
                 && urRelateds.Any(x => x.UserId == t.UserId);
             PageModel.RowCount = sysUserDAL.GetCount(expression);
-            //int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
-            //var list = sysUserDAL.SqlQuery<SysUserDto>($@"
-            //                               SELECT *
-            //                    FROM (
-            //                        SELECT ROW_NUMBER() OVER (ORDER BY T1.CREATETIME DESC) AS RN, T1.*
-            //                        FROM Sys_User T1
-            //                        WHERE (T1.UserNikeName LIKE '%{searchstr}%'
-            //                                OR T1.UserPhone LIKE '%{searchstr}%'
-            //                                OR T1.UserQq LIKE '%{searchstr}%'
-            //                                OR T1.UserWx LIKE '%{searchstr}%'
-            //                                OR T1.UserEmail LIKE '%{searchstr}%')
-            //                            AND T1.DeleteSign = 1
-            //                            AND T1.UserId IN('{String.Join("','", urRelateds.Count == 0 ? new Guid[] { Guid.Empty } : urRelateds.Select(t => t.UserId))}')
-            //                    ) T
-            //                    WHERE RN BETWEEN {iBeginRow} AND {iEndRow}");
             var list = sysUserDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime, expression).ToList();
             PageModel.Data = Mapper.Map<List<SysUserDto>>(list);
             messageModel.Data = PageModel;
@@ -143,15 +132,6 @@ namespace Zhouli.BLL.Implements
         /// <returns></returns>
         public MessageModel AssignmentRoleUser(Guid RoleId, List<Guid> UserIds)
         {
-            //StringBuilder builderDelSql = new StringBuilder(20);
-            //builderDelSql.AppendLine($"DELETE FROM Sys_UrRelated WHERE RoleId = '{RoleId}'");
-            //builderDelSql.AppendLine("INSERT INTO Sys_UrRelated(UserId,RoleId) ");
-            //foreach (var item in UserIds)
-            //{
-            //    builderDelSql.AppendLine($"SELECT '{item}', '{RoleId}' UNION ALL");
-            //}
-            //var sql = builderDelSql.ToString().Remove(builderDelSql.ToString().LastIndexOf("UNION ALL"));
-            //bool bReuslt = sysRoleDAL.ExecuteSql(sql) > 0;
             //删除用户角色关联表的角色ID
             var listSysUrRelateds = sysUrRelatedDAL.GetModels(t => t.RoleId.Equals(RoleId));
             if (listSysUrRelateds.Count() > 0)
@@ -177,8 +157,6 @@ namespace Zhouli.BLL.Implements
         /// <returns></returns>
         public MessageModel CancelUserAssignment(Guid RoleId, List<Guid> UserIds)
         {
-            //bool bReuslt = sysRoleDAL.ExecuteSql($"DELETE FROM Sys_UrRelated WHERE RoleId='{RoleId}' " +
-            //    $"AND UserId IN('{String.Join("','", UserIds)}')") > 0;
             var melSysUrRelateds = sysUrRelatedDAL.GetModels(t => t.RoleId.Equals(RoleId) && UserIds.Any(a => a.Equals(t.UserId)));
             sysUrRelatedDAL.Delete(melSysUrRelateds);
             bool bReuslt = sysUrRelatedDAL.SaveChanges();
@@ -199,23 +177,11 @@ namespace Zhouli.BLL.Implements
         {
             var messageModel = new MessageModel();
             var PageModel = new PageModel();
-            // var urRelateds = sysUrRelatedDAL.SqlQuery<SysUgrRelated>($"SELECT * FROM Sys_UgrRelated  WHERE RoleId='{RoleId}'").ToList();
             var urRelateds = sysUgrRelatedDAL.GetModels(t => t.RoleId.Equals(RoleId));
             Expression<Func<SysUserGroup, bool>> expression = t => (string.IsNullOrEmpty(searchstr) ||
                 t.UserGroupName.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)
                 && urRelateds.Any(x => x.UserGroupId == t.UserGroupId);
             PageModel.RowCount = sysUserGroupDAL.GetCount(expression);
-            //int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
-            //var list = sysUserDAL.SqlQuery<SysUserGroupDto>($@"
-            //                               SELECT *
-            //                    FROM (
-            //                        SELECT ROW_NUMBER() OVER (ORDER BY T1.CREATETIME DESC) AS RN, T1.*
-            //                        FROM Sys_UserGroup T1
-            //                        WHERE T1.UserGroupName LIKE '%{searchstr}%'
-            //                            AND T1.DeleteSign = 1
-            //                            AND T1.UserGroupId IN('{String.Join("','", urRelateds.Count == 0 ? new Guid[] { Guid.Empty } : urRelateds.Select(t => t.UserGroupId))}')
-            //                    ) T
-            //                    WHERE RN BETWEEN {iBeginRow} AND {iEndRow}");
             var list = sysUserGroupDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime, expression);
             PageModel.Data = Mapper.Map<List<SysUserGroupDto>>(list);
             messageModel.Data = PageModel;
@@ -231,16 +197,6 @@ namespace Zhouli.BLL.Implements
         /// <returns></returns>
         public MessageModel AssignmentRoleUserGroup(Guid RoleId, List<Guid> UserGroupIds)
         {
-            //StringBuilder builderDelSql = new StringBuilder(20);
-            //builderDelSql.AppendLine($"DELETE FROM Sys_UgrRelated WHERE RoleId = '{RoleId}'");
-
-            //builderDelSql.AppendLine("INSERT INTO Sys_UgrRelated(UserGroupId,RoleId) ");
-            //foreach (var item in UserGroupIds)
-            //{
-            //    builderDelSql.AppendLine($"SELECT '{item}', '{RoleId}' UNION ALL");
-            //}
-            //var sql = builderDelSql.ToString().Remove(builderDelSql.ToString().LastIndexOf("UNION ALL"));
-            //bool bReuslt = sysRoleDAL.ExecuteSql(sql) > 0;
             var sysUgrRelateds = sysUgrRelatedDAL.GetModels(t => t.RoleId.Equals(RoleId));
             sysUgrRelatedDAL.Delete(sysUgrRelateds);
             foreach (var item in UserGroupIds)
@@ -264,8 +220,6 @@ namespace Zhouli.BLL.Implements
         /// <returns></returns>
         public MessageModel CancelUserGroupAssignment(Guid RoleId, List<Guid> UserGroupIds)
         {
-            //bool bReuslt = sysRoleDAL.ExecuteSql($"DELETE FROM Sys_UgrRelated WHERE RoleId='{RoleId}' " +
-            //  $"AND UserGroupId IN('{String.Join("','", UserGroupIds)}')") > 0;
             var sysUgrRelateds = sysUgrRelatedDAL.GetModels(t => t.RoleId.Equals(RoleId) && UserGroupIds.Any(a => a.Equals(t.UserGroupId)));
             sysUgrRelatedDAL.Delete(sysUgrRelateds);
             bool bReuslt = sysUgrRelatedDAL.SaveChanges();

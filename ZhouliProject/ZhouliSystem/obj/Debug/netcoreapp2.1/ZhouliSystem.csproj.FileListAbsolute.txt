@@ -165,14 +165,12 @@ D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\DInjection
 D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.BLL.dll
 D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.Common.dll
 D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.DAL.dll
-D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
-D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.dll
+D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.MsSql.DbEntity.dll
 D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.BLL.pdb
 D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\DInjectionProvider.pdb
 D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.Common.pdb
-D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
+D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.MsSql.DbEntity.pdb
 D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.DAL.pdb
-D:\周黎\code\bms\ZhouliProject\ZhouliSystem\bin\Debug\netcoreapp2.1\Zhouli.LamdbaToSql.pdb
 D:\周黎\code\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.csprojAssemblyReference.cache
 D:\周黎\code\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\ZhouliSystem\obj\Debug\netcoreapp2.1\ZhouliSystem.RazorAssemblyInfo.cache

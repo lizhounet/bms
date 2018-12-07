@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Zhouli.Common;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 using ZhouliSystem.Data;
 using ZhouliSystem.Models;
 using ZhouliSystem.Filters;
@@ -66,13 +66,13 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var messageModel = injection.GetT<ISysRoleBLL>()
                  .GetRoleList(page, limit, searchstr);
-            return JsonHelper.ObjectToJson(new
+            return new
             {
                 code = 0,
                 msg = "获取成功",
                 count = messageModel.Data.RowCount,
                 data = messageModel.Data.Data
-            });
+            }.Json();
         }
         #endregion
         #region 添加/修改角色
@@ -114,11 +114,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                     bResult = roleBLL.AddRoleMenu(userRole_Edit.RoleId, objCheckMenus).Result;
                 }
             }
-            return JsonHelper.ObjectToJson(new ResponseModel
+            return new ResponseModel
             {
                 StateCode = bResult ? StatesCode.success : StatesCode.failure,
                 Messages = sMessage
-            });
+            }.Json();
         }
         #endregion
         #region 批量删除角色
@@ -134,7 +134,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             MessageModel model = injection.GetT<ISysRoleBLL>().DelRole(RoleId);
             resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = model.Message;
-            return JsonHelper.ObjectToJson(resModel);
+            return resModel.Json();
         }
         #endregion
         #region 获取角色的功能菜单
@@ -149,27 +149,27 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             var menuList = (List<SysMenuDto>)(injection.GetT<ISysMenuBLL>().GetMenusBy(injection.GetT<UserAccount>().GetUserInfo()).Data);
             //角色所拥有的菜单
             var roleMenuList = RoleId.Equals(Guid.Empty) ? new List<SysMenuDto>() : ((List<SysMenuDto>)injection.GetT<ISysMenuBLL>().GetRoleMenuList(RoleId).Data);
-            return JsonHelper.ObjectToJson(new ResponseModel
+            return new ResponseModel
             {
                 JsonData = new
                 {
                     MenuList = menuList,
                     RoleMenuList = roleMenuList
                 }
-            });
+            }.Json();
         }
         #endregion
         #region 获取角色所分配的用户
         public string GetRoleUserList(Guid RoleId, string page, string limit, string searchstr)
         {
             var messageModel = injection.GetT<ISysRoleBLL>().GetRoleUserList(RoleId, page, limit, searchstr);
-            return JsonHelper.ObjectToJson(new
+            return new
             {
                 code = 0,
                 msg = "获取成功",
                 count = messageModel.Data.RowCount,
                 data = messageModel.Data.Data
-            });
+            }.Json();
         }
         #endregion
         #region 为角色分配用户
@@ -182,11 +182,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public string AssignmentRoleUser(Guid RoleId, List<Guid> UserIds)
         {
             var messageModel = injection.GetT<ISysRoleBLL>().AssignmentRoleUser(RoleId, UserIds);
-            return JsonHelper.ObjectToJson(new ResponseModel
+            return new ResponseModel
             {
                 Messages = messageModel.Message,
                 StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
-            });
+            }.Json();
         }
         #endregion
         #region 取消用户角色
@@ -198,11 +198,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public string CancelUserAssignment(Guid RoleId, List<Guid> UserIds)
         {
             var messageModel = injection.GetT<ISysRoleBLL>().CancelUserAssignment(RoleId, UserIds);
-            return JsonHelper.ObjectToJson(new ResponseModel
+            return new ResponseModel
             {
                 Messages = messageModel.Message,
                 StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
-            });
+            }.Json();
         }
         #endregion
         #region 获取角色所分配的用户组
@@ -217,13 +217,13 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public string GetRoleUserGroupList(Guid RoleId, string page, string limit, string searchstr)
         {
             var messageModel = injection.GetT<ISysRoleBLL>().GetRoleUserGroupList(RoleId, page, limit, searchstr);
-            return JsonHelper.ObjectToJson(new
+            return new
             {
                 code = 0,
                 msg = "获取成功",
                 count = messageModel.Data.RowCount,
                 data = messageModel.Data.Data
-            });
+            }.Json();
         }
         #endregion
         #region 为角色分配用户组
@@ -236,11 +236,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public string AssignmentRoleUserGroup(Guid RoleId, List<Guid> UserGroupIds)
         {
             var messageModel = injection.GetT<ISysRoleBLL>().AssignmentRoleUserGroup(RoleId, UserGroupIds);
-            return JsonHelper.ObjectToJson(new ResponseModel
+            return new ResponseModel
             {
                 Messages = messageModel.Message,
                 StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
-            });
+            }.Json();
         }
         #endregion
         #region 取消用户组角色
@@ -252,11 +252,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public string CancelUserGroupAssignment(Guid RoleId, List<Guid> UserGroupIds)
         {
             var messageModel = injection.GetT<ISysRoleBLL>().CancelUserGroupAssignment(RoleId, UserGroupIds);
-            return JsonHelper.ObjectToJson(new ResponseModel
+            return new ResponseModel
             {
                 Messages = messageModel.Message,
                 StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
-            });
+            }.Json();
         }
         #endregion
     }

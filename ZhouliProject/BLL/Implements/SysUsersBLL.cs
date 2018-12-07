@@ -4,8 +4,8 @@ using System.Linq.Expressions;
 using System.Linq;
 using Zhouli.BLL.Interface;
 using Zhouli.DAL.Interface;
-using Zhouli.DbEntity.Models;
-using Zhouli.DbEntity.Views;
+using Zhouli.MsSql.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Views;
 using System.Text;
 using AutoMapper;
 
@@ -54,21 +54,22 @@ namespace Zhouli.BLL.Implements
                 t.UserWx.Contains(searchstr) ||
                 t.UserEmail.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted);
             PageModel.RowCount = usersDAL.GetCount(expression);
-            int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
-            var list = usersDAL.SqlQuery<SysUserDto>($@"
-                                           SELECT *
-                                FROM (
-                                    SELECT ROW_NUMBER() OVER (ORDER BY T1.CREATETIME DESC) AS RN, T1.*
-                                    FROM Sys_User T1
-                                    WHERE (T1.UserNikeName LIKE '%{searchstr}%'
-                                            OR T1.UserPhone LIKE '%{searchstr}%'
-                                            OR T1.UserQq LIKE '%{searchstr}%'
-                                            OR T1.UserWx LIKE '%{searchstr}%'
-                                            OR T1.UserEmail LIKE '%{searchstr}%')
-                                        AND T1.DeleteSign = 1
-                                ) T
-                                WHERE RN BETWEEN {iBeginRow} AND {iEndRow}");
-            PageModel.Data = list;
+            //int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
+            //var list = usersDAL.SqlQuery<SysUserDto>($@"
+            //                               SELECT *
+            //                    FROM (
+            //                        SELECT ROW_NUMBER() OVER (ORDER BY T1.CREATETIME DESC) AS RN, T1.*
+            //                        FROM Sys_User T1
+            //                        WHERE (T1.UserNikeName LIKE '%{searchstr}%'
+            //                                OR T1.UserPhone LIKE '%{searchstr}%'
+            //                                OR T1.UserQq LIKE '%{searchstr}%'
+            //                                OR T1.UserWx LIKE '%{searchstr}%'
+            //                                OR T1.UserEmail LIKE '%{searchstr}%')
+            //                            AND T1.DeleteSign = 1
+            //                    ) T
+            //                    WHERE RN BETWEEN {iBeginRow} AND {iEndRow}");
+            var list = usersDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime, expression);
+            PageModel.Data = Mapper.Map<List<SysUserDto>>(list.ToList());
             messageModel.Data = PageModel;
             return messageModel;
         }
@@ -147,10 +148,13 @@ namespace Zhouli.BLL.Implements
         public MessageModel DelUser(IEnumerable<Guid> UserId)
         {
             var model = new MessageModel();
-            StringBuilder builder = new StringBuilder(20);
-            builder.AppendLine(value: $"UPDATE SYS_USER SET DeleteSign={(Int32)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted},DeleteTime='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' WHERE USERID IN (");
-            builder.AppendLine($"'{String.Join("','", UserId)}')");
-            bool bResult = ExecuteSql(builder.ToString()) > 0;
+            var sysUsers = usersDAL.GetModels(t => UserId.Any(a => a.Equals(t.UserId)));
+            foreach (var item in sysUsers)
+            {
+                item.DeleteSign = (int)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted;
+                item.EditTime = DateTime.Now;
+            }
+            bool bResult = usersDAL.SaveChanges();
             model.Result = bResult;
             model.Message = bResult ? "删除成功" : "删除失败";
             return model;

@@ -20,7 +20,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 
 namespace ZhouliSystem.Data
 {
@@ -111,6 +111,7 @@ namespace ZhouliSystem.Data
                             {
                                 MenuName = "系统管理",
                                 MenuSort = 1,
+                                MenuIcon= "layui-icon-set",
                                 MenuId = Guid.NewGuid()
 
                             });
@@ -150,6 +151,7 @@ namespace ZhouliSystem.Data
                             {
                                 MenuName = "菜单管理",
                                 MenuUrl = "/System/Menu/Index",
+                                MenuIcon= "layui-icon-align-left",
                                 ParentMenuId = entityMenu.Entity.MenuId,
                                 MenuId = Guid.NewGuid()
                             });
@@ -171,6 +173,7 @@ namespace ZhouliSystem.Data
                                 MenuName = "角色管理",
                                 MenuUrl = "/System/Role/Index",
                                 ParentMenuId = entityMenu.Entity.MenuId,
+                                MenuIcon= "layui-icon-prev-circle",
                                 MenuId = Guid.NewGuid()
                             });
                             var entityAuthority3 = context.SysAuthority.Add(new SysAuthority
@@ -189,6 +192,7 @@ namespace ZhouliSystem.Data
                             {
                                 MenuName = "用户管理",
                                 MenuUrl = "/System/User/Index",
+                                MenuIcon = "layui-icon-username",
                                 ParentMenuId = entityMenu.Entity.MenuId,
                                 MenuId = Guid.NewGuid()
                             });
@@ -208,6 +212,7 @@ namespace ZhouliSystem.Data
                             {
                                 MenuName = "用户组管理",
                                 MenuUrl = "/System/UserGroup/Index",
+                                MenuIcon= "layui-icon-user",
                                 ParentMenuId = entityMenu.Entity.MenuId,
                                 MenuId = Guid.NewGuid()
                             });

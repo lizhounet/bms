@@ -7,7 +7,7 @@ using System.Text;
 using System.Transactions;
 using Zhouli.BLL.Interface;
 using Zhouli.DAL.Interface;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 
 namespace Zhouli.BLL.Implements
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Zhouli.DbEntity.Models
+namespace Zhouli.MsSql.DbEntity.Models
 {
     public partial class SysRaRelated
     {

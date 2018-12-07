@@ -6,8 +6,8 @@ using System.Linq.Expressions;
 using System.Text;
 using Zhouli.BLL.Interface;
 using Zhouli.DAL.Interface;
-using Zhouli.DbEntity.Models;
-using Zhouli.DbEntity.Views;
+using Zhouli.MsSql.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Views;
 
 namespace Zhouli.BLL.Implements
 {
@@ -36,20 +36,8 @@ namespace Zhouli.BLL.Implements
             var pageModel = new PageModel();
             Expression<Func<SysUserGroup, bool>> expression = t => (string.IsNullOrEmpty(searchstr) || t.UserGroupName.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted);
             pageModel.RowCount = userGroupDAL.GetCount(expression);
-            int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
-            var list = userGroupDAL.SqlQuery<SysUserGroupDto>($@"SELECT * FROM (SELECT ROW_NUMBER() OVER  (ORDER BY T1.CreateTime) RN,T1.UserGroupId,
-                             T1.UserGroupName,
-                             T1.ParentUserGroupId,
-                            T2.UserGroupName ParentUserGroupName, T1.CreateTime, T1.Note 
-                            FROM Sys_UserGroup T1
-                            LEFT JOIN Sys_UserGroup T2
-                            ON T1.ParentUserGroupId=T2.UserGroupId
-                            WHERE  (T1.UserGroupName LIKE '%{searchstr}%' 
-                            OR T2.UserGroupName LIKE '%{searchstr}%')
-                            AND T1.DeleteSign=1) T
-                            WHERE RN BETWEEN {iBeginRow} AND {iEndRow} ");
-
-            pageModel.Data = list;
+            var list = userGroupDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime, expression);
+            pageModel.Data = Mapper.Map<List<SysUserGroupDto>>(list.ToList());
             messageModel.Data = pageModel;
             return messageModel;
         }
@@ -63,10 +51,14 @@ namespace Zhouli.BLL.Implements
         public MessageModel DelUserGroup(IEnumerable<Guid> UserGroupId)
         {
             var model = new MessageModel();
-            StringBuilder builder = new StringBuilder(20);
-            builder.AppendLine(value: $"UPDATE SYS_USERGroup SET DeleteSign={(Int32)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted},DeleteTime='{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' WHERE UserGroupId IN (");
-            builder.AppendLine($"'{String.Join("','", UserGroupId)}')");
-            bool bResult = ExecuteSql(builder.ToString()) > 0;
+            var sysUserGroups = userGroupDAL.GetModels(t => UserGroupId.Any(a => a.Equals(t.UserGroupId)));
+            foreach (var item in sysUserGroups)
+            {
+                item.DeleteSign = (int)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted;
+                item.EditTime = DateTime.Now;
+                userGroupDAL.Update(item);
+            }
+            bool bResult = userGroupDAL.SaveChanges();
             model.Result = bResult;
             model.Message = bResult ? "删除成功" : "删除失败";
             return model;

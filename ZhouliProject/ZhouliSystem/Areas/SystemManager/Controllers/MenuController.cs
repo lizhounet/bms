@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Zhouli.Common;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 using ZhouliSystem.Data;
 using ZhouliSystem.Models;
 using ZhouliSystem.Filters;
@@ -40,10 +40,10 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var menuList = (List<SysMenuDto>)(injection.GetT<ISysMenuBLL>().GetMenusBy(injection.GetT<UserAccount>().GetUserInfo()).Data);
            
-            return JsonHelper.ObjectToJson(new ResponseModel
+            return new ResponseModel
             {
                 JsonData = menuList
-            });
+            }.Json();
         }
         /// <summary>
         /// 添加/修改 一个菜单
@@ -97,11 +97,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 menu.ParentMenuId = menuDto.ParentMenuId;
                 bResult = injection.GetT<ISysMenuBLL>().Update(menu);
             }
-            return JsonHelper.ObjectToJson(new ResponseModel
+            return new ResponseModel
             {
                 StateCode = bResult ? StatesCode.success : StatesCode.failure,
                 Messages = bResult ? "添加成功" : "添加失败"
-            });
+            }.Json();
         }
         /// <summary>
         /// 删除菜单(同时删除权限表对应的菜单权限)
@@ -111,11 +111,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public string DelMenu(Guid MenuId)
         {
             var messageModel = injection.GetT<ISysMenuBLL>().DelMenu(MenuId);
-            return JsonHelper.ObjectToJson(new ResponseModel
+            return new ResponseModel
             {
                 Messages = messageModel.Message,
                 StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
-            });
+            }.Json();
         }
         
     }

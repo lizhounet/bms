@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Zhouli.DbEntity.Models
+namespace Zhouli.MsSql.DbEntity.Models
 {
     public partial class ZhouLiContext : DbContext
     {

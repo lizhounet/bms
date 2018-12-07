@@ -24,7 +24,7 @@ using Microsoft.Extensions.Options;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
@@ -82,7 +82,8 @@ namespace ZhouliSystem.Controllers
                 response.Messages = "账户不存在,请联系管理员!";
                 response.StateCode = StatesCode.failure;
             }
-            return JsonHelper.ObjectToJson(response);
+
+            return response.Json();
         }
         /// <summary>
         /// 后台登录

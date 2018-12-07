@@ -1,5 +1,5 @@
 ﻿using DInjectionProvider;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using ZhouliSystem.Models;

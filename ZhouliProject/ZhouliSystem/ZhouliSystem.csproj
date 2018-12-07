@@ -63,7 +63,7 @@
     <ProjectReference Include="..\BLL\Zhouli.BLL.csproj" />
     <ProjectReference Include="..\DInjectionProvider\DInjectionProvider.csproj" />
     <ProjectReference Include="..\Zhouli.Common\Zhouli.Common.csproj" />
-    <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
+    <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.MsSql.DbEntity.csproj" />
   </ItemGroup>
 
   <ItemGroup>

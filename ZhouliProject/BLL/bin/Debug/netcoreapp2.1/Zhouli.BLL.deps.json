@@ -10,7 +10,7 @@
         "dependencies": {
           "AutoMapper": "7.0.1",
           "Zhouli.DAL": "1.0.0",
-          "Zhouli.DbEntity": "1.0.0"
+          "Zhouli.MsSql.DbEntity": "1.0.0"
         },
         "runtime": {
           "Zhouli.BLL.dll": {}
@@ -547,26 +547,20 @@
       "Zhouli.DAL/1.0.0": {
         "dependencies": {
           "Dapper": "1.50.5",
-          "Zhouli.DbEntity": "1.0.0",
-          "Zhouli.LamdbaToSql": "1.0.0"
+          "Zhouli.MsSql.DbEntity": "1.0.0"
         },
         "runtime": {
           "Zhouli.DAL.dll": {}
         }
       },
-      "Zhouli.DbEntity/1.0.0": {
+      "Zhouli.MsSql.DbEntity/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "2.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.0",
           "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.5"
         },
         "runtime": {
-          "Zhouli.DbEntity.dll": {}
-        }
-      },
-      "Zhouli.LamdbaToSql/1.0.0": {
-        "runtime": {
-          "Zhouli.LamdbaToSql.dll": {}
+          "Zhouli.MsSql.DbEntity.dll": {}
         }
       }
     }
@@ -988,12 +982,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Zhouli.DbEntity/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Zhouli.LamdbaToSql/1.0.0": {
+    "Zhouli.MsSql.DbEntity/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

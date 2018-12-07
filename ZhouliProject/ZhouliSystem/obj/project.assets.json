@@ -5796,7 +5796,7 @@
         "dependencies": {
           "AutoMapper": "7.0.1",
           "Zhouli.DAL": "1.0.0",
-          "Zhouli.DbEntity": "1.0.0"
+          "Zhouli.MsSql.DbEntity": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Zhouli.BLL.dll": {}
@@ -5823,8 +5823,7 @@
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
           "Dapper": "1.50.5",
-          "Zhouli.DbEntity": "1.0.0",
-          "Zhouli.LamdbaToSql": "1.0.0"
+          "Zhouli.MsSql.DbEntity": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Zhouli.DAL.dll": {}
@@ -5833,7 +5832,7 @@
           "bin/placeholder/Zhouli.DAL.dll": {}
         }
       },
-      "Zhouli.DbEntity/1.0.0": {
+      "Zhouli.MsSql.DbEntity/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
@@ -5842,20 +5841,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer.Design": "1.1.5"
         },
         "compile": {
-          "bin/placeholder/Zhouli.DbEntity.dll": {}
+          "bin/placeholder/Zhouli.MsSql.DbEntity.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Zhouli.DbEntity.dll": {}
-        }
-      },
-      "Zhouli.LamdbaToSql/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v2.1",
-        "compile": {
-          "bin/placeholder/Zhouli.LamdbaToSql.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Zhouli.LamdbaToSql.dll": {}
+          "bin/placeholder/Zhouli.MsSql.DbEntity.dll": {}
         }
       }
     }
@@ -15063,15 +15052,10 @@
       "path": "../DAL/Zhouli.DAL.csproj",
       "msbuildProject": "../DAL/Zhouli.DAL.csproj"
     },
-    "Zhouli.DbEntity/1.0.0": {
+    "Zhouli.MsSql.DbEntity/1.0.0": {
       "type": "project",
-      "path": "../Zhouli.DbEntity/Zhouli.DbEntity.csproj",
-      "msbuildProject": "../Zhouli.DbEntity/Zhouli.DbEntity.csproj"
-    },
-    "Zhouli.LamdbaToSql/1.0.0": {
-      "type": "project",
-      "path": "../Zhouli.LamdbaToSql/Zhouli.LamdbaToSql.csproj",
-      "msbuildProject": "../Zhouli.LamdbaToSql/Zhouli.LamdbaToSql.csproj"
+      "path": "../Zhouli.DbEntity/Zhouli.MsSql.DbEntity.csproj",
+      "msbuildProject": "../Zhouli.DbEntity/Zhouli.MsSql.DbEntity.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -15084,7 +15068,7 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.0",
       "Zhouli.BLL >= 1.0.0",
       "Zhouli.Common >= 1.0.0",
-      "Zhouli.DbEntity >= 1.0.0",
+      "Zhouli.MsSql.DbEntity >= 1.0.0",
       "log4net >= 2.0.8"
     ]
   },
@@ -15127,8 +15111,8 @@
             "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj": {
               "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj"
             },
-            "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj": {
-              "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj"
+            "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.MsSql.DbEntity.csproj": {
+              "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.MsSql.DbEntity.csproj"
             }
           }
         }

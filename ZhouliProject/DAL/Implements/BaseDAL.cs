@@ -15,12 +15,12 @@ namespace Zhouli.DAL.Implements
         /// 数据库上下文
         /// </summary>
         protected readonly DapperContext dapper;
-        protected readonly DbEntity.Models.ZhouLiContext db;
+        protected readonly MsSql.DbEntity.Models.ZhouLiContext db;
         /// <summary>
         /// 构造函数依赖注入
         /// </summary>
         /// <param name="db"></param>
-        public BaseDAL(DapperContext dapper, DbEntity.Models.ZhouLiContext db)
+        public BaseDAL(DapperContext dapper, MsSql.DbEntity.Models.ZhouLiContext db)
         {
             this.dapper = dapper;
             this.db = db;

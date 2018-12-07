@@ -8,7 +8,7 @@ namespace Zhouli.Common
     /// <summary>
     /// Json帮助类(Json与对象之前相互转换)
     /// </summary>
-    public class JsonHelper
+    public static class JsonHelper
     {
         /// <summary>
         /// Json字符串转换为对象
@@ -28,6 +28,17 @@ namespace Zhouli.Common
         /// <returns></returns>
         public static string ObjectToJson(object t, string timeFormat = "yyyy-MM-dd HH:mm:ss")
         {
+            IsoDateTimeConverter tFormat = new IsoDateTimeConverter();
+            tFormat.DateTimeFormat = timeFormat;
+            return Newtonsoft.Json.JsonConvert.SerializeObject(t, Newtonsoft.Json.Formatting.Indented, tFormat);
+        }
+        /// <summary>
+        /// 扩展转json方法
+        /// </summary>
+        /// <param name="t"></param>
+        /// <param name="timeFormat"></param>
+        /// <returns></returns>
+        public static string Json(this object t, string timeFormat = "yyyy-MM-dd HH:mm:ss") {
             IsoDateTimeConverter tFormat = new IsoDateTimeConverter();
             tFormat.DateTimeFormat = timeFormat;
             return Newtonsoft.Json.JsonConvert.SerializeObject(t, Newtonsoft.Json.Formatting.Indented, tFormat);

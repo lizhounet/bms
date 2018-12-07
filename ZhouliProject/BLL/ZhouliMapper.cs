@@ -23,7 +23,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 
 namespace Zhouli.BLL
 {
@@ -43,9 +43,9 @@ namespace Zhouli.BLL
         }
         private static void MappingAutoMapper(IMapperConfigurationExpression cfg)
         {
-            string[] assemblyNames = { "Zhouli.BLL", "Zhouli.DbEntity" };
+            string[] assemblyNames = { "Zhouli.BLL", "Zhouli.MsSql.DbEntity" };
             //先找出Model所有实体类
-            List<Type> modelTypes = Assembly.Load("Zhouli.DbEntity").GetTypes().Where(t=>t.Namespace.Equals("Zhouli.DbEntity.Models")).ToList();
+            List<Type> modelTypes = Assembly.Load("Zhouli.MsSql.DbEntity").GetTypes().Where(t=>t.Namespace.Equals("Zhouli.MsSql.DbEntity.Models")).ToList();
             //model对应的Dto实体(注意:这里我做了命名约定,所有对应实体的Dto对象都以Dto结尾)
             List<Type> modelDtoTypes = Assembly.Load("Zhouli.BLL").GetTypes().Where(t => t.Name.EndsWith("Dto")).ToList();
             foreach (var dtoType in modelDtoTypes)

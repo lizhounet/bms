@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Zhouli.DbEntity.Views
+namespace Zhouli.MsSql.DbEntity.Views
 {
     /// <summary>
     /// 分页Model

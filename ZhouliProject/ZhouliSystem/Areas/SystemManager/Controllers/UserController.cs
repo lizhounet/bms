@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
 
@@ -43,13 +43,13 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var messageModel = injection.GetT<ISysUserBLL>()
                 .GetUserList(page, limit, searchstr);
-            return JsonHelper.ObjectToJson(new
+            return new
             {
                 code = 0,
                 msg = "获取成功",
                 count = messageModel.Data.RowCount,
                 data = messageModel.Data.Data
-            });
+            }.Json();
         }
         #endregion
         #region 添加/编辑用户
@@ -66,7 +66,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             resModel.StateCode = mModel.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = mModel.Message;
             resModel.JsonData = mModel.Data;
-            return JsonHelper.ObjectToJson(resModel);
+            return resModel.Json();
         }
         #endregion
         #region 禁用/启用用户
@@ -90,7 +90,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 resModel.StateCode = StatesCode.failure;
                 resModel.Messages = "操作失败";
             }
-            return JsonHelper.ObjectToJson(resModel);
+            return resModel.Json();
         }
         #endregion
         #region 批量删除用户
@@ -106,7 +106,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             MessageModel model = injection.GetT<ISysUserBLL>().DelUser(UserId);
             resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = model.Message;
-            return JsonHelper.ObjectToJson(resModel);
+            return resModel.Json();
         }
         #endregion
     }

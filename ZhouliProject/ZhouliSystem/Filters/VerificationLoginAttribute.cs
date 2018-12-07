@@ -24,7 +24,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Routing;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 
 namespace ZhouliSystem.Filters
 {

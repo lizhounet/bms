@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Zhouli.Common;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 using ZhouliSystem.Data;
 using ZhouliSystem.Models;
 using ZhouliSystem.Filters;

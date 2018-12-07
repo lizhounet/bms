@@ -9,8 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
-    <ProjectReference Include="..\Zhouli.LamdbaToSql\Zhouli.LamdbaToSql.csproj" />
+    <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.MsSql.DbEntity.csproj" />
   </ItemGroup>
 
   <ItemGroup>

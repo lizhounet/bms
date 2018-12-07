@@ -34,7 +34,7 @@ namespace ZhouliSystem
             var srtdataBaseType = Configuration.GetConnectionString("dataBaseType");
             #region 框架的配置关系
             //注入ef对象
-            services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(srtConnection, b => b.UseRowNumberForPaging()),
+            services.AddDbContext<Zhouli.MsSql.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(srtConnection, b => b.UseRowNumberForPaging()),
                 ServiceLifetime.Scoped);
             //添加session中间件
             services.AddSession();

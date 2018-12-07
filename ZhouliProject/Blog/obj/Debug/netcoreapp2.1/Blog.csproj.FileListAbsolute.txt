@@ -36,6 +36,7 @@ D:\周黎\code\bms\ZhouliProject\Blog\bin\Debug\netcoreapp2.1\Blog.dll
 D:\周黎\code\bms\ZhouliProject\Blog\bin\Debug\netcoreapp2.1\Blog.pdb
 D:\周黎\code\bms\ZhouliProject\Blog\bin\Debug\netcoreapp2.1\Blog.Views.dll
 D:\周黎\code\bms\ZhouliProject\Blog\bin\Debug\netcoreapp2.1\Blog.Views.pdb
+D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.csprojAssemblyReference.cache
 D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.RazorAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.RazorAssemblyInfo.cs
@@ -60,4 +61,3 @@ D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.Views.pdb
 D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.dll
 D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.pdb
 D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.csproj.CopyComplete
-D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.csprojAssemblyReference.cache

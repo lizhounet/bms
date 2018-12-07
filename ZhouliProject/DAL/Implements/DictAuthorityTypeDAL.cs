@@ -1,5 +1,5 @@
 ﻿using Zhouli.DAL.Interface;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +11,5 @@ namespace Zhouli.DAL.Implements
         public DictAuthorityTypeDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db)
         {
         }
-
     }
 }

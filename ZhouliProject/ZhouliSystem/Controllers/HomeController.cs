@@ -24,7 +24,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ZhouliSystem.Models;
-using Zhouli.DbEntity.Models;
+using Zhouli.MsSql.DbEntity.Models;
 using DInjectionProvider;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Data;
