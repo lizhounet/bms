@@ -20,7 +20,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Zhouli.MsSql.DbEntity.Models
+namespace Zhouli.DbEntity.Models
 {
     /// <summary>
     /// 用户组

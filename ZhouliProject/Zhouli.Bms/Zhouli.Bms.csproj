@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>d7879f25-2dca-42fa-b15c-bd04111dad49</UserSecretsId>
+    <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\js\Home\**" />
+    <Content Remove="wwwroot\js\Home\**" />
+    <EmbeddedResource Remove="wwwroot\js\Home\**" />
+    <None Remove="wwwroot\js\Home\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCaching" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\lib\layui\font\iconfont.svg" />
+    <None Include="wwwroot\lib\layui\layui.all.js" />
+    <None Include="wwwroot\lib\layui\layui.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\carousel.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\code.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\element.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\flow.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\form.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\jquery.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\laydate.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\layedit.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\layer.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\laypage.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\laytpl.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\mobile.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\rate.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\table.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\tree.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\upload.js" />
+    <None Include="wwwroot\lib\layui\lay\modules\util.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.min.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.all.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.all.min.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.core.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.core.min.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.excheck.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.excheck.min.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.exedit.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.exedit.min.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.exhide.js" />
+    <None Include="wwwroot\lib\ztree\js\jquery.ztree.exhide.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zhouli.BLL\Zhouli.BLL.csproj" />
+    <ProjectReference Include="..\Zhouli.Common\Zhouli.Common.csproj" />
+    <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
+    <ProjectReference Include="..\Zhouli.DI\Zhouli.DI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\BlogManager\Controllers\" />
+    <Folder Include="Areas\BlogManager\Views\" />
+    <Content Update="wwwroot\js\Areas\SystemManager\Role\RoleAdd.js">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Content>
+  </ItemGroup>
+
+</Project>

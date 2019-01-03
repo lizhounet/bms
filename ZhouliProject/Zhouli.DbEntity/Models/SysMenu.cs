@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Zhouli.MsSql.DbEntity.Models
+namespace Zhouli.DbEntity.Models
 {
     public partial class SysMenu
     {
-        public Guid MenuId { get; set; }
+        public string MenuId { get; set; }
         public string MenuName { get; set; }
         public string MenuIcon { get; set; }
         public string MenuUrl { get; set; }
         public int MenuSort { get; set; }
-        public Guid? ParentMenuId { get; set; }
-        public Guid? CreateUserId { get; set; }
+        public string ParentMenuId { get; set; }
+        public string CreateUserId { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime? EditTime { get; set; }
         public int DeleteSign { get; set; }

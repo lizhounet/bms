@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Zhouli.MsSql.DbEntity.Models
+namespace Zhouli.DbEntity.Models
 {
     public partial class ZhouLiContext : DbContext
     {
@@ -15,6 +15,12 @@ namespace Zhouli.MsSql.DbEntity.Models
         {
         }
 
+        public virtual DbSet<BlogArticle> BlogArticle { get; set; }
+        public virtual DbSet<BlogArticleSeeInfo> BlogArticleSeeInfo { get; set; }
+        public virtual DbSet<BlogFriendshipLink> BlogFriendshipLink { get; set; }
+        public virtual DbSet<BlogLable> BlogLable { get; set; }
+        public virtual DbSet<BlogNavigationImg> BlogNavigationImg { get; set; }
+        public virtual DbSet<BlogRelated> BlogRelated { get; set; }
         public virtual DbSet<DictAuthorityType> DictAuthorityType { get; set; }
         public virtual DbSet<SysAmRelated> SysAmRelated { get; set; }
         public virtual DbSet<SysAuthority> SysAuthority { get; set; }
@@ -31,21 +37,214 @@ namespace Zhouli.MsSql.DbEntity.Models
 //            if (!optionsBuilder.IsConfigured)
 //            {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseSqlServer("Server=.;Database=ZhouLi;Trusted_Connection=True;");
+//                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=123456;port=3306;database=ZhouLi;");
 //            }
 //        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<BlogArticle>(entity =>
+            {
+                entity.HasKey(e => e.ArticleId);
+
+                entity.ToTable("Blog_Article");
+
+                entity.Property(e => e.ArticleId)
+                    .HasColumnName("Article_Id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.ArticleBody)
+                    .IsRequired()
+                    .HasColumnName("Article_Body")
+                    .HasColumnType("text");
+
+                entity.Property(e => e.ArticleBodyMarkdown)
+                    .HasColumnName("Article_Body_Markdown")
+                    .HasColumnType("text");
+
+                entity.Property(e => e.ArticleCreateTime)
+                    .HasColumnName("Article_CreateTime")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.ArticleNote)
+                    .HasColumnName("Article_Note")
+                    .HasColumnType("varchar(2048)");
+
+                entity.Property(e => e.ArticleSortValue)
+                    .HasColumnName("Article_SortValue")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.ArticleTitle)
+                    .IsRequired()
+                    .HasColumnName("Article_Title")
+                    .HasColumnType("varchar(50)");
+
+                entity.Property(e => e.ArticleUserId)
+                    .HasColumnName("Article_UserId")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.ArticleUserNikeName)
+                    .IsRequired()
+                    .HasColumnName("Article_UserNikeName")
+                    .HasColumnType("varchar(50)");
+            });
+
+            modelBuilder.Entity<BlogArticleSeeInfo>(entity =>
+            {
+                entity.HasKey(e => e.ArticleSeeInfoArticleId);
+
+                entity.ToTable("Blog_ArticleSeeInfo");
+
+                entity.Property(e => e.ArticleSeeInfoArticleId)
+                    .HasColumnName("ArticleSeeInfo_ArticleId")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.ArticleSeeInfoArticleBrowsingNum)
+                    .HasColumnName("ArticleSeeInfo_ArticleBrowsingNum")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.ArticleSeeInfoArticleCommentNum)
+                    .HasColumnName("ArticleSeeInfo_ArticleCommentNum")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.ArticleSeeInfoArticleLikeNum)
+                    .HasColumnName("ArticleSeeInfo_ArticleLikeNum")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+            });
+
+            modelBuilder.Entity<BlogFriendshipLink>(entity =>
+            {
+                entity.HasKey(e => e.FriendshipLinkId);
+
+                entity.ToTable("Blog_FriendshipLink");
+
+                entity.Property(e => e.FriendshipLinkId)
+                    .HasColumnName("FriendshipLink_Id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.FriendshipLinkEmail)
+                    .HasColumnName("FriendshipLink_Email")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.FriendshipLinkName)
+                    .IsRequired()
+                    .HasColumnName("FriendshipLink_Name")
+                    .HasColumnType("varchar(40)");
+
+                entity.Property(e => e.FriendshipLinkSfsh)
+                    .HasColumnName("FriendshipLink_Sfsh")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.FriendshipLinkSortValue)
+                    .HasColumnName("FriendshipLink_SortValue")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.FriendshipLinkUrl)
+                    .HasColumnName("FriendshipLink_Url")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+            });
+
+            modelBuilder.Entity<BlogLable>(entity =>
+            {
+                entity.HasKey(e => e.LableId);
+
+                entity.ToTable("Blog_Lable");
+
+                entity.HasIndex(e => e.LableName)
+                    .HasName("Lable_Name")
+                    .IsUnique();
+
+                entity.Property(e => e.LableId)
+                    .HasColumnName("Lable_Id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.LableClickNum)
+                    .HasColumnName("Lable_ClickNum")
+                    .HasColumnType("bigint(20)")
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.LableCreateTime)
+                    .HasColumnName("Lable_CreateTime")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.LableName)
+                    .IsRequired()
+                    .HasColumnName("Lable_Name")
+                    .HasColumnType("varchar(20)");
+
+                entity.Property(e => e.LableNote)
+                    .HasColumnName("Lable_Note")
+                    .HasColumnType("varchar(2048)");
+
+                entity.Property(e => e.LableSortValue)
+                    .HasColumnName("Lable_SortValue")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+            });
+
+            modelBuilder.Entity<BlogNavigationImg>(entity =>
+            {
+                entity.HasKey(e => e.NavigationImgId);
+
+                entity.ToTable("Blog_NavigationImg");
+
+                entity.Property(e => e.NavigationImgId)
+                    .HasColumnName("NavigationImg_Id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.NavigationImgDescribe)
+                    .IsRequired()
+                    .HasColumnName("NavigationImg_Describe")
+                    .HasColumnType("varchar(2048)")
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.NavigationImgSortValue)
+                    .HasColumnName("NavigationImg_SortValue")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.NavigationImgUrl)
+                    .IsRequired()
+                    .HasColumnName("NavigationImg_Url")
+                    .HasColumnType("varchar(200)");
+            });
+
+            modelBuilder.Entity<BlogRelated>(entity =>
+            {
+                entity.ToTable("Blog_Related");
+
+                entity.Property(e => e.BlogRelatedId)
+                    .HasColumnName("Blog_RelatedId")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.RelatedArticleId)
+                    .HasColumnName("Related_Article_Id")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.RelatedLableId)
+                    .HasColumnName("Related_Lable_Id")
+                    .HasColumnType("int(11)");
+            });
+
             modelBuilder.Entity<DictAuthorityType>(entity =>
             {
                 entity.HasKey(e => e.AuthorityTypeId);
 
                 entity.ToTable("Dict_AuthorityType");
 
+                entity.Property(e => e.AuthorityTypeId).HasColumnType("varchar(36)");
+
                 entity.Property(e => e.AuthorityTypeName)
                     .IsRequired()
-                    .HasMaxLength(20);
+                    .HasColumnType("varchar(20)");
             });
 
             modelBuilder.Entity<SysAmRelated>(entity =>
@@ -54,7 +253,15 @@ namespace Zhouli.MsSql.DbEntity.Models
 
                 entity.ToTable("Sys_AmRelated");
 
-                entity.Property(e => e.AmRelatedId).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.AmRelatedId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.AuthorityId)
+                    .IsRequired()
+                    .HasColumnType("varchar(36)");
+
+                entity.Property(e => e.MenuId)
+                    .IsRequired()
+                    .HasColumnType("varchar(36)");
             });
 
             modelBuilder.Entity<SysAuthority>(entity =>
@@ -63,19 +270,23 @@ namespace Zhouli.MsSql.DbEntity.Models
 
                 entity.ToTable("Sys_Authority");
 
-                entity.Property(e => e.AuthorityId).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.AuthorityId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.CreateTime)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
+                entity.Property(e => e.AuthorityType).HasColumnType("int(11)");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });
 
             modelBuilder.Entity<SysMenu>(entity =>
@@ -84,31 +295,33 @@ namespace Zhouli.MsSql.DbEntity.Models
 
                 entity.ToTable("Sys_Menu");
 
-                entity.Property(e => e.MenuId).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.MenuId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.CreateTime)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.MenuIcon).HasMaxLength(50);
+                entity.Property(e => e.MenuIcon).HasColumnType("varchar(50)");
 
                 entity.Property(e => e.MenuName)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasColumnType("varchar(50)");
 
-                entity.Property(e => e.MenuUrl)
-                    .HasMaxLength(80)
-                    .IsUnicode(false);
+                entity.Property(e => e.MenuSort).HasColumnType("int(11)");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.MenuUrl).HasColumnType("varchar(80)");
 
-                entity.Property(e => e.ParentMenuId).HasDefaultValueSql("(CONVERT([uniqueidentifier],CONVERT([binary],(0),0),0))");
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
+
+                entity.Property(e => e.ParentMenuId).HasColumnType("varchar(36)");
             });
 
             modelBuilder.Entity<SysRaRelated>(entity =>
@@ -117,7 +330,15 @@ namespace Zhouli.MsSql.DbEntity.Models
 
                 entity.ToTable("Sys_RaRelated");
 
-                entity.Property(e => e.RaRelatedId).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.RaRelatedId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.AuthorityId)
+                    .IsRequired()
+                    .HasColumnType("varchar(36)");
+
+                entity.Property(e => e.RoleId)
+                    .IsRequired()
+                    .HasColumnType("varchar(36)");
             });
 
             modelBuilder.Entity<SysRole>(entity =>
@@ -126,23 +347,25 @@ namespace Zhouli.MsSql.DbEntity.Models
 
                 entity.ToTable("Sys_Role");
 
-                entity.Property(e => e.RoleId).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.RoleId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.CreateTime)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
 
                 entity.Property(e => e.RoleName)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasColumnType("varchar(50)");
             });
 
             modelBuilder.Entity<SysUgrRelated>(entity =>
@@ -151,7 +374,15 @@ namespace Zhouli.MsSql.DbEntity.Models
 
                 entity.ToTable("Sys_UgrRelated");
 
-                entity.Property(e => e.UgrRelatedId).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.UgrRelatedId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.RoleId)
+                    .IsRequired()
+                    .HasColumnType("varchar(36)");
+
+                entity.Property(e => e.UserGroupId)
+                    .IsRequired()
+                    .HasColumnType("varchar(36)");
             });
 
             modelBuilder.Entity<SysUrRelated>(entity =>
@@ -160,7 +391,15 @@ namespace Zhouli.MsSql.DbEntity.Models
 
                 entity.ToTable("Sys_UrRelated");
 
-                entity.Property(e => e.UrRelatedId).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.UrRelatedId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.RoleId)
+                    .IsRequired()
+                    .HasColumnType("varchar(36)");
+
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasColumnType("varchar(36)");
             });
 
             modelBuilder.Entity<SysUser>(entity =>
@@ -170,59 +409,56 @@ namespace Zhouli.MsSql.DbEntity.Models
                 entity.ToTable("Sys_User");
 
                 entity.HasIndex(e => e.UserName)
-                    .HasName("UQ__Sys_User__C9F28456023D5A04")
+                    .HasName("UserName")
                     .IsUnique();
 
-                entity.Property(e => e.UserId).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.UserId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.CreateTime)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
 
-                entity.Property(e => e.UserAvatar)
-                    .HasMaxLength(150)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserAvatar).HasColumnType("varchar(150)");
 
                 entity.Property(e => e.UserBirthday).HasColumnType("date");
 
-                entity.Property(e => e.UserEmail)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserEmail).HasColumnType("varchar(50)");
+
+                entity.Property(e => e.UserGroupId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.UserName)
                     .IsRequired()
-                    .HasMaxLength(20);
+                    .HasColumnType("varchar(20)");
 
-                entity.Property(e => e.UserNikeName).HasMaxLength(20);
+                entity.Property(e => e.UserNikeName).HasColumnType("varchar(20)");
 
-                entity.Property(e => e.UserPhone)
-                    .HasMaxLength(11)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserPhone).HasColumnType("varchar(11)");
 
                 entity.Property(e => e.UserPwd)
                     .IsRequired()
-                    .HasMaxLength(50)
-                    .HasDefaultValueSql("(upper(substring([sys].[fn_sqlvarbasetostr](hashbytes('MD5','123456')),(3),(32))))");
+                    .HasColumnType("varchar(50)");
 
-                entity.Property(e => e.UserQq)
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserQq).HasColumnType("varchar(15)");
 
-                entity.Property(e => e.UserSex).HasDefaultValueSql("((1))");
+                entity.Property(e => e.UserSex)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
-                entity.Property(e => e.UserStatus).HasDefaultValueSql("((1))");
+                entity.Property(e => e.UserStatus)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
-                entity.Property(e => e.UserWx)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserWx).HasColumnType("varchar(50)");
             });
 
             modelBuilder.Entity<SysUserGroup>(entity =>
@@ -231,23 +467,27 @@ namespace Zhouli.MsSql.DbEntity.Models
 
                 entity.ToTable("Sys_UserGroup");
 
-                entity.Property(e => e.UserGroupId).HasDefaultValueSql("(newid())");
+                entity.Property(e => e.UserGroupId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.CreateTime)
-                    .HasColumnType("datetime")
-                    .HasDefaultValueSql("(CONVERT([varchar],getdate(),(120)))");
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
+
+                entity.Property(e => e.ParentUserGroupId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.UserGroupName)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasColumnType("varchar(50)");
             });
         }
     }

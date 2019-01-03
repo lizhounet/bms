@@ -19,7 +19,7 @@
 #endregion
 using System.ComponentModel;
 
-namespace Zhouli.MsSql.DbEntity.Models
+namespace Zhouli.DbEntity.Models
 {
     /// <summary>
     /// 此类包含了项目所有枚举

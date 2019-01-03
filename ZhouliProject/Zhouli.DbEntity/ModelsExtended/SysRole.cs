@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Zhouli.MsSql.DbEntity.Models
+namespace Zhouli.DbEntity.Models
 {
     public partial class SysRole
     {

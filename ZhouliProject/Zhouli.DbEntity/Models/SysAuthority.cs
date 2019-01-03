@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Zhouli.MsSql.DbEntity.Models
+namespace Zhouli.DbEntity.Models
 {
     public partial class SysAuthority
     {
-        public Guid AuthorityId { get; set; }
+        public string AuthorityId { get; set; }
         public int AuthorityType { get; set; }
-        public Guid? CreateUserId { get; set; }
+        public string CreateUserId { get; set; }
         public DateTime CreateTime { get; set; }
         public DateTime? EditTime { get; set; }
         public int DeleteSign { get; set; }

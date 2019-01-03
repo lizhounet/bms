@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Zhouli.MsSql.DbEntity.Models
+namespace Zhouli.DbEntity.Models
 {
     public partial class SysAmRelated
     {
-        public Guid AmRelatedId { get; set; }
-        public Guid AuthorityId { get; set; }
-        public Guid MenuId { get; set; }
+        public string AmRelatedId { get; set; }
+        public string AuthorityId { get; set; }
+        public string MenuId { get; set; }
     }
 }
