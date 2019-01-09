@@ -47,6 +47,7 @@ namespace ZhouliSystem.Controllers
         public IActionResult UserInfo()
         {
             ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(injection.GetT<UserAccount>().GetUserInfo().UserId)).SingleOrDefault());
+            ViewBag.FileServiceAdress = injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value.FileServiceAdress;
             return View();
         }
         public IActionResult UserChagePwd() => View();

@@ -8,12 +8,15 @@
         //上传头像
         upload.render({
             elem: '.userFaceBtn',
-            url: '../../json/userface.json',
-            method: "post",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
-            done: function (res, index, upload) {
-                var num = parseInt(4 * Math.random());  //生成0-4的随机数，随机显示一个头像信息
-                $('#userFace').attr('src', res.data[num].src);
-                window.sessionStorage.setItem('userFace', res.data[num].src);
+            url: $('#FileServiceAdress').val(),
+            method: "post",
+            accept:"images",
+            done: function (res) {
+                if (res.StateCode == 200) {
+                    layer.msg("头像上传成功");
+                    $('#userFace').attr('src', res.JsonData.FileAddress);
+                }
+
             }
         });
 
@@ -73,7 +76,7 @@
                 UserNikeName: $(".userNikeName").val(),  //昵称
                 UserBirthday: $(".userBirthday").val(),  //出生日期
                 UserQq: $(".userQq").val(),  //qq
-                UserAvatar: $(".userAvatar").val(),  //头像
+                UserAvatar: $(".userAvatar").attr('src'),  //头像
                 UserEmail: $(".userEmail").val(),  //邮箱
                 UserWx: $(".userWx").val(),  //微信
                 UserPhone: $(".userPhone").val(),  //手机号
@@ -87,7 +90,7 @@
                 layer.close(index);
                 layer.msg(res.Messages);
                 if (res.Statecode == 200) {
-                   location.reload();
+                    location.reload();
                 }
 
             }, 'json');

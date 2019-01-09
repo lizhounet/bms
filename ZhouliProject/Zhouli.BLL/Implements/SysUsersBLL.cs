@@ -132,6 +132,8 @@ namespace Zhouli.BLL.Implements
                 user_edit.UserGroupId = user.UserGroupId;
                 user_edit.Note = user.Note;
                 user_edit.EditTime = DateTime.Now;
+                if (!string.IsNullOrEmpty(user.UserAvatar))
+                    user_edit.UserAvatar = user.UserAvatar;
                 if (Update(user_edit))
                 {
                     messageModel.Message = "修改成功";

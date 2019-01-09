@@ -103,9 +103,11 @@ $(function () {
                 $(this).siblings().removeClass('open');
             }
         } else {
+            $(this).addClass("nav-li-this");
             var url = $(this).children('a').attr('_href');
             var title = $(this).find('cite').html();
             var index = $('.left-nav #nav li').index($(this));
+            $(this).siblings().removeClass('nav-li-this .nav-li-this-border');
             for (var i = 0; i < $('.x-iframe').length; i++) {
                 if ($('.x-iframe').eq(i).attr('tab-id') == index + 1) {
                     tab.tabChange(index + 1);
@@ -113,7 +115,6 @@ $(function () {
                     return;
                 }
             }
-            
             tab.tabAdd(title, url, index + 1);
             tab.tabChange(index + 1);
         }

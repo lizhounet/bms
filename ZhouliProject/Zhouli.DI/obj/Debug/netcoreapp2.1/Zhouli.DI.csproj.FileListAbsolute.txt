@@ -2,11 +2,13 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.DI.dep
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.DI.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.DI.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.BLL.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.Common.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.DAL.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.Dto.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.BLL.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.DAL.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.Common.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.Dto.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\obj\Debug\netcoreapp2.1\Zhouli.DI.csprojAssemblyReference.cache
@@ -16,5 +18,3 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.DI\obj\Debug\netcoreapp2.1\Zhouli.DI.Ass
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\obj\Debug\netcoreapp2.1\Zhouli.DI.csproj.CopyComplete
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\obj\Debug\netcoreapp2.1\Zhouli.DI.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\obj\Debug\netcoreapp2.1\Zhouli.DI.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.Common.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.Common.pdb

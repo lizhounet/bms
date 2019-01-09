@@ -33,5 +33,9 @@ namespace ZhouliSystem.Models
         /// 超级管理账户
         /// </summary>
         public string adminAccount { set; get; }
+        /// <summary>
+        /// 文件上传服务器地址
+        /// </summary>
+        public string FileServiceAdress { set; get; }
     }
 }
