@@ -18,26 +18,36 @@ namespace Zhouli.FileService.Filters
     public class UploadLimitFilter : Attribute, IAsyncResourceFilter
     {
         private readonly int UploadFileSize;
+        /// <summary>
+        /// UploadLimitFilter构造函数
+        /// </summary>
+        /// <param name="UploadFileSize"></param>
         public UploadLimitFilter(int UploadFileSize)
         {
             this.UploadFileSize = UploadFileSize;
         }
+        /// <summary>
+        /// 文件上传之前的验证过滤
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="next"></param>
+        /// <returns></returns>
         public async Task OnResourceExecutionAsync(ResourceExecutingContext context, ResourceExecutionDelegate next)
         {
-            var formValueProviderFactory = context.ValueProviderFactories
-                  .OfType<FormValueProviderFactory>()
-                  .FirstOrDefault();
-            if (formValueProviderFactory != null)
-            {
-                context.ValueProviderFactories.Remove(formValueProviderFactory);
-            }
-            var jqueryFormValueProviderFactory = context.ValueProviderFactories
-                .OfType<JQueryFormValueProviderFactory>()
-                .FirstOrDefault();
-            if (jqueryFormValueProviderFactory != null)
-            {
-                context.ValueProviderFactories.Remove(jqueryFormValueProviderFactory);
-            }
+            //var formValueProviderFactory = context.ValueProviderFactories
+            //      .OfType<FormValueProviderFactory>()
+            //      .FirstOrDefault();
+            //if (formValueProviderFactory != null)
+            //{
+            //    context.ValueProviderFactories.Remove(formValueProviderFactory);
+            //}
+            //var jqueryFormValueProviderFactory = context.ValueProviderFactories
+            //    .OfType<JQueryFormValueProviderFactory>()
+            //    .FirstOrDefault();
+            //if (jqueryFormValueProviderFactory != null)
+            //{
+            //    context.ValueProviderFactories.Remove(jqueryFormValueProviderFactory);
+            //}
             var files = await context.HttpContext.Request.ReadFormAsync();
             if (files.Files.Count <= 0 || files == null)
             {

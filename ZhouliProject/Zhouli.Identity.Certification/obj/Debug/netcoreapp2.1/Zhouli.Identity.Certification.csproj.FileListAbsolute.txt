@@ -2,13 +2,13 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\bin\Debug\netcore
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\bin\Debug\netcoreapp2.1\Zhouli.Identity.Certification.runtimeconfig.json
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\bin\Debug\netcoreapp2.1\Zhouli.Identity.Certification.runtimeconfig.dev.json
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\bin\Debug\netcoreapp2.1\Zhouli.Identity.Certification.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\bin\Debug\netcoreapp2.1\Zhouli.Identity.Certification.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.csprojAssemblyReference.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.RazorAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.RazorAssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.AssemblyInfoInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.RazorTargetAssemblyInfo.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\bin\Debug\netcoreapp2.1\Zhouli.Identity.Certification.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.csprojAssemblyReference.cache

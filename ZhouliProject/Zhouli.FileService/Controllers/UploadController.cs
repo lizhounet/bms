@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -20,32 +21,37 @@ using Zhouli.FileService.Models;
 
 namespace Zhouli.FileService.Controllers
 {
+    /// <summary>
+    /// 文件上传
+    /// </summary>
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class UploadController : ControllerBase
     {
         private IOptionsSnapshot<CustomConfiguration> configuration;
+        /// <summary>
+        /// UploadController
+        /// </summary>
+        /// <param name="configuration"></param>
         public UploadController(IOptionsSnapshot<CustomConfiguration> configuration)
         {
             this.configuration = configuration;
 
         }
-        public IActionResult Upload()
-        {
-            return Content("ok");
-        }
         /// <summary>
-        /// 上传文件
+        /// 上传文件接口
         /// </summary>
+        /// <param name="environment"></param>
+        /// <param name="files">客户端上传的文件</param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPost("")]
         [UploadLimitFilter(1)]
-        public async Task<string> Upload([FromServices]IHostingEnvironment environment, List<IFormFile> filese)
+        public async Task<string> Upload([FromServices]IHostingEnvironment environment,IFormCollection files)
         {
             var response = new ResponseModel();
-            var files = Request.Form.Files;
             Mac mac = new Mac(configuration.Value.AccessKey, configuration.Value.SecretKey);
-            foreach (var formFile in files)
+            foreach (var formFile in files.Files)
             {
                 //获取文件类型
                 var contentType = formFile.ContentType;

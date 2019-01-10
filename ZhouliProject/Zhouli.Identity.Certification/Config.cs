@@ -10,7 +10,10 @@ namespace Zhouli.Identity.Certification
     {
         public static IEnumerable<ApiResource> GetApiResources()
         {
-            return new ApiResource[] { new ApiResource("Zhouli.BlogWebApi", "周黎的博客Api") };
+            return new ApiResource[] {
+                new ApiResource("Zhouli.BlogWebApi", "周黎的博客Api"),
+                new ApiResource("Zhouli.FileService", "周黎的文件服务Api")
+            };
         }
         public static IEnumerable<Client> GetClients()
         {
@@ -24,7 +27,7 @@ namespace Zhouli.Identity.Certification
                 new Secret("991022".Sha256())
             },
             // 客户端有权访问的范围（Scopes）
-            AllowedScopes = { "ZhouliBlog" }
+            AllowedScopes = { "Zhouli.BlogWebApi", "Zhouli.FileService" }
             } };
         }
     }

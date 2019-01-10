@@ -39,6 +39,11 @@ namespace Zhouli.FileService.Filters
     {
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly IModelMetadataProvider _modelMetadataProvider;
+        /// <summary>
+        /// HttpGlobalExceptionFilter
+        /// </summary>
+        /// <param name="hostingEnvironment"></param>
+        /// <param name="modelMetadataProvider"></param>
         public HttpGlobalExceptionFilter(
             IHostingEnvironment hostingEnvironment,
             IModelMetadataProvider modelMetadataProvider)

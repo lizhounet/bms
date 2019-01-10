@@ -15,3 +15,15 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zh
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.csproj.CopyComplete
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\Microsoft.Extensions.PlatformAbstractions.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\Microsoft.Extensions.PlatformAbstractions.xml
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Zhouli.FileService.deps.json
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Zhouli.FileService.runtimeconfig.json
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Zhouli.FileService.runtimeconfig.dev.json
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Zhouli.FileService.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Zhouli.FileService.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Zhouli.FileService.xml
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Microsoft.Extensions.PlatformAbstractions.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Zhouli.Common.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Zhouli.Common.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Microsoft.Extensions.PlatformAbstractions.xml

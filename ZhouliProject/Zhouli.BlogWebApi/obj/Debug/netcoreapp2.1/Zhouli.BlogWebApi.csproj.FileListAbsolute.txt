@@ -16,6 +16,7 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\Zhoul
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\Zhouli.BlogWebApi.runtimeconfig.dev.json
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\Zhouli.BlogWebApi.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\Zhouli.BlogWebApi.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.csprojAssemblyReference.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.RazorAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.RazorAssemblyInfo.cs
@@ -24,4 +25,3 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhoul
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.RazorTargetAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.csprojAssemblyReference.cache
