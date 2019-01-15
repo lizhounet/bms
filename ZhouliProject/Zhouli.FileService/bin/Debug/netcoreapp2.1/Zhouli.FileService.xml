@@ -21,11 +21,12 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Zhouli.FileService.Controllers.FileController.Download(System.String)">
+        <member name="M:Zhouli.FileService.Controllers.FileController.Download(Microsoft.AspNetCore.Hosting.IHostingEnvironment,System.String)">
             <summary>
-            文件访问,返回文件响应流
+            文件访问,返回文件流
             </summary>
             <param name="fileKey"></param>
+            <param name="environment"></param>
             <returns></returns>
         </member>
         <member name="T:Zhouli.FileService.Controllers.UploadController">
@@ -39,12 +40,13 @@
             </summary>
             <param name="configuration"></param>
         </member>
-        <member name="M:Zhouli.FileService.Controllers.UploadController.Upload(Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.AspNetCore.Http.IFormCollection)">
+        <member name="M:Zhouli.FileService.Controllers.UploadController.Upload(Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.AspNetCore.Http.IFormCollection,Zhouli.FileService.Models.FileUploadModel)">
             <summary>
             上传文件接口
             </summary>
             <param name="environment"></param>
-            <param name="files">客户端上传的文件</param>
+            <param name="formCollection">文件</param>
+            <param name="uploadModel">文件上传参数</param>
             <returns></returns>
         </member>
         <member name="T:Zhouli.FileService.Data.Log4netHelper">
@@ -246,18 +248,18 @@
             <param name="hostingEnvironment"></param>
             <param name="modelMetadataProvider"></param>
         </member>
-        <member name="T:Zhouli.FileService.Filters.UploadLimitFilter">
+        <member name="T:Zhouli.FileService.Filters.UploadLimitAttribute">
             <summary>
-            文件上传之前的验证过滤器,UploadFileSize：上传文件限制大小
+            文件上传之前的验证
             </summary>
         </member>
-        <member name="M:Zhouli.FileService.Filters.UploadLimitFilter.#ctor(System.Int32)">
+        <member name="M:Zhouli.FileService.Filters.UploadLimitAttribute.#ctor(System.Int32)">
             <summary>
             UploadLimitFilter构造函数
             </summary>
-            <param name="UploadFileSize"></param>
+            <param name="UploadFileSize">文件大小(单位:M)</param>
         </member>
-        <member name="M:Zhouli.FileService.Filters.UploadLimitFilter.OnResourceExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ResourceExecutionDelegate)">
+        <member name="M:Zhouli.FileService.Filters.UploadLimitAttribute.OnResourceExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ResourceExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ResourceExecutionDelegate)">
             <summary>
             文件上传之前的验证过滤
             </summary>
@@ -283,6 +285,41 @@
         <member name="P:Zhouli.FileService.Models.CustomConfiguration.Bucket">
             <summary>
             七牛云存储空间
+            </summary>
+        </member>
+        <member name="P:Zhouli.FileService.Models.CustomConfiguration.IdentityServerAdress">
+            <summary>
+            认证服务站点
+            </summary>
+        </member>
+        <member name="P:Zhouli.FileService.Models.Bucket.public">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Zhouli.FileService.Models.Bucket.private">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Zhouli.FileService.Models.FileUploadModel.StorageMethod">
+            <summary>
+            存储方式:qiniuyun(七牛云存储),bendi(服务器本地存储);
+            </summary>
+        </member>
+        <member name="P:Zhouli.FileService.Models.FileUploadModel.FileSpaceType">
+            <summary>
+            上传文件空间类型(StorageMethod为bendi时可不传):private(私有),public(公开);
+            </summary>
+        </member>
+        <member name="P:Zhouli.FileService.Models.FileUploadModel.FileKey">
+            <summary>
+            guid
+            </summary>
+        </member>
+        <member name="P:Zhouli.FileService.Models.FileUploadModel.ContentType">
+            <summary>
+            文件类型
             </summary>
         </member>
         <member name="T:Zhouli.FileService.Models.ResponseModel">

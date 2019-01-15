@@ -10,8 +10,13 @@
             elem: '.userFaceBtn',
             url: $('#FileServiceAdress').val(),
             method: "post",
-            accept:"images",
+            accept: "images",
+            acceptMime: 'image/*',
+            choose: function (object) {
+                alert(object);
+            },
             done: function (res) {
+                console.log(res);
                 if (res.StateCode == 200) {
                     layer.msg("头像上传成功");
                     $('#userFace').attr('src', res.JsonData.FileAddress);

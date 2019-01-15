@@ -43,7 +43,7 @@ namespace AspNetCore
             WriteLiteral("<!DOCTYPE html>\r\n<html>\r\n");
             EndContext();
             BeginContext(25, 501, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "92a3a9e2a6c4442eacacd541e0637175", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "be030549565545d5b3f097f9e59a541b", async() => {
                 BeginContext(31, 488, true);
                 WriteLiteral(@"
     <title>主页</title>
@@ -72,7 +72,7 @@ namespace AspNetCore
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(528, 27, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "aa0e36df943e4a14a21b0a07d17f063e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3ceff914bff4909aa98880283f57516", async() => {
                 BeginContext(535, 13, true);
                 WriteLiteral("\r\n   主页-欢迎您\r\n");
                 EndContext();

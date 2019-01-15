@@ -29,6 +29,7 @@ using Zhouli.DbEntity.Models;
 using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace ZhouliSystem.Controllers
 {

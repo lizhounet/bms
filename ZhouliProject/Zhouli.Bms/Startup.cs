@@ -24,6 +24,7 @@ namespace ZhouliSystem
         {
             Configuration = configuration;
         }
+        
         public IConfiguration Configuration { get; }
         public static ILoggerRepository repository { get; set; }
 
@@ -64,6 +65,8 @@ namespace ZhouliSystem
                 options.AreaViewLocationFormats.Add("/Areas/{2}Manager/Views/Shared/{0}.cshtml");
                 options.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
             });
+            //MemoryCache缓存
+            services.AddMemoryCache();
             //mvc框架 
             services.AddMvc(o =>
             {

@@ -50,7 +50,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{D2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zhouli.Identity.Certification", "Zhouli.Identity.Certification\Zhouli.Identity.Certification.csproj", "{3E5789B4-C95A-41D6-9174-3BC148B6E716}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhouli.FileService", "Zhouli.FileService\Zhouli.FileService.csproj", "{6E2E83E3-AC0A-432C-BF04-7FDCD045082E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zhouli.FileService", "Zhouli.FileService\Zhouli.FileService.csproj", "{6E2E83E3-AC0A-432C-BF04-7FDCD045082E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

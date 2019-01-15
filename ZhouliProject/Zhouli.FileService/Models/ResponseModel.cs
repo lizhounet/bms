@@ -43,7 +43,7 @@ namespace Zhouli.FileService.Models
         /// <summary>
         /// 响应json数据(默认:"[]")
         /// </summary>
-        public Object JsonData { set; get; } = "[]";
+        public object JsonData { set; get; } = "[]";
     }
     /// <summary>
     /// 响应状态码

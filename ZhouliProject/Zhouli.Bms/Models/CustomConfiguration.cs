@@ -37,5 +37,9 @@ namespace ZhouliSystem.Models
         /// 文件上传服务器地址
         /// </summary>
         public string FileServiceAdress { set; get; }
+        /// <summary>
+        /// Identity认证服务站点
+        /// </summary>
+        public string IdentityServerAdress { set; get; }
     }
 }

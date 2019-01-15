@@ -40,6 +40,22 @@ namespace Zhouli.FileService.Models
         /// <summary>
         /// 七牛云存储空间
         /// </summary>
-        public string Bucket { set; get; }
+        public Bucket Bucket { get; set; }
+        /// <summary>
+        /// 认证服务站点
+        /// </summary>
+        public string IdentityServerAdress { get; set; }
     }
+    public class Bucket
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public string @public { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string @private { get; set; }
+    }
+
 }

@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.PlatformAbstractions;
+using Zhouli.Common;
 
 namespace Zhouli.Identity.Certification
 {
@@ -15,9 +19,11 @@ namespace Zhouli.Identity.Certification
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var basePath = PlatformServices.Default.Application.ApplicationBasePath;
             // 使用内存存储的密钥，客户端和API资源来配置ids4。
             services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
+                .AddSigningCredential(new X509Certificate2(Path.Combine(basePath,
+                "zhoulikey.pfx"), Base64Helper.DecodeBase64("OTkwMTIyNjYxOWxs")))
                 .AddInMemoryApiResources(Config.GetApiResources())
                 .AddInMemoryClients(Config.GetClients());
         }
