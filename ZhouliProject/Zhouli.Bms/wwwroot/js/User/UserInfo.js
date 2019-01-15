@@ -15,6 +15,10 @@
             choose: function (object) {
                 alert(object);
             },
+            data: {
+                StorageMethod: "bendi",
+                FileSpaceType:"public"
+            },
             done: function (res) {
                 console.log(res);
                 if (res.StateCode == 200) {

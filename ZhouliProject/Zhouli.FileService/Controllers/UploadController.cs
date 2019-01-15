@@ -47,16 +47,18 @@ namespace Zhouli.FileService.Controllers
         /// <param name="uploadModel">文件上传参数</param>
         /// <returns></returns>
         [HttpPost("")]
-        //[UploadLimit(20)]
+        [UploadLimit(20)]
         public async Task<string> Upload([FromServices]IHostingEnvironment environment, IFormCollection formCollection, [FromForm]FileUploadModel uploadModel)
         {
             var response = new ResponseModel();
             foreach (var formFile in formCollection.Files)
             {
-                uploadModel.ContentType = formFile.ContentType;
+                uploadModel.ContentType = formFile.ContentType.Replace("\\","").Replace("/","");
                 //创建文件名称
-                string fileName = $"{DescHelper.DescEncrypt($"{JsonHelper.Json(uploadModel)}")}" +
-                    $"{Path.GetExtension(formFile.FileName)}";
+                //string fileName = $"{DescHelper.DescEncrypt($"{JsonHelper.Json(uploadModel)}")}" +
+                //    $"{Path.GetExtension(formFile.FileName)}";
+                string fileName = $"{Guid.NewGuid().ToString()}" +
+                   $"{Path.GetExtension(formFile.FileName)}";
                 //七牛云存储
                 if (uploadModel.StorageMethod.Equals("qiniuyun"))//七牛云存储
                 {
@@ -96,9 +98,10 @@ namespace Zhouli.FileService.Controllers
                 //服务器本地存储
                 else if (uploadModel.StorageMethod.Equals("bendi"))
                 {
-                    var filePath = $@"{environment.WebRootPath}\Upload\{uploadModel.ContentType}";
+                    var filePath = $@"{environment.ContentRootPath}\Upload\{uploadModel.ContentType}";
                     if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
-                    using (var stream = new FileStream(filePath + "\\" + fileName, FileMode.Create))
+                    string sss = Path.Combine(filePath, fileName);
+                    using (var stream = new FileStream(Path.Combine(filePath, fileName), FileMode.CreateNew))
                     {
                         await formFile.CopyToAsync(stream);
                     }

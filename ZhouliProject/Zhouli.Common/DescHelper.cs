@@ -15,9 +15,9 @@ namespace Zhouli.Common
         /// Desc加密
         /// </summary>
         /// <param name="pToEncrypt">需要加密的值</param>
-        /// <param name="sKey">加密key</param>
+        /// <param name="sKey">加密key(8个字符，64位)</param>
         /// <returns></returns>
-        public static string DescEncrypt(string pToEncrypt, string sKey="zhouli")
+        public static string DescEncrypt(string pToEncrypt, string sKey="zhoulijm")
         {
             DESCryptoServiceProvider des = new DESCryptoServiceProvider();
             byte[] inputByteArray = Encoding.Default.GetBytes(pToEncrypt);
@@ -41,9 +41,9 @@ namespace Zhouli.Common
         /// Desc解密
         /// </summary>
         /// <param name="pToDecrypt">需要加密的值</param>
-        /// <param name="sKey">加密key</param>
+        /// <param name="sKey">加密key(8个字符，64位)</param>
         /// <returns></returns>
-        public static string DescDecrypt(string pToDecrypt, string sKey= "zhouli")
+        public static string DescDecrypt(string pToDecrypt, string sKey= "zhoulijm")
         {
             DESCryptoServiceProvider des = new DESCryptoServiceProvider();
 
