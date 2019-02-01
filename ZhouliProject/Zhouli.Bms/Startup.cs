@@ -86,7 +86,6 @@ namespace ZhouliSystem
                                          //VaryByQueryKeys = new string[] { "aaa" }
                 });
             });
-
             #endregion
             #region 自定义的配置关系
             //注入全局依赖注入提供者类

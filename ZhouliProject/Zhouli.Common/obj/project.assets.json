@@ -689,6 +689,7 @@
       "type": "package",
       "path": "newtonsoft.json/12.0.1",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
@@ -730,23 +731,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Users\\a\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\code\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj",
+      "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj",
       "projectName": "Zhouli.Common",
-      "projectPath": "F:\\code\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "F:\\code\\资料文档\\个人项目\\bms\\ZhouliProject\\Zhouli.Common\\obj\\",
+      "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj",
+      "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
+      "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -754,7 +755,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://www.nuget.org/api/v2/": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {

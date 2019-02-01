@@ -30,6 +30,10 @@ using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
 using Microsoft.Extensions.Caching.Memory;
+using IdentityModel.Client;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System;
 
 namespace ZhouliSystem.Controllers
 {
@@ -41,8 +45,9 @@ namespace ZhouliSystem.Controllers
             this.injection = injection;
         }
         [ResponseCache(CacheProfileName = "default")]
-        public IActionResult Login() {
-            
+        public IActionResult Login()
+        {
+
             return View();
         }
         public IActionResult UserInfo()
@@ -75,7 +80,8 @@ namespace ZhouliSystem.Controllers
                     //密码修改成功 重新登录
                     injection.GetT<UserAccount>().Login(user);
                 }
-                else {
+                else
+                {
                     response.Messages = "密码修改失败";
                     response.StateCode = StatesCode.failure;
                 }
@@ -132,6 +138,35 @@ namespace ZhouliSystem.Controllers
 
             }
             return Json(message);
+        }
+        /// <summary>
+        /// 获取调用文件服务需要的oken
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult GetToken()
+        {
+            var configuration = injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value;
+            //初始化Redis
+            RedisHelper.Initialization(new CSRedis.CSRedisClient(configuration.RedisAdress));
+
+            return Ok(new ResponseModel
+            {
+                JsonData = RedisHelper.CacheShell("zhouli.bms", 3600, GetFileServerToken)
+            });
+        }
+        private string GetFileServerToken()
+        {
+            var configuration = injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value;
+            var client = new HttpClient();
+            var response = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
+            {
+                Address = configuration.IdentityServerAdress + "/connect/token",
+                ClientId = "zhouli",
+                ClientSecret = "991022",
+                Scope = "Zhouli.FileService"
+            });
+            return $"Bearer {response.Result.AccessToken}";
         }
     }
 }

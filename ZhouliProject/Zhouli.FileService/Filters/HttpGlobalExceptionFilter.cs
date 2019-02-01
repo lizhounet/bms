@@ -53,11 +53,11 @@ namespace Zhouli.FileService.Filters
         }
         public void OnException(ExceptionContext context)
         {
-            if (_hostingEnvironment.IsDevelopment())
-            {
-                //开发环境
-                return;
-            }
+            //if (_hostingEnvironment.IsDevelopment())
+            //{
+            //    //开发环境
+            //    return;
+            //}
             //记录错误日志
             Log4netHelper.Error(typeof(HttpGlobalExceptionFilter), context.Exception);
             // context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

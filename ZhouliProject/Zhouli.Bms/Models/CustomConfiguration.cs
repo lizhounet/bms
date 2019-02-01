@@ -41,5 +41,9 @@ namespace ZhouliSystem.Models
         /// Identity认证服务站点
         /// </summary>
         public string IdentityServerAdress { set; get; }
+        /// <summary>
+        /// Redis连接字符串
+        /// </summary>
+        public string RedisAdress { set; get; }
     }
 }

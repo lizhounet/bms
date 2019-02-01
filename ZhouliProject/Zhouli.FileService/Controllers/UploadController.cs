@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -26,7 +27,7 @@ namespace Zhouli.FileService.Controllers
     /// </summary>
     [Route("[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class UploadController : ControllerBase
     {
         private IOptionsSnapshot<CustomConfiguration> configuration;
@@ -38,6 +39,15 @@ namespace Zhouli.FileService.Controllers
         {
             this.configuration = configuration;
 
+        }
+        /// <summary>
+        /// 测试接口
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok("okokok");
         }
         /// <summary>
         /// 上传文件接口
@@ -53,7 +63,7 @@ namespace Zhouli.FileService.Controllers
             var response = new ResponseModel();
             foreach (var formFile in formCollection.Files)
             {
-                uploadModel.ContentType = formFile.ContentType.Replace("\\","").Replace("/","");
+                uploadModel.ContentType = formFile.ContentType.Replace("\\", "").Replace("/", "");
                 //创建文件名称
                 //string fileName = $"{DescHelper.DescEncrypt($"{JsonHelper.Json(uploadModel)}")}" +
                 //    $"{Path.GetExtension(formFile.FileName)}";
@@ -113,7 +123,7 @@ namespace Zhouli.FileService.Controllers
                                             .Append(Request.Scheme)
                                             .Append("://")
                                             .Append(Request.Host)
-                                            .Append("/file/")
+                                            .Append($"/{uploadModel.ContentType}/")
                                             .ToString() + fileName
                     };//文件地址
                 }

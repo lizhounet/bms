@@ -10,9 +10,40 @@
             elem: '.userFaceBtn',
             url: $('#FileServiceAdress').val(),
             method: "post",
-            accept:"images",
+            accept: "images",
+            acceptMime: 'image/*',
+            auto: false,
+            bindAction: "#userFaceUpload",
+            choose: function (obj) {
+                obj.preview(function (index, file, result) {
+                    $('#userFace').attr('src', result); //图片链接（base64）
+                });
+                $.post("/User/GetToken", function (res) {
+                    if (res.stateCode != 200) {
+                        layer.msg(res.messages);
+                    }
+                    else {
+                        $("#userFaceBtn").hide();
+                        $("#userFaceUpload").show();
+                        sessionStorage.accessToken = res.jsonData;
+
+                    }
+                });
+            },
+            before: function (obj) { //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                layer.msg("头像上传中,请稍等....", { icon: 16, time: 20000 })
+            },
+            headers: {
+                "Authorization": sessionStorage.accessToken
+            },
+            data: {
+                StorageMethod: "qiniuyun",
+                FileSpaceType: "public"
+            },
             done: function (res) {
+                console.log(res);
                 if (res.StateCode == 200) {
+                    //layer.close();
                     layer.msg("头像上传成功");
                     $('#userFace').attr('src', res.JsonData.FileAddress);
                 }
@@ -84,27 +115,20 @@
                 UserSex: data.field.sex,  //性别
                 Note: $(".note").val()    //备注
             };
-            console.log(postdata);
             $.post("/system/user/addoredituser", postdata, function (res) {
                 console.log(res);
                 layer.close(index);
-                layer.msg(res.Messages);
-                if (res.Statecode == 200) {
-                    location.reload();
+                if (res.StateCode == 200) {
+                    layer.msg(res.Messages + ",请重新登录");
+                    setTimeout(function () {
+                        window.parent.location.href = '/user/login';
+                    }, 500);
+                }
+                else {
+                    layer.msg(res.Messages);
                 }
 
             }, 'json');
-            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-        });
-
-        //修改密码
-        form.on("submit(changePwd)", function (data) {
-            var index = layer.msg('提交中，请稍候', { icon: 16, time: false, shade: 0.8 });
-            setTimeout(function () {
-                layer.close(index);
-                layer.msg("密码修改成功！");
-                $(".pwd").val('');
-            }, 2000);
             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
         });
     });

@@ -22,7 +22,6 @@ namespace Zhouli.FileService.Controllers
     /// </summary>
     [Route("[controller]")]
     [ApiController]
-    [Authorize]
     public class FileController : ControllerBase
     {
         private IOptionsSnapshot<CustomConfiguration> configuration;
@@ -39,9 +38,9 @@ namespace Zhouli.FileService.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public string Get()
+        public IActionResult Get()
         {
-            return "哈哈";
+            return Ok("哈哈");
         }
         /// <summary>
         /// 文件访问,返回文件流
@@ -54,28 +53,14 @@ namespace Zhouli.FileService.Controllers
         {
             byte[] byteData = null;
             //解析fileKey
-            var fileUploadModel = JsonHelper.JsonToObject<FileUploadModel>(DescHelper.DescDecrypt(fileKey));
-            if (fileUploadModel.StorageMethod.Equals("qiniuyun"))
-            {
-                Mac mac = new Mac(configuration.Value.AccessKey, configuration.Value.SecretKey);
-                string rawUrl = $"{configuration.Value.Bucket.@private.Split(',')[0]}";
-                // 设置下载链接有效期3600秒
-                int expireInSeconds = 3600;
-                string accUrl = DownloadManager.CreateSignedUrl(mac, rawUrl, expireInSeconds);
-                // 接下来可以使用accUrl来下载文件
-                HttpResult result = await DownloadManager.DownloadAsync(accUrl, null);
-                byteData = result.Data;
-            }
-            else if (fileUploadModel.StorageMethod.Equals("bendi"))
-            {
-                var filePath = $@"{environment.WebRootPath}\Upload\{fileUploadModel.ContentType}";
-                using (var stream = new FileStream(filePath + "\\" + fileKey, FileMode.Open))
-                {
-                    byte[] data = new byte[stream.Length];
-                    await stream.ReadAsync(data, 0, data.Length);
-                    byteData = data;
-                }
-            }
+            Mac mac = new Mac(configuration.Value.AccessKey, configuration.Value.SecretKey);
+            string rawUrl = $"{configuration.Value.Bucket.@private.Split(',')[0]}";
+            // 设置下载链接有效期3600秒
+            int expireInSeconds = 3600;
+            string accUrl = DownloadManager.CreateSignedUrl(mac, rawUrl, expireInSeconds);
+            // 接下来可以使用accUrl来下载文件
+            HttpResult result = await DownloadManager.DownloadAsync(accUrl, null);
+            byteData = result.Data;
             return File(byteData, "application/octet-stream", Path.GetFileName(fileKey));
         }
     }

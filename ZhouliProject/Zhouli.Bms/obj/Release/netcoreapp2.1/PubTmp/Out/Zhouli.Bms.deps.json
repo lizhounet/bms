@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "01a457e4dddddd1529e5420039751718707fc15b"
+    "signature": "848db779ab8781b1684b7aa35f762ecfdbed1541"
   },
   "compilationOptions": {
     "defines": [
@@ -24,6 +24,8 @@
     ".NETCoreApp,Version=v2.1": {
       "Zhouli.Bms/1.0.0": {
         "dependencies": {
+          "CSRedisCore": "3.0.31",
+          "IdentityModel": "3.10.5",
           "Microsoft.AspNetCore.All": "2.1.0",
           "Microsoft.AspNetCore.ResponseCaching": "2.1.0",
           "Microsoft.AspNetCore.ResponseCompression": "2.1.0",
@@ -57,6 +59,21 @@
           "lib/netstandard2.0/AutoMapper.dll": {}
         }
       },
+      "CSRedisCore/3.0.31": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1",
+          "SafeObjectPool": "1.0.12"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CSRedisCore.dll": {
+            "assemblyVersion": "3.0.31.0",
+            "fileVersion": "3.0.31.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/CSRedisCore.dll": {}
+        }
+      },
       "Dapper/1.50.5": {
         "dependencies": {
           "System.Data.SqlClient": "4.5.0",
@@ -71,6 +88,21 @@
         },
         "compile": {
           "lib/netstandard2.0/Dapper.dll": {}
+        }
+      },
+      "IdentityModel/3.10.5": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1",
+          "System.Text.Encodings.Web": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/IdentityModel.dll": {
+            "assemblyVersion": "3.10.5.0",
+            "fileVersion": "3.10.5.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/IdentityModel.dll": {}
         }
       },
       "log4net/2.0.8": {
@@ -536,6 +568,17 @@
         },
         "compile": {
           "lib/netstandard1.3/Pomelo.JsonObject.dll": {}
+        }
+      },
+      "SafeObjectPool/1.0.12": {
+        "runtime": {
+          "lib/netstandard2.0/SafeObjectPool.dll": {
+            "assemblyVersion": "1.0.12.0",
+            "fileVersion": "1.0.12.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/SafeObjectPool.dll": {}
         }
       },
       "System.Composition/1.0.31": {
@@ -4367,12 +4410,26 @@
       "path": "automapper/8.0.0",
       "hashPath": "automapper.8.0.0.nupkg.sha512"
     },
+    "CSRedisCore/3.0.31": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o1ANXU5THq9sKN52ClbqbNtPFX7ZpA89AVqjleqrOY1HvhHNSrtwmzO+vKDgOhD8QwcYbwZUE2xkWjwyWfYDoA==",
+      "path": "csrediscore/3.0.31",
+      "hashPath": "csrediscore.3.0.31.nupkg.sha512"
+    },
     "Dapper/1.50.5": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-AzAdZ9fEzUtav3Sbc5CMgz5O2oYkc5g1r+g1h/Vn+wqcInII+xtNEfyZryeW90Wq72bxjEBJhe18j+2SrGrc5A==",
       "path": "dapper/1.50.5",
       "hashPath": "dapper.1.50.5.nupkg.sha512"
+    },
+    "IdentityModel/3.10.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GfDKlieEF4KS5Xa5jKzcKh2Ds4wDj1LrkEzCUX9rwX5EIiI8PaJ9vAN2c3SR9LmqYhkfh4oumenx5UAAgrzbmA==",
+      "path": "identitymodel/3.10.5",
+      "hashPath": "identitymodel.3.10.5.nupkg.sha512"
     },
     "log4net/2.0.8": {
       "type": "package",
@@ -4548,6 +4605,13 @@
       "sha512": "sha512-IzQjzkvDn0R6QbGGBfcTXFhJMayGRx6cU55nXL0SrSooRFtarkQG2tPOCsyhZ2d6P3Ki6iBwKR5At2hFKeYmhQ==",
       "path": "pomelo.jsonobject/1.1.1",
       "hashPath": "pomelo.jsonobject.1.1.1.nupkg.sha512"
+    },
+    "SafeObjectPool/1.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hSIyCs5wWWnqjaIiN6Ba5aTfdZVCQ4S0t5nXUCCPE+buw8b3TN+frjjdkq/tTRcDqSVoVVgH9+GSPghzAAa0rQ==",
+      "path": "safeobjectpool/1.0.12",
+      "hashPath": "safeobjectpool.1.0.12.nupkg.sha512"
     },
     "System.Composition/1.0.31": {
       "type": "package",

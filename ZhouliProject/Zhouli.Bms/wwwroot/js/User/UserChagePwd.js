@@ -11,10 +11,12 @@ require(["jquery", 'layui'], function ($) {
                 function (res) {
                     console.log(res);
                     layer.close(index);
-                    layer.msg(res.Messages);
-                    //if (res.StateCode == 200) {
-                    //    layer.closeAll("iframe");
-                    //}
+                    if (res.StateCode == 200) {
+                        layer.msg(res.Messages + ",请重新登录");
+                        setTimeout(function () {
+                            window.parent.location.href = '/user/login';
+                        }, 500);
+                    }
                 }, 'json');
             return false;
         });

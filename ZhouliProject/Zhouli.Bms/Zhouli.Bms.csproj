@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>d7879f25-2dca-42fa-b15c-bd04111dad49</UserSecretsId>
     <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CSRedisCore" Version="3.0.31" />
+    <PackageReference Include="IdentityModel" Version="3.10.5" />
     <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.ResponseCaching" Version="2.1.0" />

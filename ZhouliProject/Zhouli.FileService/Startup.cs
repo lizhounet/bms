@@ -9,10 +9,13 @@ using log4net.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
@@ -35,6 +38,7 @@ namespace Zhouli.FileService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDirectoryBrowser();//注入文件访问
             services.AddMvc(
                //注册全局异常过滤器
                o =>
@@ -46,7 +50,10 @@ namespace Zhouli.FileService
             services.AddOptions().Configure<CustomConfiguration>(Configuration.GetSection("CustomConfiguration"));
             //配置跨域
             services.AddCors(options => options.AddPolicy("fileServiceCors", builder =>
-              builder.AllowAnyOrigin()));
+              builder.AllowAnyOrigin().
+              AllowAnyMethod().
+              AllowAnyHeader())
+              );
             services.AddAuthentication((options) =>
             {
                 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -56,7 +63,7 @@ namespace Zhouli.FileService
                 options.TokenValidationParameters = new TokenValidationParameters();
                 options.RequireHttpsMetadata = false;
                 options.Audience = "Zhouli.FileService";//api范围
-                options.Authority = "http://localhost:5000";//IdentityServer地址
+                options.Authority = Configuration["CustomConfiguration:IdentityServerAdress"];//IdentityServer地址
             });
             //.AddIdentityServerAuthentication(options =>
             //    {
@@ -65,7 +72,7 @@ namespace Zhouli.FileService
             //        options.Audience=""
             //        options.RequireHttpsMetadata = false; // 指定是否为HTTPS
             //    }); 
-           
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("fileservice_v1", new Info
@@ -109,8 +116,27 @@ namespace Zhouli.FileService
             //日志记录中间件
             repository = LogManager.CreateRepository("NETCoreRepository");
             XmlConfigurator.Configure(repository, new FileInfo("log4net.config"));
-            app.UseStaticFiles();
-            app.UseCors("fileServiceCors");
+            #region 配置文件访问中间件
+            string path = $@"{env.ContentRootPath}\Upload\";
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            {
+                FileProvider = new PhysicalFileProvider(path)
+            });
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                #region 设置默认MIME Type
+                ServeUnknownFileTypes = true,
+                DefaultContentType = "application/x-msdownload",
+                ContentTypeProvider = new FileExtensionContentTypeProvider(),
+                FileProvider = new PhysicalFileProvider(path),
+                OnPrepareResponse = ctx =>
+                {
+                    ctx.Context.Response.Headers.Append("Cache-Control", "public,max-age=600");//文件缓存10分钟吧
+                }
+                #endregion
+            });//使用默认文件夹wwwroot
+            #endregion
+            app.UseCors("fileServiceCors");//跨域
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
