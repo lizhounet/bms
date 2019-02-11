@@ -51,6 +51,9 @@
                     $('#userFace').attr('src', res.JsonData.FileAddress);
                 }
 
+            },
+            error: function (index, upload) {
+                layer.close();
             }
         });
 

@@ -1,6 +1,5 @@
 D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\bin\Debug\netcoreapp2.1\Zhouli.Redis.deps.json
 D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\bin\Debug\netcoreapp2.1\Zhouli.Redis.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.csprojAssemblyReference.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.AssemblyInfoInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.AssemblyInfo.cs

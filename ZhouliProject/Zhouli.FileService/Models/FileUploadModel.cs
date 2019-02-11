@@ -19,7 +19,7 @@ namespace Zhouli.FileService.Models
         /// <summary>
         /// guid
         /// </summary>
-        public Guid FileKey { set; get; } = Guid.NewGuid();
+        private Guid FileKey { set; get; } = Guid.NewGuid();
         /// <summary>
         /// 文件类型
         /// </summary>

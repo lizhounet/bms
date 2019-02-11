@@ -39,7 +39,7 @@ namespace BlogWebApi
                     options.Audience = "Zhouli.BlogWebApi";//api范围
                     options.Authority = Configuration.GetSection("IdentityServerAdress").Value;//IdentityServer地址
                 });
-            services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter()))
+            services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
