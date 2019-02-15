@@ -118,10 +118,12 @@ Article_Title NVARCHAR(50) NOT NULL,-- 博客文章标题
 Article_Body TEXT NOT NULL,-- 博客文章内容
 Article_Body_Markdown TEXT  NULL,-- 博客文章内容,
 Article_SortValue INT DEFAULT 0 NOT NULL,-- 排序值,
-Article_CreateTime DATETIME    NOT NULL,-- 创建时间
-Article_UserId INT  NOT NULL,-- 发布用户id
-Article_UserNikeName NVARCHAR(50)  NOT NULL,-- 发布用户昵称
-Article_Note NVARCHAR(2048) NULL-- 备注
+CreateUserId  VARCHAR(36) NULL,-- 创建者ID(对应Sys_Users表UserId字段)
+CreateTime DATETIME  NOT NULL,-- 创建时间
+EditTime DATETIME  NULL ,-- 修改时间
+DeleteSign INT DEFAULT 1 NOT NULL,-- 1 未删除 2 已删除
+DeleteTime DATETIME NULL,-- 删除时间
+Note NVARCHAR(2048) NULL-- 备注
 );
 -- 博客标签表
 CREATE TABLE Blog_Lable(
@@ -129,8 +131,12 @@ Lable_Id INT auto_increment PRIMARY KEY NOT NULL,-- 博客标签编号(主键)
 Lable_Name NVARCHAR(20) NOT NULL UNIQUE,-- 博客标签名称
 Lable_SortValue INT DEFAULT 0 NOT NULL,-- 排序值,
 Lable_ClickNum BIGINT DEFAULT 0 NOT NULL,-- 博客标签点击量
-Lable_CreateTime DATETIME  NOT NULL,-- 创建时间
-Lable_Note NVARCHAR(2048) NULL-- 备注
+CreateUserId  VARCHAR(36) NULL,-- 创建者ID(对应Sys_Users表UserId字段)
+CreateTime DATETIME  NOT NULL,-- 创建时间
+EditTime DATETIME  NULL ,-- 修改时间
+DeleteSign INT DEFAULT 1 NOT NULL,-- 1 未删除 2 已删除
+DeleteTime DATETIME NULL,-- 删除时间
+Note NVARCHAR(2048) NULL-- 备注
 );
 -- 标签关联表
 CREATE TABLE Blog_Related(
@@ -154,7 +160,13 @@ FriendshipLink_Name NVARCHAR(40) NOT NULL,-- 站点名称
 FriendshipLink_Url INT DEFAULT 0 NOT NULL,-- 站点Url
 FriendshipLink_Email INT DEFAULT 0 NOT NULL,-- 站长邮箱
 FriendshipLink_SortValue INT DEFAULT 0 NOT NULL,-- 排序值,
-FriendshipLink_Sfsh INT DEFAULT 0 NOT NULL-- 是否审核(1-已审核 0-未审核)
+FriendshipLink_Sfsh INT DEFAULT 0 NOT NULL,-- 是否审核(1-已审核 0-未审核)
+CreateUserId  VARCHAR(36) NULL,-- 创建者ID(对应Sys_Users表UserId字段)
+CreateTime DATETIME  NOT NULL,-- 创建时间
+EditTime DATETIME  NULL ,-- 修改时间
+DeleteSign INT DEFAULT 1 NOT NULL,-- 1 未删除 2 已删除
+DeleteTime DATETIME NULL,-- 删除时间
+Note NVARCHAR(2048) NULL-- 备注
 );
 -- 博客 首页导航图表
 CREATE TABLE Blog_NavigationImg
@@ -162,5 +174,12 @@ CREATE TABLE Blog_NavigationImg
 NavigationImg_Id INT auto_increment PRIMARY KEY NOT NULL ,-- 自增id(主键)
 NavigationImg_Url VARCHAR(200) NOT NULL,-- 图片Url
 NavigationImg_SortValue INT DEFAULT 0 NOT NULL,-- 排序值,
-NavigationImg_Describe NVARCHAR(2048) DEFAULT '0' NOT NULL-- 描述
+NavigationImg_Describe NVARCHAR(2048) DEFAULT '0' NOT NULL,-- 描述
+NavigationImg_IsEnable INT DEFAULT '1' NOT NULL,-- 是否启用(1启用,0不启用)
+CreateUserId  VARCHAR(36) NULL,-- 创建者ID(对应Sys_Users表UserId字段)
+CreateTime DATETIME  NOT NULL,-- 创建时间
+EditTime DATETIME  NULL ,-- 修改时间
+DeleteSign INT DEFAULT 1 NOT NULL,-- 1 未删除 2 已删除
+DeleteTime DATETIME NULL,-- 删除时间
+Note NVARCHAR(2048) NULL-- 备注
 );

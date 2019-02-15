@@ -32,14 +32,14 @@ namespace Zhouli.DbEntity.Models
         public virtual DbSet<SysUser> SysUser { get; set; }
         public virtual DbSet<SysUserGroup> SysUserGroup { get; set; }
 
-//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//        {
-//            if (!optionsBuilder.IsConfigured)
-//            {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=123456;port=3306;database=ZhouLi;");
-//            }
-//        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=123456;port=3306;database=ZhouLi;");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -62,14 +62,6 @@ namespace Zhouli.DbEntity.Models
                     .HasColumnName("Article_Body_Markdown")
                     .HasColumnType("text");
 
-                entity.Property(e => e.ArticleCreateTime)
-                    .HasColumnName("Article_CreateTime")
-                    .HasColumnType("datetime");
-
-                entity.Property(e => e.ArticleNote)
-                    .HasColumnName("Article_Note")
-                    .HasColumnType("varchar(2048)");
-
                 entity.Property(e => e.ArticleSortValue)
                     .HasColumnName("Article_SortValue")
                     .HasColumnType("int(11)")
@@ -80,14 +72,19 @@ namespace Zhouli.DbEntity.Models
                     .HasColumnName("Article_Title")
                     .HasColumnType("varchar(50)");
 
-                entity.Property(e => e.ArticleUserId)
-                    .HasColumnName("Article_UserId")
-                    .HasColumnType("int(11)");
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.ArticleUserNikeName)
-                    .IsRequired()
-                    .HasColumnName("Article_UserNikeName")
-                    .HasColumnType("varchar(50)");
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
+
+                entity.Property(e => e.DeleteTime).HasColumnType("datetime");
+
+                entity.Property(e => e.EditTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });
 
             modelBuilder.Entity<BlogArticleSeeInfo>(entity =>
@@ -126,6 +123,18 @@ namespace Zhouli.DbEntity.Models
                     .HasColumnName("FriendshipLink_Id")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
+
+                entity.Property(e => e.DeleteTime).HasColumnType("datetime");
+
+                entity.Property(e => e.EditTime).HasColumnType("datetime");
+
                 entity.Property(e => e.FriendshipLinkEmail)
                     .HasColumnName("FriendshipLink_Email")
                     .HasColumnType("int(11)")
@@ -150,6 +159,8 @@ namespace Zhouli.DbEntity.Models
                     .HasColumnName("FriendshipLink_Url")
                     .HasColumnType("int(11)")
                     .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });
 
             modelBuilder.Entity<BlogLable>(entity =>
@@ -166,28 +177,34 @@ namespace Zhouli.DbEntity.Models
                     .HasColumnName("Lable_Id")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
+
+                entity.Property(e => e.DeleteTime).HasColumnType("datetime");
+
+                entity.Property(e => e.EditTime).HasColumnType("datetime");
+
                 entity.Property(e => e.LableClickNum)
                     .HasColumnName("Lable_ClickNum")
                     .HasColumnType("bigint(20)")
                     .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.LableCreateTime)
-                    .HasColumnName("Lable_CreateTime")
-                    .HasColumnType("datetime");
 
                 entity.Property(e => e.LableName)
                     .IsRequired()
                     .HasColumnName("Lable_Name")
                     .HasColumnType("varchar(20)");
 
-                entity.Property(e => e.LableNote)
-                    .HasColumnName("Lable_Note")
-                    .HasColumnType("varchar(2048)");
-
                 entity.Property(e => e.LableSortValue)
                     .HasColumnName("Lable_SortValue")
                     .HasColumnType("int(11)")
                     .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });
 
             modelBuilder.Entity<BlogNavigationImg>(entity =>
@@ -200,11 +217,28 @@ namespace Zhouli.DbEntity.Models
                     .HasColumnName("NavigationImg_Id")
                     .HasColumnType("int(11)");
 
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
+
+                entity.Property(e => e.DeleteTime).HasColumnType("datetime");
+
+                entity.Property(e => e.EditTime).HasColumnType("datetime");
+
                 entity.Property(e => e.NavigationImgDescribe)
                     .IsRequired()
                     .HasColumnName("NavigationImg_Describe")
                     .HasColumnType("varchar(2048)")
                     .HasDefaultValueSql("'0'");
+
+                entity.Property(e => e.NavigationImgIsEnable)
+                    .HasColumnName("NavigationImg_IsEnable")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.NavigationImgSortValue)
                     .HasColumnName("NavigationImg_SortValue")
@@ -215,6 +249,8 @@ namespace Zhouli.DbEntity.Models
                     .IsRequired()
                     .HasColumnName("NavigationImg_Url")
                     .HasColumnType("varchar(200)");
+
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });
 
             modelBuilder.Entity<BlogRelated>(entity =>

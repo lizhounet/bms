@@ -10,9 +10,11 @@ namespace Zhouli.DbEntity.Models
         public string ArticleBody { get; set; }
         public string ArticleBodyMarkdown { get; set; }
         public int ArticleSortValue { get; set; }
-        public DateTime ArticleCreateTime { get; set; }
-        public int ArticleUserId { get; set; }
-        public string ArticleUserNikeName { get; set; }
-        public string ArticleNote { get; set; }
+        public string CreateUserId { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime? EditTime { get; set; }
+        public int DeleteSign { get; set; }
+        public DateTime? DeleteTime { get; set; }
+        public string Note { get; set; }
     }
 }

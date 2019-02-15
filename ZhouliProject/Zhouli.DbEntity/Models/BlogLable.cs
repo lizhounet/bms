@@ -9,7 +9,11 @@ namespace Zhouli.DbEntity.Models
         public string LableName { get; set; }
         public int LableSortValue { get; set; }
         public long LableClickNum { get; set; }
-        public DateTime LableCreateTime { get; set; }
-        public string LableNote { get; set; }
+        public string CreateUserId { get; set; }
+        public DateTime CreateTime { get; set; }
+        public DateTime? EditTime { get; set; }
+        public int DeleteSign { get; set; }
+        public DateTime? DeleteTime { get; set; }
+        public string Note { get; set; }
     }
 }

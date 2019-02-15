@@ -27,7 +27,7 @@ namespace Zhouli.FileService.Controllers
     /// </summary>
     [Route("[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize()]
     public class UploadController : ControllerBase
     {
         private IOptionsSnapshot<CustomConfiguration> configuration;
@@ -52,6 +52,16 @@ namespace Zhouli.FileService.Controllers
         /// <summary>
         /// 上传文件接口
         /// </summary>
+        /// <remarks>
+        /// 上传参数举例:
+        ///
+        ///     POST 
+        ///      {
+        ///        "StorageMethod": "qiniuyun",//存储方式
+        ///        "FileSpaceType": "public"//上传文件空间类型
+        ///     }
+        ///
+        /// </remarks>
         /// <param name="environment"></param>
         /// <param name="formCollection">文件</param>
         /// <param name="uploadModel">文件上传参数</param>

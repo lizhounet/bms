@@ -70,8 +70,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\BlogManager\Controllers\" />
-    <Folder Include="Areas\BlogManager\Views\" />
     <Content Update="wwwroot\js\Areas\SystemManager\Role\RoleAdd.js">
       <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>

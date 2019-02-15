@@ -112,3 +112,4 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.V
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.csproj.CopyComplete
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Razor\Areas\BlogManager\Views\FriendshipLink\Index.g.cshtml.cs
