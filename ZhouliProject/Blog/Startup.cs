@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Blog.Filter;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -30,9 +31,16 @@ namespace Blog
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddHttpClient();
+            //注入Response缓存
+            services.AddResponseCaching();
+            //缓存
+            services.AddMemoryCache();
+            services.AddMvc(
+              mvcOptions =>
+              {//注册全局异常过滤器
+                    mvcOptions.Filters.Add<HttpGlobalExceptionFilter>();
+              }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,16 +55,19 @@ namespace Blog
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
-            app.UseHttpsRedirection();
+            app.UseStatusCodePagesWithRedirects("/error/{0}.html");
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            //Response 缓存中间件
+            app.UseResponseCaching();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

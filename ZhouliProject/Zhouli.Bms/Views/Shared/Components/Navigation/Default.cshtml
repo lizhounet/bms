@@ -1,52 +1,84 @@
 ﻿@model List<Zhouli.Dto.ModelDto.SysMenuDto>
+@functions{
 
-<ul id="nav">
-    @foreach (var item1 in Model)
+    public string html(List<Zhouli.Dto.ModelDto.SysMenuDto> sysMenus)
     {
-        <li>
-            <a href="javascript:;">
-                <i class="layui-icon @item1.MenuIcon"></i>
-                <cite>@item1.MenuName</cite>
-                <i class="iconfont nav_right">&#xe697;</i>
-            </a>
-            @if (item1.children.Count > 0)
+        System.Text.StringBuilder builder = new System.Text.StringBuilder();
+        foreach (var item in sysMenus)
+        {
+            string MenuUrl = (string.IsNullOrEmpty(item.MenuUrl) ? "href=\"javascript:;\"" : $"_href={item.MenuUrl}");
+            builder.Append($"<li>");
+            builder.Append($"<a {MenuUrl}>");
+            builder.Append($"<i class=\"layui-icon {item.MenuIcon}\"></i>");
+            builder.Append($"<cite>{item.MenuName}</cite>");
+            if (item.children.Count > 0)
+                builder.Append($"<i class=\"iconfont nav_right\">&#xe697;</i>");
+            builder.Append($"</a>");
+            if (item.children.Count > 0)
             {
-                <ul class="sub-menu">
-                    @foreach (var item2 in item1.children)
-                    {
-                        if (item2.children.Count > 0)
-                        {
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="layui-icon @item2.MenuIcon"></i>
-                                    <cite>@item2.MenuName</cite>
-                                    <i class="iconfont nav_right">&#xe697;</i>
-                                </a>
-                                <ul class="sub-menu">
-                                    @foreach (var item3 in item2.children)
-                                    {
-                                        <li>
-                                            <a _href="@item3.MenuUrl">
-                                                <i class="layui-icon @item3.MenuIcon"></i>
-                                                <cite>@item3.MenuName</cite>
-                                            </a>
-                                        </li>
-                                    }
-                                </ul>
-                            </li>
-                        }
-                        else
-                        {
-                            <li>
-                                <a _href="@item2.MenuUrl">
-                                    <i class="layui-icon @item2.MenuIcon"></i>
-                                    <cite>@item2.MenuName</cite>
-                                </a>
-                            </li>
-                        }
-                    }
-                </ul>
+                builder.Append("<ul class=\"sub-menu\">");
+                if (item.children.Count > 0)
+                {
+                    builder.Append(html(item.children));
+                }
+                builder.Append("</ul>");
             }
-        </li>
+            builder.Append($"</li>");
+        }
+        return builder.ToString();
     }
-</ul>
+
+}
+
+<ul id="nav">@Html.Raw(html(Model))</ul>
+
+@*<ul id="nav">
+        @foreach (var item1 in Model)
+        {
+            <li>
+                <a href="javascript:;">
+                    <i class="layui-icon @item1.MenuIcon"></i>
+                    <cite>@item1.MenuName</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                @if (item1.children.Count > 0)
+            {
+                    <ul class="sub-menu">
+                        @foreach (var item2 in item1.children)
+            {
+                if (item2.children.Count > 0)
+                {
+                                <li>
+                                    <a href="javascript:;">
+                                        <i class="layui-icon @item2.MenuIcon"></i>
+                                        <cite>@item2.MenuName</cite>
+                                        <i class="iconfont nav_right">&#xe697;</i>
+                                    </a>
+                                    <ul class="sub-menu">
+                                        @foreach (var item3 in item2.children)
+            {
+                                            <li>
+                                                <a _href="@item3.MenuUrl">
+                                                    <i class="layui-icon @item3.MenuIcon"></i>
+                                                    <cite>@item3.MenuName</cite>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a _href="@item2.MenuUrl">
+                                        <i class="layui-icon @item2.MenuIcon"></i>
+                                        <cite>@item2.MenuName</cite>
+                                    </a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>*@

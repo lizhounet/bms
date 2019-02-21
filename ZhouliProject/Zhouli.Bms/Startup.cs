@@ -49,13 +49,13 @@ namespace ZhouliSystem
               ServiceLifetime.Scoped);
                     break;
             }
-            //添加session中间件
+            //添加session依赖
             services.AddSession();
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //注入gzip压缩中间件
+            //注入gzip压缩依赖
             services.AddResponseCompression();
-            //注入Response 缓存中间件
+            //注入Response 缓存依赖
             services.AddResponseCaching();
             //重置区域匹配路径规则
             services.Configure<RazorViewEngineOptions>(options =>
@@ -75,7 +75,7 @@ namespace ZhouliSystem
                 //配置缓存信息
                 o.CacheProfiles.Add("default", new Microsoft.AspNetCore.Mvc.CacheProfile
                 {
-                    Duration = 60 * 10,  // 10 秒
+                    Duration = 60 * 10,  // 10 分钟
                 });
                 o.CacheProfiles.Add("Hourly", new Microsoft.AspNetCore.Mvc.CacheProfile
                 {
