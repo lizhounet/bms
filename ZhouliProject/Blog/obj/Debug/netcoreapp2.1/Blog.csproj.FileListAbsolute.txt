@@ -51,3 +51,6 @@ D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Razor\Views\Shared
 D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Friendly\Default.g.cshtml.cs
 D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.csprojAssemblyReference.cache
 D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Razor\Views\Error\_404.g.cshtml.cs
+D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Razor\Views\Error\_ie.g.cshtml.cs
+D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\About\Default.g.cshtml.cs
+D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Components\Message\Default.g.cshtml.cs

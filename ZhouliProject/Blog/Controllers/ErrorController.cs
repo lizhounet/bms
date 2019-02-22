@@ -14,5 +14,10 @@ namespace Blog.Controllers
         {
             return View();
         }
+        [Route("ie.html")]
+        public IActionResult _ie()
+        {
+            return View();
+        }
     }
 }

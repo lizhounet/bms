@@ -19,10 +19,15 @@ namespace Blog.Controllers
             ViewData["PageName"] = "Friendly";
             return View("Index");
         }
-        [ResponseCache(Duration = 10)]
-        public IActionResult Test()
+        public IActionResult Message()
         {
-            return Content(DateTime.Now.ToString());
+            ViewData["PageName"] = "Message";
+            return View("Index");
+        }
+        public IActionResult About()
+        {
+            ViewData["PageName"] = "About";
+            return View("Index");
         }
     }
 }
