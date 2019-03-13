@@ -1047,11 +1047,11 @@
       ]
     },
     "System.Reflection.Emit/4.3.0": {
-      "sha512": "228FG0jLcIwTVJyz8CLFKueVqQK36ANazUManGaJHkO0icjiIypKW7YLWLIWahyIkdh5M7mV2dJepllLyA1SKg==",
+      "sha512": "vkUFFGejarllQQ8RKkdfuBUQpVlTR9HMDEawKOBDajOSGN08Bz8EjC0zi2fcE7RXQikLbEb1WYJQP3So8mmIGA==",
       "type": "package",
       "path": "system.reflection.emit/4.3.0",
       "files": [
-        ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -1414,23 +1414,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TANGYOUYU\\.nuget\\packages\\": {},
+    "C:\\Users\\a\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\bms\\ZhouliProject\\Zhouli.Dto\\Zhouli.Dto.csproj",
+      "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Dto\\Zhouli.Dto.csproj",
       "projectName": "Zhouli.Dto",
-      "projectPath": "C:\\bms\\ZhouliProject\\Zhouli.Dto\\Zhouli.Dto.csproj",
-      "packagesPath": "C:\\Users\\TANGYOUYU\\.nuget\\packages\\",
-      "outputPath": "C:\\bms\\ZhouliProject\\Zhouli.Dto\\obj\\",
+      "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Dto\\Zhouli.Dto.csproj",
+      "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
+      "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Dto\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\TANGYOUYU\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1438,9 +1438,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://api.nuget.org/v3/index.json": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.cnblogs.com/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {

@@ -32,14 +32,14 @@ namespace Zhouli.DbEntity.Models
         public virtual DbSet<SysUser> SysUser { get; set; }
         public virtual DbSet<SysUserGroup> SysUserGroup { get; set; }
 
-        //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //        {
-        //            if (!optionsBuilder.IsConfigured)
-        //            {
-        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-        //                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=123456;port=3306;database=ZhouLi;");
-        //            }
-        //        }
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=123456;port=3306;database=ZhouLi;");
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -136,9 +136,9 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
                 entity.Property(e => e.FriendshipLinkEmail)
+                    .IsRequired()
                     .HasColumnName("FriendshipLink_Email")
-                    .HasColumnType("varchar(20)")
-                    .HasDefaultValueSql("'0'");
+                    .HasColumnType("varchar(40)");
 
                 entity.Property(e => e.FriendshipLinkName)
                     .IsRequired()
@@ -156,9 +156,9 @@ namespace Zhouli.DbEntity.Models
                     .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.FriendshipLinkUrl)
+                    .IsRequired()
                     .HasColumnName("FriendshipLink_Url")
-                    .HasColumnType("varchar(100)")
-                    .HasDefaultValueSql("'0'");
+                    .HasColumnType("varchar(40)");
 
                 entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });

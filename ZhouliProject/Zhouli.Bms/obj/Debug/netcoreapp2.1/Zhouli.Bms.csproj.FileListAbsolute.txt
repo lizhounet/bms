@@ -230,3 +230,4 @@ C:\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.RazorTargetAs
 C:\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.RazorTargetAssemblyInfo.cs
 C:\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.Views.pdb
 C:\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.csproj.CopyComplete
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Razor\Areas\BlogManager\Views\FriendshipLink\FriendshipLinkAdd.g.cshtml.cs
