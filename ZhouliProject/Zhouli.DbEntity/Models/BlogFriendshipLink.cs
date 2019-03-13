@@ -7,8 +7,8 @@ namespace Zhouli.DbEntity.Models
     {
         public int FriendshipLinkId { get; set; }
         public string FriendshipLinkName { get; set; }
-        public int FriendshipLinkUrl { get; set; }
-        public int FriendshipLinkEmail { get; set; }
+        public string FriendshipLinkUrl { get; set; }
+        public string FriendshipLinkEmail { get; set; }
         public int FriendshipLinkSortValue { get; set; }
         public int FriendshipLinkSfsh { get; set; }
         public string CreateUserId { get; set; }

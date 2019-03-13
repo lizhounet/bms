@@ -38,3 +38,17 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhoul
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.RazorTargetAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.pdb
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\Zhouli.BlogWebApi.deps.json
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\Zhouli.BlogWebApi.runtimeconfig.json
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\Zhouli.BlogWebApi.runtimeconfig.dev.json
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\Zhouli.BlogWebApi.dll
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\Zhouli.BlogWebApi.pdb
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.csprojAssemblyReference.cache
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.csproj.CoreCompileInputs.cache
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.RazorAssemblyInfo.cache
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.RazorAssemblyInfo.cs
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.AssemblyInfoInputs.cache
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.AssemblyInfo.cs
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.RazorTargetAssemblyInfo.cache
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.dll
+C:\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.pdb

@@ -26,3 +26,17 @@ D:\周黎\code\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.AssemblyInf
 D:\周黎\code\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.csproj.CopyComplete
 D:\周黎\code\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.dll
 D:\周黎\code\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.pdb
+C:\bms\ZhouliProject\Test1\bin\Debug\netcoreapp2.1\Test1.deps.json
+C:\bms\ZhouliProject\Test1\bin\Debug\netcoreapp2.1\Test1.runtimeconfig.json
+C:\bms\ZhouliProject\Test1\bin\Debug\netcoreapp2.1\Test1.runtimeconfig.dev.json
+C:\bms\ZhouliProject\Test1\bin\Debug\netcoreapp2.1\Test1.dll
+C:\bms\ZhouliProject\Test1\bin\Debug\netcoreapp2.1\Test1.pdb
+C:\bms\ZhouliProject\Test1\bin\Debug\netcoreapp2.1\Zhouli.Redis.dll
+C:\bms\ZhouliProject\Test1\bin\Debug\netcoreapp2.1\Zhouli.Redis.pdb
+C:\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.csprojAssemblyReference.cache
+C:\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.csproj.CoreCompileInputs.cache
+C:\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.AssemblyInfoInputs.cache
+C:\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.AssemblyInfo.cs
+C:\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.csproj.CopyComplete
+C:\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.dll
+C:\bms\ZhouliProject\Test1\obj\Debug\netcoreapp2.1\Test1.pdb

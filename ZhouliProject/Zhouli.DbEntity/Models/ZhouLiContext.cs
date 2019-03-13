@@ -32,14 +32,14 @@ namespace Zhouli.DbEntity.Models
         public virtual DbSet<SysUser> SysUser { get; set; }
         public virtual DbSet<SysUserGroup> SysUserGroup { get; set; }
 
-//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//        {
-//            if (!optionsBuilder.IsConfigured)
-//            {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=123456;port=3306;database=ZhouLi;");
-//            }
-//        }
+        //        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //        {
+        //            if (!optionsBuilder.IsConfigured)
+        //            {
+        //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+        //                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=123456;port=3306;database=ZhouLi;");
+        //            }
+        //        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -137,7 +137,7 @@ namespace Zhouli.DbEntity.Models
 
                 entity.Property(e => e.FriendshipLinkEmail)
                     .HasColumnName("FriendshipLink_Email")
-                    .HasColumnType("int(11)")
+                    .HasColumnType("varchar(20)")
                     .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.FriendshipLinkName)
@@ -157,7 +157,7 @@ namespace Zhouli.DbEntity.Models
 
                 entity.Property(e => e.FriendshipLinkUrl)
                     .HasColumnName("FriendshipLink_Url")
-                    .HasColumnType("int(11)")
+                    .HasColumnType("varchar(100)")
                     .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.Note).HasColumnType("varchar(2048)");

@@ -15,3 +15,11 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Red
 D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.pdb
+C:\bms\ZhouliProject\Zhouli.Redis\bin\Debug\netcoreapp2.1\Zhouli.Redis.deps.json
+C:\bms\ZhouliProject\Zhouli.Redis\bin\Debug\netcoreapp2.1\Zhouli.Redis.dll
+C:\bms\ZhouliProject\Zhouli.Redis\bin\Debug\netcoreapp2.1\Zhouli.Redis.pdb
+C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.csproj.CoreCompileInputs.cache
+C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.AssemblyInfoInputs.cache
+C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.AssemblyInfo.cs
+C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.dll
+C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.pdb
