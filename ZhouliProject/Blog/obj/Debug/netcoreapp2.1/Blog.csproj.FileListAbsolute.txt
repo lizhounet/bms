@@ -85,3 +85,4 @@ C:\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.dll
 C:\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.pdb
 C:\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.csproj.CopyComplete
 C:\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.csprojAssemblyReference.cache
+D:\周黎\code\bms\ZhouliProject\Blog\obj\Debug\netcoreapp2.1\Blog.csprojAssemblyReference.cache

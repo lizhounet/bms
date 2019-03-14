@@ -77,10 +77,10 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns></returns>
-        public string DisableUser(Guid UserId)
+        public string DisableUser(string UserId)
         {
             var resModel = new ResponseModel();
-            if (!UserId.Equals(default(Guid)))
+            if (!string.IsNullOrEmpty(UserId))
             {
                 var user = injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(UserId)).SingleOrDefault();
                 user.UserStatus = user.UserStatus == 0 ? 1 : 0;
