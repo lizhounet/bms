@@ -738,13 +738,15 @@
       ]
     },
     "Newtonsoft.Json/12.0.1": {
-      "sha512": "jmVyoEyk0In8r+AObYQyFKVFm7uSRzE0XSHSbEtBJcZDMV6DqJoyB4FLcHwprPVhAh826so0db3DIKXVnpGoPA==",
+      "sha512": "pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
       "type": "package",
       "path": "newtonsoft.json/12.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
+        "Newtonsoft.Json.12.0.1.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
         "lib/net20/Newtonsoft.Json.dll",
         "lib/net20/Newtonsoft.Json.pdb",
         "lib/net20/Newtonsoft.Json.xml",
@@ -771,9 +773,7 @@
         "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.pdb",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.12.0.1.nupkg.sha512",
-        "newtonsoft.json.nuspec"
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml"
       ]
     },
     "SafeObjectPool/1.0.12": {
@@ -801,23 +801,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\a\\.nuget\\packages\\": {},
+    "C:\\Users\\TANGYOUYU\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Test1\\Test1.csproj",
+      "projectUniqueName": "C:\\bms\\ZhouliProject\\Test1\\Test1.csproj",
       "projectName": "Test1",
-      "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Test1\\Test1.csproj",
-      "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
-      "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Test1\\obj\\",
+      "projectPath": "C:\\bms\\ZhouliProject\\Test1\\Test1.csproj",
+      "packagesPath": "C:\\Users\\TANGYOUYU\\.nuget\\packages\\",
+      "outputPath": "C:\\bms\\ZhouliProject\\Test1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\TANGYOUYU\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -825,13 +825,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
+        "http://api.nuget.org/v3/index.json": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.cnblogs.com/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Redis\\Zhouli.Redis.csproj": {
-              "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Redis\\Zhouli.Redis.csproj"
+            "C:\\bms\\ZhouliProject\\Zhouli.Redis\\Zhouli.Redis.csproj": {
+              "projectPath": "C:\\bms\\ZhouliProject\\Zhouli.Redis\\Zhouli.Redis.csproj"
             }
           }
         }

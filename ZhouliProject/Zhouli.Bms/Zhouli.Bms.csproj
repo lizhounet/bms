@@ -76,4 +76,8 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\BlogManager\Views\BlogLable\" />
+  </ItemGroup>
+
 </Project>

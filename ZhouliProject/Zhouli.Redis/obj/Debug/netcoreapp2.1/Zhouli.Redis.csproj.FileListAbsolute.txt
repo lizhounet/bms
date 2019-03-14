@@ -22,3 +22,4 @@ C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.AssemblyI
 C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.AssemblyInfo.cs
 C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.dll
 C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.pdb
+C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.csprojAssemblyReference.cache

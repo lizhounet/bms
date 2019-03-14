@@ -40,4 +40,3 @@ C:\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.Assembl
 C:\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.AssemblyInfo.cs
 C:\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.dll
 C:\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.pdb
-C:\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.csprojAssemblyReference.cache
