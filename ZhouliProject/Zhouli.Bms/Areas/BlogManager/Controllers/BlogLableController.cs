@@ -1,13 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
-using Zhouli.DbEntity.Models;
 using Zhouli.DI;
+using Zhouli.Dto.ModelDto;
 using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
@@ -58,7 +55,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// </summary>
         /// <param name="bl"></param>
         /// <returns></returns>
-        public string AddorUpdateBlogLable(BlogLable bl)
+        public string AddorUpdateBlogLable(BlogLableDto bl)
         {
             var resModel = new ResponseModel();
             MessageModel model = injection.GetT<IBlogLableBLL>().AddorEditBlogLable(bl, injection.GetT<UserAccount>().GetUserInfo().UserId);

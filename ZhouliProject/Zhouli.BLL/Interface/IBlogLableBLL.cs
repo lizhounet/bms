@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Zhouli.DAL.Interface;
+﻿using System.Collections.Generic;
 using Zhouli.DbEntity.Models;
+using Zhouli.Dto.ModelDto;
 
 namespace Zhouli.BLL.Interface
 {
@@ -22,7 +20,7 @@ namespace Zhouli.BLL.Interface
         /// <param name="bl"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
-        MessageModel AddorEditBlogLable(BlogLable bl, string UserId);
+        MessageModel AddorEditBlogLable(BlogLableDto bl, string UserId);
         /// <summary>
         /// 删除博客标签
         /// </summary>

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Zhouli.DbEntity.Models;
+using Zhouli.Dto.ModelDto;
 
 namespace Zhouli.BLL.Interface
 {
@@ -21,7 +20,7 @@ namespace Zhouli.BLL.Interface
         /// <param name="blog"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
-        MessageModel AddorEditFriendshipLink(BlogFriendshipLink blog, string UserId);
+        MessageModel AddorEditFriendshipLink(BlogFriendshipLinkDto blog, string UserId);
         /// <summary>
         /// 删除友情链接
         /// </summary>

@@ -36,5 +36,28 @@ require(["jquery", 'layui'], function ($) {
             }, 'json');
             return false;
         });
+        //自定义验证规则
+        form.verify({
+            friendshipLinkName: function (value, item) { //value：表单的值、item：表单的DOM对象
+                if (value == "") {
+                    return "网站名称不能为空";
+                }
+            },
+            friendshipLinkUrl: function (value, item) { //value：表单的值、item：表单的DOM对象
+                if (value == "") {
+                    return "网站地址不能为空";
+                }
+            },
+            friendshipLinkEmail: function (value, item) { //value：表单的值、item：表单的DOM对象
+                if (value == "") {
+                    return "站长邮箱不能为空";
+                }
+                if (value != "") {
+                    if (!new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$").test(value)) {
+                        return '站长邮箱格式错误';
+                    }
+                }
+            }
+        });
     });
 });

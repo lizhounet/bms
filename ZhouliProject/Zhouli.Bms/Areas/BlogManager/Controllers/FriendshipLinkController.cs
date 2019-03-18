@@ -8,6 +8,7 @@ using Zhouli.BLL.Interface;
 using Zhouli.Common;
 using Zhouli.DbEntity.Models;
 using Zhouli.DI;
+using Zhouli.Dto.ModelDto;
 using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
@@ -59,7 +60,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// </summary>
         /// <param name="blog"></param>
         /// <returns></returns>
-        public string AddorUpdateFriendshipLink(BlogFriendshipLink blog)
+        public string AddorUpdateFriendshipLink(BlogFriendshipLinkDto blog)
         {
             var resModel = new ResponseModel();
             MessageModel model = injection.GetT<IBlogFriendshipLinkBLL>().AddorEditFriendshipLink(blog, injection.GetT<UserAccount>().GetUserInfo().UserId);

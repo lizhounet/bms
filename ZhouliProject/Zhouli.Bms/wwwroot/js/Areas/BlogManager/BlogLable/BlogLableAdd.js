@@ -34,5 +34,13 @@ require(["jquery", 'layui'], function ($) {
             }, 'json');
             return false;
         });
+        //自定义验证规则
+        form.verify({
+            lableName: function (value, item) { //value：表单的值、item：表单的DOM对象
+                if (value == "") {
+                    return "博客标签名称不能为空";
+                }
+            }
+        });
     });
 });

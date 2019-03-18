@@ -6,6 +6,7 @@ using Zhouli.BLL.Interface;
 using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.DbEntity.Views;
+using Zhouli.Dto.ModelDto;
 
 namespace Zhouli.BLL.Implements
 {
@@ -26,26 +27,36 @@ namespace Zhouli.BLL.Implements
         /// <param name="bl"></param>
         /// <param name="UserId"></param>
         /// <returns></returns>
-        public MessageModel AddorEditBlogLable(BlogLable bl, string UserId)
+        public MessageModel AddorEditBlogLable(BlogLableDto bl, string UserId)
         {
             var messageModel = new MessageModel();
             var blogLable = Mapper.Map<BlogLable>(bl);
             //添加
             if (blogLable.LableId == 0)
             {
-                blogLable.CreateTime = DateTime.Now;
-                blogLable.EditTime = DateTime.Now;
-                blogLable.DeleteSign = (Int32)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
-                blogLable.CreateUserId = UserId;
-                if (Add(blogLable))
+                int intcount = _blogLableDAL.GetCount(t => t.LableName.Equals(blogLable.LableName) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+                if (intcount > 0)
                 {
-                    messageModel.Message = "添加成功";
+                    messageModel.Message = "博客标签名称已注册";
+                    messageModel.Result = false;
                 }
                 else
                 {
-                    messageModel.Message = "添加失败";
-                    messageModel.Result = false;
+                    blogLable.CreateTime = DateTime.Now;
+                    blogLable.EditTime = DateTime.Now;
+                    blogLable.DeleteSign = (Int32)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
+                    blogLable.CreateUserId = UserId;
+                    if (Add(blogLable))
+                    {
+                        messageModel.Message = "添加成功";
+                    }
+                    else
+                    {
+                        messageModel.Message = "添加失败";
+                        messageModel.Result = false;
+                    }
                 }
+
             }
             else//修改
             {
@@ -73,13 +84,12 @@ namespace Zhouli.BLL.Implements
         public MessageModel DelBlogLable(IEnumerable<string> blogLableId)
         {
             var model = new MessageModel();
-            var blogLableList = _blogLableDAL.GetModels(u => blogLableId.Any(a => a.Equals(u.LableId.ToString())));
+            bool bResult = false;
+            var blogLableList = GetModels(u => blogLableId.Any(a => a.Equals(u.LableId.ToString())));
             foreach (var item in blogLableList)
             {
-                item.DeleteSign = (int)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted;
-                item.EditTime = DateTime.Now;
+                bResult = Delete(item);
             }
-            bool bResult = _blogLableDAL.SaveChanges();
             model.Result = bResult;
             model.Message = bResult ? "删除成功" : "删除失败";
             return model;
