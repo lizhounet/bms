@@ -26,4 +26,7 @@ C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.pdb
 =======
 C:\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.csprojAssemblyReference.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Redis\obj\Debug\netcoreapp2.1\Zhouli.Redis.csprojAssemblyReference.cache
+<<<<<<< HEAD
+>>>>>>> f2e00cea149cada789121c74208265fc991ed376
+=======
 >>>>>>> f2e00cea149cada789121c74208265fc991ed376
