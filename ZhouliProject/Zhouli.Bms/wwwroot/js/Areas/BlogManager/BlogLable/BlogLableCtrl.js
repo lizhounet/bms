@@ -1,5 +1,4 @@
-﻿debugger;
-require.config({
+﻿require.config({
     paths: {
     }
 });
@@ -50,7 +49,7 @@ require(["jquery", 'layui'], function ($) {
         //添加用户
         function BlogLableAdd(edit) {
             var index = layui.layer.open({
-                title: "添加/编辑博客标签",
+                title: "添加/编辑标签",
                 type: 2,
                 content: "/Blog/BlogLable/BlogLableAdd",
                 success: function (layero, index) {
@@ -62,7 +61,7 @@ require(["jquery", 'layui'], function ($) {
                         form.render();
                     }
                     setTimeout(function () {
-                        layui.layer.tips('点击此处返回用户组列表', '.layui-layer-setwin .layui-layer-close', {
+                        layui.layer.tips('点击此处返回标签列表', '.layui-layer-setwin .layui-layer-close', {
                             tips: 3
                         });
                     }, 500);
@@ -82,7 +81,7 @@ require(["jquery", 'layui'], function ($) {
                 for (var i in data) {
                     LableId.push(data[i].LableId);
                 }
-                layer.confirm('确定删除选中的用户？', { icon: 3, title: '提示信息' }, function (index) {
+                layer.confirm('确定删除选中的标签？', { icon: 3, title: '提示信息' }, function (index) {
                     $.post("/Blog/BlogLable/DeleteBlogLable", {
                         blogLableId: LableId //将需要删除的LableId作为参数传入
                     }, function (res) {
@@ -94,18 +93,17 @@ require(["jquery", 'layui'], function ($) {
                     }, "json");
                 });
             } else {
-                layer.msg("请选择需要删除的用户组");
+                layer.msg("请选择需要删除的标签");
             }
         });
         //列表操作
         table.on('tool(blogLableList)', function (obj) {
-            debugger;
             var layEvent = obj.event,
                 data = obj.data;
             if (layEvent === 'edit') { //编辑
                 BlogLableAdd(data);
             } else if (layEvent === 'del') { //删除
-                layer.confirm('确定删除此用户组？', { icon: 3, title: '提示信息' }, function (index) {
+                layer.confirm('确定删除此标签？', { icon: 3, title: '提示信息' }, function (index) {
                     $.post("/Blog/BlogLable/DeleteBlogLable", {
                         blogLableId: data.LableId  //将需要删除的LableId作为参数传入
                     }, function (res) {

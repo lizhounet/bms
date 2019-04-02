@@ -15,7 +15,6 @@ require(["jquery", 'layui'], function ($) {
         form.on("submit(addBlogLable)", function (data) {
             //弹出loading
             var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: false, shade: 0.8 });
-            debugger;
             // 实际使用时的提交信息
             $.post("/Blog/BlogLable/AddorUpdateBlogLable", {
                 LableId: $(".lableId").val(),  //站点名称

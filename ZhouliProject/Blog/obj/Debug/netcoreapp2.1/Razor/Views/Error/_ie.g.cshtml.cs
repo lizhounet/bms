@@ -43,7 +43,7 @@ namespace AspNetCore
             WriteLiteral("<!DOCTYPE html>\r\n<html lang=\"zh-CN\">\r\n");
             EndContext();
             BeginContext(38, 3599, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a908b4f1233846c28377acc3cb6df5f6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "96d4ac2233254ff3994ac45456ec6b5c", async() => {
                 BeginContext(44, 3586, true);
                 WriteLiteral(@"
     <meta charset=""UTF-8"" />
@@ -199,7 +199,7 @@ namespace AspNetCore
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(3639, 1603, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ddfad8fead5d4f15a191baddf926a0cf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a85f3d003ad2475ea3f40b796e146a3e", async() => {
                 BeginContext(3645, 1590, true);
                 WriteLiteral(@"
     <h1>是时候升级你的浏览器了</h1>
