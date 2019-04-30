@@ -11,6 +11,7 @@ using Zhouli.DbEntity.Models;
 using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
+using Zhouli.CommonEntity;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
 {
@@ -18,10 +19,10 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
     [Area("System")]
     public class UserGroupController : Controller
     {
-        private readonly WholeInjection injection;
+        private readonly WholeInjection _injection;
         public UserGroupController(WholeInjection injection)
         {
-            this.injection = injection;
+            _injection = injection;
         }
         public IActionResult Index()
         {
@@ -30,7 +31,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public IActionResult UserGroupAdd(string UserGroupId)
         {
 
-            ViewBag.UserGroupList = injection.GetT<ISysUserGroupBLL>().GetModels(t => (Guid.Empty.ToString().Equals(UserGroupId) || !t.UserGroupId.Equals(UserGroupId)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+            ViewBag.UserGroupList = _injection.GetT<ISysUserGroupBLL>().GetModels(t => (Guid.Empty.ToString().Equals(UserGroupId) || !t.UserGroupId.Equals(UserGroupId)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
             return View();
         }
         #region 获取分页用户组数据
@@ -43,7 +44,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public string GetUserGroupList(string page, string limit, string searchstr)
         {
-            var messageModel = injection.GetT<ISysUserGroupBLL>()
+            var messageModel = _injection.GetT<ISysUserGroupBLL>()
                  .GetUserGroupList(page, limit, searchstr);
             return new
             {
@@ -64,7 +65,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             bool bResult = true;
             string sMessage = "保存成功";
-            var userGroupBLL = injection.GetT<ISysUserGroupBLL>();
+            var userGroupBLL = _injection.GetT<ISysUserGroupBLL>();
             var userGroup = AutoMapper.Mapper.Map<SysUserGroup>(userGroupDto);
             if (userGroupBLL.GetCount(t => t.UserGroupName.Equals(userGroupDto.UserGroupName) && !t.UserGroupId.Equals(userGroupDto.UserGroupId) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)) > 0)
             {
@@ -78,7 +79,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 {
                     userGroup.CreateTime = DateTime.Now;
                     userGroup.DeleteSign = (Int32)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
-                    userGroup.CreateUserId = injection.GetT<UserAccount>().GetUserInfo().UserId;
+                    userGroup.CreateUserId = _injection.GetT<UserAccount>().GetUserInfo().UserId;
                     userGroup.CreateTime = DateTime.Now;
                     bResult = userGroupBLL.Add(userGroup);
 
@@ -110,7 +111,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = injection.GetT<ISysUserGroupBLL>().DelUserGroup(UserGroupId);
+            MessageModel model = _injection.GetT<ISysUserGroupBLL>().DelUserGroup(UserGroupId);
             resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = model.Message;
             return resModel.Json();

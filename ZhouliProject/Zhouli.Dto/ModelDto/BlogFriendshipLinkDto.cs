@@ -22,28 +22,14 @@ namespace Zhouli.Dto.ModelDto
         /// 友情链接邮箱
         /// </summary>
         public string FriendshipLinkEmail { get; set; }
-        public int FriendshipLinkSortValue { get; set; }
+        /// <summary>
+        /// 是否审核
+        /// </summary>
         public int FriendshipLinkSfsh { get; set; }
         /// <summary>
-        /// 创建人id
+        /// 排序
         /// </summary>
-        public string CreateUserId { get; set; }
-        /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime CreateTime { get; set; }
-        /// <summary>
-        /// 修改时间
-        /// </summary>
-        public DateTime? EditTime { get; set; }
-        /// <summary>
-        /// 是否删除字段
-        /// </summary>
-        public int DeleteSign { get; set; }
-        /// <summary>
-        /// 删除时间
-        /// </summary>
-        public DateTime? DeleteTime { get; set; }
+        public int FriendshipLinkSortValue { get; set; }
         /// <summary>
         /// 备注
         /// </summary>

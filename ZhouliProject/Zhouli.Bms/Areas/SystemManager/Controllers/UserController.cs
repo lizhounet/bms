@@ -12,6 +12,7 @@ using Zhouli.DbEntity.Models;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
 using ZhouliSystem.Data;
+using Zhouli.CommonEntity;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
 {
@@ -19,10 +20,10 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
     [Area("System")]
     public class UserController : Controller
     {
-        private readonly WholeInjection injection;
+        private readonly WholeInjection _injection;
         public UserController(WholeInjection injection)
         {
-            this.injection = injection;
+            _injection = injection;
         }
         public IActionResult Index()
         {
@@ -30,7 +31,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         }
         public IActionResult UserAdd()
         {
-            ViewBag.UserGroupList = injection.GetT<ISysUserGroupBLL>().GetModels(t => t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+            ViewBag.UserGroupList = _injection.GetT<ISysUserGroupBLL>().GetModels(t => t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
             return View();
         }
         #region 获取用户列表
@@ -43,7 +44,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public string GetUserList(string page, string limit, string searchstr)
         {
-            var messageModel = injection.GetT<ISysUserBLL>()
+            var messageModel = _injection.GetT<ISysUserBLL>()
                 .GetUserList(page, limit, searchstr);
             return new
             {
@@ -63,8 +64,8 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public string AddorEditUser(SysUserDto userDto)
         {
             var resModel = new ResponseModel();
-            var userLogin = injection.GetT<UserAccount>().GetUserInfo();
-            var mModel = injection.GetT<ISysUserBLL>().AddorEditUser(userDto, userLogin.UserId);
+            var userLogin = _injection.GetT<UserAccount>().GetUserInfo();
+            var mModel = _injection.GetT<ISysUserBLL>().AddorEditUser(userDto, userLogin.UserId);
             resModel.StateCode = mModel.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = mModel.Message;
             resModel.JsonData = mModel.Data;
@@ -82,9 +83,9 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             var resModel = new ResponseModel();
             if (!string.IsNullOrEmpty(UserId))
             {
-                var user = injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(UserId)).SingleOrDefault();
+                var user = _injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(UserId)).SingleOrDefault();
                 user.UserStatus = user.UserStatus == 0 ? 1 : 0;
-                injection.GetT<ISysUserBLL>().Update(user);
+                _injection.GetT<ISysUserBLL>().Update(user);
                 resModel.Messages = user.UserStatus == 1 ? "启用成功" : "禁用成功";
             }
             else
@@ -105,7 +106,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = injection.GetT<ISysUserBLL>().DelUser(UserId);
+            MessageModel model = _injection.GetT<ISysUserBLL>().DelUser(UserId);
             resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = model.Message;
             return resModel.Json();

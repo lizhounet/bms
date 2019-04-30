@@ -5877,6 +5877,16 @@
           "bin/placeholder/Zhouli.Common.dll": {}
         }
       },
+      "Zhouli.CommonEntity/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Zhouli.CommonEntity.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Zhouli.CommonEntity.dll": {}
+        }
+      },
       "Zhouli.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
@@ -15210,6 +15220,11 @@
       "path": "../Zhouli.Common/Zhouli.Common.csproj",
       "msbuildProject": "../Zhouli.Common/Zhouli.Common.csproj"
     },
+    "Zhouli.CommonEntity/1.0.0": {
+      "type": "project",
+      "path": "../Zhouli.CommonEntity/Zhouli.CommonEntity.csproj",
+      "msbuildProject": "../Zhouli.CommonEntity/Zhouli.CommonEntity.csproj"
+    },
     "Zhouli.DAL/1.0.0": {
       "type": "project",
       "path": "../Zhouli.DAL/Zhouli.DAL.csproj",
@@ -15242,6 +15257,7 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.0",
       "Zhouli.BLL >= 1.0.0",
       "Zhouli.Common >= 1.0.0",
+      "Zhouli.CommonEntity >= 1.0.0",
       "Zhouli.DI >= 1.0.0",
       "Zhouli.DbEntity >= 1.0.0",
       "log4net >= 2.0.8"
@@ -15279,6 +15295,9 @@
           "projectReferences": {
             "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.BLL\\Zhouli.BLL.csproj": {
               "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.BLL\\Zhouli.BLL.csproj"
+            },
+            "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.CommonEntity\\Zhouli.CommonEntity.csproj": {
+              "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.CommonEntity\\Zhouli.CommonEntity.csproj"
             },
             "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj": {
               "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj"

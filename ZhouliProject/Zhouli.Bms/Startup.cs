@@ -92,7 +92,7 @@ namespace ZhouliSystem
             services.AddScoped(typeof(WholeInjection));
             services.AddScoped(typeof(UserAccount));
             services.AddSingleton(new Zhouli.DAL.DapperContext(strConnection, srtdataBaseType));
-            services.ResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
+            services.AddResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
             //初始化Dto与实体映射关系
             ZhouliDtoMapper.Initialize();
             //注入配置文件类

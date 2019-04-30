@@ -15,7 +15,7 @@ namespace Zhouli.BLL.Interface
         /// <returns></returns>
         MessageModel GetFriendshipLinkList(string page, string limit, string searchstr);
         /// <summary>
-        /// 添加/编辑用户
+        /// 添加/编辑友情链接
         /// </summary>
         /// <param name="blog"></param>
         /// <param name="userId"></param>
@@ -27,5 +27,23 @@ namespace Zhouli.BLL.Interface
         /// <param name="blog"></param>
         /// <returns></returns>
         MessageModel DelFriendshipLink(IEnumerable<string> FriendshipLinkId);
+        /// <summary>
+        /// 添加未审核友情链接
+        /// </summary>
+        /// <param name="blog"></param>
+        /// <returns></returns>
+        MessageModel AddFriendshipLink(BlogFriendshipLinkDto blog);
+        /// <summary>
+        /// 获取已审核友情链接
+        /// </summary>
+        /// <returns></returns>
+        MessageModel GetAuditedFriendshipLinkList();
+        /// <summary>
+        /// 审核友情链接
+        /// </summary>
+        /// <param name="FriendshipLinkId"></param>
+        /// <returns></returns>
+        MessageModel SfFriendshipLinkList(int FriendshipLinkId);
+
     }
 }

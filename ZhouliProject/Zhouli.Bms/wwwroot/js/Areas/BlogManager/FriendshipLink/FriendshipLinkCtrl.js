@@ -1,5 +1,4 @@
-﻿debugger;
-require.config({
+﻿require.config({
     paths: {
     }
 });
@@ -31,7 +30,7 @@ require(["jquery", 'layui'], function ($) {
                 { field: 'FriendshipLinkName', title: '网站名称', minWidth: 100, align: "center" },
                 {
                     field: 'FriendshipLinkUrl', title: '网站地址', align: 'center', minWidth: 150, templet: function (d) {
-                        return '<a href="\www.baidu.com"\>' + d.FriendshipLinkUrl + '</a>';
+                        return '<a style="color:dodgerblue;" target="_blank" href="' + d.FriendshipLinkUrl + '"\>' + d.FriendshipLinkUrl + '</a>';
                     }
                 },
                 { field: 'FriendshipLinkEmail', title: '站长Email', align: 'center', minWidth: 150 },
@@ -108,7 +107,6 @@ require(["jquery", 'layui'], function ($) {
         });
         //列表操作
         table.on('tool(friendshipLinkList)', function (obj) {
-            debugger;
             var layEvent = obj.event,
                 data = obj.data;
             if (layEvent === 'edit') { //编辑
@@ -124,6 +122,33 @@ require(["jquery", 'layui'], function ($) {
                             tableIns.reload();
                         }
                     }, "json");
+                });
+            } else if (layEvent === 'usable') { //审核
+                var _this = $(this),
+                    usableText = "是否审核此友情链接？",
+                    btnText = "已审核";
+                if (_this.text() == "已审核") {
+                    layer.msg("不允许重复审核!");
+                    return;
+                }
+                layer.confirm(usableText, {
+                    icon: 3,
+                    title: '系统提示',
+                    cancel: function (index) {
+                        layer.close(index);
+                    }
+                }, function (index) {
+                    $.post("/Blog/FriendshipLink/SfFriendshipLink", {
+                        FriendshipLinkId: data.FriendshipLinkId
+                    }, function (res) {
+                        layer.close(index);
+                        layer.msg(res.Messages);
+                        if (res.StateCode == 200) {
+                            _this.text(btnText);
+                        }
+                    }, "json");
+                }, function (index) {
+                    layer.close(index);
                 });
             }
         });

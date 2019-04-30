@@ -10,7 +10,7 @@ namespace Zhouli.DAL.Implements
 {
     public class SysAuthorityDAL : BaseDAL<SysAuthority>, ISysAuthorityDAL
     {
-       
+
         public SysAuthorityDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db)
         {
         }

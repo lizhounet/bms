@@ -33,6 +33,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.0",
           "Zhouli.BLL": "1.0.0",
           "Zhouli.Common": "1.0.0",
+          "Zhouli.CommonEntity": "1.0.0",
           "Zhouli.DI": "1.0.0",
           "Zhouli.DbEntity": "1.0.0",
           "log4net": "2.0.8"
@@ -860,6 +861,14 @@
         },
         "compile": {
           "Zhouli.Common.dll": {}
+        }
+      },
+      "Zhouli.CommonEntity/1.0.0": {
+        "runtime": {
+          "Zhouli.CommonEntity.dll": {}
+        },
+        "compile": {
+          "Zhouli.CommonEntity.dll": {}
         }
       },
       "Zhouli.DAL/1.0.0": {
@@ -4717,6 +4726,11 @@
       "sha512": ""
     },
     "Zhouli.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Zhouli.CommonEntity/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

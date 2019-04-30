@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
+using Zhouli.CommonEntity;
 using Zhouli.DI;
 using Zhouli.Dto.ModelDto;
 using ZhouliSystem.Data;
@@ -15,10 +16,10 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
     [Area("Blog")]
     public class BlogLableController : Controller
     {
-        private readonly WholeInjection injection;
+        private readonly WholeInjection _injection;
         public BlogLableController(WholeInjection injection)
         {
-            this.injection = injection;
+            _injection = injection;
         }
         public IActionResult Index()
         {
@@ -38,7 +39,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// <returns></returns>
         public string GetBlogLableList(string page, string limit, string searchstr)
         {
-            var messageModel = injection.GetT<IBlogLableBLL>()
+            var messageModel = _injection.GetT<IBlogLableBLL>()
                  .GetBlogLableList(page, limit, searchstr);
             return new
             {
@@ -58,14 +59,13 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         public string AddorUpdateBlogLable(BlogLableDto bl)
         {
             var resModel = new ResponseModel();
-            MessageModel model = injection.GetT<IBlogLableBLL>().AddorEditBlogLable(bl, injection.GetT<UserAccount>().GetUserInfo().UserId);
+            MessageModel model = _injection.GetT<IBlogLableBLL>().AddorEditBlogLable(bl, _injection.GetT<UserAccount>().GetUserInfo().UserId);
             resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = model.Message;
             resModel.JsonData = model.Data;
             return resModel.Json();
         }
         #endregion
-
         #region 删除博客标签链接
         /// <summary>
         /// 删除博客标签链接
@@ -76,7 +76,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = injection.GetT<IBlogLableBLL>().DelBlogLable(blogLableId);
+            MessageModel model = _injection.GetT<IBlogLableBLL>().DelBlogLable(blogLableId);
             resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.Messages = model.Message;
             return resModel.Json();

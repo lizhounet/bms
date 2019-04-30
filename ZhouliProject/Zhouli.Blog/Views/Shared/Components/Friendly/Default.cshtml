@@ -1,0 +1,125 @@
+﻿@*@using Zhouli.Dto.ModelDto;
+    @model List<BlogFriendshipLinkDto>*@
+<link href="~/lib/layui/css/layui.css" rel="stylesheet" />
+<div class="content-block friendly-content row" >
+    <h2 class="title"><strong>本站友链</strong></h2>
+    @*@{
+            foreach (var item in Model)
+            {
+                <div class="col-md-4 col-xs-6">
+                    <span data-toggle="tooltip" data-placement="bottom" title="点击进入 @item.FriendshipLinkName 站点"><a target="_blank" href="@item.FriendshipLinkUrl">@item.FriendshipLinkName</a></span>
+                    <p>查看关于 @item.FriendshipLinkName 的文章</p>
+                </div>
+            }
+        }*@
+    <div id="view"></div>
+</div>
+<div class="content-block comment">
+    <h2 class="title"><strong>提交友链</strong></h2>
+    <form method="post" class="form-inline" id="comment-form">
+        <div class="comment-title">
+            <div class="form-group">
+                <label for="messageName">网站名称：</label>
+                <input type="text" name="SiteName" class="form-control" id="SiteName" placeholder="网站名称">
+            </div>
+            <div class="form-group">
+                <label for="messageEmail">网站地址：</label>
+                <input type="text" name="SiteUrl" class="form-control" id="SiteUrl" placeholder="网站地址">
+            </div>
+            <div class="form-group">
+                <label for="messageEmail">站长邮箱：</label>
+                <input type="text" name="SiteEmail" class="form-control" id="SiteEmail" placeholder="xxxx@xxxx.com">
+            </div>
+        </div>
+        <div class="comment-form">
+            <textarea placeholder="请填写网站简介" name="messageContent" id="SiteSummary"></textarea>
+            <div class="comment-form-footer">
+                <div class="comment-form-text">请先 <a href="javascript:;">登录</a> 或 <a href="javascript:;">注册</a>，也可匿名提交友链 </div>
+                <div class="comment-form-btn">
+                    <button type="submit" id="submitSite" lay-submit="" lay-filter="submitSite" class="btn btn-default btn-comment">提交友链</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script id="laytplSite" type="text/html">
+    {{#  layui.each(d, function(index, item){ }}
+    <div class="col-md-4 col-xs-6">
+        <span data-toggle="tooltip" data-placement="bottom" title="点击进入 {{item.FriendshipLinkName}}"><a target="_blank" href="{{item.FriendshipLinkUrl}}">{{item.FriendshipLinkName}}</a></span>
+        <p style="height:3.5em">{{item.Note==null?"":item.Note}}</p>
+    </div>
+    {{#  }); }}
+    {{#  if(d.length === 0){ }}
+    无数据
+    {{#  } }}
+</script>
+<script src="~/lib/layui/layui.js"></script>
+<script>
+    layui.use(['form', 'layer','laytpl'], function () {
+        var layer = layui.layer,
+            form = layui.form,
+            laytpl = layui.laytpl,
+            $ = layui.jquery;
+
+        var getTpl = laytplSite.innerHTML
+            , view = document.getElementById('view');
+        $.ajax({
+            url: "@ViewBag.BlogApiAddress/api/blog/getfriendly",
+            type: "GET",
+            dataType: "json",
+            beforeSend: function (xhr) {
+                //    //发送ajax请求之前向http的head里面加入验证信息
+                xhr.setRequestHeader("Authorization", "Bearer @ViewBag.BlogToken");  // 请求发起前在头部附加token
+            },
+            success: function (res) {
+                console.log(res);
+                laytpl(getTpl).render(res.JsonData, function (html) {
+                        view.innerHTML = html;
+                    });
+            }
+        });
+        form.on("submit(submitSite)", function (data) {
+
+            //弹出loading
+            // var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: false, shade: 0.8 });
+            var postData = {
+                SiteName: $("#SiteName").val(),
+                SiteUrl: $("#SiteUrl").val(),
+                SiteEmail: $("#SiteEmail").val(),
+                SiteSummary: $("#SiteSummary").val()
+            };
+            if (!/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/|www\.)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/.test(postData.SiteUrl)) {
+                layer.msg("url格式错误!");
+                return false;
+            }
+            if (!new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$").test(postData.SiteEmail)) {
+                layer.msg("邮箱格式错误!");
+                return false;
+            }
+            if (postData.SiteSummary == "") {
+                layer.msg("请填写网站简介!");
+                return false;
+            }
+          $.ajax({
+              url: "@ViewBag.BlogApiAddress/api/blog/submitfriendly",
+              type: "POST",
+              dataType: "json",
+              data: postData,
+              beforeSend: function (xhr) {
+                  layer.load(2, { time: 10 * 1000 });
+                //    //发送ajax请求之前向http的head里面加入验证信息
+                  xhr.setRequestHeader("Authorization", "Bearer @ViewBag.BlogToken");  // 请求发起前在头部附加token
+
+              },
+              success: function (res) {
+                  layer.closeAll();
+                  layer.msg(res.Messages);
+                  setTimeout(function () {
+                      location.reload();
+                  }, 1000);
+              }
+        });
+            return false;
+        });
+    });
+</script> 

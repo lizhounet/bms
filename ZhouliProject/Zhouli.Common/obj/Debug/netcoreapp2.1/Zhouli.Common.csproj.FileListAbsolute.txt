@@ -24,14 +24,6 @@ D:\周黎\code\bms_dev\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhoul
 D:\周黎\code\bms_dev\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.AssemblyInfo.cs
 D:\周黎\code\bms_dev\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.dll
 D:\周黎\code\bms_dev\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.deps.json
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.csproj.CoreCompileInputs.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.AssemblyInfoInputs.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.AssemblyInfo.cs
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.pdb
 C:\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.deps.json
 C:\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.dll
 C:\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.pdb
@@ -40,8 +32,13 @@ C:\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.Assembl
 C:\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.AssemblyInfo.cs
 C:\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.dll
 C:\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.csprojAssemblyReference.cache
-<<<<<<< HEAD
 C:\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.csprojAssemblyReference.cache
-=======
->>>>>>> f2e00cea149cada789121c74208265fc991ed376
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.deps.json
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.csproj.CoreCompileInputs.cache
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.AssemblyInfoInputs.cache
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.AssemblyInfo.cs
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.csprojAssemblyReference.cache

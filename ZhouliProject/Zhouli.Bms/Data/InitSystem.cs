@@ -135,32 +135,6 @@ namespace ZhouliSystem.Data
                                 AuthorityId = entityAuthority.Entity.AuthorityId
                             });
                             //----------------------------系统管理菜单end
-                            //----------------------------权限管理菜单begin
-                            var entityMenu1 = context.SysMenu.Add(new SysMenu
-                            {
-                                MenuName = "角色授权",
-                                MenuUrl = "/System/Authority/Index",
-                                CreateTime = DateTime.Now,
-                                ParentMenuId = entityMenu.Entity.MenuId,
-                                CreateUserId= Guid.Empty.ToString(),
-                                MenuId = Guid.NewGuid().ToString()
-
-                            });
-                            var entityAuthority1 = context.SysAuthority.Add(new SysAuthority
-                            {
-                                AuthorityType = 1,
-                                AuthorityId = Guid.NewGuid().ToString(),
-                                CreateUserId = Guid.Empty.ToString(),
-                                CreateTime = DateTime.Now
-                            });
-                            context.SysAmRelated.Add(new SysAmRelated
-                            {
-                                MenuId = entityMenu1.Entity.MenuId,
-                                AuthorityId = entityAuthority1.Entity.AuthorityId
-
-
-                            });
-                            //----------------------------权限管理菜单end
                             //----------------------------菜单管理菜单begin
                             var entityMenu2 = context.SysMenu.Add(new SysMenu
                             {
@@ -257,6 +231,111 @@ namespace ZhouliSystem.Data
                             });
                             //----------------------------用户组菜单end
                             #endregion
+                            #endregion
+                            #region 初始化博客管理
+                            //----------------------------博客管理菜单begin
+                            var entityBlog = context.SysMenu.Add(new SysMenu
+                            {
+                                MenuName = "博客管理",
+                                MenuSort = 1,
+                                MenuIcon = "layui-icon-templeate-1",
+                                CreateTime = DateTime.Now,
+                                CreateUserId = Guid.Empty.ToString(),
+                                ParentMenuId = Guid.Empty.ToString(),
+                                MenuId = Guid.NewGuid().ToString()
+
+                            });
+                            var entityBlogAuthority = context.SysAuthority.Add(new SysAuthority
+                            {
+                                AuthorityType = 1,
+                                CreateTime = DateTime.Now,
+                                CreateUserId = Guid.Empty.ToString(),
+                                AuthorityId = Guid.NewGuid().ToString()
+                            });
+                            context.SysAmRelated.Add(new SysAmRelated
+                            {
+                                MenuId = entityBlog.Entity.MenuId,
+                                AuthorityId = entityBlogAuthority.Entity.AuthorityId
+                            });
+                            //----------------------------博客管理菜单end
+                            //----------------------------博客友情链接菜单begin
+                            var entityBlogYqlj = context.SysMenu.Add(new SysMenu
+                            {
+                                MenuName = "友情链接",
+                                MenuSort = 1,
+                                MenuIcon = "layui-icon-share",
+                                CreateTime = DateTime.Now,
+                                MenuUrl= "/Blog/FriendshipLink/Index",
+                                CreateUserId = Guid.Empty.ToString(),
+                                ParentMenuId = entityBlog.Entity.MenuId,
+                                MenuId = Guid.NewGuid().ToString()
+
+                            });
+                            var entityBlogYqljAuthority = context.SysAuthority.Add(new SysAuthority
+                            {
+                                AuthorityType = 1,
+                                CreateTime = DateTime.Now,
+                                CreateUserId = Guid.Empty.ToString(),
+                                AuthorityId = Guid.NewGuid().ToString()
+                            });
+                            context.SysAmRelated.Add(new SysAmRelated
+                            {
+                                MenuId = entityBlogYqlj.Entity.MenuId,
+                                AuthorityId = entityBlogYqljAuthority.Entity.AuthorityId
+                            });
+                            //----------------------------博客友情链接菜单end
+                            //----------------------------博客文章菜单begin
+                            var entityBlogWz = context.SysMenu.Add(new SysMenu
+                            {
+                                MenuName = "文章管理",
+                                MenuSort = 1,
+                                MenuIcon = "layui-icon-read",
+                                MenuUrl= "/Blog/BlogArticle/Index",
+                                CreateTime = DateTime.Now,
+                                CreateUserId = Guid.Empty.ToString(),
+                                ParentMenuId = entityBlog.Entity.MenuId,
+                                MenuId = Guid.NewGuid().ToString()
+
+                            });
+                            var entityBlogWzAuthority = context.SysAuthority.Add(new SysAuthority
+                            {
+                                AuthorityType = 1,
+                                CreateTime = DateTime.Now,
+                                CreateUserId = Guid.Empty.ToString(),
+                                AuthorityId = Guid.NewGuid().ToString()
+                            });
+                            context.SysAmRelated.Add(new SysAmRelated
+                            {
+                                MenuId = entityBlogWz.Entity.MenuId,
+                                AuthorityId = entityBlogWzAuthority.Entity.AuthorityId
+                            });
+                            //----------------------------博客文章菜单end
+                            //----------------------------博客标签菜单begin
+                            var entityBlogBq = context.SysMenu.Add(new SysMenu
+                            {
+                                MenuName = "标签管理",
+                                MenuSort = 1,
+                                MenuIcon = "layui-icon-note",
+                                MenuUrl = "/Blog/BlogLable/Index",
+                                CreateTime = DateTime.Now,
+                                CreateUserId = Guid.Empty.ToString(),
+                                ParentMenuId = entityBlog.Entity.MenuId,
+                                MenuId = Guid.NewGuid().ToString()
+
+                            });
+                            var entityBlogBqAuthority = context.SysAuthority.Add(new SysAuthority
+                            {
+                                AuthorityType = 1,
+                                CreateTime = DateTime.Now,
+                                CreateUserId = Guid.Empty.ToString(),
+                                AuthorityId = Guid.NewGuid().ToString()
+                            });
+                            context.SysAmRelated.Add(new SysAmRelated
+                            {
+                                MenuId = entityBlogBq.Entity.MenuId,
+                                AuthorityId = entityBlogBqAuthority.Entity.AuthorityId
+                            });
+                            //----------------------------博客标签菜单end
                             #endregion
                             context.SaveChanges();
                             tran.Commit();

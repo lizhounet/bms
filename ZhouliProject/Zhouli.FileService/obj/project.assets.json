@@ -5046,6 +5046,16 @@
         "runtime": {
           "bin/placeholder/Zhouli.Common.dll": {}
         }
+      },
+      "Zhouli.CommonEntity/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Zhouli.CommonEntity.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Zhouli.CommonEntity.dll": {}
+        }
       }
     }
   },
@@ -13603,6 +13613,11 @@
       "type": "project",
       "path": "../Zhouli.Common/Zhouli.Common.csproj",
       "msbuildProject": "../Zhouli.Common/Zhouli.Common.csproj"
+    },
+    "Zhouli.CommonEntity/1.0.0": {
+      "type": "project",
+      "path": "../Zhouli.CommonEntity/Zhouli.CommonEntity.csproj",
+      "msbuildProject": "../Zhouli.CommonEntity/Zhouli.CommonEntity.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -13615,6 +13630,7 @@
       "Qiniu.Shared >= 7.2.15",
       "Swashbuckle.AspNetCore >= 4.0.1",
       "Zhouli.Common >= 1.0.0",
+      "Zhouli.CommonEntity >= 1.0.0",
       "log4net >= 2.0.8"
     ]
   },
@@ -13648,6 +13664,9 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
+            "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.CommonEntity\\Zhouli.CommonEntity.csproj": {
+              "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.CommonEntity\\Zhouli.CommonEntity.csproj"
+            },
             "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj": {
               "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj"
             }

@@ -38,7 +38,7 @@ namespace Zhouli.DI
         /// 自动注入依赖关系
         /// </summary>  
         /// <param name="assemblyNames">需要扫描的项目名称集合</param>
-        public static void ResolveAllTypes(this IServiceCollection services, params string[] assemblyNames)
+        public static void AddResolveAllTypes(this IServiceCollection services, params string[] assemblyNames)
         {
             //assemblyNames 需要扫描的项目名称集合
             //注意: 如果使用此方法，必须提供需要扫描的项目名称

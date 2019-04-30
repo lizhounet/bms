@@ -34,15 +34,19 @@ using IdentityModel.Client;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System;
+using Zhouli.CommonEntity;
+using Microsoft.Extensions.Configuration;
 
 namespace ZhouliSystem.Controllers
 {
     public class UserController : Controller
     {
-        private WholeInjection injection;
-        public UserController(WholeInjection injection)
+        private readonly WholeInjection _injection;
+        private readonly IMemoryCache _cache;
+        public UserController(WholeInjection injection, IMemoryCache cache)
         {
-            this.injection = injection;
+            _injection = injection;
+            _cache = cache;
         }
         [ResponseCache(CacheProfileName = "default")]
         public IActionResult Login()
@@ -52,8 +56,8 @@ namespace ZhouliSystem.Controllers
         }
         public IActionResult UserInfo()
         {
-            ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(injection.GetT<UserAccount>().GetUserInfo().UserId)).SingleOrDefault());
-            ViewBag.FileServiceAdress = injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value.FileServiceAdress;
+            ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(_injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(_injection.GetT<UserAccount>().GetUserInfo().UserId)).SingleOrDefault());
+            ViewBag.FileServiceAdress = _injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value.FileServiceAdress;
             return View();
         }
         public IActionResult UserChagePwd() => View();
@@ -62,23 +66,23 @@ namespace ZhouliSystem.Controllers
         public string UserChagePwd(string useroldpwd, string usernewpwd)
         {
             var response = new ResponseModel();
-            var userlogin = injection.GetT<UserAccount>().GetUserInfo();
+            var userlogin = _injection.GetT<UserAccount>().GetUserInfo();
             if (!userlogin.UserPwd.Equals(MD5Encrypt.Get32MD5One(useroldpwd)))
             {
                 response.Messages = "原密码不正确,请重新输入";
                 response.StateCode = StatesCode.failure;
                 return JsonHelper.ObjectToJson(response);
             }
-            var user = injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(userlogin.UserId)).SingleOrDefault();
+            var user = _injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(userlogin.UserId)).SingleOrDefault();
             if (user != null)
             {
                 user.UserPwd = MD5Encrypt.Get32MD5One(usernewpwd);
-                if (injection.GetT<ISysUserBLL>().Update(user))
+                if (_injection.GetT<ISysUserBLL>().Update(user))
                 {
                     response.Messages = "密码修改成功";
                     response.StateCode = StatesCode.success;
                     //密码修改成功 重新登录
-                    injection.GetT<UserAccount>().Login(user);
+                    _injection.GetT<UserAccount>().Login(user);
                 }
                 else
                 {
@@ -106,7 +110,7 @@ namespace ZhouliSystem.Controllers
         {
 
             var message = new ResponseModel();
-            var sysUsers = injection.GetT<ISysUserBLL>().GetModels(t =>
+            var sysUsers = _injection.GetT<ISysUserBLL>().GetModels(t =>
                 (t.UserName.Equals(username) ||
                 t.UserEmail.Equals(username) ||
                 t.UserPhone.Equals(username) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted))
@@ -130,8 +134,8 @@ namespace ZhouliSystem.Controllers
                 }
                 else
                 {
-                    var user = injection.GetT<ISysUserBLL>().GetLoginSysUser(sysUsers).Data;
-                    injection.GetT<UserAccount>().Login(user);
+                    var user = _injection.GetT<ISysUserBLL>().GetLoginSysUser(sysUsers).Data;
+                    _injection.GetT<UserAccount>().Login(user);
                     message.Messages = "登陆成功";
                     message.JsonData = new { baseUrl = "/Home/Index" };
                 }
@@ -146,25 +150,28 @@ namespace ZhouliSystem.Controllers
         [HttpPost]
         public IActionResult GetToken()
         {
-            var configuration = injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value;
             //初始化Redis
-            RedisHelper.Initialization(new CSRedis.CSRedisClient(configuration.RedisAdress));
-
+            //RedisHelper.Initialization(new CSRedis.CSRedisClient(configuration.RedisAdress));
+            if (!_cache.TryGetValue($"IdentityFileService_Token", out string token))
+            {
+                token = GetFileServerToken();
+                _cache.Set($"IdentityFileService_Token", token, new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(3600)));
+            }
             return Ok(new ResponseModel
             {
-                JsonData = RedisHelper.CacheShell("zhouli.bms", 3600, GetFileServerToken)
+                JsonData = token
             });
         }
         private string GetFileServerToken()
         {
-            var configuration = injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value;
+            var configuration = _injection.GetT<IConfiguration>();
             var client = new HttpClient();
             var response = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
             {
-                Address = configuration.IdentityServerAdress + "/connect/token",
-                ClientId = "zhouli",
-                ClientSecret = "991022",
-                Scope = "Zhouli.FileService"
+                Address = configuration["IdentityFileService:Address"] + "/connect/token",
+                ClientId = configuration["IdentityFileService:ClientId"],
+                ClientSecret = configuration["IdentityFileService:ClientSecret"],
+                Scope = configuration["IdentityFileService:Scope"]
             });
             return $"Bearer {response.Result.AccessToken}";
         }
