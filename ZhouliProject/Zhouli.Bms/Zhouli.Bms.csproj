@@ -71,6 +71,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Areas\BlogManager\Views\BlogArticle\BlogArticleAdd.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="wwwroot\js\Areas\SystemManager\Role\RoleAdd.js">
       <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>

@@ -21,5 +21,6 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         {
             return View();
         }
+        public IActionResult BlogArticleAdd() => View();
     }
 }

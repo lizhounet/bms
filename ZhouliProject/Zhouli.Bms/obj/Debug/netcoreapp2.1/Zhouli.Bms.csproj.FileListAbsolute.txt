@@ -238,3 +238,4 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.c
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Razor\Areas\BlogManager\Views\BlogArticle\Index.g.cshtml.cs
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Razor\Areas\BlogManager\Views\BlogArticle\BlogArticleAdd.g.cshtml.cs

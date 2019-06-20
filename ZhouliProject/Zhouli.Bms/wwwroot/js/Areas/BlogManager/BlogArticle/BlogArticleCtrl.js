@@ -9,7 +9,7 @@ require(["jquery", 'layui'], function ($) {
             $ = layui.jquery,
             laytpl = layui.laytpl,
             table = layui.table;
-        //用户组列表
+        //文章列表
         var tableIns = table.render({
             elem: '#blogArticleList',
             url: '/blog/blogarticle/getblogarticlelist',
@@ -26,13 +26,22 @@ require(["jquery", 'layui'], function ($) {
             },
             cols: [[
                 { type: "checkbox", fixed: "left", width: 50 },
-                { field: 'LableId', hide: true },
-                { field: 'LableName', title: '博客标签名称', minWidth: 100, align: "center" },
+                { field: 'newsId', title: 'ID', width: 60, align: "center" },
+                { field: 'newsName', title: '文章标题', width: 350 },
+                { field: 'newsAuthor', title: '发布者', align: 'center' },
+                { field: 'newsStatus', title: '发布状态', align: 'center', templet: "#newsStatus" },
+                { field: 'newsLook', title: '浏览权限', align: 'center' },
                 {
-                    field: 'CreateTime', title: '创建时间', align: 'center'
+                    field: 'newsTop', title: '是否置顶', align: 'center', templet: function (d) {
+                        return '<input type="checkbox" name="newsTop" lay-filter="newsTop" lay-skin="switch" lay-text="是|否" ' + d.newsTop + '>'
+                    }
                 },
-                { field: 'Note', title: '备注', align: 'center', minWidth: 150 },
-                { title: '操作', minWidth: 175, templet: '#blogLableListBar', fixed: "right", align: "center" }
+                {
+                    field: 'newsTime', title: '发布时间', align: 'center', minWidth: 110, templet: function (d) {
+                        return d.newsTime.substring(0, 10);
+                    }
+                },
+                { title: '操作', width: 170, templet: '#newsListBar', fixed: "right", align: "center" }
             ]]
         });
         //搜索【此功能需要后台配合，所以暂时没有动态效果演示】
@@ -46,8 +55,8 @@ require(["jquery", 'layui'], function ($) {
                 }
             });
         });
-        //添加用户
-        function BlogLableAdd(edit) {
+        //添加文章
+        function BlogArticleAdd(edit) {
             var index = layui.layer.open({
                 title: "添加/编辑文章",
                 type: 2,
@@ -70,7 +79,7 @@ require(["jquery", 'layui'], function ($) {
             layui.layer.full(index);
         }
         $(".addNews_btn").click(function () {
-            BlogLableAdd();
+            BlogArticleAdd();
         });
         //批量删除
         $(".delAll_btn").click(function () {

@@ -22,4 +22,3 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.A
 D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.csprojAssemblyReference.cache
