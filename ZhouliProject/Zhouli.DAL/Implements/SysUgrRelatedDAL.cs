@@ -3,11 +3,12 @@ using Zhouli.DbEntity.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace Zhouli.DAL.Implements
 {
     public class SysUgrRelatedDAL : BaseDAL<SysUgrRelated>, ISysUgrRelatedDAL
     {
-        public SysUgrRelatedDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db) { }
+        public SysUgrRelatedDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration) { }
     }
 }

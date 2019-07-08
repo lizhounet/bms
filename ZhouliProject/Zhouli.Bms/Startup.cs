@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using MySql.Data.MySqlClient;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using Zhouli.DbEntity.ModelDto;
 using Zhouli.DI;
@@ -24,7 +27,7 @@ namespace ZhouliSystem
         {
             Configuration = configuration;
         }
-        
+
         public IConfiguration Configuration { get; }
         public static ILoggerRepository repository { get; set; }
 
@@ -91,7 +94,6 @@ namespace ZhouliSystem
             //注入全局依赖注入提供者类
             services.AddScoped(typeof(WholeInjection));
             services.AddScoped(typeof(UserAccount));
-            services.AddSingleton(new Zhouli.DAL.DapperContext(strConnection, srtdataBaseType));
             services.AddResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
             //初始化Dto与实体映射关系
             ZhouliDtoMapper.Initialize();

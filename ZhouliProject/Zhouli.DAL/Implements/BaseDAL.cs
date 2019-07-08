@@ -5,6 +5,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using Dapper;
+using System.Data;
+using Microsoft.Extensions.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace Zhouli.DAL.Implements
 {
@@ -14,40 +17,53 @@ namespace Zhouli.DAL.Implements
         /// <summary>
         /// 数据库上下文
         /// </summary>
-        protected readonly DapperContext dapper;
-        protected readonly DbEntity.Models.ZhouLiContext db;
+        protected readonly IConfiguration _configuration;
+        protected readonly DbEntity.Models.ZhouLiContext _db;
         /// <summary>
         /// 构造函数依赖注入
         /// </summary>
-        /// <param name="db"></param>
-        public BaseDAL(DapperContext dapper, DbEntity.Models.ZhouLiContext db)
+        /// <param name="_db"></param>
+        public BaseDAL(DbEntity.Models.ZhouLiContext db, IConfiguration configuration)
         {
-            this.dapper = dapper;
-            this.db = db;
+            _db = db;
+            _configuration = configuration;
+        }
+        private IDbConnection conn;
+        protected IDbConnection Connection
+        {
+            get
+            {
+                if (_configuration.GetConnectionString("dataBaseType") == "1")
+                    conn = new SqlConnection(_configuration.GetConnectionString("MssqlConnection"));
+                else if (_configuration.GetConnectionString("dataBaseType") == "2")
+                    conn = new MySqlConnection(_configuration.GetConnectionString("MysqlConnection"));
+                conn.Open();
+                return conn;
+            }
         }
         public void Add(T t)
         {
-            db.Set<T>().Add(t);
+            _db.Set<T>().Add(t);
         }
         public void AddRange(IEnumerable<T> t)
         {
-            db.AddRange(t);
+            _db.AddRange(t);
         }
         public void Delete(T t)
         {
-            db.Set<T>().Remove(t);
+            _db.Set<T>().Remove(t);
         }
         public void Delete(IEnumerable<T> t)
         {
-            db.Set<T>().RemoveRange(t);
+            _db.Set<T>().RemoveRange(t);
         }
         public int GetCount(Expression<Func<T, bool>> WhereLambda)
         {
-            return db.Set<T>().Count(WhereLambda);
+            return _db.Set<T>().Count(WhereLambda);
         }
         public void Update(T t)
         {
-            //var newt = db.Set<T>().First();
+            //var newt = _db.Set<T>().First();
             //foreach (var item in newt.GetType().GetProperties())
             //{
             //    //传进来的属性值
@@ -57,12 +73,12 @@ namespace Zhouli.DAL.Implements
             //    if (pvalue != obj)
             //        item.SetValue(newt, pvalue);
             //}
-            db.Set<T>().Update(t);
+            _db.Set<T>().Update(t);
         }
 
         public IQueryable<T> GetModels(Expression<Func<T, bool>> whereLambda)
         {
-            return db.Set<T>().Where(whereLambda);
+            return _db.Set<T>().Where(whereLambda);
         }
         public IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc,
             Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda)
@@ -70,23 +86,23 @@ namespace Zhouli.DAL.Implements
             //是否升序
             if (isAsc)
             {
-                return db.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return _db.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
             else
             {
-                return db.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return _db.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
         }
         public int ExecuteSql(string sql, SqlParameter parameter = null)
         {
             if (parameter == null)
-                return db.Database.ExecuteSqlCommand(sql);
+                return _db.Database.ExecuteSqlCommand(sql);
             else
-                return db.Database.ExecuteSqlCommand(sql, parameter);
+                return _db.Database.ExecuteSqlCommand(sql, parameter);
         }
         public IEnumerable<TR> SqlQuery<TR>(string sql)
         {
-            using (var conn = dapper.GetConnection)
+            using (var conn = Connection)
             {
                 return conn.Query<TR>(sql);
             }
@@ -94,7 +110,7 @@ namespace Zhouli.DAL.Implements
         }
         public bool SaveChanges()
         {
-            return db.SaveChanges() > 0;
+            return _db.SaveChanges() > 0;
         }
     }
 }

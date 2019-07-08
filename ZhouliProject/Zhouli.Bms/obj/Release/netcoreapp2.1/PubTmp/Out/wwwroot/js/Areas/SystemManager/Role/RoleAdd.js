@@ -36,7 +36,7 @@
             zhouliMenu.loadMenu($(".roleId").val());
         }, 200);
 
-    })
+    });
 });
 //ztree配置
 var setting = {

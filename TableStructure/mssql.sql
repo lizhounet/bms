@@ -2,6 +2,7 @@
 CREATE DATABASE  ZhouLi; -- --个人网站
 GO 
 USE ZhouLi;
+go
 -- ------------------------------------------------------------创建系统需要的表
  -- --用户表 
  CREATE TABLE Sys_User(

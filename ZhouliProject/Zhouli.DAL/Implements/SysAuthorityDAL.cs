@@ -5,13 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Dapper;
+using System.Data;
+using Microsoft.Extensions.Configuration;
 
 namespace Zhouli.DAL.Implements
 {
     public class SysAuthorityDAL : BaseDAL<SysAuthority>, ISysAuthorityDAL
     {
 
-        public SysAuthorityDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db)
+        public SysAuthorityDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration)
         {
         }
         /// <summary>
@@ -50,7 +52,7 @@ namespace Zhouli.DAL.Implements
                             WHERE AuthorityType = {(int)authorityType}");
                     break;
             }
-            using (var conn = dapper.GetConnection)
+            using (var conn = Connection)
             {
                 var list = conn.Query<SysAuthority, SysMenu, SysAuthority>(builder.ToString(), (a, b) =>
                {

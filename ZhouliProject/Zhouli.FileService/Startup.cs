@@ -44,7 +44,6 @@ namespace Zhouli.FileService
                o =>
                {
                    o.Filters.Add<HttpGlobalExceptionFilter>();
-
                }
                ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddOptions().Configure<CustomConfiguration>(Configuration.GetSection("CustomConfiguration"));
@@ -118,6 +117,7 @@ namespace Zhouli.FileService
             XmlConfigurator.Configure(Repository, new FileInfo("log4net.config"));
             #region 配置文件访问中间件
             string path = $@"{env.ContentRootPath}\Upload\";
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
             app.UseDirectoryBrowser(new DirectoryBrowserOptions
             {
                 FileProvider = new PhysicalFileProvider(path)

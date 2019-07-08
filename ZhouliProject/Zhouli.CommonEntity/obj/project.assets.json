@@ -30,7 +30,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "bLpT1f/SFlO1CzqXG12KnJzpZs6lv24uX2Rzi4Fmm0noJpNlnWRVryuO3yK18Ca04t/YHcO1e1Z0WDfjseqNzw==",
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -179,23 +179,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\a\\.nuget\\packages\\": {},
+    "C:\\Users\\zhouli\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.CommonEntity\\Zhouli.CommonEntity.csproj",
+      "projectUniqueName": "F:\\zhouli\\code\\project\\bms\\ZhouliProject\\Zhouli.CommonEntity\\Zhouli.CommonEntity.csproj",
       "projectName": "Zhouli.CommonEntity",
-      "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.CommonEntity\\Zhouli.CommonEntity.csproj",
-      "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
-      "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.CommonEntity\\obj\\",
+      "projectPath": "F:\\zhouli\\code\\project\\bms\\ZhouliProject\\Zhouli.CommonEntity\\Zhouli.CommonEntity.csproj",
+      "packagesPath": "C:\\Users\\zhouli\\.nuget\\packages\\",
+      "outputPath": "F:\\zhouli\\code\\project\\bms\\ZhouliProject\\Zhouli.CommonEntity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\zhouli\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

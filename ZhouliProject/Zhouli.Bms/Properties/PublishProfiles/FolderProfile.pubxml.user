@@ -6,6 +6,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\publish\</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\IIS站点\Zhouli.Bms</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

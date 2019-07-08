@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Dapper;
+using Microsoft.Extensions.Configuration;
 
 namespace Zhouli.DAL.Implements
 {
     public class SysRoleDAL : BaseDAL<SysRole>, ISysRoleDAL
     {
-        public SysRoleDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db)
+        public SysRoleDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration)
         {
         }
         /// <summary>
@@ -22,7 +23,7 @@ namespace Zhouli.DAL.Implements
         public bool AddRoleMenu(string RoleId, List<SysMenu> menus)
         {
             StringBuilder builderSql = new StringBuilder(20);
-            using (var conn = dapper.GetConnection)
+            using (var conn = Connection)
             {
                 //var list = conn.Query<string>($@"SELECT AuthorityId
                 //                      FROM Sys_RaRelated

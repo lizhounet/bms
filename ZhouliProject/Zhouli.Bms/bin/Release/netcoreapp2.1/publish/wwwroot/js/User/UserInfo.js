@@ -5,6 +5,18 @@
         var layer = parent.layer === undefined ? layui.layer : top.layer,
             upload = layui.upload,
             laydate = layui.laydate;
+        var fileAccessToken = "";
+        $.ajaxSettings.async = false;
+        $.post("/User/GetToken", function (res) {
+            if (res.stateCode != 200) {
+                layer.msg(res.messages);
+            }
+            else {
+                fileAccessToken = res.jsonData;
+
+            }
+        });
+        $.ajaxSettings.async = true;
         //上传头像
         upload.render({
             elem: '.userFaceBtn',
@@ -17,24 +29,15 @@
             choose: function (obj) {
                 obj.preview(function (index, file, result) {
                     $('#userFace').attr('src', result); //图片链接（base64）
-                });
-                $.post("/User/GetToken", function (res) {
-                    if (res.stateCode != 200) {
-                        layer.msg(res.messages);
-                    }
-                    else {
-                        $("#userFaceBtn").hide();
-                        $("#userFaceUpload").show();
-                        sessionStorage.accessToken = res.jsonData;
-
-                    }
+                    $("#userFaceBtn").hide();
+                    $("#userFaceUpload").show();
                 });
             },
             before: function (obj) { //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
-                layer.msg("头像上传中,请稍等....", { icon: 16, time: 20000 })
+                layer.msg("头像上传中,请稍等....", { icon: 16, time: 20000 });
             },
             headers: {
-                "Authorization": sessionStorage.accessToken
+                "Authorization": fileAccessToken
             },
             data: {
                 StorageMethod: "qiniuyun",
@@ -48,6 +51,9 @@
                     $('#userFace').attr('src', res.JsonData.FileAddress);
                 }
 
+            },
+            error: function (index, upload) {
+                layer.close();
             }
         });
 

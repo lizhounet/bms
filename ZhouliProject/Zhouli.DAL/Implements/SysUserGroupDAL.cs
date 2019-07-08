@@ -6,12 +6,13 @@ using System.Text;
 using Zhouli.DbEntity.Views;
 using System.Linq.Expressions;
 using Zhouli.Dto.ModelDto;
+using Microsoft.Extensions.Configuration;
 
 namespace Zhouli.DAL.Implements
 {
     public class SysUserGroupDAL : BaseDAL<SysUserGroup>, ISysUserGroupDAL
     {
-        public SysUserGroupDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db) { }
+        public SysUserGroupDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration) { }
         #region 获取用户组列表
         /// <summary>
         /// 获取用户组列表
