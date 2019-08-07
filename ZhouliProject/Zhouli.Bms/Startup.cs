@@ -9,6 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using MySql.Data.MySqlClient;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using Zhouli.DbEntity.ModelDto;
 using Zhouli.DI;
@@ -24,7 +27,7 @@ namespace ZhouliSystem
         {
             Configuration = configuration;
         }
-        
+
         public IConfiguration Configuration { get; }
         public static ILoggerRepository repository { get; set; }
 
@@ -49,13 +52,13 @@ namespace ZhouliSystem
               ServiceLifetime.Scoped);
                     break;
             }
-            //添加session中间件
+            //添加session依赖
             services.AddSession();
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //注入gzip压缩中间件
+            //注入gzip压缩依赖
             services.AddResponseCompression();
-            //注入Response 缓存中间件
+            //注入Response 缓存依赖
             services.AddResponseCaching();
             //重置区域匹配路径规则
             services.Configure<RazorViewEngineOptions>(options =>
@@ -75,7 +78,7 @@ namespace ZhouliSystem
                 //配置缓存信息
                 o.CacheProfiles.Add("default", new Microsoft.AspNetCore.Mvc.CacheProfile
                 {
-                    Duration = 60 * 10,  // 10 秒
+                    Duration = 60 * 10,  // 10 分钟
                 });
                 o.CacheProfiles.Add("Hourly", new Microsoft.AspNetCore.Mvc.CacheProfile
                 {
@@ -91,8 +94,7 @@ namespace ZhouliSystem
             //注入全局依赖注入提供者类
             services.AddScoped(typeof(WholeInjection));
             services.AddScoped(typeof(UserAccount));
-            services.AddSingleton(new Zhouli.DAL.DapperContext(strConnection, srtdataBaseType));
-            services.ResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
+            services.AddResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
             //初始化Dto与实体映射关系
             ZhouliDtoMapper.Initialize();
             //注入配置文件类
@@ -108,7 +110,6 @@ namespace ZhouliSystem
 
             if (env.IsDevelopment())//开发环境
             {
-                app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
             }
             else

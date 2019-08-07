@@ -56,7 +56,7 @@ namespace ZhouliSystem.Filters
             SysUser sysUsersLogin = context.HttpContext.Session.GetSession<SysUser>("UserLogin");
             if (sysUsersLogin == null)
             {
-                context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "User", action = "Login" }));
+                context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { area = "", controller = "User", action = "Login" }));
             }
         }
     }

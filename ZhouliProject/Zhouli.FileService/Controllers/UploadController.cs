@@ -17,6 +17,7 @@ using Qiniu.IO;
 using Qiniu.IO.Model;
 using Qiniu.Util;
 using Zhouli.Common;
+using Zhouli.CommonEntity;
 using Zhouli.FileService.Filters;
 using Zhouli.FileService.Models;
 
@@ -30,14 +31,14 @@ namespace Zhouli.FileService.Controllers
     [Authorize()]
     public class UploadController : ControllerBase
     {
-        private IOptionsSnapshot<CustomConfiguration> configuration;
+        private IOptionsSnapshot<CustomConfiguration> _configuration;
         /// <summary>
         /// UploadController
         /// </summary>
         /// <param name="configuration"></param>
         public UploadController(IOptionsSnapshot<CustomConfiguration> configuration)
         {
-            this.configuration = configuration;
+            this._configuration = configuration;
 
         }
         /// <summary>
@@ -85,9 +86,9 @@ namespace Zhouli.FileService.Controllers
                     var stream = formFile.OpenReadStream();
                     byte[] data = new byte[stream.Length];
                     await stream.ReadAsync(data, 0, data.Length);
-                    Mac mac = new Mac(configuration.Value.AccessKey, configuration.Value.SecretKey);
+                    Mac mac = new Mac(_configuration.Value.AccessKey, _configuration.Value.SecretKey);
                     //设置使用七牛云空间
-                    string bucket = uploadModel.FileSpaceType.Equals("public") ? configuration.Value.Bucket.@public.Split(',')[0] : configuration.Value.Bucket.@private.Split(',')[0];
+                    string bucket = uploadModel.FileSpaceType.Equals("public") ? _configuration.Value.Bucket.@public.Split(',')[0] : _configuration.Value.Bucket.@private.Split(',')[0];
                     // 上传策略，参见 
                     // https://developer.qiniu.com/kodo/manual/put-policy
                     PutPolicy putPolicy = new PutPolicy();
@@ -111,7 +112,7 @@ namespace Zhouli.FileService.Controllers
                         response.StateCode = StatesCode.success;
                         response.JsonData = new
                         {
-                            FileAddress = $"{configuration.Value.Bucket.@public.Split(',')[1]}/{result.Text.Replace("\"", "")}"
+                            FileAddress = $"{_configuration.Value.Bucket.@public.Split(',')[1]}/{result.Text.Replace("\"", "")}"
                         };//文件地址
                     }
                 }
@@ -120,7 +121,6 @@ namespace Zhouli.FileService.Controllers
                 {
                     var filePath = $@"{environment.ContentRootPath}\Upload\{uploadModel.ContentType}";
                     if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
-                    string sss = Path.Combine(filePath, fileName);
                     using (var stream = new FileStream(Path.Combine(filePath, fileName), FileMode.CreateNew))
                     {
                         await formFile.CopyToAsync(stream);

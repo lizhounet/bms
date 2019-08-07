@@ -141,10 +141,10 @@ function x_admin_show(title, url, w, h) {
         url = "404.html";
     }
     if (w == null || w == '') {
-        w = ($(window).width() * 0.9);
+        w = $(window).width() * 0.9;
     }
     if (h == null || h == '') {
-        h = ($(window).height() - 50);
+        h = $(window).height() - 50;
     }
     layer.open({
         type: 2,

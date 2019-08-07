@@ -35,14 +35,14 @@ namespace ZhouliSystem.Controllers
     [VerificationLogin]
     public class HomeController : Controller
     {
-        private readonly WholeInjection injection;
+        private readonly WholeInjection _injection;
         public HomeController(WholeInjection injection)
         {
-            this.injection = injection;
+            this._injection = injection;
         }
         public IActionResult Index()
         {
-            var User = injection.GetT<UserAccount>().GetUserInfo();
+            var User = _injection.GetT<UserAccount>().GetUserInfo();
             return View(User);
         }
         public IActionResult Welcome()

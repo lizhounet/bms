@@ -1,0 +1,7 @@
+﻿@using Blog.Models;
+@model MryjModel
+<strong>每日一句</strong>
+<h2>@DateTime.Now.ToString("D") </h2>
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp; @Model.Body.word
+</p>

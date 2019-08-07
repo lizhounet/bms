@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq.Expressions;
 using System.Linq;
+using System.Data;
+using Microsoft.Extensions.Configuration;
 
 namespace Zhouli.DAL.Implements
 {
     public class SysUserDAL : BaseDAL<SysUser>, ISysUserDAL
     {
-        public SysUserDAL(DapperContext dapper, ZhouLiContext db) : base(dapper, db) { }
+        public SysUserDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration) { }
 
         #region 设置登录用户的用户组,角色信息
         /// <summary>
@@ -19,11 +21,11 @@ namespace Zhouli.DAL.Implements
         /// <returns></returns>
         public SysUser SetLoginSysUser(SysUser user)
         {
-            user.sysUserGroup = (from t1 in db.Set<SysUserGroup>() where t1.UserGroupId.Equals(user.UserGroupId) select t1).FirstOrDefault();
+            user.sysUserGroup = (from t1 in _db.Set<SysUserGroup>() where t1.UserGroupId.Equals(user.UserGroupId) select t1).FirstOrDefault();
             if (user.sysUserGroup != null)
             {
-                user.sysUserGroup.sysRoles = (from sur in db.SysUgrRelated
-                                 join sr in db.SysRole
+                user.sysUserGroup.sysRoles = (from sur in _db.SysUgrRelated
+                                 join sr in _db.SysRole
                                  on sur.RoleId equals sr.RoleId
                                  where sur.UserGroupId.Equals(user.sysUserGroup.UserGroupId)
                                  select new SysRole
@@ -39,8 +41,8 @@ namespace Zhouli.DAL.Implements
                                  }
                              ).ToList();
             }
-            user.sysRoles = (from sur in db.SysUrRelated
-                             join sr in db.SysRole
+            user.sysRoles = (from sur in _db.SysUrRelated
+                             join sr in _db.SysRole
                              on sur.RoleId equals sr.RoleId
                              where sur.UserId.Equals(user.UserId)
                              select new SysRole

@@ -12,10 +12,10 @@ namespace ZhouliSystem.Data
     /// </summary>
     public  class UserAccount
     {
-        private WholeInjection injection;
+        private WholeInjection _injection;
         public UserAccount(WholeInjection injection)
         {
-            this.injection = injection;
+            _injection = injection;
         }
         /// <summary>
         /// COOKIE名常量
@@ -27,7 +27,7 @@ namespace ZhouliSystem.Data
         /// <returns></returns>
         public SysUser GetUserInfo()
         {
-            var user = injection.GetHttpContext.HttpContext.Session.GetSession<SysUser>(USER_COOKIE_NAME);
+            var user = _injection.HttpContext.Session.GetSession<SysUser>(USER_COOKIE_NAME);
             return user == null ? null : user;
         }
         /// <summary>
@@ -37,7 +37,7 @@ namespace ZhouliSystem.Data
         public bool Login(SysUser user)
         {
             user.isAdministrctor = JudgeUserAdmin(user);
-            injection.GetHttpContext.HttpContext.Session.SetSession(USER_COOKIE_NAME, user);
+            _injection.HttpContext.Session.SetSession(USER_COOKIE_NAME, user);
             return true;
         }
         /// <summary>
@@ -47,7 +47,7 @@ namespace ZhouliSystem.Data
         /// <returns></returns>
         public bool JudgeUserAdmin(SysUser user)
         {
-            var adminAccount = injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value.adminAccount;
+            var adminAccount = _injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value.adminAccount;
             return user.UserName.Equals(adminAccount) ? true : false;
         }
     }

@@ -115,8 +115,10 @@ USE ZhouLi;
 CREATE TABLE Blog_Article(
 Article_Id INT auto_increment PRIMARY KEY NOT NULL,-- 主键
 Article_Title NVARCHAR(50) NOT NULL,-- 博客文章标题
+Article_Thrink VARCHAR(100) NOT NULL,--博客文章缩略图
 Article_Body TEXT NOT NULL,-- 博客文章内容
 Article_Body_Markdown TEXT  NULL,-- 博客文章内容,
+Article_Body_Summary NVARCHAR(100)  NULL,-- 博客文章摘要,
 Article_SortValue INT DEFAULT 0 NOT NULL,-- 排序值,
 CreateUserId  VARCHAR(36) NULL,-- 创建者ID(对应Sys_Users表UserId字段)
 CreateTime DATETIME  NOT NULL,-- 创建时间
@@ -157,8 +159,8 @@ CREATE TABLE Blog_FriendshipLink
 (
 FriendshipLink_Id INT auto_increment PRIMARY KEY NOT NULL ,-- 自增id
 FriendshipLink_Name NVARCHAR(40) NOT NULL,-- 站点名称
-FriendshipLink_Url INT DEFAULT 0 NOT NULL,-- 站点Url
-FriendshipLink_Email INT DEFAULT 0 NOT NULL,-- 站长邮箱
+FriendshipLink_Url VARCHAR(40)  NOT NULL,-- 站点Url
+FriendshipLink_Email VARCHAR(40) NOT NULL,-- 站长邮箱
 FriendshipLink_SortValue INT DEFAULT 0 NOT NULL,-- 排序值,
 FriendshipLink_Sfsh INT DEFAULT 0 NOT NULL,-- 是否审核(1-已审核 0-未审核)
 CreateUserId  VARCHAR(36) NULL,-- 创建者ID(对应Sys_Users表UserId字段)

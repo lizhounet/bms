@@ -32,6 +32,7 @@
           "Qiniu.Shared": "7.2.15",
           "Swashbuckle.AspNetCore": "4.0.1",
           "Zhouli.Common": "1.0.0",
+          "Zhouli.CommonEntity": "1.0.0",
           "log4net": "2.0.8",
           "Microsoft.Extensions.PlatformAbstractions": "1.1.0.0"
         },
@@ -919,6 +920,14 @@
         },
         "compile": {
           "Zhouli.Common.dll": {}
+        }
+      },
+      "Zhouli.CommonEntity/1.0.0": {
+        "runtime": {
+          "Zhouli.CommonEntity.dll": {}
+        },
+        "compile": {
+          "Zhouli.CommonEntity.dll": {}
         }
       },
       "Microsoft.Extensions.PlatformAbstractions/1.1.0.0": {
@@ -4211,6 +4220,11 @@
       "hashPath": "system.threading.timer.4.0.1.nupkg.sha512"
     },
     "Zhouli.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Zhouli.CommonEntity/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

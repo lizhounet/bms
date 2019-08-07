@@ -1,0 +1,9 @@
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.CommonEntity\bin\Release\netstandard2.0\Zhouli.CommonEntity.deps.json
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.CommonEntity\bin\Release\netstandard2.0\Zhouli.CommonEntity.dll
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.CommonEntity\bin\Release\netstandard2.0\Zhouli.CommonEntity.pdb
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.CommonEntity\obj\Release\netstandard2.0\Zhouli.CommonEntity.csprojAssemblyReference.cache
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.CommonEntity\obj\Release\netstandard2.0\Zhouli.CommonEntity.csproj.CoreCompileInputs.cache
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.CommonEntity\obj\Release\netstandard2.0\Zhouli.CommonEntity.AssemblyInfoInputs.cache
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.CommonEntity\obj\Release\netstandard2.0\Zhouli.CommonEntity.AssemblyInfo.cs
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.CommonEntity\obj\Release\netstandard2.0\Zhouli.CommonEntity.dll
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.CommonEntity\obj\Release\netstandard2.0\Zhouli.CommonEntity.pdb

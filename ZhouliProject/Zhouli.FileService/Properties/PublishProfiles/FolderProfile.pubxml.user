@@ -6,6 +6,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\FileServiceTest</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\IIS站点\Zhouli.FileService</_PublishTargetUrl>
   </PropertyGroup>
 </Project>

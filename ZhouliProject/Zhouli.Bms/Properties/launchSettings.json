@@ -2,8 +2,12 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Zhouli.Bms",
+      "sslPort": 0
+    },
     "iisExpress": {
-      "applicationUrl": "http://localhost:52695/",
+      "applicationUrl": "http://localhost:8000/",
       "sslPort": 0
     }
   },

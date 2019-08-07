@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Zhouli.Common.Expansion;
+using Zhouli.CommonEntity;
 using Zhouli.FileService.Models;
 
 namespace Zhouli.FileService.Filters
@@ -59,7 +60,7 @@ namespace Zhouli.FileService.Filters
                 context.Result = new JsonResult(new ResponseModel
                 {
                     StateCode = StatesCode.failure,
-                    Messages = "没有此类型的StorageMethod"
+                    Messages = "StorageMethod错误"
                 });
                 return;
             }
@@ -72,12 +73,12 @@ namespace Zhouli.FileService.Filters
                 });
                 return;
             }
-            if (!new List<string> { "public", "private" }.Contains(formCollection["FileSpaceType"]))
+            if (!string.IsNullOrEmpty(formCollection["FileSpaceType"]) && !new List<string> { "public", "private" }.Contains(formCollection["FileSpaceType"]))
             {
                 context.Result = new JsonResult(new ResponseModel
                 {
                     StateCode = StatesCode.failure,
-                    Messages = "没有此类型的FileSpaceType"
+                    Messages = "FileSpaceType错误"
                 });
                 return;
             }
@@ -88,7 +89,7 @@ namespace Zhouli.FileService.Filters
                 context.Result = new JsonResult(new ResponseModel
                 {
                     StateCode = StatesCode.failure,
-                    Messages = "您的文件超过20M,不允许上传!"
+                    Messages = $"您的文件超过{UploadFileSize}M,不允许上传!"
                 });
                 return;
             }

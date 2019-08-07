@@ -48,8 +48,7 @@ namespace Microsoft.AspNetCore.Http//(跟.net core session 命名空间一样,�
         /// <returns></returns>
         public static T GetSession<T>(this ISession session, string key)
         {
-            byte[] b = null;
-            session.TryGetValue(key, out b);
+            session.TryGetValue(key, out byte[] b);
             var value = b == null ? null : Encoding.UTF8.GetString(b);
             return value == null ? default(T) :
                                   JsonConvert.DeserializeObject<T>(value);

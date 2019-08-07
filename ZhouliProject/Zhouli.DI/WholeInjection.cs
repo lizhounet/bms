@@ -27,9 +27,9 @@ namespace Zhouli.DI
     /// </summary>
     public class WholeInjection
     {
-        public WholeInjection(IHttpContextAccessor _httpContextAccessor)
+        public WholeInjection(IHttpContextAccessor httpContextAccessor)
         {
-            GetHttpContext = _httpContextAccessor;
+            _httpContextAccessor = httpContextAccessor;
         }
         /// <summary>
         /// 可以获取.net core 配置了依赖注入关系的所有实例
@@ -38,9 +38,9 @@ namespace Zhouli.DI
         /// <returns></returns>
         public T GetT<T>()
         {
-            return (T)GetHttpContext.HttpContext.RequestServices.GetService(typeof(T));
+            return (T)_httpContextAccessor.HttpContext.RequestServices.GetService(typeof(T));
         }
-        public IHttpContextAccessor GetHttpContext { get; }
-
+        private IHttpContextAccessor _httpContextAccessor;
+        public HttpContext HttpContext => _httpContextAccessor.HttpContext;
     }
 }

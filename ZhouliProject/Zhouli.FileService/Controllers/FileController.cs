@@ -24,14 +24,14 @@ namespace Zhouli.FileService.Controllers
     [ApiController]
     public class FileController : ControllerBase
     {
-        private IOptionsSnapshot<CustomConfiguration> configuration;
+        private IOptionsSnapshot<CustomConfiguration> _configuration;
         /// <summary>
         /// FileController
         /// </summary>
         /// <param name="configuration"></param>
         public FileController(IOptionsSnapshot<CustomConfiguration> configuration)
         {
-            this.configuration = configuration;
+            _configuration = configuration;
         }
         /// <summary>
         /// 测试
@@ -53,8 +53,8 @@ namespace Zhouli.FileService.Controllers
         {
             byte[] byteData = null;
             //解析fileKey
-            Mac mac = new Mac(configuration.Value.AccessKey, configuration.Value.SecretKey);
-            string rawUrl = $"{configuration.Value.Bucket.@private.Split(',')[0]}";
+            Mac mac = new Mac(_configuration.Value.AccessKey, _configuration.Value.SecretKey);
+            string rawUrl = $"{_configuration.Value.Bucket.@private.Split(',')[0]}";
             // 设置下载链接有效期3600秒
             int expireInSeconds = 3600;
             string accUrl = DownloadManager.CreateSignedUrl(mac, rawUrl, expireInSeconds);

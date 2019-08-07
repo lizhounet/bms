@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Zhouli.CommonEntity;
 using Zhouli.FileService.Data;
 using Zhouli.FileService.Models;
 

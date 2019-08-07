@@ -77,7 +77,7 @@ namespace Zhouli.DbEntity.Models
             Sign_Undeleted = 2
         }
         #endregion
-        #region 删除标识
+        #region 性别标识
         /// <summary>
         /// 性别
         /// </summary>
@@ -93,6 +93,24 @@ namespace Zhouli.DbEntity.Models
             /// </summary>
             [Description("女孩")]
             Girl = 2
+        }
+        #endregion
+        #region 
+        /// <summary>
+        /// 是否审核
+        /// </summary>
+        public enum Enum_Sfsh
+        {
+            /// <summary>
+            /// 已审核
+            /// </summary>
+            [Description("已审核")]
+            Audited = 1,
+            /// <summary>
+            /// 未审核
+            /// </summary>
+            [Description("未审核")]
+            Unreviewed = 0
         }
         #endregion
 

@@ -23,12 +23,12 @@ layui.use(['form', 'jquery', "layer"], function () {
             shade: 0.9,
             success: function () {
             }
-        })
+        });
         $(".admin-header-lock-input").focus();
     }
     $(".lockcms").on("click", function () {
         lockPage();
-    })
+    });
     // 解锁
     $("body").on("click", "#unlock", function () {
         if ($(this).siblings(".admin-header-lock-input").val() == '') {
@@ -93,13 +93,13 @@ layui.use(['form', 'jquery', "layer"], function () {
                 var skin = window.sessionStorage.getItem("skin");
                 if (window.sessionStorage.getItem("skinValue")) {
                     $(".skins_box input[value=" + window.sessionStorage.getItem("skinValue") + "]").attr("checked", "checked");
-                };
+                }
                 if ($(".skins_box input[value=自定义]").attr("checked")) {
                     $(".skinCustom").css("visibility", "inherit");
                     $(".topColor").val(skin.split(',')[0]);
                     $(".leftColor").val(skin.split(',')[1]);
                     $(".menuColor").val(skin.split(',')[2]);
-                };
+                }
                 form.render();
                 $(".skins_box").removeClass("layui-hide");
                 $(".skins_box .layui-form-radio").on("click", function () {
@@ -119,17 +119,17 @@ layui.use(['form', 'jquery', "layer"], function () {
                     } else {
                         $(".skinCustom").css("visibility", "inherit");
                     }
-                })
+                });
                 var skinStr, skinColor;
                 $(".topColor").blur(function () {
                     $(".layui-layout-admin .layui-header").css("background-color", $(this).val() + " !important");
-                })
+                });
                 $(".leftColor").blur(function () {
                     $(".layui-bg-black").css("background-color", $(this).val() + " !important");
-                })
+                });
                 $(".menuColor").blur(function () {
                     $(".hideMenu").css("background-color", $(this).val() + " !important");
-                })
+                });
 
                 form.on("submit(changeSkin)", function (data) {
                     if (data.field.skin != "自定义") {
@@ -161,7 +161,7 @@ layui.use(['form', 'jquery', "layer"], function () {
                 $(".layui-bg-black,.hideMenu,.layui-layout-admin .layui-header").removeAttr("style");
                 skins();
             }
-        })
-    })
+        });
+    });
 
-})
+});

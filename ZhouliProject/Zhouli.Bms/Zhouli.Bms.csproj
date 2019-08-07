@@ -18,10 +18,8 @@
     <PackageReference Include="CSRedisCore" Version="3.0.31" />
     <PackageReference Include="IdentityModel" Version="3.10.5" />
     <PackageReference Include="log4net" Version="2.0.8" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.ResponseCaching" Version="2.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.1.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,16 +62,24 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Zhouli.BLL\Zhouli.BLL.csproj" />
+    <ProjectReference Include="..\Zhouli.CommonEntity\Zhouli.CommonEntity.csproj" />
     <ProjectReference Include="..\Zhouli.Common\Zhouli.Common.csproj" />
     <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
     <ProjectReference Include="..\Zhouli.DI\Zhouli.DI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Areas\BlogManager\Views\BlogArticle\BlogArticleAdd.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="wwwroot\js\Areas\SystemManager\Role\RoleAdd.js">
       <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\BlogManager\Views\BlogLable\" />
   </ItemGroup>
 
 </Project>
