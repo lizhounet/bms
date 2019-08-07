@@ -56,11 +56,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zhouli.Redis", "Zhouli.Redi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B2904890-4500-40EB-9374-69CA2622009E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhouli.CommonEntity", "Zhouli.CommonEntity\Zhouli.CommonEntity.csproj", "{BC8A4C9C-0FB5-4B14-8C33-AD95C4DF29AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zhouli.CommonEntity", "Zhouli.CommonEntity\Zhouli.CommonEntity.csproj", "{BC8A4C9C-0FB5-4B14-8C33-AD95C4DF29AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zhouli.XUnitTest", "Zhouli.XUnitTest\Zhouli.XUnitTest.csproj", "{1B7075D5-0FCE-49AE-AE74-78648DC8E643}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zhouli.XUnitTest", "Zhouli.XUnitTest\Zhouli.XUnitTest.csproj", "{1B7075D5-0FCE-49AE-AE74-78648DC8E643}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zhouli.Blog", "Zhouli.Blog\Zhouli.Blog.csproj", "{24906DB9-1484-44C3-A32C-53CE4522821F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{0905D014-C17D-475A-B78D-2F7AD88E4E4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZhouliGenerateCode", "ZhouliGenerateCode\ZhouliGenerateCode.csproj", "{1903CEB0-6392-49AC-8CEB-FC9925D6F8EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -124,6 +128,10 @@ Global
 		{24906DB9-1484-44C3-A32C-53CE4522821F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24906DB9-1484-44C3-A32C-53CE4522821F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24906DB9-1484-44C3-A32C-53CE4522821F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1903CEB0-6392-49AC-8CEB-FC9925D6F8EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1903CEB0-6392-49AC-8CEB-FC9925D6F8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1903CEB0-6392-49AC-8CEB-FC9925D6F8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1903CEB0-6392-49AC-8CEB-FC9925D6F8EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,6 +155,7 @@ Global
 		{BC8A4C9C-0FB5-4B14-8C33-AD95C4DF29AE} = {DB6B1389-FB72-4194-92CC-33176DBA88F2}
 		{1B7075D5-0FCE-49AE-AE74-78648DC8E643} = {B2904890-4500-40EB-9374-69CA2622009E}
 		{24906DB9-1484-44C3-A32C-53CE4522821F} = {5DF44D4F-626E-4C22-845D-6F9C78A7E150}
+		{1903CEB0-6392-49AC-8CEB-FC9925D6F8EC} = {0905D014-C17D-475A-B78D-2F7AD88E4E4F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {09D7755F-1126-4D92-B9BC-6C7617F07E09}

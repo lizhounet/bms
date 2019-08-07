@@ -60,7 +60,7 @@ namespace Zhouli.FileService.Filters
                 context.Result = new JsonResult(new ResponseModel
                 {
                     StateCode = StatesCode.failure,
-                    Messages = "没有此类型的StorageMethod"
+                    Messages = "StorageMethod错误"
                 });
                 return;
             }
@@ -73,12 +73,12 @@ namespace Zhouli.FileService.Filters
                 });
                 return;
             }
-            if (!new List<string> { "public", "private" }.Contains(formCollection["FileSpaceType"]))
+            if (!string.IsNullOrEmpty(formCollection["FileSpaceType"]) && !new List<string> { "public", "private" }.Contains(formCollection["FileSpaceType"]))
             {
                 context.Result = new JsonResult(new ResponseModel
                 {
                     StateCode = StatesCode.failure,
-                    Messages = "没有此类型的FileSpaceType"
+                    Messages = "FileSpaceType错误"
                 });
                 return;
             }

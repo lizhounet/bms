@@ -42,18 +42,10 @@
             <div class="border category">
                 <div class="">
                     <p>
-                        <input type="checkbox" name="news" title="新闻" lay-skin="primary" />
-                        <input type="checkbox" name="images" title="图片" lay-skin="primary" />
-                        <input type="checkbox" name="goods" title="商品" lay-skin="primary" />
-                        <input type="checkbox" name="notice" title="公告" lay-skin="primary" />
-                        <input type="checkbox" name="news" title="新闻" lay-skin="primary" />
-                        <input type="checkbox" name="images" title="图片" lay-skin="primary" />
-                        <input type="checkbox" name="goods" title="商品" lay-skin="primary" />
-                        <input type="checkbox" name="notice" title="公告" lay-skin="primary" />
-                        <input type="checkbox" name="news" title="新闻" lay-skin="primary" />
-                        <input type="checkbox" name="images" title="图片" lay-skin="primary" />
-                        <input type="checkbox" name="goods" title="商品" lay-skin="primary" />
-                        <input type="checkbox" name="notice" title="公告" lay-skin="primary" />
+                        @foreach (var blogLable in ViewBag.ListBlogLable)
+                        {
+                            <input type="checkbox" name="news" title="@blogLable.LableName" lay-skin="primary" />
+                        }
                     </p>
                 </div>
             </div>
@@ -74,5 +66,6 @@
         </div>
     </form>
 </div>
+<input type="hidden" id="FileServiceAdress" value="@ViewBag.FileServiceAdress" />
 <script src="~/lib/main.js"></script>
 <script src="~/lib/require/require.js" data-main="../js/Areas/BlogManager/BlogArticle/BlogArticleAdd"></script>

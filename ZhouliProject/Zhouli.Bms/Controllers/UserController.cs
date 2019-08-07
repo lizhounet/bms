@@ -143,37 +143,6 @@ namespace ZhouliSystem.Controllers
             }
             return Json(message);
         }
-        /// <summary>
-        /// 获取调用文件服务需要的oken
-        /// </summary>
-        /// <returns></returns>
-        [HttpPost]
-        public IActionResult GetToken()
-        {
-            //初始化Redis
-            //RedisHelper.Initialization(new CSRedis.CSRedisClient(configuration.RedisAdress));
-            if (!_cache.TryGetValue($"IdentityFileService_Token", out string token))
-            {
-                token = GetFileServerToken();
-                _cache.Set($"IdentityFileService_Token", token, new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(3600)));
-            }
-            return Ok(new ResponseModel
-            {
-                JsonData = token
-            });
-        }
-        private string GetFileServerToken()
-        {
-            var configuration = _injection.GetT<IConfiguration>();
-            var client = new HttpClient();
-            var response = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-            {
-                Address = configuration["IdentityFileService:Address"] + "/connect/token",
-                ClientId = configuration["IdentityFileService:ClientId"],
-                ClientSecret = configuration["IdentityFileService:ClientSecret"],
-                Scope = configuration["IdentityFileService:Scope"]
-            });
-            return $"Bearer {response.Result.AccessToken}";
-        }
+        
     }
 }

@@ -14,7 +14,7 @@ require(["jquery", 'layui'], function ($) {
         //获取上传文件token
         var fileAccessToken = "";
         $.ajaxSettings.async = false;
-        $.post("/User/GetToken", function (res) {
+        $.post("/Token/GetFileServiceToken", function (res) {
             if (res.stateCode != 200) {
                 layer.msg(res.messages);
             }
@@ -30,18 +30,21 @@ require(["jquery", 'layui'], function ($) {
         //上传缩略图
         upload.render({
             elem: '.thumbBox',
-            url: '/blog/article/uploadAbbreviation',
-            method: "post",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
+            url: $('#FileServiceAdress').val(),
+            method: "post",
             headers: {
                 "Authorization": fileAccessToken
             },
             data: {
-                StorageMethod: "qiniuyun",
-                FileSpaceType: "public"
+                StorageMethod: "bendi",
+                FileSpaceType: ""
             },
             done: function (res, index, upload) {
-                var num = parseInt(4 * Math.random());  //生成0-4的随机数，随机显示一个头像信息
-                $('.thumbImg').attr('src', res.data[num].src);
+                if (res.StateCode == 200) {
+                    $('.thumbImg').attr('src', res.JsonData.FileAddress);
+                }
+                else
+                    layer.msg(res.Messages);
                 $('.thumbBox').css("background", "#fff");
             }
         });

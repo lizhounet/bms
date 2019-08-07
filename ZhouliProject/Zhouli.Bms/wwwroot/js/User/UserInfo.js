@@ -7,7 +7,7 @@
             laydate = layui.laydate;
         var fileAccessToken = "";
         $.ajaxSettings.async = false;
-        $.post("/User/GetToken", function (res) {
+        $.post("/Token/GetFileServiceToken", function (res) {
             if (res.stateCode != 200) {
                 layer.msg(res.messages);
             }
