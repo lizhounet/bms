@@ -22,6 +22,6 @@ namespace Zhouli.BLL.Interface
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        MessageModel AddOrUpdateArticlelist(BlogArticleDto);
+        MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto);
     }
 }

@@ -66,20 +66,20 @@ require(["jquery", 'layui'], function ($) {
             //截取文章内容中的一部分文字放入文章摘要
             var abstract = layedit.getText(editIndex).substring(0, 50);
             var arr = new Array();
-            $("input:checkbox[name='LableId']:checked").each(function (i) {
+            $("input:checkbox[name='lableId']:checked").each(function (i) {
                 arr[i] = $(this).val();
             });
             data.field.lableId = arr;
             console.log(data.field);
             //弹出loading
-            var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: false, shade: 0.8 });
-            $.post("/blog/blogarticle/addorupdateblogaticle", {
+            var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: 5000, shade: 0.8 });
+            $.post("/blog/blogarticle/addorupdateblogarticle", {
                 articleTitle: data.field.articleTitle,  //文章标题
                 articleBodySummary: data.field.articleBodySummary,  //文章摘要
                 articleBody: data.field.content,  //文章内容
-                articleThrink: data.field.articleThrink,  //缩略图
+                articleThrink: $("#articleThrink").attr("src"),  //缩略图
                 LableId: data.field.lableId,//所选标签
-                articleTop: data.field.articleTop == "on" ? "0" : "1",    //是否置顶
+                articleTop: data.field.articleTop == "on" ? "true" : "false"    //是否置顶
             }, function (res) {
                 top.layer.close(index);
                 layer.closeAll("iframe");
@@ -89,7 +89,7 @@ require(["jquery", 'layui'], function ($) {
                     parent.location.reload();
                 }
 
-            })
+            });
             //setTimeout(function () {
             //    top.layer.close(index);
             //    top.layer.msg("文章添加成功！");

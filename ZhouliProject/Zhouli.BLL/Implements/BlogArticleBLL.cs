@@ -1,3 +1,4 @@
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,14 @@ namespace Zhouli.BLL.Implements
     public class BlogArticleBLL : BaseBLL<BlogArticle>, IBlogArticleBLL
     {
         private readonly IBlogArticleDAL _blogArticle;
+        private readonly IBlogRelatedDAL _blogRelated;
         /// <summary>
         /// 用于实例化父级，blogArticle
         /// <param name="blogArticle"></param>
-        public BlogArticleBLL(IBlogArticleDAL blogArticle) : base(blogArticle)
+        public BlogArticleBLL(IBlogArticleDAL blogArticle, IBlogRelatedDAL blogRelated) : base(blogArticle)
         {
             this._blogArticle = blogArticle;
+            this._blogRelated = blogRelated;
         }
         /// <summary>
         /// 获取文章列表
@@ -47,7 +50,26 @@ namespace Zhouli.BLL.Implements
         /// <returns></returns>
         public MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto)
         {
-
+            var blogArticle = Mapper.Map<BlogArticle>(blogArticleDto);
+            //是否置顶
+            if (blogArticleDto.ArticleTop)
+            {
+                blogArticle.ArticleSortValue = _blogArticle.GetMaxArticleSortValue() + 1;
+            }
+            blogArticle.CreateTime = DateTime.Now;
+            //添加文章
+            _blogArticle.Add(blogArticle);
+            _blogArticle.SaveChanges();
+            //添加文章标签关联表
+            foreach (var lableId in blogArticleDto.LableId)
+            {
+                _blogRelated.Add(new BlogRelated
+                {
+                    RelatedArticleId = blogArticle.ArticleId,
+                    RelatedLableId = lableId
+                });
+            }
+            _blogRelated.SaveChanges();
             return new MessageModel
             {
 

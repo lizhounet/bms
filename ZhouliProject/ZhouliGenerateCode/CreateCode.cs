@@ -66,13 +66,13 @@ namespace ZhouliGenerateCode
                     strBLLImplements.AppendLine("{");
                     strBLLImplements.AppendLine($"   public class {ModelName}BLL : BaseBLL<{ModelName}>, I{ModelName}BLL");
                     strBLLImplements.AppendLine("    {");
-                    strBLLImplements.AppendLine($"        private readonly I{ModelName}DAL {strModelNameFirstCharLower};");
+                    strBLLImplements.AppendLine($"        private readonly I{ModelName}DAL _{strModelNameFirstCharLower};");
                     strBLLImplements.AppendLine("        /// <summary>");
                     strBLLImplements.AppendLine($"        /// 用于实例化父级，{strModelNameFirstCharLower}");
                     strBLLImplements.AppendLine($"        /// <param name=\"{strModelNameFirstCharLower}\"></param>");
                     strBLLImplements.AppendLine($"        public {ModelName}BLL(I{ModelName}DAL {strModelNameFirstCharLower}) : base({strModelNameFirstCharLower})");
                     strBLLImplements.AppendLine("        {");
-                    strBLLImplements.AppendLine($"            this.{strModelNameFirstCharLower} = {strModelNameFirstCharLower};");
+                    strBLLImplements.AppendLine($"            this._{strModelNameFirstCharLower} = {strModelNameFirstCharLower};");
                     strBLLImplements.AppendLine("        }");
                     strBLLImplements.AppendLine("    }");
                     strBLLImplements.AppendLine("}");
