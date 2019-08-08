@@ -40,8 +40,8 @@ namespace Zhouli.FileService.Filters
             {
                 context.Result = new JsonResult(new ResponseModel
                 {
-                    StateCode = StatesCode.failure,
-                    Messages = "请选择需要上传的文件!"
+                    RetCode = StatesCode.failure,
+                    RetMsg = "请选择需要上传的文件!"
                 });
                 return;
             };
@@ -50,8 +50,8 @@ namespace Zhouli.FileService.Filters
             {
                 context.Result = new JsonResult(new ResponseModel
                 {
-                    StateCode = StatesCode.failure,
-                    Messages = "缺少参数:StorageMethod"
+                    RetCode = StatesCode.failure,
+                    RetMsg = "缺少参数:StorageMethod"
                 });
                 return;
             }
@@ -59,8 +59,8 @@ namespace Zhouli.FileService.Filters
             {
                 context.Result = new JsonResult(new ResponseModel
                 {
-                    StateCode = StatesCode.failure,
-                    Messages = "StorageMethod错误"
+                    RetCode = StatesCode.failure,
+                    RetMsg = "StorageMethod错误"
                 });
                 return;
             }
@@ -68,8 +68,8 @@ namespace Zhouli.FileService.Filters
             {
                 context.Result = new JsonResult(new ResponseModel
                 {
-                    StateCode = StatesCode.failure,
-                    Messages = "缺少参数:FileSpaceType"
+                    RetCode = StatesCode.failure,
+                    RetMsg = "缺少参数:FileSpaceType"
                 });
                 return;
             }
@@ -77,8 +77,8 @@ namespace Zhouli.FileService.Filters
             {
                 context.Result = new JsonResult(new ResponseModel
                 {
-                    StateCode = StatesCode.failure,
-                    Messages = "FileSpaceType错误"
+                    RetCode = StatesCode.failure,
+                    RetMsg = "FileSpaceType错误"
                 });
                 return;
             }
@@ -88,8 +88,8 @@ namespace Zhouli.FileService.Filters
             {
                 context.Result = new JsonResult(new ResponseModel
                 {
-                    StateCode = StatesCode.failure,
-                    Messages = $"您的文件超过{UploadFileSize}M,不允许上传!"
+                    RetCode = StatesCode.failure,
+                    RetMsg = $"您的文件超过{UploadFileSize}M,不允许上传!"
                 });
                 return;
             }

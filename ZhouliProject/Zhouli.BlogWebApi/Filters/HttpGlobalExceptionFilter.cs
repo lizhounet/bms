@@ -63,8 +63,8 @@ namespace Zhouli.BlogWebApi.Filters
             // context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             context.Result = new JsonResult(new ResponseModel
             {
-                StateCode = StatesCode.failure,
-                Messages = "文件服务器出现故障啦,请联系管理员查看错误日志!"
+                RetCode = StatesCode.failure,
+                RetMsg = "文件服务器出现故障啦,请联系管理员查看错误日志!"
             });
             //代表错误已经被处理了
             context.ExceptionHandled = true;

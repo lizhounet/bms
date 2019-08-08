@@ -42,17 +42,17 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <param name="limit">页容量</param>
         /// <param name="searchstr">搜索内容</param>
         /// <returns></returns>
-        public string GetUserList(string page, string limit, string searchstr)
+        public IActionResult GetUserList(string page, string limit, string searchstr)
         {
             var messageModel = _injection.GetT<ISysUserBLL>()
                 .GetUserList(page, limit, searchstr);
-            return new
+            return Ok(new
             {
                 code = 0,
                 msg = "获取成功",
                 count = messageModel.Data.RowCount,
                 data = messageModel.Data.Data
-            }.Json();
+            });
         }
         #endregion
         #region 添加/编辑用户
@@ -61,15 +61,15 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <param name="userDto"></param>
         /// <returns></returns>
-        public string AddorEditUser(SysUserDto userDto)
+        public IActionResult AddorEditUser(SysUserDto userDto)
         {
             var resModel = new ResponseModel();
             var userLogin = _injection.GetT<UserAccount>().GetUserInfo();
             var mModel = _injection.GetT<ISysUserBLL>().AddorEditUser(userDto, userLogin.UserId);
-            resModel.StateCode = mModel.Result ? StatesCode.success : StatesCode.failure;
-            resModel.Messages = mModel.Message;
-            resModel.JsonData = mModel.Data;
-            return resModel.Json();
+            resModel.RetCode = mModel.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = mModel.Message;
+            resModel.Data = mModel.Data;
+            return Ok(resModel);
         }
         #endregion
         #region 禁用/启用用户
@@ -78,7 +78,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns></returns>
-        public string DisableUser(string UserId)
+        public IActionResult DisableUser(string UserId)
         {
             var resModel = new ResponseModel();
             if (!string.IsNullOrEmpty(UserId))
@@ -86,14 +86,14 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 var user = _injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(UserId)).SingleOrDefault();
                 user.UserStatus = user.UserStatus == 0 ? 1 : 0;
                 _injection.GetT<ISysUserBLL>().Update(user);
-                resModel.Messages = user.UserStatus == 1 ? "启用成功" : "禁用成功";
+                resModel.RetMsg = user.UserStatus == 1 ? "启用成功" : "禁用成功";
             }
             else
             {
-                resModel.StateCode = StatesCode.failure;
-                resModel.Messages = "操作失败";
+                resModel.RetCode = StatesCode.failure;
+                resModel.RetMsg = "操作失败";
             }
-            return resModel.Json();
+            return Ok(resModel);
         }
         #endregion
         #region 批量删除用户
@@ -102,14 +102,14 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns></returns>
-        public string DelUser(List<string> UserId)
+        public IActionResult DelUser(List<string> UserId)
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
             MessageModel model = _injection.GetT<ISysUserBLL>().DelUser(UserId);
-            resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.Messages = model.Message;
-            return resModel.Json();
+            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = model.Message;
+            return Ok(resModel);
         }
         #endregion
     }

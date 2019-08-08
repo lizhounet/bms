@@ -23,7 +23,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         private readonly WholeInjection _injection;
         public FriendshipLinkController(WholeInjection injection)
         {
-           _injection = injection;
+            _injection = injection;
         }
 
         public IActionResult Index()
@@ -42,17 +42,17 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        public string GetFriendshipLinkList(string page, string limit, string searchstr)
+        public IActionResult GetFriendshipLinkList(string page, string limit, string searchstr)
         {
             var messageModel = _injection.GetT<IBlogFriendshipLinkBLL>()
                  .GetFriendshipLinkList(page, limit, searchstr);
-            return new
+            return Ok(new
             {
                 code = 0,
                 msg = "获取成功",
                 count = messageModel.Data.RowCount,
                 data = messageModel.Data.Data
-            }.Json();
+            });
         }
         #endregion
         #region 添加友情链接
@@ -61,14 +61,14 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// </summary>
         /// <param name="blog"></param>
         /// <returns></returns>
-        public string AddorUpdateFriendshipLink(BlogFriendshipLinkDto blog)
+        public IActionResult AddorUpdateFriendshipLink(BlogFriendshipLinkDto blog)
         {
             var resModel = new ResponseModel();
             MessageModel model = _injection.GetT<IBlogFriendshipLinkBLL>().AddorEditFriendshipLink(blog, _injection.GetT<UserAccount>().GetUserInfo().UserId);
-            resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.Messages = model.Message;
-            resModel.JsonData = model.Data;
-            return resModel.Json();
+            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = model.Message;
+            resModel.Data = model.Data;
+            return Ok(resModel);
         }
         #endregion
 
@@ -78,14 +78,14 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// </summary>
         /// <param name="FriendshipLinkId"></param>
         /// <returns></returns>
-        public string DeleteFriendshipLink(List<string> FriendshipLinkId)
+        public IActionResult DeleteFriendshipLink(List<string> FriendshipLinkId)
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
             MessageModel model = _injection.GetT<IBlogFriendshipLinkBLL>().DelFriendshipLink(FriendshipLinkId);
-            resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.Messages = model.Message;
-            return resModel.Json();
+            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = model.Message;
+            return Ok(resModel);
         }
         #endregion
         #region 审核友情链接
@@ -94,13 +94,13 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// </summary>
         /// <param name="FriendshipLinkId"></param>
         /// <returns></returns>
-        public string SfFriendshipLink(int FriendshipLinkId)
+        public IActionResult SfFriendshipLink(int FriendshipLinkId)
         {
             var resModel = new ResponseModel();
             MessageModel model = _injection.GetT<IBlogFriendshipLinkBLL>().SfFriendshipLinkList(FriendshipLinkId);
-            resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.Messages = model.Message;
-            return resModel.Json();
+            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = model.Message;
+            return Ok(resModel);
         }
         #endregion
     }

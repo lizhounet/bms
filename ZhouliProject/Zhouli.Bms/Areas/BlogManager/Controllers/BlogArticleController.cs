@@ -43,9 +43,9 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         {
             var resModel = new ResponseModel();
             MessageModel model = _injection.GetT<IBlogArticleBLL>().AddOrUpdateArticlelist(blogArticleDto);
-            resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.Messages = model.Message;
-            resModel.JsonData = model.Data;
+            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = model.Message;
+            resModel.Data = model.Data;
             return Ok(model);
         }
         #endregion

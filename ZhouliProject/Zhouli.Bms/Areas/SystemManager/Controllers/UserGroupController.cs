@@ -42,17 +42,17 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        public string GetUserGroupList(string page, string limit, string searchstr)
+        public IActionResult GetUserGroupList(string page, string limit, string searchstr)
         {
             var messageModel = _injection.GetT<ISysUserGroupBLL>()
                  .GetUserGroupList(page, limit, searchstr);
-            return new
+            return Ok(new
             {
                 code = 0,
                 msg = "获取成功",
                 count = messageModel.Data.RowCount,
                 data = messageModel.Data.Data
-            }.Json();
+            });
         }
         #endregion
         #region 添加/修改用户组
@@ -61,7 +61,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <param name="userGroupDto"></param>
         /// <returns></returns>
-        public string AddorEditUserGroup(SysUserGroupDto userGroupDto)
+        public IActionResult AddorEditUserGroup(SysUserGroupDto userGroupDto)
         {
             bool bResult = true;
             string sMessage = "保存成功";
@@ -94,11 +94,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                     bResult = userGroupBLL.Update(userGroup_Edit);
                 }
             }
-            return new ResponseModel
+            return Ok(new ResponseModel
             {
-                StateCode = bResult ? StatesCode.success : StatesCode.failure,
-                Messages = sMessage
-            }.Json();
+                RetCode = bResult ? StatesCode.success : StatesCode.failure,
+                RetMsg = sMessage
+            });
         }
         #endregion
         #region 批量删除用户组
@@ -107,14 +107,14 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <param name="UserGroupId"></param>
         /// <returns></returns>
-        public string DelUserGroup(List<string> UserGroupId)
+        public IActionResult DelUserGroup(List<string> UserGroupId)
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
             MessageModel model = _injection.GetT<ISysUserGroupBLL>().DelUserGroup(UserGroupId);
-            resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.Messages = model.Message;
-            return resModel.Json();
+            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = model.Message;
+            return Ok(resModel);
         }
         #endregion
     }

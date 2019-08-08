@@ -43,9 +43,9 @@ namespace ZhouliSystem.Components
             //{
             //    var content = await response.Content.ReadAsStringAsync();
             //    var responseModel = JsonHelper.JsonToObject<dynamic>(content);
-            //    if (responseModel.StateCode == StatesCode.success)
+            //    if (responseModel.RetCode == StatesCode.success)
             //    {
-            //        blogFriendships = JsonHelper.JsonToObject<List<BlogFriendshipLinkDto>>(responseModel.JsonData.ToString());
+            //        blogFriendships = JsonHelper.JsonToObject<List<BlogFriendshipLinkDto>>(responseModel.Data.ToString());
             //    }
             //}
             return View();

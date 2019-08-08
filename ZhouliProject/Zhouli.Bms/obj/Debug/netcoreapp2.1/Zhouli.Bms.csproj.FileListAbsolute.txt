@@ -179,6 +179,8 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Bms.r
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Bms.runtimeconfig.dev.json
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Bms.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Bms.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Bms.Views.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Bms.Views.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.BLL.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Common.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.CommonEntity.dll
@@ -195,16 +197,11 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.DAL.p
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Dto.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.csprojAssemblyReference.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.csproj.CoreCompileInputs.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.AssemblyInfoInputs.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.AssemblyInfo.cs
-D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.csproj.CopyComplete
-D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Bms.Views.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Bms.Views.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.RazorAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.RazorAssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.AssemblyInfoInputs.cache
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.TagHelpers.input.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.TagHelpers.output.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.RazorCoreGenerate.cache
@@ -239,3 +236,6 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Razor\Views\
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.RazorTargetAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.RazorTargetAssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.Views.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.csproj.CopyComplete
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.pdb

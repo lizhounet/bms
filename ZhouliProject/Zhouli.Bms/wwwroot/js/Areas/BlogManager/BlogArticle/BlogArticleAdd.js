@@ -11,7 +11,7 @@ require(["jquery", 'layui'], function ($) {
             layedit = layui.layedit,
             laydate = layui.laydate,
             $ = layui.jquery;
-        var editIndex = layedit.build("news_content", {
+        var editIndex = layedit.build("articleBody", {
             uploadImage: {
                 url: "/upload",
                 method: "post",
@@ -22,11 +22,11 @@ require(["jquery", 'layui'], function ($) {
         var fileAccessToken = "";
         $.ajaxSettings.async = false;
         $.post("/Token/GetFileServiceToken", function (res) {
-            if (res.stateCode != 200) {
-                layer.msg(res.messages);
+            if (res.RetCode != 200) {
+                layer.msg(res.RetMsg);
             }
             else {
-                fileAccessToken = res.jsonData;
+                fileAccessToken = res.Data;
 
             }
         });
@@ -44,16 +44,17 @@ require(["jquery", 'layui'], function ($) {
                 FileSpaceType: ""
             },
             done: function (res, index, upload) {
-                if (res.StateCode == 200) {
-                    $('.thumbImg').attr('src', res.JsonData.FileAddress);
+                if (res.RetCode == 200) {
+                    $('.thumbImg').attr('src', res.Data.FileAddress);
                 }
                 else
-                    layer.msg(res.Messages);
+                    layer.msg(res.RetMsg);
                 $('.thumbBox').css("background", "#fff");
             }
         });
         form.verify({
             articleTitle: function (val) {
+
                 if (val == '') {
                     return "文章标题不能为空";
                 }
@@ -63,6 +64,9 @@ require(["jquery", 'layui'], function ($) {
             }
         });
         form.on("submit(addNews)", function (data) {
+            if ($("#articleThrink").attr("src") == "") {
+                layer.msg("请选择文章缩略图");
+            }
             //截取文章内容中的一部分文字放入文章摘要
             var abstract = layedit.getText(editIndex).substring(0, 50);
             var arr = new Array();
@@ -70,7 +74,6 @@ require(["jquery", 'layui'], function ($) {
                 arr[i] = $(this).val();
             });
             data.field.lableId = arr;
-            console.log(data.field);
             //弹出loading
             var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: 5000, shade: 0.8 });
             $.post("/blog/blogarticle/addorupdateblogarticle", {
@@ -83,8 +86,8 @@ require(["jquery", 'layui'], function ($) {
             }, function (res) {
                 top.layer.close(index);
                 layer.closeAll("iframe");
-                layer.msg(res.Messages);
-                if (res.StateCode == 200) {
+                layer.msg(res.RetMsg);
+                if (res.RetCode == 200) {
                     //刷新父页面
                     parent.location.reload();
                 }

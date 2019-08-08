@@ -37,17 +37,17 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        public string GetBlogLableList(string page, string limit, string searchstr)
+        public IActionResult GetBlogLableList(string page, string limit, string searchstr)
         {
             var messageModel = _injection.GetT<IBlogLableBLL>()
                  .GetBlogLableList(page, limit, searchstr);
-            return new
+            return Ok(new
             {
                 code = 0,
                 msg = "获取成功",
                 count = messageModel.Data.RowCount,
                 data = messageModel.Data.Data
-            }.Json();
+            });
         }
         #endregion
         #region 添加博客标签链接
@@ -56,14 +56,14 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// </summary>
         /// <param name="bl"></param>
         /// <returns></returns>
-        public string AddorUpdateBlogLable(BlogLableDto bl)
+        public IActionResult AddorUpdateBlogLable(BlogLableDto bl)
         {
             var resModel = new ResponseModel();
             MessageModel model = _injection.GetT<IBlogLableBLL>().AddorEditBlogLable(bl, _injection.GetT<UserAccount>().GetUserInfo().UserId);
-            resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.Messages = model.Message;
-            resModel.JsonData = model.Data;
-            return resModel.Json();
+            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = model.Message;
+            resModel.Data = model.Data;
+            return Ok(resModel);
         }
         #endregion
         #region 删除博客标签链接
@@ -72,14 +72,14 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// </summary>
         /// <param name="blogLableId"></param>
         /// <returns></returns>
-        public string DeleteBlogLable(List<string> blogLableId)
+        public IActionResult DeleteBlogLable(List<string> blogLableId)
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
             MessageModel model = _injection.GetT<IBlogLableBLL>().DelBlogLable(blogLableId);
-            resModel.StateCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.Messages = model.Message;
-            return resModel.Json();
+            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = model.Message;
+            return Ok(resModel);
         }
         #endregion
     }

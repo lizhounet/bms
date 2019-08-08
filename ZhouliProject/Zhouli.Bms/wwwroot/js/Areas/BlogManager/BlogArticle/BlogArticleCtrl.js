@@ -26,22 +26,18 @@ require(["jquery", 'layui'], function ($) {
             },
             cols: [[
                 { type: "checkbox", fixed: "left", width: 50 },
-                { field: 'newsId', title: 'ID', width: 60, align: "center" },
-                { field: 'newsName', title: '文章标题', width: 350 },
+                { field: 'ArticleId', title: 'ID', width: 60, align: "center" },
+                { field: 'ArticleTitle', title: '文章标题', width: 350 },
                 { field: 'newsAuthor', title: '发布者', align: 'center' },
-                { field: 'newsStatus', title: '发布状态', align: 'center', templet: "#newsStatus" },
-                { field: 'newsLook', title: '浏览权限', align: 'center' },
                 {
                     field: 'newsTop', title: '是否置顶', align: 'center', templet: function (d) {
-                        return '<input type="checkbox" name="newsTop" lay-filter="newsTop" lay-skin="switch" lay-text="是|否" ' + d.newsTop + '>';
+                        return '<input type="checkbox" name="articleTop" lay-filter="articleTop" lay-skin="switch" lay-text="是|否" ' + d.newsTop + '>';
                     }
                 },
                 {
-                    field: 'newsTime', title: '发布时间', align: 'center', minWidth: 110, templet: function (d) {
-                        return d.newsTime.substring(0, 10);
-                    }
+                    field: 'CreateTime', title: '发布时间', align: 'center', minWidth: 110}
                 },
-                { title: '操作', width: 170, templet: '#newsListBar', fixed: "right", align: "center" }
+            { title: '操作', width: 170, templet: '#blogArticleListBar', fixed: "right", align: "center" }
             ]]
         });
         //搜索【此功能需要后台配合，所以暂时没有动态效果演示】
@@ -94,9 +90,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/Blog/BlogArticle/DeleteBlogArticle", {
                         blogLableId: LableId //将需要删除的LableId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");
@@ -116,9 +112,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/Blog/blogArticle/DeleteBlogLable", {
                         blogLableId: data.LableId  //将需要删除的LableId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");

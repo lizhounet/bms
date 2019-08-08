@@ -31,17 +31,17 @@ namespace Zhouli.CommonEntity
         /// <summary>
         /// 响应状态默认成功
         /// </summary>
-        public StatesCode StateCode { set; get; } = StatesCode.success;
+        public StatesCode RetCode { set; get; } = StatesCode.success;
 
         /// <summary>
         /// 响应提示消息(默认:"ok")
         /// </summary>
-        public string Messages { set; get; } = "ok";
+        public string RetMsg { set; get; } = "ok";
 
         /// <summary>
         /// 响应json数据(默认:"[]")
         /// </summary>
-        public dynamic JsonData { set; get; } = "[]";
+        public dynamic Data { set; get; } = "[]";
     }
     /// <summary>
     /// 响应状态码

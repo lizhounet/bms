@@ -110,7 +110,8 @@ namespace Zhouli.BLL.Implements
             {
                 Data = new PageModel
                 {
-                    RowCount = query.Count(),
+                    RowCount = _blogLableDAL.GetCount(t => t.LableName.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
+                && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)),
                     Data = query.ToList()
                 }
             };

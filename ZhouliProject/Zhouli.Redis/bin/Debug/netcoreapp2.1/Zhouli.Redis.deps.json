@@ -1,0 +1,75 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.1",
+    "signature": "ffdac2fc0d52b8fbca988667b52510c4b7361836"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.1": {
+      "Zhouli.Redis/1.0.0": {
+        "dependencies": {
+          "CSRedisCore": "3.0.31"
+        },
+        "runtime": {
+          "Zhouli.Redis.dll": {}
+        }
+      },
+      "CSRedisCore/3.0.31": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1",
+          "SafeObjectPool": "1.0.12"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CSRedisCore.dll": {
+            "assemblyVersion": "3.0.31.0",
+            "fileVersion": "3.0.31.0"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.1.22727"
+          }
+        }
+      },
+      "SafeObjectPool/1.0.12": {
+        "runtime": {
+          "lib/netstandard2.0/SafeObjectPool.dll": {
+            "assemblyVersion": "1.0.12.0",
+            "fileVersion": "1.0.12.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Zhouli.Redis/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CSRedisCore/3.0.31": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o1ANXU5THq9sKN52ClbqbNtPFX7ZpA89AVqjleqrOY1HvhHNSrtwmzO+vKDgOhD8QwcYbwZUE2xkWjwyWfYDoA==",
+      "path": "csrediscore/3.0.31",
+      "hashPath": "csrediscore.3.0.31.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-jmVyoEyk0In8r+AObYQyFKVFm7uSRzE0XSHSbEtBJcZDMV6DqJoyB4FLcHwprPVhAh826so0db3DIKXVnpGoPA==",
+      "path": "newtonsoft.json/12.0.1",
+      "hashPath": "newtonsoft.json.12.0.1.nupkg.sha512"
+    },
+    "SafeObjectPool/1.0.12": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-hSIyCs5wWWnqjaIiN6Ba5aTfdZVCQ4S0t5nXUCCPE+buw8b3TN+frjjdkq/tTRcDqSVoVVgH9+GSPghzAAa0rQ==",
+      "path": "safeobjectpool/1.0.12",
+      "hashPath": "safeobjectpool.1.0.12.nupkg.sha512"
+    }
+  }
+}

@@ -63,15 +63,15 @@ namespace ZhouliSystem.Controllers
         public IActionResult UserChagePwd() => View();
         [HttpPost]
         [ValidateAntiForgeryToken]//防伪标记 预防坏蛋攻击
-        public string UserChagePwd(string useroldpwd, string usernewpwd)
+        public IActionResult UserChagePwd(string useroldpwd, string usernewpwd)
         {
             var response = new ResponseModel();
             var userlogin = _injection.GetT<UserAccount>().GetUserInfo();
             if (!userlogin.UserPwd.Equals(MD5Encrypt.Get32MD5One(useroldpwd)))
             {
-                response.Messages = "原密码不正确,请重新输入";
-                response.StateCode = StatesCode.failure;
-                return JsonHelper.ObjectToJson(response);
+                response.RetMsg = "原密码不正确,请重新输入";
+                response.RetCode = StatesCode.failure;
+                return Ok(response);
             }
             var user = _injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(userlogin.UserId)).SingleOrDefault();
             if (user != null)
@@ -79,24 +79,24 @@ namespace ZhouliSystem.Controllers
                 user.UserPwd = MD5Encrypt.Get32MD5One(usernewpwd);
                 if (_injection.GetT<ISysUserBLL>().Update(user))
                 {
-                    response.Messages = "密码修改成功";
-                    response.StateCode = StatesCode.success;
+                    response.RetMsg = "密码修改成功";
+                    response.RetCode = StatesCode.success;
                     //密码修改成功 重新登录
                     _injection.GetT<UserAccount>().Login(user);
                 }
                 else
                 {
-                    response.Messages = "密码修改失败";
-                    response.StateCode = StatesCode.failure;
+                    response.RetMsg = "密码修改失败";
+                    response.RetCode = StatesCode.failure;
                 }
             }
             else
             {
-                response.Messages = "账户不存在,请联系管理员!";
-                response.StateCode = StatesCode.failure;
+                response.RetMsg = "账户不存在,请联系管理员!";
+                response.RetCode = StatesCode.failure;
             }
 
-            return response.Json();
+            return Ok(response);
         }
         /// <summary>
         /// 后台登录
@@ -117,31 +117,31 @@ namespace ZhouliSystem.Controllers
             ).FirstOrDefault();
             if (sysUsers == null)
             {
-                message.StateCode = StatesCode.failure;
-                message.Messages = "该账户不存在";
+                message.RetCode = StatesCode.failure;
+                message.RetMsg = "该账户不存在";
             }
             else
             {
                 if (sysUsers.UserStatus.Equals((int)ZhouLiEnum.Enum_UserStatus.Status_Discontinuation))
                 {
-                    message.StateCode = StatesCode.failure;
-                    message.Messages = "账户已停用,请联系管理员解除(17783042962)";
+                    message.RetCode = StatesCode.failure;
+                    message.RetMsg = "账户已停用,请联系管理员解除(17783042962)";
                 }
                 else if (!MD5Encrypt.Get32MD5Two(password).Equals(sysUsers.UserPwd))
                 {
-                    message.StateCode = StatesCode.failure;
-                    message.Messages = "密码错误";
+                    message.RetCode = StatesCode.failure;
+                    message.RetMsg = "密码错误";
                 }
                 else
                 {
                     var user = _injection.GetT<ISysUserBLL>().GetLoginSysUser(sysUsers).Data;
                     _injection.GetT<UserAccount>().Login(user);
-                    message.Messages = "登陆成功";
-                    message.JsonData = new { baseUrl = "/Home/Index" };
+                    message.RetMsg = "登陆成功";
+                    message.Data = new { BaseUrl = "/Home/Index" };
                 }
 
             }
-            return Json(message);
+            return Ok(message);
         }
         
     }

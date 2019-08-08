@@ -45,4 +45,3 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.
 D:\周黎\code\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.csprojAssemblyReference.cache

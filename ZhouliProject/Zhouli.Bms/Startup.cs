@@ -88,6 +88,10 @@ namespace ZhouliSystem
                                          //VaryByHeader = "User-Agent",
                                          //VaryByQueryKeys = new string[] { "aaa" }
                 });
+            }).AddJsonOptions(o =>
+            {
+                o.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+                o.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             });
             #endregion
             #region 自定义的配置关系
@@ -138,6 +142,13 @@ namespace ZhouliSystem
             });
             //初始化数据库
             InitSystem.InitDB(app.ApplicationServices);
+        }
+    }
+    public class LowercaseContractResolver : Newtonsoft.Json.Serialization.DefaultContractResolver
+    {
+        protected override string ResolvePropertyName(string propertyName)
+        {
+            return propertyName.ToLower();
         }
     }
 }

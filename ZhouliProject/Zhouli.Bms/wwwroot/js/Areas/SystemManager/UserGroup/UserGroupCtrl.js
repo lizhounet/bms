@@ -87,9 +87,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/System/UserGroup/DelUserGroup", {
                         UserGroupId: UserGroupId  //将需要删除的UserId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");
@@ -109,9 +109,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/System/UserGroup/DelUserGroup", {
                         UserGroupId: data.UserGroupId  //将需要删除的UserId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");

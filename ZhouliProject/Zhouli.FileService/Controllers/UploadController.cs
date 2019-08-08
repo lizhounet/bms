@@ -69,7 +69,7 @@ namespace Zhouli.FileService.Controllers
         /// <returns></returns>
         [HttpPost("")]
         [UploadLimit(20)]
-        public async Task<string> Upload([FromServices]IHostingEnvironment environment, IFormCollection formCollection, [FromForm]FileUploadModel uploadModel)
+        public async Task<IActionResult> Upload([FromServices]IHostingEnvironment environment, IFormCollection formCollection, [FromForm]FileUploadModel uploadModel)
         {
             var response = new ResponseModel();
             foreach (var formFile in formCollection.Files)
@@ -108,9 +108,9 @@ namespace Zhouli.FileService.Controllers
                     HttpResult result = await fu.UploadDataAsync(data, fileName, token);
                     if (result.Code == 200)
                     {
-                        response.Messages = "文件上传成功";
-                        response.StateCode = StatesCode.success;
-                        response.JsonData = new
+                        response.RetMsg = "文件上传成功";
+                        response.RetCode = StatesCode.success;
+                        response.Data = new
                         {
                             FileAddress = $"{_configuration.Value.Bucket.@public.Split(',')[1]}/{result.Text.Replace("\"", "")}"
                         };//文件地址
@@ -125,9 +125,9 @@ namespace Zhouli.FileService.Controllers
                     {
                         await formFile.CopyToAsync(stream);
                     }
-                    response.Messages = "文件上传成功";
-                    response.StateCode = StatesCode.success;
-                    response.JsonData = new
+                    response.RetMsg = "文件上传成功";
+                    response.RetCode = StatesCode.success;
+                    response.Data = new
                     {
                         FileAddress = new StringBuilder()
                                             .Append(Request.Scheme)
@@ -138,7 +138,7 @@ namespace Zhouli.FileService.Controllers
                     };//文件地址
                 }
             }
-            return response.Json();
+            return Ok(response);
         }
     }
 }

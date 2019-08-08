@@ -47,7 +47,7 @@ namespace Zhouli.BlogWebApi.Controllers
             _injection.GetT<IBlogFriendshipLinkBLL>().GetAuditedFriendshipLinkList());
             return Ok(new ResponseModel
             {
-                JsonData = Mapper.Map<List<BlogFriendshipLinkDto>>(messageModel.Data.Data)
+                Data = Mapper.Map<List<BlogFriendshipLinkDto>>(messageModel.Data.Data)
             });
         }
         /// <summary>
@@ -72,13 +72,13 @@ namespace Zhouli.BlogWebApi.Controllers
             }));
             if (messageModel.Result)
             {
-                responseModel.StateCode = StatesCode.success;
-                responseModel.Messages = "提交成功!管理员审核后生效";
+                responseModel.RetCode = StatesCode.success;
+                responseModel.RetMsg = "提交成功!管理员审核后生效";
             }
             else
             {
-                responseModel.StateCode = StatesCode.failure;
-                responseModel.Messages = messageModel.Message;
+                responseModel.RetCode = StatesCode.failure;
+                responseModel.RetMsg = messageModel.Message;
             }
             return Ok(responseModel);
         }

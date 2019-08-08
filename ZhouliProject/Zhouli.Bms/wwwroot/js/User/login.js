@@ -12,11 +12,11 @@
                 type: "post",
                 success: function (res) {
                     layer.close(index);
-                    if (res.stateCode == 200) {
-                        location.href = res.jsonData.baseUrl;
+                    if (res.RetCode == 200) {
+                        location.href = res.Data.BaseUrl;
                     }
                     else {
-                        layer.msg(res.messages);
+                        layer.msg(res.RetMsg);
                     }
                 },
                 error: function (err) {
@@ -24,16 +24,6 @@
                     console.log(err);
                 }
             });
-            //$.post("/User/UserLogin", data.field, function (res) {
-            //    layer.close(index);
-            //    console.log(res);
-            //    if (res.stateCode == 200) {
-            //        location.href = res.jsonData.baseUrl;
-            //    }
-            //    else {
-            //        layer.msg(res.messages);
-            //    }
-            //}, 'json');
             return false;
         });
     });

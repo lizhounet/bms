@@ -38,21 +38,21 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public string GetMenuList()
+        public IActionResult GetMenuList()
         {
             var menuList = (List<SysMenuDto>)(_injection.GetT<ISysMenuBLL>().GetMenusBy(_injection.GetT<UserAccount>().GetUserInfo()).Data);
-           
-            return new ResponseModel
+
+            return Ok(new ResponseModel
             {
-                JsonData = menuList
-            }.Json();
+                Data = menuList
+            });
         }
         /// <summary>
         /// 添加/修改 一个菜单
         /// </summary>
         /// <param name="menuDto"></param>
         /// <returns></returns>
-        public string AddOrEditMenu(SysMenuDto menuDto)
+        public IActionResult AddOrEditMenu(SysMenuDto menuDto)
         {
             bool bResult = false;
             int menuCount = _injection.GetT<ISysMenuBLL>().GetCount(t => t.MenuId.Equals(menuDto.MenuId));
@@ -69,16 +69,16 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                     {
                         AuthorityType = (int)ZhouLiEnum.Enum_AuthorityType.Type_Menu,
                         AuthorityId = AuthorityId.ToString(),
-                        CreateUserId= user.UserId,
-                        CreateTime=DateTime.Now
-                        
+                        CreateUserId = user.UserId,
+                        CreateTime = DateTime.Now
+
                     });
                     if (bResult) i++;
                     bResult = _injection.GetT<ISysAmRelatedBLL>().Add(new SysAmRelated
                     {
                         AuthorityId = AuthorityId.ToString(),
                         MenuId = menuDto.MenuId.ToString(),
-                       
+
                     });
                     if (bResult) i++;
                     var menu = AutoMapper.Mapper.Map<SysMenu>(menuDto);
@@ -108,26 +108,26 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 menu.EditTime = DateTime.Now;
                 bResult = _injection.GetT<ISysMenuBLL>().Update(menu);
             }
-            return new ResponseModel
+            return Ok(new ResponseModel
             {
-                StateCode = bResult ? StatesCode.success : StatesCode.failure,
-                Messages = bResult ? "操作成功" : "操作失败"
-            }.Json();
+                RetCode = bResult ? StatesCode.success : StatesCode.failure,
+                RetMsg = bResult ? "操作成功" : "操作失败"
+            });
         }
         /// <summary>
         /// 删除菜单(同时删除权限表对应的菜单权限)
         /// </summary>
         /// <param name="MenuId"></param>
         /// <returns></returns>
-        public string DelMenu(string MenuId)
+        public IActionResult DelMenu(string MenuId)
         {
             var messageModel = _injection.GetT<ISysMenuBLL>().DelMenu(MenuId);
-            return new ResponseModel
+            return Ok(new ResponseModel
             {
-                Messages = messageModel.Message,
-                StateCode = messageModel.Result ? StatesCode.success : StatesCode.failure
-            }.Json();
+                RetMsg = messageModel.Message,
+                RetCode = messageModel.Result ? StatesCode.success : StatesCode.failure
+            });
         }
-        
+
     }
 }

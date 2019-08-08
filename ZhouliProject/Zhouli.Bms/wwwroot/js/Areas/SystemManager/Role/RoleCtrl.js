@@ -85,9 +85,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/System/role/DelRole", {
                         RoleId: RoleId  //将需要删除的UserId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");
@@ -107,9 +107,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/System/Role/DelRole", {
                         RoleId: data.RoleId  //将需要删除的UserId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");

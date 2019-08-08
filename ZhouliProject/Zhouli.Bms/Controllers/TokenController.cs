@@ -37,15 +37,15 @@ namespace Zhouli.Bms.Controllers
                 {
                     return Ok(new ResponseModel
                     {
-                        StateCode = StatesCode.failure,
-                        Messages = "获取文件服务Token失败"
+                        RetCode = StatesCode.failure,
+                        RetMsg = "获取文件服务Token失败"
                     });
                 }
                 _cache.Set($"IdentityFileService_Token", token, new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(3600)));
             }
             return Ok(new ResponseModel
             {
-                JsonData = token
+                Data = token
             });
         }
         private string GetFileServerToken()

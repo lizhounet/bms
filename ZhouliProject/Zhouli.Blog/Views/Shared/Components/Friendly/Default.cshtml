@@ -73,7 +73,7 @@
             },
             success: function (res) {
                 console.log(res);
-                laytpl(getTpl).render(res.JsonData, function (html) {
+                laytpl(getTpl).render(res.Data, function (html) {
                         view.innerHTML = html;
                     });
             }
@@ -113,7 +113,7 @@
               },
               success: function (res) {
                   layer.closeAll();
-                  layer.msg(res.Messages);
+                  layer.msg(res.RetMsg);
                   setTimeout(function () {
                       location.reload();
                   }, 1000);
