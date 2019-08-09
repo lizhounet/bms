@@ -41,12 +41,16 @@ namespace ZhouliSystem.Controllers
 {
     public class UserController : Controller
     {
-        private readonly WholeInjection _injection;
+        private readonly ISysUserBLL _sysUserBLL;
         private readonly IMemoryCache _cache;
-        public UserController(WholeInjection injection, IMemoryCache cache)
+        private readonly IOptionsSnapshot<CustomConfiguration> _optionsSnapshot;
+        private readonly UserAccount _userAccount;
+        public UserController(ISysUserBLL sysUserBLL, IMemoryCache cache, IOptionsSnapshot<CustomConfiguration> optionsSnapshot, UserAccount userAccount)
         {
-            _injection = injection;
+            _sysUserBLL = sysUserBLL;
             _cache = cache;
+            _optionsSnapshot = optionsSnapshot;
+            _userAccount = userAccount;
         }
         [ResponseCache(CacheProfileName = "default")]
         public IActionResult Login()
@@ -56,8 +60,8 @@ namespace ZhouliSystem.Controllers
         }
         public IActionResult UserInfo()
         {
-            ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(_injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(_injection.GetT<UserAccount>().GetUserInfo().UserId)).SingleOrDefault());
-            ViewBag.FileServiceAdress = _injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value.FileServiceAdress;
+            ViewBag.UserInfo = AutoMapper.Mapper.Map<SysUserDto>(_sysUserBLL.GetModels(t => t.UserId.Equals(_userAccount.GetUserInfo().UserId)).SingleOrDefault());
+            ViewBag.FileServiceAdress = _optionsSnapshot.Value.FileServiceAdress;
             return View();
         }
         public IActionResult UserChagePwd() => View();
@@ -66,23 +70,23 @@ namespace ZhouliSystem.Controllers
         public IActionResult UserChagePwd(string useroldpwd, string usernewpwd)
         {
             var response = new ResponseModel();
-            var userlogin = _injection.GetT<UserAccount>().GetUserInfo();
+            var userlogin = _userAccount.GetUserInfo();
             if (!userlogin.UserPwd.Equals(MD5Encrypt.Get32MD5One(useroldpwd)))
             {
                 response.RetMsg = "原密码不正确,请重新输入";
                 response.RetCode = StatesCode.failure;
                 return Ok(response);
             }
-            var user = _injection.GetT<ISysUserBLL>().GetModels(t => t.UserId.Equals(userlogin.UserId)).SingleOrDefault();
+            var user = _sysUserBLL.GetModels(t => t.UserId.Equals(userlogin.UserId)).SingleOrDefault();
             if (user != null)
             {
                 user.UserPwd = MD5Encrypt.Get32MD5One(usernewpwd);
-                if (_injection.GetT<ISysUserBLL>().Update(user))
+                if (_sysUserBLL.Update(user))
                 {
                     response.RetMsg = "密码修改成功";
                     response.RetCode = StatesCode.success;
                     //密码修改成功 重新登录
-                    _injection.GetT<UserAccount>().Login(user);
+                    _userAccount.Login(user);
                 }
                 else
                 {
@@ -110,7 +114,7 @@ namespace ZhouliSystem.Controllers
         {
 
             var message = new ResponseModel();
-            var sysUsers = _injection.GetT<ISysUserBLL>().GetModels(t =>
+            var sysUsers = _sysUserBLL.GetModels(t =>
                 (t.UserName.Equals(username) ||
                 t.UserEmail.Equals(username) ||
                 t.UserPhone.Equals(username) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted))
@@ -134,8 +138,8 @@ namespace ZhouliSystem.Controllers
                 }
                 else
                 {
-                    var user = _injection.GetT<ISysUserBLL>().GetLoginSysUser(sysUsers).Data;
-                    _injection.GetT<UserAccount>().Login(user);
+                    var user = _sysUserBLL.GetLoginSysUser(sysUsers).Data;
+                    _userAccount.Login(user);
                     message.RetMsg = "登陆成功";
                     message.Data = new { BaseUrl = "/Home/Index" };
                 }
@@ -143,6 +147,6 @@ namespace ZhouliSystem.Controllers
             }
             return Ok(message);
         }
-        
+
     }
 }

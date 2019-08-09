@@ -20,10 +20,12 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
     [Area("Blog")]
     public class FriendshipLinkController : Controller
     {
-        private readonly WholeInjection _injection;
-        public FriendshipLinkController(WholeInjection injection)
+        private readonly IBlogFriendshipLinkBLL _blogFriendshipLinkBLL;
+        private readonly UserAccount _userAccount;
+        public FriendshipLinkController(IBlogFriendshipLinkBLL blogFriendshipLinkBLL, UserAccount userAccount)
         {
-            _injection = injection;
+            _blogFriendshipLinkBLL = blogFriendshipLinkBLL;
+            _userAccount = userAccount;
         }
 
         public IActionResult Index()
@@ -44,7 +46,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// <returns></returns>
         public IActionResult GetFriendshipLinkList(string page, string limit, string searchstr)
         {
-            var messageModel = _injection.GetT<IBlogFriendshipLinkBLL>()
+            var messageModel = _blogFriendshipLinkBLL
                  .GetFriendshipLinkList(page, limit, searchstr);
             return Ok(new
             {
@@ -64,7 +66,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         public IActionResult AddorUpdateFriendshipLink(BlogFriendshipLinkDto blog)
         {
             var resModel = new ResponseModel();
-            MessageModel model = _injection.GetT<IBlogFriendshipLinkBLL>().AddorEditFriendshipLink(blog, _injection.GetT<UserAccount>().GetUserInfo().UserId);
+            MessageModel model = _blogFriendshipLinkBLL.AddorEditFriendshipLink(blog, _userAccount.GetUserInfo().UserId);
             resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.RetMsg = model.Message;
             resModel.Data = model.Data;
@@ -82,7 +84,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = _injection.GetT<IBlogFriendshipLinkBLL>().DelFriendshipLink(FriendshipLinkId);
+            MessageModel model = _blogFriendshipLinkBLL.DelFriendshipLink(FriendshipLinkId);
             resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.RetMsg = model.Message;
             return Ok(resModel);
@@ -97,7 +99,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         public IActionResult SfFriendshipLink(int FriendshipLinkId)
         {
             var resModel = new ResponseModel();
-            MessageModel model = _injection.GetT<IBlogFriendshipLinkBLL>().SfFriendshipLinkList(FriendshipLinkId);
+            MessageModel model = _blogFriendshipLinkBLL.SfFriendshipLinkList(FriendshipLinkId);
             resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.RetMsg = model.Message;
             return Ok(resModel);

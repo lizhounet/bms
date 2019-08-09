@@ -20,10 +20,22 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
     [Area("System")]
     public class MenuController : Controller
     {
-        private readonly WholeInjection _injection;
-        public MenuController(WholeInjection injection)
+        private readonly ISysMenuBLL _sysMenuBLL;
+        private readonly UserAccount _userAccount;
+        private readonly ZhouLiContext _zhouLiContext;
+        private readonly ISysAuthorityBLL _sysAuthorityBLL;
+        private readonly ISysAmRelatedBLL _sysAmRelatedBLL;
+        public MenuController(ISysMenuBLL sysMenuBLL,
+            UserAccount userAccount,
+            ZhouLiContext zhouLiContext,
+            ISysAuthorityBLL sysAuthorityBLL,
+            ISysAmRelatedBLL sysAmRelatedBLL)
         {
-            _injection = injection;
+            _sysMenuBLL = sysMenuBLL;
+            _userAccount = userAccount;
+            _zhouLiContext = zhouLiContext;
+            _sysAuthorityBLL = sysAuthorityBLL;
+            _sysAmRelatedBLL = sysAmRelatedBLL;
         }
         public IActionResult Index()
         {
@@ -40,7 +52,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         [HttpGet]
         public IActionResult GetMenuList()
         {
-            var menuList = (List<SysMenuDto>)(_injection.GetT<ISysMenuBLL>().GetMenusBy(_injection.GetT<UserAccount>().GetUserInfo()).Data);
+            var menuList = (List<SysMenuDto>)(_sysMenuBLL.GetMenusBy(_userAccount.GetUserInfo()).Data);
 
             return Ok(new ResponseModel
             {
@@ -55,17 +67,17 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public IActionResult AddOrEditMenu(SysMenuDto menuDto)
         {
             bool bResult = false;
-            int menuCount = _injection.GetT<ISysMenuBLL>().GetCount(t => t.MenuId.Equals(menuDto.MenuId));
-            var user = _injection.GetT<UserAccount>().GetUserInfo();
+            int menuCount = _sysMenuBLL.GetCount(t => t.MenuId.Equals(menuDto.MenuId));
+            var user = _userAccount.GetUserInfo();
             //添加
             if (menuCount == 0)
             {
                 var AuthorityId = Guid.NewGuid();
-                using (var tran = _injection.GetT<ZhouLiContext>().Database.BeginTransaction())
+                using (var tran = _zhouLiContext.Database.BeginTransaction())
                 {
                     int i = 0;
                     //添加权限
-                    bResult = _injection.GetT<ISysAuthorityBLL>().Add(new SysAuthority
+                    bResult = _sysAuthorityBLL.Add(new SysAuthority
                     {
                         AuthorityType = (int)ZhouLiEnum.Enum_AuthorityType.Type_Menu,
                         AuthorityId = AuthorityId.ToString(),
@@ -74,7 +86,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
 
                     });
                     if (bResult) i++;
-                    bResult = _injection.GetT<ISysAmRelatedBLL>().Add(new SysAmRelated
+                    bResult = _sysAmRelatedBLL.Add(new SysAmRelated
                     {
                         AuthorityId = AuthorityId.ToString(),
                         MenuId = menuDto.MenuId.ToString(),
@@ -84,7 +96,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                     var menu = AutoMapper.Mapper.Map<SysMenu>(menuDto);
                     menu.CreateTime = DateTime.Now;
                     menu.CreateUserId = user.UserId;
-                    bResult = _injection.GetT<ISysMenuBLL>().Add(menu);
+                    bResult = _sysMenuBLL.Add(menu);
                     if (bResult) i++;
                     if (i == 3)
                         tran.Commit();
@@ -98,7 +110,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             }
             else
             {
-                var menu = _injection.GetT<ISysMenuBLL>().GetModels(t => t.MenuId.Equals(menuDto.MenuId)).SingleOrDefault();
+                var menu = _sysMenuBLL.GetModels(t => t.MenuId.Equals(menuDto.MenuId)).SingleOrDefault();
                 menu.MenuName = menuDto.MenuName;
                 menu.MenuIcon = menuDto.MenuIcon;
                 menu.MenuSort = menuDto.MenuSort;
@@ -106,7 +118,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 menu.MenuUrl = menuDto.MenuUrl;
                 menu.ParentMenuId = menuDto.ParentMenuId.ToString();
                 menu.EditTime = DateTime.Now;
-                bResult = _injection.GetT<ISysMenuBLL>().Update(menu);
+                bResult = _sysMenuBLL.Update(menu);
             }
             return Ok(new ResponseModel
             {
@@ -121,7 +133,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public IActionResult DelMenu(string MenuId)
         {
-            var messageModel = _injection.GetT<ISysMenuBLL>().DelMenu(MenuId);
+            var messageModel = _sysMenuBLL.DelMenu(MenuId);
             return Ok(new ResponseModel
             {
                 RetMsg = messageModel.Message,

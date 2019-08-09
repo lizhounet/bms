@@ -115,7 +115,7 @@ namespace BlogWebApi
             ZhouliDtoMapper.Initialize();
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped(typeof(WholeInjection));
+           // services.AddScoped(typeof(WholeInjection));
             services.AddSingleton(new Zhouli.DAL.DapperContext(strConnection, srtdataBaseType));
             services.AddResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
         }

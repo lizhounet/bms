@@ -25,9 +25,9 @@ namespace Zhouli.DI
     /// <summary>
     /// 依赖注入提供者类
     /// </summary>
-    public class WholeInjection
+    public class WholeInjections
     {
-        public WholeInjection(IHttpContextAccessor httpContextAccessor)
+        public WholeInjections(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;
         }

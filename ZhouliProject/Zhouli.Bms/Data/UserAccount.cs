@@ -10,25 +10,27 @@ namespace ZhouliSystem.Data
     /// <summary>
     /// 关于用户信息的操作
     /// </summary>
-    public  class UserAccount
+    public class UserAccount
     {
-        private WholeInjection _injection;
-        public UserAccount(WholeInjection injection)
+        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly IOptionsSnapshot<CustomConfiguration> _optionsSnapshot;
+        public UserAccount(IHttpContextAccessor contextAccessor, IOptionsSnapshot<CustomConfiguration> optionsSnapshot)
         {
-            _injection = injection;
+            _contextAccessor = contextAccessor;
+            _optionsSnapshot = optionsSnapshot;
         }
         /// <summary>
         /// COOKIE名常量
         /// </summary>
-        private const  string USER_COOKIE_NAME = "UserLogin";
+        private const string USER_COOKIE_NAME = "UserLogin";
         /// <summary>
         /// 得到用户登录数据
         /// </summary>
         /// <returns></returns>
         public SysUser GetUserInfo()
         {
-            var user = _injection.HttpContext.Session.GetSession<SysUser>(USER_COOKIE_NAME);
-            return user == null ? null : user;
+            var user = _contextAccessor.HttpContext.Session.GetSession<SysUser>(USER_COOKIE_NAME);
+            return user ?? null;
         }
         /// <summary>
         /// 登录操作
@@ -37,7 +39,7 @@ namespace ZhouliSystem.Data
         public bool Login(SysUser user)
         {
             user.isAdministrctor = JudgeUserAdmin(user);
-            _injection.HttpContext.Session.SetSession(USER_COOKIE_NAME, user);
+            _contextAccessor.HttpContext.Session.SetSession(USER_COOKIE_NAME, user);
             return true;
         }
         /// <summary>
@@ -47,8 +49,8 @@ namespace ZhouliSystem.Data
         /// <returns></returns>
         public bool JudgeUserAdmin(SysUser user)
         {
-            var adminAccount = _injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value.adminAccount;
-            return user.UserName.Equals(adminAccount) ? true : false;
+            var adminAccount = _optionsSnapshot.Value.adminAccount;
+            return user.UserName.Equals(adminAccount);
         }
     }
 }

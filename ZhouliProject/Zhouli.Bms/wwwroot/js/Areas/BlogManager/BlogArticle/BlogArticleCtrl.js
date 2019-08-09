@@ -22,22 +22,22 @@ require(["jquery", 'layui'], function ($) {
             done: function (res, curr, count) {
                 //如果是异步请求数据方式，res即为你接口返回的信息。
                 //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
-                //console.log(res);
+                console.log(res);
             },
             cols: [[
                 { type: "checkbox", fixed: "left", width: 50 },
                 { field: 'ArticleId', title: 'ID', width: 60, align: "center" },
                 { field: 'ArticleTitle', title: '文章标题', width: 350 },
-                { field: 'newsAuthor', title: '发布者', align: 'center' },
+                { field: 'CreateUser', title: '创建者', align: 'center' },
                 {
                     field: 'newsTop', title: '是否置顶', align: 'center', templet: function (d) {
                         return '<input type="checkbox" name="articleTop" lay-filter="articleTop" lay-skin="switch" lay-text="是|否" ' + d.newsTop + '>';
                     }
                 },
                 {
-                    field: 'CreateTime', title: '发布时间', align: 'center', minWidth: 110}
+                    field: 'CreateTime', title: '创建时间', align: 'center', minWidth: 110
                 },
-            { title: '操作', width: 170, templet: '#blogArticleListBar', fixed: "right", align: "center" }
+                { title: '操作', width: 170, templet: '#blogArticleListBar', fixed: "right", align: "center" }
             ]]
         });
         //搜索【此功能需要后台配合，所以暂时没有动态效果演示】

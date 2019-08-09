@@ -15,12 +15,12 @@ namespace Zhouli.Bms.Controllers
     public class TokenController : Controller
     {
 
-        private readonly WholeInjection _injection;
         private readonly IMemoryCache _cache;
-        public TokenController(WholeInjection injection, IMemoryCache cache)
+        private readonly IConfiguration _configuration;
+        public TokenController(IMemoryCache cache, IConfiguration configuration)
         {
-            _injection = injection;
             _cache = cache;
+            _configuration = configuration;
         }/// <summary>
          /// 获取调用文件服务需要的oken
          /// </summary>
@@ -50,15 +50,14 @@ namespace Zhouli.Bms.Controllers
         }
         private string GetFileServerToken()
         {
-            var configuration = _injection.GetT<IConfiguration>();
             using (var client = new HttpClient())
             {
                 var response = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
                 {
-                    Address = configuration["IdentityFileService:Address"] + "/connect/token",
-                    ClientId = configuration["IdentityFileService:ClientId"],
-                    ClientSecret = configuration["IdentityFileService:ClientSecret"],
-                    Scope = configuration["IdentityFileService:Scope"]
+                    Address = _configuration["IdentityFileService:Address"] + "/connect/token",
+                    ClientId = _configuration["IdentityFileService:ClientId"],
+                    ClientSecret = _configuration["IdentityFileService:ClientSecret"],
+                    Scope = _configuration["IdentityFileService:Scope"]
                 });
                 return $"Bearer {response.Result.AccessToken}";
             }

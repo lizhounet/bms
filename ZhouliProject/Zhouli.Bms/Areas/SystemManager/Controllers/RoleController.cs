@@ -19,10 +19,14 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
     [Area("System")]
     public class RoleController : Controller
     {
-        private readonly WholeInjection _injection;
-        public RoleController(WholeInjection injection)
+        private readonly ISysRoleBLL _sysRoleBLL;
+        private readonly UserAccount _userAccount;
+        private readonly ISysMenuBLL _sysMenuBLL;
+        public RoleController(ISysRoleBLL sysRoleBLL, UserAccount userAccount, ISysMenuBLL sysMenuBLL)
         {
-            _injection = injection;
+            _sysRoleBLL = sysRoleBLL;
+            _userAccount = userAccount;
+            _sysMenuBLL = sysMenuBLL;
         }
         #region 视图部分
         /// <summary>
@@ -66,7 +70,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public IActionResult GetRoleList(string page, string limit, string searchstr)
         {
-            var messageModel = _injection.GetT<ISysRoleBLL>()
+            var messageModel = _sysRoleBLL
                  .GetRoleList(page, limit, searchstr);
             return Ok(new
             {
@@ -88,9 +92,8 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             bool bResult = true;
             string sMessage = "保存成功";
-            var roleBLL = _injection.GetT<ISysRoleBLL>();
             var role = AutoMapper.Mapper.Map<SysRole>(roleDto);
-            if (roleBLL.GetCount(t => t.RoleName.Equals(role.RoleName) && !t.RoleId.Equals(role.RoleId) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)) > 0)
+            if (_sysRoleBLL.GetCount(t => t.RoleName.Equals(role.RoleName) && !t.RoleId.Equals(role.RoleId) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)) > 0)
             {
                 sMessage = "角色名称不能重复";
                 bResult = !bResult;
@@ -102,19 +105,19 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 {
 
                     role.DeleteSign = (Int32)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
-                    role.CreateUserId = _injection.GetT<UserAccount>().GetUserInfo().UserId;
+                    role.CreateUserId = _userAccount.GetUserInfo().UserId;
                     role.CreateTime = DateTime.Now;
-                    bResult = roleBLL.Add(role);
-                    bResult = roleBLL.AddRoleMenu(role.RoleId, objCheckMenus).Result;
+                    bResult = _sysRoleBLL.Add(role);
+                    bResult = _sysRoleBLL.AddRoleMenu(role.RoleId, objCheckMenus).Result;
                 }
                 else//修改
                 {
-                    var userRole_Edit = roleBLL.GetModels(t => t.RoleId.Equals(role.RoleId)).SingleOrDefault();
+                    var userRole_Edit = _sysRoleBLL.GetModels(t => t.RoleId.Equals(role.RoleId)).SingleOrDefault();
                     userRole_Edit.RoleName = role.RoleName;
                     userRole_Edit.EditTime = DateTime.Now;
                     userRole_Edit.Note = role.Note;
-                    bResult = roleBLL.Update(userRole_Edit);
-                    bResult = roleBLL.AddRoleMenu(userRole_Edit.RoleId, objCheckMenus).Result;
+                    bResult = _sysRoleBLL.Update(userRole_Edit);
+                    bResult = _sysRoleBLL.AddRoleMenu(userRole_Edit.RoleId, objCheckMenus).Result;
                 }
             }
             return Ok(new ResponseModel
@@ -134,7 +137,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = _injection.GetT<ISysRoleBLL>().DelRole(RoleId);
+            MessageModel model = _sysRoleBLL.DelRole(RoleId);
             resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.RetMsg = model.Message;
             return Ok(resModel);
@@ -149,9 +152,9 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public IActionResult GetRoleMenuList(string RoleId)
         {
             //用户可以操作的菜单
-            var menuList = (List<SysMenuDto>)(_injection.GetT<ISysMenuBLL>().GetMenusBy(_injection.GetT<UserAccount>().GetUserInfo()).Data);
+            var menuList = (List<SysMenuDto>)(_sysMenuBLL.GetMenusBy(_userAccount.GetUserInfo()).Data);
             //角色所拥有的菜单
-            var roleMenuList = string.IsNullOrEmpty(RoleId) ? new List<SysMenuDto>() : ((List<SysMenuDto>)_injection.GetT<ISysMenuBLL>().GetRoleMenuList(RoleId).Data);
+            var roleMenuList = string.IsNullOrEmpty(RoleId) ? new List<SysMenuDto>() : ((List<SysMenuDto>)_sysMenuBLL.GetRoleMenuList(RoleId).Data);
             return Ok(new ResponseModel
             {
                 Data = new
@@ -165,7 +168,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         #region 获取角色所分配的用户
         public IActionResult GetRoleUserList(string RoleId, string page, string limit, string searchstr)
         {
-            var messageModel = _injection.GetT<ISysRoleBLL>().GetRoleUserList(RoleId, page, limit, searchstr);
+            var messageModel = _sysRoleBLL.GetRoleUserList(RoleId, page, limit, searchstr);
             return Ok(new
             {
                 code = 0,
@@ -184,7 +187,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public IActionResult AssignmentRoleUser(string RoleId, List<string> UserIds)
         {
-            var messageModel = _injection.GetT<ISysRoleBLL>().AssignmentRoleUser(RoleId, UserIds);
+            var messageModel = _sysRoleBLL.AssignmentRoleUser(RoleId, UserIds);
             return Ok(new ResponseModel
             {
                 RetMsg = messageModel.Message,
@@ -200,7 +203,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <param name="UserIds"></param>
         public IActionResult CancelUserAssignment(string RoleId, List<string> UserIds)
         {
-            var messageModel = _injection.GetT<ISysRoleBLL>().CancelUserAssignment(RoleId, UserIds);
+            var messageModel = _sysRoleBLL.CancelUserAssignment(RoleId, UserIds);
             return Ok(new ResponseModel
             {
                 RetMsg = messageModel.Message,
@@ -219,7 +222,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public IActionResult GetRoleUserGroupList(string RoleId, string page, string limit, string searchstr)
         {
-            var messageModel = _injection.GetT<ISysRoleBLL>().GetRoleUserGroupList(RoleId, page, limit, searchstr);
+            var messageModel = _sysRoleBLL.GetRoleUserGroupList(RoleId, page, limit, searchstr);
             return Ok(new
             {
                 code = 0,
@@ -238,7 +241,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public IActionResult AssignmentRoleUserGroup(string RoleId, List<string> UserGroupIds)
         {
-            var messageModel = _injection.GetT<ISysRoleBLL>().AssignmentRoleUserGroup(RoleId, UserGroupIds);
+            var messageModel = _sysRoleBLL.AssignmentRoleUserGroup(RoleId, UserGroupIds);
             return Ok(new ResponseModel
             {
                 RetMsg = messageModel.Message,
@@ -254,7 +257,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <param name="UserGroupIds"></param>
         public IActionResult CancelUserGroupAssignment(string RoleId, List<string> UserGroupIds)
         {
-            var messageModel = _injection.GetT<ISysRoleBLL>().CancelUserGroupAssignment(RoleId, UserGroupIds);
+            var messageModel = _sysRoleBLL.CancelUserGroupAssignment(RoleId, UserGroupIds);
             return Ok(new ResponseModel
             {
                 RetMsg = messageModel.Message,

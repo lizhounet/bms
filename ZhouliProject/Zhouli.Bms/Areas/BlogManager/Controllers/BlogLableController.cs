@@ -16,10 +16,12 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
     [Area("Blog")]
     public class BlogLableController : Controller
     {
-        private readonly WholeInjection _injection;
-        public BlogLableController(WholeInjection injection)
+        private readonly IBlogLableBLL _blogLableBLL;
+        private readonly UserAccount _userAccount;
+        public BlogLableController(IBlogLableBLL blogLableBLL, UserAccount userAccount)
         {
-            _injection = injection;
+            _blogLableBLL = blogLableBLL;
+            _userAccount = userAccount;
         }
         public IActionResult Index()
         {
@@ -39,7 +41,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// <returns></returns>
         public IActionResult GetBlogLableList(string page, string limit, string searchstr)
         {
-            var messageModel = _injection.GetT<IBlogLableBLL>()
+            var messageModel = _blogLableBLL
                  .GetBlogLableList(page, limit, searchstr);
             return Ok(new
             {
@@ -59,7 +61,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         public IActionResult AddorUpdateBlogLable(BlogLableDto bl)
         {
             var resModel = new ResponseModel();
-            MessageModel model = _injection.GetT<IBlogLableBLL>().AddorEditBlogLable(bl, _injection.GetT<UserAccount>().GetUserInfo().UserId);
+            MessageModel model = _blogLableBLL.AddorEditBlogLable(bl, _userAccount.GetUserInfo().UserId);
             resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.RetMsg = model.Message;
             resModel.Data = model.Data;
@@ -76,7 +78,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = _injection.GetT<IBlogLableBLL>().DelBlogLable(blogLableId);
+            MessageModel model = _blogLableBLL.DelBlogLable(blogLableId);
             resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.RetMsg = model.Message;
             return Ok(resModel);

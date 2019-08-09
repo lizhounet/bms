@@ -10,15 +10,17 @@ namespace ZhouliSystem.Components
     [VerificationLogin]
     public class NavigationViewComponent : ViewComponent
     {
-        private readonly WholeInjection _injection;
-        public NavigationViewComponent(WholeInjection injection)
+        private readonly UserAccount _userAccount;
+        private readonly ISysMenuBLL _sysMenuBLL;
+        public NavigationViewComponent(UserAccount userAccount, ISysMenuBLL sysMenuBLL)
         {
-            _injection = injection;
+            _userAccount = userAccount;
+            _sysMenuBLL = sysMenuBLL;
         }
         public IViewComponentResult Invoke()
         {
-            var user = _injection.GetT<UserAccount>().GetUserInfo();
-            var MenuDto = _injection.GetT<ISysMenuBLL>().GetMenusBy(user).Data;
+            var user = _userAccount.GetUserInfo();
+            var MenuDto = _sysMenuBLL.GetMenusBy(user).Data;
             return View(MenuDto);
         }
     }

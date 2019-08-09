@@ -22,10 +22,10 @@ namespace Zhouli.BlogWebApi.Controllers
     [Authorize]
     public class BlogController : Controller
     {
-        private readonly WholeInjection _injection;
-        public BlogController(WholeInjection injection)
+        private readonly IBlogFriendshipLinkBLL _blogFriendshipLinkBLL;
+        public BlogController(IBlogFriendshipLinkBLL blogFriendshipLinkBLL)
         {
-            _injection = injection;
+            _blogFriendshipLinkBLL = blogFriendshipLinkBLL;
         }
         /// <summary>
         /// 测试接口
@@ -44,7 +44,7 @@ namespace Zhouli.BlogWebApi.Controllers
         public async Task<IActionResult> GetFriendly()
         {
             var messageModel = await Task.Run(() =>
-            _injection.GetT<IBlogFriendshipLinkBLL>().GetAuditedFriendshipLinkList());
+            _blogFriendshipLinkBLL.GetAuditedFriendshipLinkList());
             return Ok(new ResponseModel
             {
                 Data = Mapper.Map<List<BlogFriendshipLinkDto>>(messageModel.Data.Data)
@@ -63,7 +63,7 @@ namespace Zhouli.BlogWebApi.Controllers
         {
             var responseModel = new ResponseModel();
             var messageModel = await Task.Run(() =>
-            _injection.GetT<IBlogFriendshipLinkBLL>().AddFriendshipLink(new BlogFriendshipLinkDto
+            _blogFriendshipLinkBLL.AddFriendshipLink(new BlogFriendshipLinkDto
             {
                 FriendshipLinkName = SiteName,
                 FriendshipLinkUrl = SiteUrl,

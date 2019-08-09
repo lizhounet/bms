@@ -9,6 +9,7 @@ using Zhouli.BLL.Interface;
 using Zhouli.CommonEntity;
 using Zhouli.DbEntity.Models;
 using Zhouli.DI;
+using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
 
@@ -18,10 +19,19 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
     [Area("Blog")]
     public class BlogArticleController : Controller
     {
-        private readonly WholeInjection _injection;
-        public BlogArticleController(WholeInjection injection)
+        private readonly IOptionsSnapshot<CustomConfiguration> _optionsSnapshot;
+        private readonly IBlogLableBLL _blogLableBLL;
+        private readonly IBlogArticleBLL _blogArticleBLL;
+        private readonly UserAccount _userAccount;
+        public BlogArticleController(IOptionsSnapshot<CustomConfiguration> optionsSnapshot,
+            IBlogLableBLL blogLableBLL,
+            IBlogArticleBLL blogArticleBLL,
+            UserAccount userAccount)
         {
-            _injection = injection;
+            _optionsSnapshot = optionsSnapshot;
+            _blogLableBLL = blogLableBLL;
+            _blogArticleBLL = blogArticleBLL;
+            _userAccount = userAccount;
         }
         public IActionResult Index()
         {
@@ -29,8 +39,8 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         }
         public IActionResult BlogArticleAdd()
         {
-            ViewBag.FileServiceAdress = _injection.GetT<IOptionsSnapshot<CustomConfiguration>>().Value.FileServiceAdress;
-            ViewBag.ListBlogLable = _injection.GetT<IBlogLableBLL>().GetModels(t => true);
+            ViewBag.FileServiceAdress = _optionsSnapshot.Value.FileServiceAdress;
+            ViewBag.ListBlogLable = _blogLableBLL.GetModels(t => true);
             return View();
         }
         #region 添加博客文章
@@ -42,11 +52,11 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         public IActionResult AddorUpdateBlogArticle(BlogArticleDto blogArticleDto)
         {
             var resModel = new ResponseModel();
-            MessageModel model = _injection.GetT<IBlogArticleBLL>().AddOrUpdateArticlelist(blogArticleDto);
+            MessageModel model = _blogArticleBLL.AddOrUpdateArticlelist(blogArticleDto, _userAccount.GetUserInfo().UserId);
             resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.RetMsg = model.Message;
             resModel.Data = model.Data;
-            return Ok(model);
+            return Ok(resModel);
         }
         #endregion
         /// <summary>
@@ -58,7 +68,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// <returns></returns>
         public IActionResult GetBlogArticlelist(string page, string limit, string searchstr)
         {
-            var messageModel = _injection.GetT<IBlogArticleBLL>()
+            var messageModel = _blogArticleBLL
                 .GetBlogArticlelist(page, limit, searchstr);
             return Ok(new
             {

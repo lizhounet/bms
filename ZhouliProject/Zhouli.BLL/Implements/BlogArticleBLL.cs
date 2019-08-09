@@ -14,13 +14,15 @@ namespace Zhouli.BLL.Implements
     {
         private readonly IBlogArticleDAL _blogArticle;
         private readonly IBlogRelatedDAL _blogRelated;
+        private readonly ISysUserDAL _sysUserDAL;
         /// <summary>
         /// 用于实例化父级，blogArticle
         /// <param name="blogArticle"></param>
-        public BlogArticleBLL(IBlogArticleDAL blogArticle, IBlogRelatedDAL blogRelated) : base(blogArticle)
+        public BlogArticleBLL(IBlogArticleDAL blogArticle, IBlogRelatedDAL blogRelated, ISysUserDAL sysUserDAL) : base(blogArticle)
         {
             this._blogArticle = blogArticle;
             this._blogRelated = blogRelated;
+            this._sysUserDAL = sysUserDAL;
         }
         /// <summary>
         /// 获取文章列表
@@ -31,16 +33,9 @@ namespace Zhouli.BLL.Implements
         /// <returns></returns>
         public MessageModel GetBlogArticlelist(string page, string limit, string searchstr)
         {
-            var query = _blogArticle.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime,
-               t => t.ArticleTitle.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
-               && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
             return new MessageModel
             {
-                Data = new PageModel
-                {
-                    RowCount = query.Count(),
-                    Data = query.ToList()
-                }
+                Data = _blogArticle.GetBlogArticleList(page, limit, searchstr)
             };
         }
         /// <summary>
@@ -48,8 +43,9 @@ namespace Zhouli.BLL.Implements
         /// </summary>
         /// <param name="blogArticleDto"></param>
         /// <returns></returns>
-        public MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto)
+        public MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto, string OnLineUserId)
         {
+            var megModel = new MessageModel();
             var blogArticle = Mapper.Map<BlogArticle>(blogArticleDto);
             //是否置顶
             if (blogArticleDto.ArticleTop)
@@ -57,23 +53,37 @@ namespace Zhouli.BLL.Implements
                 blogArticle.ArticleSortValue = _blogArticle.GetMaxArticleSortValue() + 1;
             }
             blogArticle.CreateTime = DateTime.Now;
+            blogArticle.CreateUserId = OnLineUserId;
             //添加文章
             _blogArticle.Add(blogArticle);
-            _blogArticle.SaveChanges();
-            //添加文章标签关联表
-            foreach (var lableId in blogArticleDto.LableId)
+            if (_blogArticle.SaveChanges())
             {
-                _blogRelated.Add(new BlogRelated
+                //添加文章标签关联表
+                foreach (var lableId in blogArticleDto.LableId)
                 {
-                    RelatedArticleId = blogArticle.ArticleId,
-                    RelatedLableId = lableId
-                });
+                    _blogRelated.Add(new BlogRelated
+                    {
+                        RelatedArticleId = blogArticle.ArticleId,
+                        RelatedLableId = lableId
+                    });
+                }
+                if (_blogRelated.SaveChanges())
+                {
+                    megModel.Message = "文章添加成功";
+                }
+                else
+                {
+                    megModel.Message = "文章添加成功,文章标签添加失败!";
+                    megModel.Result = false;
+                }
             }
-            _blogRelated.SaveChanges();
-            return new MessageModel
+            else
             {
+                megModel.Message = "文章添加失败";
+                megModel.Result = false;
+            }
 
-            };
+            return megModel;
         }
     }
 }

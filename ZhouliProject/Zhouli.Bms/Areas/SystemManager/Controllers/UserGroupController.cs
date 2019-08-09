@@ -19,10 +19,12 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
     [Area("System")]
     public class UserGroupController : Controller
     {
-        private readonly WholeInjection _injection;
-        public UserGroupController(WholeInjection injection)
+        private readonly ISysUserGroupBLL _sysUserGroupBLL;
+        private readonly UserAccount _userAccount;
+        public UserGroupController(ISysUserGroupBLL sysUserGroupBLL, UserAccount userAccount)
         {
-            _injection = injection;
+            _sysUserGroupBLL = sysUserGroupBLL;
+            _userAccount = userAccount;
         }
         public IActionResult Index()
         {
@@ -31,7 +33,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public IActionResult UserGroupAdd(string UserGroupId)
         {
 
-            ViewBag.UserGroupList = _injection.GetT<ISysUserGroupBLL>().GetModels(t => (Guid.Empty.ToString().Equals(UserGroupId) || !t.UserGroupId.Equals(UserGroupId)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+            ViewBag.UserGroupList = _sysUserGroupBLL.GetModels(t => (Guid.Empty.ToString().Equals(UserGroupId) || !t.UserGroupId.Equals(UserGroupId)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
             return View();
         }
         #region 获取分页用户组数据
@@ -44,7 +46,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public IActionResult GetUserGroupList(string page, string limit, string searchstr)
         {
-            var messageModel = _injection.GetT<ISysUserGroupBLL>()
+            var messageModel = _sysUserGroupBLL
                  .GetUserGroupList(page, limit, searchstr);
             return Ok(new
             {
@@ -65,9 +67,8 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             bool bResult = true;
             string sMessage = "保存成功";
-            var userGroupBLL = _injection.GetT<ISysUserGroupBLL>();
             var userGroup = AutoMapper.Mapper.Map<SysUserGroup>(userGroupDto);
-            if (userGroupBLL.GetCount(t => t.UserGroupName.Equals(userGroupDto.UserGroupName) && !t.UserGroupId.Equals(userGroupDto.UserGroupId) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)) > 0)
+            if (_sysUserGroupBLL.GetCount(t => t.UserGroupName.Equals(userGroupDto.UserGroupName) && !t.UserGroupId.Equals(userGroupDto.UserGroupId) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)) > 0)
             {
                 sMessage = "用户组名称不能重复";
                 bResult = !bResult;
@@ -79,19 +80,19 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 {
                     userGroup.CreateTime = DateTime.Now;
                     userGroup.DeleteSign = (Int32)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
-                    userGroup.CreateUserId = _injection.GetT<UserAccount>().GetUserInfo().UserId;
+                    userGroup.CreateUserId = _userAccount.GetUserInfo().UserId;
                     userGroup.CreateTime = DateTime.Now;
-                    bResult = userGroupBLL.Add(userGroup);
+                    bResult = _sysUserGroupBLL.Add(userGroup);
 
                 }
                 else//修改
                 {
-                    var userGroup_Edit = userGroupBLL.GetModels(t => t.UserGroupId.Equals(userGroup.UserGroupId)).SingleOrDefault();
+                    var userGroup_Edit = _sysUserGroupBLL.GetModels(t => t.UserGroupId.Equals(userGroup.UserGroupId)).SingleOrDefault();
                     userGroup_Edit.UserGroupName = userGroup.UserGroupName;
                     userGroup_Edit.ParentUserGroupId = userGroup.ParentUserGroupId;
                     userGroup_Edit.EditTime = DateTime.Now;
                     userGroup_Edit.Note = userGroup.Note;
-                    bResult = userGroupBLL.Update(userGroup_Edit);
+                    bResult = _sysUserGroupBLL.Update(userGroup_Edit);
                 }
             }
             return Ok(new ResponseModel
@@ -111,7 +112,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = _injection.GetT<ISysUserGroupBLL>().DelUserGroup(UserGroupId);
+            MessageModel model = _sysUserGroupBLL.DelUserGroup(UserGroupId);
             resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.RetMsg = model.Message;
             return Ok(resModel);

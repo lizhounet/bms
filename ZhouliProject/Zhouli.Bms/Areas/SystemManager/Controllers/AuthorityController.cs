@@ -18,10 +18,8 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
     [Area("System")]
     public class AuthorityController : Controller
     {
-        private readonly WholeInjection _injection;
-        public AuthorityController(WholeInjection injection)
+        public AuthorityController()
         {
-            _injection = injection;
         }
         public IActionResult Index()
         {

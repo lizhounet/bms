@@ -18,10 +18,9 @@ namespace Zhouli.BLL.Interface
         /// <summary>
         /// лМ╪с/пч╦дндуб
         /// </summary>
-        /// <param name="page"></param>
-        /// <param name="limit"></param>
-        /// <param name="searchstr"></param>
+        /// <param name="blogArticleDto"></param>
+        /// <param name="OnLineUserId"></param>
         /// <returns></returns>
-        MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto);
+        MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto, string OnLineUserId);
     }
 }
