@@ -88,7 +88,7 @@ require(["jquery", 'layui'], function ($) {
                         body.find(".articleSortValue").val(edit.ArticleSortValue);  //排序号
                         body.find(".articleTitle").val(edit.ArticleTitle);  //文章标题
                         body.find(".articleBodySummary").val(edit.ArticleBodySummary);  //内容摘要
-                        body.find(".articleThrink").text(edit.ArticleThrink);    //文章缩略图
+                        body.find(".articleThrink").attr("src", edit.ArticleThrink);    //文章缩略图
                         var lableCheckbox = body.find("input[name='lableId']");
                         for (var j = 0; j < edit.LableId.length; j++) { //数据库返回的需要选中项的值                      
                             for (var i = 0; i < lableCheckbox.length; i++) {//遍历checkbox所有项
@@ -98,13 +98,7 @@ require(["jquery", 'layui'], function ($) {
                             }
                         }
                         body.find("#articleTop")[0].checked = edit.ArticleTop;//是否置顶
-                        //获取文章内容(内容字符太长 没有随列表一起查询出 怕影响效率)
-                        $.get("/Blog/BlogArticle/GetBlogArticleBody", { ArticleId: edit.ArticleId }, function (res) {
-                            if (res.RetCode == 200) {
-                                body.find(".articleBody").text(res.Data);    //文章缩略图
-                            }
-                            form.render();
-                        });
+                        form.render();
                     }
                     setTimeout(function () {
                         layui.layer.tips('点击此处返回文章列表', '.layui-layer-setwin .layui-layer-close', {

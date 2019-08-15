@@ -45,7 +45,12 @@ namespace Zhouli.FileService
                {
                    o.Filters.Add<HttpGlobalExceptionFilter>();
                }
-               ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+               ).SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+               .AddJsonOptions(o =>
+               {
+                   o.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+                   o.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+               });
             services.AddOptions().Configure<CustomConfiguration>(Configuration.GetSection("CustomConfiguration"));
             //配置跨域
             services.AddCors(options => options.AddPolicy("fileServiceCors", builder =>

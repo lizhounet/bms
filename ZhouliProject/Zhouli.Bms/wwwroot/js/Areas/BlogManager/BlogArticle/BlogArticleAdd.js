@@ -11,17 +11,26 @@ require(["jquery", 'layui'], function ($) {
             layedit = layui.layedit,
             laydate = layui.laydate,
             $ = layui.jquery;
+        
         var editIndex = layedit.build("articleBody", {
-            height: 1000,
+            height: 500,
             uploadImage: {
                 url: "/upload",
                 method: "post"
             }
         });
-
+        if ($(".articleId").val() != "") {
+            //获取文章内容(内容字符太长 没有随列表一起查询出 怕影响效率)
+            $.get("/Blog/BlogArticle/GetBlogArticleBody", { ArticleId: $(".articleId").val() }, function (res) {
+                if (res.RetCode == 200) {
+                    layedit.setContent(editIndex, res.Data, false);
+                    //$(".articleBody").val(res.Data);
+                }
+            });
+        }
+        $.ajaxSettings.async = false;
         //获取上传文件token
         var fileAccessToken = "";
-        $.ajaxSettings.async = false;
         $.post("/Token/GetFileServiceToken", function (res) {
             if (res.RetCode != 200) {
                 layer.msg(res.RetMsg);
@@ -45,6 +54,7 @@ require(["jquery", 'layui'], function ($) {
                 FileSpaceType: ""
             },
             done: function (res, index, upload) {
+                console.log(res);
                 if (res.RetCode == 200) {
                     $('.thumbImg').attr('src', res.Data.FileAddress);
                 }
@@ -68,7 +78,6 @@ require(["jquery", 'layui'], function ($) {
             if ($("#articleThrink").attr("src") == "") {
                 layer.msg("请选择文章缩略图");
             }
-            var abstract = layedit.getText(editIndex).substring(0, 50);
             if (data.field.articleBodySummary == "") {
                 //截取文章内容中的一部分文字放入文章摘要
                 data.field.articleBodySummary = layedit.getText(editIndex).substring(0, 50);
