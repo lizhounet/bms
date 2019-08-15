@@ -7,12 +7,14 @@ using Zhouli.DbEntity.Views;
 using System.Linq.Expressions;
 using Zhouli.Dto.ModelDto;
 using Microsoft.Extensions.Configuration;
+using System.Data;
+using Zhouli.Enum;
 
 namespace Zhouli.DAL.Implements
 {
     public class SysUserGroupDAL : BaseDAL<SysUserGroup>, ISysUserGroupDAL
     {
-        public SysUserGroupDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration) { }
+        public SysUserGroupDAL(ZhouLiContext db, IDbConnection dbConnection) : base(db, dbConnection) { }
         #region 获取用户组列表
         /// <summary>
         /// 获取用户组列表
@@ -24,7 +26,7 @@ namespace Zhouli.DAL.Implements
         public PageModel GetUserGroupList(string page, string limit, string searchstr)
         {
             var pageModel = new PageModel();
-            Expression<Func<SysUserGroup, bool>> expression = t => (string.IsNullOrEmpty(searchstr) || t.UserGroupName.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted);
+            Expression<Func<SysUserGroup, bool>> expression = t => (string.IsNullOrEmpty(searchstr) || t.UserGroupName.Contains(searchstr)) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted);
             pageModel.RowCount = GetCount(expression);
             int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
             pageModel.Data = SqlQuery<SysUserGroupDto>($@"

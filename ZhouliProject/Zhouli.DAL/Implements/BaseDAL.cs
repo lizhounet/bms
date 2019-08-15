@@ -15,31 +15,21 @@ namespace Zhouli.DAL.Implements
     {
 
         /// <summary>
+        /// IDbConnection(Dapper使用)
+        /// </summary>
+        protected readonly IDbConnection _dbConnection;
+        /// <summary>
         /// 数据库上下文
         /// </summary>
-        protected readonly IConfiguration _configuration;
         protected readonly DbEntity.Models.ZhouLiContext _db;
         /// <summary>
         /// 构造函数依赖注入
         /// </summary>
         /// <param name="_db"></param>
-        public BaseDAL(DbEntity.Models.ZhouLiContext db, IConfiguration configuration)
+        public BaseDAL(DbEntity.Models.ZhouLiContext db, IDbConnection dbConnection)
         {
             _db = db;
-            _configuration = configuration;
-        }
-        private IDbConnection conn;
-        protected IDbConnection Connection
-        {
-            get
-            {
-                if (_configuration.GetConnectionString("dataBaseType") == "1")
-                    conn = new SqlConnection(_configuration.GetConnectionString("MssqlConnection"));
-                else if (_configuration.GetConnectionString("dataBaseType") == "2")
-                    conn = new MySqlConnection(_configuration.GetConnectionString("MysqlConnection"));
-                conn.Open();
-                return conn;
-            }
+            _dbConnection = dbConnection;
         }
         public void Add(T t)
         {
@@ -56,6 +46,10 @@ namespace Zhouli.DAL.Implements
         public void Delete(IEnumerable<T> t)
         {
             _db.Set<T>().RemoveRange(t);
+        }
+        public void Delete(Expression<Func<T, bool>> WhereLambda)
+        {
+            _db.Set<T>().RemoveRange(_db.Set<T>().Where(WhereLambda));
         }
         public int GetCount(Expression<Func<T, bool>> WhereLambda)
         {
@@ -102,7 +96,7 @@ namespace Zhouli.DAL.Implements
         }
         public IEnumerable<TR> SqlQuery<TR>(string sql)
         {
-            using (var conn = Connection)
+            using (var conn = _dbConnection)
             {
                 return conn.Query<TR>(sql);
             }

@@ -7,6 +7,7 @@ using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.DbEntity.Views;
 using Zhouli.Dto.ModelDto;
+using Zhouli.Enum;
 
 namespace Zhouli.BLL.Implements
 {
@@ -34,7 +35,7 @@ namespace Zhouli.BLL.Implements
             //添加
             if (blogLable.LableId == 0)
             {
-                int intcount = _blogLableDAL.GetCount(t => t.LableName.Equals(blogLable.LableName) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+                int intcount = _blogLableDAL.GetCount(t => t.LableName.Equals(blogLable.LableName) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
                 if (intcount > 0)
                 {
                     messageModel.Message = "博客标签名称已注册";
@@ -44,7 +45,7 @@ namespace Zhouli.BLL.Implements
                 {
                     blogLable.CreateTime = DateTime.Now;
                     blogLable.EditTime = DateTime.Now;
-                    blogLable.DeleteSign = (Int32)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
+                    blogLable.DeleteSign = (Int32)DeleteSign.Sing_Deleted;
                     blogLable.CreateUserId = UserId;
                     if (Add(blogLable))
                     {
@@ -105,13 +106,13 @@ namespace Zhouli.BLL.Implements
         {
             var query = _blogLableDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime,
                 t => t.LableName.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
-                && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+                && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
             return new MessageModel
             {
                 Data = new PageModel
                 {
                     RowCount = _blogLableDAL.GetCount(t => t.LableName.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
-                && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)),
+                && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted)),
                     Data = query.ToList()
                 }
             };

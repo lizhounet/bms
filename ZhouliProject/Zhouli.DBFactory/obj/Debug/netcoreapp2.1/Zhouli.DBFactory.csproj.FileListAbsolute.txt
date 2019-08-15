@@ -1,0 +1,11 @@
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\bin\Debug\netcoreapp2.1\System.Data.SqlClient.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\bin\Debug\netcoreapp2.1\Zhouli.Enum.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\bin\Debug\netcoreapp2.1\System.Data.SqlClient.xml
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\obj\Debug\netcoreapp2.1\Zhouli.DBFactory.csprojAssemblyReference.cache
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\obj\Debug\netcoreapp2.1\Zhouli.DBFactory.csproj.CoreCompileInputs.cache
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\obj\Debug\netcoreapp2.1\Zhouli.DBFactory.AssemblyInfoInputs.cache
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\obj\Debug\netcoreapp2.1\Zhouli.DBFactory.AssemblyInfo.cs
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\bin\Debug\netcoreapp2.1\Zhouli.DBFactory.deps.json
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\bin\Debug\netcoreapp2.1\Zhouli.DBFactory.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\bin\Debug\netcoreapp2.1\Zhouli.Enum.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.DBFactory\obj\Debug\netcoreapp2.1\Zhouli.DBFactory.csproj.CopyComplete

@@ -66,6 +66,7 @@
     <ProjectReference Include="..\Zhouli.Common\Zhouli.Common.csproj" />
     <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
     <ProjectReference Include="..\Zhouli.DI\Zhouli.DI.csproj" />
+    <ProjectReference Include="..\Zhouli.Enum\Zhouli.Enum.csproj" />
   </ItemGroup>
 
   <ItemGroup>

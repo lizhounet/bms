@@ -31,7 +31,16 @@ namespace Zhouli.BLL.Implements
             Dal.Delete(t);
             return Dal.SaveChanges();
         }
-       
+        public bool Delete(IEnumerable<T> t)
+        {
+            Dal.Delete(t);
+            return Dal.SaveChanges();
+        }
+        public bool Delete(Expression<Func<T, bool>> WhereLambda)
+        {
+            Dal.Delete(WhereLambda);
+            return Dal.SaveChanges();
+        }
         public bool Update(T t)
         {
             Dal.Update(t);
@@ -56,6 +65,8 @@ namespace Zhouli.BLL.Implements
         {
             return Dal.GetModelsByPage(pageSize, pageIndex, isAsc, OrderByLambda, WhereLambda).ToList();
         }
+
+       
         //BLL层此方法屏蔽掉,避免BLL层写sql
         //public IEnumerable<T> SqlQuery(string sql)
         //{

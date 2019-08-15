@@ -36,6 +36,8 @@ using System.Threading.Tasks;
 using System;
 using Zhouli.CommonEntity;
 using Microsoft.Extensions.Configuration;
+using System.Data;
+using Zhouli.Enum;
 
 namespace ZhouliSystem.Controllers
 {
@@ -117,7 +119,7 @@ namespace ZhouliSystem.Controllers
             var sysUsers = _sysUserBLL.GetModels(t =>
                 (t.UserName.Equals(username) ||
                 t.UserEmail.Equals(username) ||
-                t.UserPhone.Equals(username) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted))
+                t.UserPhone.Equals(username) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted))
             ).FirstOrDefault();
             if (sysUsers == null)
             {
@@ -126,7 +128,7 @@ namespace ZhouliSystem.Controllers
             }
             else
             {
-                if (sysUsers.UserStatus.Equals((int)ZhouLiEnum.Enum_UserStatus.Status_Discontinuation))
+                if (sysUsers.UserStatus.Equals((int)UserStatus.Status_Discontinuation))
                 {
                     message.RetCode = StatesCode.failure;
                     message.RetMsg = "账户已停用,请联系管理员解除(17783042962)";

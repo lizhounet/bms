@@ -12,6 +12,7 @@ using ZhouliSystem.Models;
 using ZhouliSystem.Filters;
 using Zhouli.Dto.ModelDto;
 using Zhouli.CommonEntity;
+using Zhouli.Enum;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
 {
@@ -93,7 +94,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             bool bResult = true;
             string sMessage = "保存成功";
             var role = AutoMapper.Mapper.Map<SysRole>(roleDto);
-            if (_sysRoleBLL.GetCount(t => t.RoleName.Equals(role.RoleName) && !t.RoleId.Equals(role.RoleId) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)) > 0)
+            if (_sysRoleBLL.GetCount(t => t.RoleName.Equals(role.RoleName) && !t.RoleId.Equals(role.RoleId) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted)) > 0)
             {
                 sMessage = "角色名称不能重复";
                 bResult = !bResult;
@@ -104,7 +105,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 if (string.IsNullOrEmpty(role.RoleId))
                 {
 
-                    role.DeleteSign = (Int32)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
+                    role.DeleteSign = (Int32)DeleteSign.Sing_Deleted;
                     role.CreateUserId = _userAccount.GetUserInfo().UserId;
                     role.CreateTime = DateTime.Now;
                     bResult = _sysRoleBLL.Add(role);

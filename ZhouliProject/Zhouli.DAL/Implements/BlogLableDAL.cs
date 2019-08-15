@@ -10,7 +10,7 @@ namespace Zhouli.DAL.Implements
 {
     public class BlogLableDAL : BaseDAL<BlogLable>, IBlogLableDAL
     {
-        public BlogLableDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration)
+        public BlogLableDAL(ZhouLiContext db, IDbConnection dbConnection) : base(db, dbConnection)
         {
         }
     }

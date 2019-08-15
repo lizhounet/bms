@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Zhouli.DbEntity\Zhouli.DbEntity.csproj" />
     <ProjectReference Include="..\Zhouli.Dto\Zhouli.Dto.csproj" />
+    <ProjectReference Include="..\Zhouli.Enum\Zhouli.Enum.csproj" />
   </ItemGroup>
 
   <ItemGroup>

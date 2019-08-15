@@ -10,7 +10,7 @@ namespace Zhouli.DAL.Implements
 {
     public class DictAuthorityTypeDAL : BaseDAL<DictAuthorityType>, IDictAuthorityTypeDAL
     {
-        public DictAuthorityTypeDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration)
+        public DictAuthorityTypeDAL(ZhouLiContext db, IDbConnection dbConnection) : base(db, dbConnection)
         {
         }
     }

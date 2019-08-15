@@ -50,14 +50,56 @@ namespace Zhouli.BLL.Implements
             //是否置顶
             if (blogArticleDto.ArticleTop)
             {
-                blogArticle.ArticleSortValue = _blogArticle.GetMaxArticleSortValue() + 1;
+                int intMaxArticleSort = _blogArticle.GetMaxArticleSortValue();
+                if (intMaxArticleSort != blogArticle.ArticleSortValue)
+                    blogArticle.ArticleSortValue = intMaxArticleSort + 1;
             }
-            blogArticle.CreateTime = DateTime.Now;
-            blogArticle.CreateUserId = OnLineUserId;
-            //添加文章
-            _blogArticle.Add(blogArticle);
-            if (_blogArticle.SaveChanges())
+            else
+                blogArticle.ArticleSortValue = 0;
+            if (blogArticle.ArticleId == 0)//新增
             {
+                blogArticle.CreateTime = DateTime.Now;
+                blogArticle.CreateUserId = OnLineUserId;
+                //添加文章
+                _blogArticle.Add(blogArticle);
+                if (_blogArticle.SaveChanges())
+                {
+                    //添加文章标签关联表
+                    foreach (var lableId in blogArticleDto.LableId)
+                    {
+                        _blogRelated.Add(new BlogRelated
+                        {
+                            RelatedArticleId = blogArticle.ArticleId,
+                            RelatedLableId = lableId
+                        });
+                    }
+                    if (_blogRelated.SaveChanges())
+                    {
+                        megModel.Message = "文章添加成功";
+                    }
+                    else
+                    {
+                        megModel.Message = "文章添加成功,文章标签添加失败!";
+                        megModel.Result = false;
+                    }
+                }
+                else
+                {
+                    megModel.Message = "文章添加失败";
+                    megModel.Result = false;
+                }
+            }
+            else
+            {
+                var blogArticleUpdate = _blogArticle.GetModels(t => t.ArticleId == blogArticle.ArticleId).First();
+                blogArticleUpdate.ArticleTitle = blogArticle.ArticleTitle;
+                blogArticleUpdate.ArticleThrink = blogArticle.ArticleThrink;
+                blogArticleUpdate.ArticleBody = blogArticle.ArticleBody;
+                blogArticleUpdate.ArticleBodySummary = blogArticle.ArticleBodySummary;
+                blogArticleUpdate.ArticleSortValue = blogArticle.ArticleSortValue;
+                blogArticleUpdate.EditTime = DateTime.Now;
+                _blogArticle.Update(blogArticleUpdate);
+                _blogRelated.Delete(t => t.RelatedArticleId == blogArticle.ArticleId);
                 //添加文章标签关联表
                 foreach (var lableId in blogArticleDto.LableId)
                 {
@@ -69,21 +111,26 @@ namespace Zhouli.BLL.Implements
                 }
                 if (_blogRelated.SaveChanges())
                 {
-                    megModel.Message = "文章添加成功";
+                    megModel.Message = "文章修改成功";
                 }
                 else
                 {
-                    megModel.Message = "文章添加成功,文章标签添加失败!";
+                    megModel.Message = "文章修改成功";
                     megModel.Result = false;
                 }
             }
-            else
-            {
-                megModel.Message = "文章添加失败";
-                megModel.Result = false;
-            }
-
             return megModel;
+        }
+        /// <summary>
+        /// 获取文章最大排序值
+        /// </summary>
+        /// <returns></returns>
+        public MessageModel GetMaxArticleSortValue()
+        {
+            return new MessageModel
+            {
+                Data = _blogArticle.GetMaxArticleSortValue()
+            };
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Zhouli.DAL.Implements
 {
    public class BlogNavigationImgDAL : BaseDAL<BlogNavigationImg>, IBlogNavigationImgDAL
     {
-        public BlogNavigationImgDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration)
+        public BlogNavigationImgDAL(ZhouLiContext db, IDbConnection dbConnection) : base(db, dbConnection)
         {
         }
     }

@@ -10,6 +10,7 @@ using System.Text;
 using AutoMapper;
 using Zhouli.Dto.ModelDto;
 using Zhouli.Common;
+using Zhouli.Enum;
 
 namespace Zhouli.BLL.Implements
 {
@@ -54,7 +55,7 @@ namespace Zhouli.BLL.Implements
                 t.UserPhone.Contains(searchstr) ||
                 t.UserQq.Contains(searchstr) ||
                 t.UserWx.Contains(searchstr) ||
-                t.UserEmail.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted);
+                t.UserEmail.Contains(searchstr)) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted);
             PageModel.RowCount = usersDAL.GetCount(expression);
             //int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
             //var list = usersDAL.SqlQuery<SysUserDto>($@"
@@ -92,7 +93,7 @@ namespace Zhouli.BLL.Implements
             {
                 int intcount = usersDAL.GetCount(t => (t.UserName.Equals(user.UserName) ||
                 t.UserEmail.Equals(user.UserEmail) ||
-                t.UserPhone.Equals(user.UserPhone)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+                t.UserPhone.Equals(user.UserPhone)) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
                 if (intcount > 0)
                 {
                     messageModel.Message = "用户名或手机号或邮箱已经被注册";
@@ -159,7 +160,7 @@ namespace Zhouli.BLL.Implements
             var sysUsers = usersDAL.GetModels(t => UserId.Any(a => a.Equals(t.UserId)));
             foreach (var item in sysUsers)
             {
-                item.DeleteSign = (int)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted;
+                item.DeleteSign = (int)DeleteSign.Sign_Undeleted;
                 item.EditTime = DateTime.Now;
             }
             bool bResult = usersDAL.SaveChanges();

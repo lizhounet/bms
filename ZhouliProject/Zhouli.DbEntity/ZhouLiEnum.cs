@@ -24,7 +24,7 @@ namespace Zhouli.DbEntity.Models
     /// <summary>
     /// 此类包含了项目所有枚举
     /// </summary>
-    public static class ZhouLiEnum
+    public static class ZhouLiEnumd
     {
 
         #region 用户状态
@@ -95,7 +95,7 @@ namespace Zhouli.DbEntity.Models
             Girl = 2
         }
         #endregion
-        #region 
+        #region 是否审核 
         /// <summary>
         /// 是否审核
         /// </summary>
@@ -111,6 +111,17 @@ namespace Zhouli.DbEntity.Models
             /// </summary>
             [Description("未审核")]
             Unreviewed = 0
+        }
+        #endregion
+        #region 数据库类型
+        /// <summary>
+        /// 数据库类型
+        /// </summary>
+        public enum Enum_DataBaseType
+        {
+            Oracle,
+            SqlServer,
+            MySql
         }
         #endregion
 

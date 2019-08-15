@@ -28,6 +28,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Zhouli.BlogWebApi.Data;
+using Zhouli.Common.Expansion;
 using Zhouli.CommonEntity;
 
 namespace Zhouli.BlogWebApi.Filters
@@ -61,11 +62,18 @@ namespace Zhouli.BlogWebApi.Filters
             //记录错误日志
             Log4netHelper.Error(typeof(HttpGlobalExceptionFilter), context.Exception);
             // context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            context.Result = new JsonResult(new ResponseModel
+            if (context.HttpContext.Request.IsAjax())
             {
-                RetCode = StatesCode.failure,
-                RetMsg = "文件服务器出现故障啦,请联系管理员查看错误日志!"
-            });
+                context.Result = new JsonResult(new ResponseModel
+                {
+                    RetCode = StatesCode.failure,
+                    RetMsg = "服务器出现故障啦,请联系管理员查看错误日志!"
+                });
+            }
+            else
+            {
+                context.Result = new RedirectResult("/home/error");
+            }
             //代表错误已经被处理了
             context.ExceptionHandled = true;
         }

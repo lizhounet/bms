@@ -12,6 +12,7 @@ using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
 using Zhouli.CommonEntity;
+using Zhouli.Enum;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
 {
@@ -33,7 +34,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public IActionResult UserGroupAdd(string UserGroupId)
         {
 
-            ViewBag.UserGroupList = _sysUserGroupBLL.GetModels(t => (Guid.Empty.ToString().Equals(UserGroupId) || !t.UserGroupId.Equals(UserGroupId)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+            ViewBag.UserGroupList = _sysUserGroupBLL.GetModels(t => (Guid.Empty.ToString().Equals(UserGroupId) || !t.UserGroupId.Equals(UserGroupId)) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
             return View();
         }
         #region 获取分页用户组数据
@@ -68,7 +69,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
             bool bResult = true;
             string sMessage = "保存成功";
             var userGroup = AutoMapper.Mapper.Map<SysUserGroup>(userGroupDto);
-            if (_sysUserGroupBLL.GetCount(t => t.UserGroupName.Equals(userGroupDto.UserGroupName) && !t.UserGroupId.Equals(userGroupDto.UserGroupId) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)) > 0)
+            if (_sysUserGroupBLL.GetCount(t => t.UserGroupName.Equals(userGroupDto.UserGroupName) && !t.UserGroupId.Equals(userGroupDto.UserGroupId) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted)) > 0)
             {
                 sMessage = "用户组名称不能重复";
                 bResult = !bResult;
@@ -79,7 +80,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                 if (userGroupDto.UserGroupId == null)
                 {
                     userGroup.CreateTime = DateTime.Now;
-                    userGroup.DeleteSign = (Int32)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
+                    userGroup.DeleteSign = (Int32)DeleteSign.Sing_Deleted;
                     userGroup.CreateUserId = _userAccount.GetUserInfo().UserId;
                     userGroup.CreateTime = DateTime.Now;
                     bResult = _sysUserGroupBLL.Add(userGroup);

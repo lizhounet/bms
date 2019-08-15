@@ -1113,7 +1113,8 @@
         "dependencies": {
           "Zhouli.Common": "1.0.0",
           "Zhouli.DAL": "1.0.0",
-          "Zhouli.DbEntity": "1.0.0"
+          "Zhouli.DbEntity": "1.0.0",
+          "Zhouli.Enum": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Zhouli.BLL.dll": {}
@@ -1143,7 +1144,8 @@
         "dependencies": {
           "Dapper": "1.50.5",
           "Zhouli.DbEntity": "1.0.0",
-          "Zhouli.Dto": "1.0.0"
+          "Zhouli.Dto": "1.0.0",
+          "Zhouli.Enum": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Zhouli.DAL.dll": {}
@@ -1179,6 +1181,16 @@
         },
         "runtime": {
           "bin/placeholder/Zhouli.Dto.dll": {}
+        }
+      },
+      "Zhouli.Enum/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.1",
+        "compile": {
+          "bin/placeholder/Zhouli.Enum.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Zhouli.Enum.dll": {}
         }
       }
     }
@@ -4090,6 +4102,11 @@
       "type": "project",
       "path": "../Zhouli.Dto/Zhouli.Dto.csproj",
       "msbuildProject": "../Zhouli.Dto/Zhouli.Dto.csproj"
+    },
+    "Zhouli.Enum/1.0.0": {
+      "type": "project",
+      "path": "../Zhouli.Enum/Zhouli.Enum.csproj",
+      "msbuildProject": "../Zhouli.Enum/Zhouli.Enum.csproj"
     }
   },
   "projectFileDependencyGroups": {

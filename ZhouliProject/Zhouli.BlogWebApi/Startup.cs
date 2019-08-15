@@ -14,12 +14,17 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.IdentityModel.Tokens;
+using MySql.Data.MySqlClient;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using Zhouli.BlogWebApi.Filters;
 using Zhouli.DbEntity.ModelDto;
 using Zhouli.DI;
+using Zhouli.Enum;
 
 namespace BlogWebApi
 {
@@ -37,19 +42,20 @@ namespace BlogWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             // 数据库连接字符串
-            var srtdataBaseType = Configuration.GetConnectionString("dataBaseType");
-            var strConnection = "";
-            switch (srtdataBaseType)
+            var srtdataBaseType = Configuration.GetConnectionString("DataBaseType");
+            var strConnection = Configuration.GetConnectionString("ConnectionString");
+            //注入数据访问对象
+            switch (Enum.Parse(typeof(DataBaseType), srtdataBaseType))
             {
-                case "1":
-                    strConnection = Configuration.GetConnectionString("MssqlConnection");
+                case DataBaseType.SqlServer:
                     services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(strConnection, b => b.UseRowNumberForPaging()),
                ServiceLifetime.Scoped);
+                    services.AddScoped<IDbConnection, SqlConnection>(t => new SqlConnection(strConnection));
                     break;
-                case "2":
-                    strConnection = Configuration.GetConnectionString("MysqlConnection");
+                case DataBaseType.MySql:
                     services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseMySql(strConnection),
               ServiceLifetime.Scoped);
+                    services.AddScoped<IDbConnection, MySqlConnection>(t => new MySqlConnection(strConnection));
                     break;
             }
             services.AddMvc()
@@ -116,7 +122,6 @@ namespace BlogWebApi
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
            // services.AddScoped(typeof(WholeInjection));
-            services.AddSingleton(new Zhouli.DAL.DapperContext(strConnection, srtdataBaseType));
             services.AddResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

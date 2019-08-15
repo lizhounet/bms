@@ -7,6 +7,7 @@ using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.DbEntity.Views;
 using Zhouli.Dto.ModelDto;
+using Zhouli.Enum;
 
 namespace Zhouli.BLL.Implements
 {
@@ -35,7 +36,7 @@ namespace Zhouli.BLL.Implements
         {
             var query = _blogFriendshipLinkDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime,
                 t => t.FriendshipLinkName.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
-                && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+                && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
             return new MessageModel
             {
                 Data = new PageModel
@@ -59,7 +60,7 @@ namespace Zhouli.BLL.Implements
             if (friendshipLink.FriendshipLinkId == 0)
             {
                 int intcount = _blogFriendshipLinkDAL.GetCount(t => t.FriendshipLinkUrl.Equals(friendshipLink.FriendshipLinkUrl)
-                && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+                && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
                 if (intcount > 0)
                 {
                     messageModel.Message = "已经有该站点";
@@ -69,9 +70,9 @@ namespace Zhouli.BLL.Implements
                 {
                     friendshipLink.CreateTime = DateTime.Now;
                     friendshipLink.EditTime = DateTime.Now;
-                    friendshipLink.DeleteSign = (int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
+                    friendshipLink.DeleteSign = (int)DeleteSign.Sing_Deleted;
                     friendshipLink.CreateUserId = UserId;
-                    friendshipLink.FriendshipLinkSfsh = (int)ZhouLiEnum.Enum_Sfsh.Audited;
+                    friendshipLink.FriendshipLinkSfsh = (int)Sfsh.Audited;
                     if (Add(friendshipLink))
                     {
                         messageModel.Message = "添加成功";
@@ -131,7 +132,7 @@ namespace Zhouli.BLL.Implements
             var messageModel = new MessageModel();
             var friendshipLink = Mapper.Map<BlogFriendshipLink>(blog);
             int intcount = _blogFriendshipLinkDAL.GetCount(t => t.FriendshipLinkUrl.Equals(friendshipLink.FriendshipLinkUrl)
-                 && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+                 && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
             if (intcount > 0)
             {
                 messageModel.Message = "已经有该站点";
@@ -141,9 +142,9 @@ namespace Zhouli.BLL.Implements
             {
                 friendshipLink.CreateTime = DateTime.Now;
                 friendshipLink.EditTime = DateTime.Now;
-                friendshipLink.DeleteSign = (int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted;
+                friendshipLink.DeleteSign = (int)DeleteSign.Sing_Deleted;
                 friendshipLink.CreateUserId = Guid.Empty.ToString();
-                friendshipLink.FriendshipLinkSfsh = (int)ZhouLiEnum.Enum_Sfsh.Unreviewed;
+                friendshipLink.FriendshipLinkSfsh = (int)Sfsh.Unreviewed;
                 if (Add(friendshipLink))
                 {
                     messageModel.Message = "添加成功";
@@ -163,8 +164,8 @@ namespace Zhouli.BLL.Implements
         public MessageModel GetAuditedFriendshipLinkList()
         {
 
-            var query = _blogFriendshipLinkDAL.GetModels(t => t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)
-            && t.FriendshipLinkSfsh.Equals((int)ZhouLiEnum.Enum_Sfsh.Audited));
+            var query = _blogFriendshipLinkDAL.GetModels(t => t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted)
+            && t.FriendshipLinkSfsh.Equals((int)Sfsh.Audited));
             return new MessageModel
             {
                 Data = new PageModel
@@ -179,7 +180,7 @@ namespace Zhouli.BLL.Implements
         {
             var messageModel = new MessageModel();
             var edit = GetModels(t => t.FriendshipLinkId == FriendshipLinkId).SingleOrDefault();
-            edit.FriendshipLinkSfsh = (int)ZhouLiEnum.Enum_Sfsh.Audited;
+            edit.FriendshipLinkSfsh = (int)Sfsh.Audited;
             edit.EditTime = DateTime.Now;
             if (Update(edit))
             {

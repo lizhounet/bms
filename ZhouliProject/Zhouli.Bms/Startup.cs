@@ -10,11 +10,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using Zhouli.DbEntity.ModelDto;
 using Zhouli.DI;
+using Zhouli.Enum;
 using ZhouliSystem.Data;
 using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
@@ -35,21 +37,21 @@ namespace ZhouliSystem
         public void ConfigureServices(IServiceCollection services)
         {
             // 数据库连接字符串
-            var srtdataBaseType = Configuration.GetConnectionString("dataBaseType");
-            var strConnection = "";
+            var srtdataBaseType = Configuration.GetConnectionString("DataBaseType");
+            var strConnection = Configuration.GetConnectionString("ConnectionString");
             #region 框架的配置关系
-            //注入ef对象
-            switch (srtdataBaseType)
+            //注入数据访问对象
+            switch (Enum.Parse(typeof(DataBaseType), srtdataBaseType))
             {
-                case "1":
-                    strConnection = Configuration.GetConnectionString("MssqlConnection");
+                case DataBaseType.SqlServer:
                     services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(strConnection, b => b.UseRowNumberForPaging()),
                ServiceLifetime.Scoped);
+                    services.AddScoped<IDbConnection, SqlConnection>(t => new SqlConnection(strConnection));
                     break;
-                case "2":
-                    strConnection = Configuration.GetConnectionString("MysqlConnection");
+                case DataBaseType.MySql:
                     services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseMySql(strConnection),
               ServiceLifetime.Scoped);
+                    services.AddScoped<IDbConnection, MySqlConnection>(t => new MySqlConnection(strConnection));
                     break;
             }
             //添加session依赖
@@ -70,6 +72,7 @@ namespace ZhouliSystem
             });
             //MemoryCache缓存
             services.AddMemoryCache();
+            services.AddHttpClient();
             //mvc框架 
             services.AddMvc(o =>
             {

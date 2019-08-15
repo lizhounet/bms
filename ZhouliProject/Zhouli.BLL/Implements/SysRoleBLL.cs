@@ -9,6 +9,7 @@ using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.DbEntity.Views;
 using Zhouli.Dto.ModelDto;
+using Zhouli.Enum;
 
 namespace Zhouli.BLL.Implements
 {
@@ -49,7 +50,7 @@ namespace Zhouli.BLL.Implements
             foreach (var item in sysRoles)
             {
                 //逻辑删除角色
-                item.DeleteSign = (int)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted;
+                item.DeleteSign = (int)DeleteSign.Sign_Undeleted;
                 item.DeleteTime = DateTime.Now;
                 sysRoleDAL.Update(item);
             }
@@ -72,7 +73,7 @@ namespace Zhouli.BLL.Implements
         {
             var query = sysRoleDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime,
                 t => t.RoleName.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
-                && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+                && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
             return new MessageModel
             {
                 Data = new PageModel
@@ -115,7 +116,7 @@ namespace Zhouli.BLL.Implements
                 t.UserPhone.Contains(searchstr) ||
                 t.UserQq.Contains(searchstr) ||
                 t.UserWx.Contains(searchstr) ||
-                t.UserEmail.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)
+                t.UserEmail.Contains(searchstr)) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted)
                 && urRelateds.Any(x => x.UserId == t.UserId);
             PageModel.RowCount = sysUserDAL.GetCount(expression);
             var list = sysUserDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime, expression).ToList();
@@ -180,7 +181,7 @@ namespace Zhouli.BLL.Implements
             var PageModel = new PageModel();
             var urRelateds = sysUgrRelatedDAL.GetModels(t => t.RoleId.Equals(RoleId));
             Expression<Func<SysUserGroup, bool>> expression = t => (string.IsNullOrEmpty(searchstr) ||
-                t.UserGroupName.Contains(searchstr)) && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted)
+                t.UserGroupName.Contains(searchstr)) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted)
                 && urRelateds.Any(x => x.UserGroupId == t.UserGroupId);
             PageModel.RowCount = sysUserGroupDAL.GetCount(expression);
             var list = sysUserGroupDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime, expression);

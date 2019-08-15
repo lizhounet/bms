@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Zhouli.DbEntity.Models;
+using Zhouli.Enum;
 
 namespace Zhouli.BLL.Interface
 {
@@ -16,13 +17,13 @@ namespace Zhouli.BLL.Interface
         /// <param name="user">当前登陆用户</param>
         /// <param name="authorityType">权限类型</param>
         /// <returns></returns>
-        MessageModel GetSysAuthorities(SysUser user, ZhouLiEnum.Enum_AuthorityType authorityType);
+        MessageModel GetSysAuthorities(SysUser user, AuthorityType authorityType);
         /// <summary>
         /// 获取角色的权限集合
         /// </summary>
         /// <param name="RoleId">角色Id</param>
         /// <param name="authorityType">权限类型</param>
         /// <returns></returns>
-        MessageModel GetRoleAuthoritieList(string RoleId, ZhouLiEnum.Enum_AuthorityType authorityType);
+        MessageModel GetRoleAuthoritieList(string RoleId, AuthorityType authorityType);
     }
 }

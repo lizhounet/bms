@@ -22,5 +22,10 @@ namespace Zhouli.BLL.Interface
         /// <param name="OnLineUserId"></param>
         /// <returns></returns>
         MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto, string OnLineUserId);
+        /// <summary>
+        /// 获取文章最大排序值
+        /// </summary>
+        /// <returns></returns>
+        MessageModel GetMaxArticleSortValue();
     }
 }

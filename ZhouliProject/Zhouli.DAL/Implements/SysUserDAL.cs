@@ -12,7 +12,7 @@ namespace Zhouli.DAL.Implements
 {
     public class SysUserDAL : BaseDAL<SysUser>, ISysUserDAL
     {
-        public SysUserDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration) { }
+        public SysUserDAL(ZhouLiContext db, IDbConnection dbConnection) : base(db, dbConnection) { }
 
         #region 设置登录用户的用户组,角色信息
         /// <summary>

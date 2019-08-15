@@ -9,7 +9,7 @@ using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.DbEntity.Views;
 using Zhouli.Dto.ModelDto;
-
+using Zhouli.Enum;
 
 namespace Zhouli.BLL.Implements
 {
@@ -53,7 +53,7 @@ namespace Zhouli.BLL.Implements
             var sysUserGroups = userGroupDAL.GetModels(t => UserGroupId.Any(a => a.Equals(t.UserGroupId)));
             foreach (var item in sysUserGroups)
             {
-                item.DeleteSign = (int)ZhouLiEnum.Enum_DeleteSign.Sign_Undeleted;
+                item.DeleteSign = (int)DeleteSign.Sign_Undeleted;
                 item.EditTime = DateTime.Now;
                 userGroupDAL.Update(item);
             }

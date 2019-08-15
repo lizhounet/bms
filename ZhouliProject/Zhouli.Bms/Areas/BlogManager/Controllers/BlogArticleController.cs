@@ -23,15 +23,18 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         private readonly IBlogLableBLL _blogLableBLL;
         private readonly IBlogArticleBLL _blogArticleBLL;
         private readonly UserAccount _userAccount;
+        private readonly IBlogRelatedBLL _blogRelatedBLL;
         public BlogArticleController(IOptionsSnapshot<CustomConfiguration> optionsSnapshot,
             IBlogLableBLL blogLableBLL,
             IBlogArticleBLL blogArticleBLL,
-            UserAccount userAccount)
+            UserAccount userAccount,
+            IBlogRelatedBLL blogRelatedBLL)
         {
             _optionsSnapshot = optionsSnapshot;
             _blogLableBLL = blogLableBLL;
             _blogArticleBLL = blogArticleBLL;
             _userAccount = userAccount;
+            _blogRelatedBLL = blogRelatedBLL;
         }
         public IActionResult Index()
         {
@@ -59,6 +62,7 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
             return Ok(resModel);
         }
         #endregion
+        #region 获取文章列表
         /// <summary>
         /// 获取文章列表
         /// </summary>
@@ -78,5 +82,68 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
                 data = messageModel.Data.Data
             });
         }
+        #endregion
+        #region 获取文章内容
+        /// <summary>
+        /// 获取文章内容
+        /// </summary>
+        /// <param name="ArticleId"></param>
+        /// <returns></returns>
+        public IActionResult GetBlogArticleBody(int ArticleId)
+        {
+            return Ok(new ResponseModel
+            {
+                Data = _blogArticleBLL.GetModels(t => t.ArticleId == ArticleId).First().ArticleBody
+            });
+        }
+        #endregion
+        #region 删除文章
+        /// <summary>
+        /// 删除文章
+        /// </summary>
+        /// <param name="articleId">文章id</param>
+        /// <returns></returns>
+        public IActionResult DeleteBlogArticle(List<int> ArticleId)
+        {
+            var responseModel = new ResponseModel();
+            if (_blogArticleBLL.Delete(t => ArticleId.Contains(t.ArticleId)) && _blogRelatedBLL.Delete(t => ArticleId.Contains(t.RelatedArticleId)))
+            {
+                responseModel.RetMsg = "删除成功";
+            }
+            else
+            {
+                responseModel.RetMsg = "删除失败";
+                responseModel.RetCode = StatesCode.failure;
+            }
+            return Ok(responseModel);
+        }
+        #endregion
+        #region 置顶/取消置顶 文章
+        /// <summary>
+        /// 置顶/取消置顶 文章
+        /// </summary>
+        /// <param name="ArticleId">文章id</param>
+        /// <param name="ArticleTop">是否置顶</param>
+        /// <returns></returns>
+        public IActionResult IsBlogArticleTop(int ArticleId, bool ArticleTop)
+        {
+            var responseModel = new ResponseModel();
+            var blogArticle = _blogArticleBLL.GetModels(t => t.ArticleId == ArticleId).First();
+            //获取所有文章最大排序值
+            var intMaxArticleSort = _blogArticleBLL.GetMaxArticleSortValue().Data;
+            blogArticle.ArticleSortValue = ArticleTop ? intMaxArticleSort + 1 : 0;
+            blogArticle.EditTime = DateTime.Now;
+            if (_blogArticleBLL.Update(blogArticle))
+            {
+                responseModel.RetMsg = ArticleTop ? "置顶成功" : "取消置顶成功";
+            }
+            else
+            {
+                responseModel.RetCode = StatesCode.failure;
+                responseModel.RetMsg = ArticleTop ? "置顶失败" : "取消置顶失败";
+            }
+            return Ok(responseModel);
+        }
+        #endregion 
     }
 }

@@ -17,10 +17,12 @@ namespace Zhouli.Bms.Controllers
 
         private readonly IMemoryCache _cache;
         private readonly IConfiguration _configuration;
-        public TokenController(IMemoryCache cache, IConfiguration configuration)
+        private readonly IHttpClientFactory _httpClientFactory;
+        public TokenController(IMemoryCache cache, IConfiguration configuration, IHttpClientFactory httpClientFactory)
         {
             _cache = cache;
             _configuration = configuration;
+            _httpClientFactory = httpClientFactory;
         }/// <summary>
          /// 获取调用文件服务需要的oken
          /// </summary>
@@ -50,17 +52,15 @@ namespace Zhouli.Bms.Controllers
         }
         private string GetFileServerToken()
         {
-            using (var client = new HttpClient())
+            var client = _httpClientFactory.CreateClient();
+            var response = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
             {
-                var response = client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-                {
-                    Address = _configuration["IdentityFileService:Address"] + "/connect/token",
-                    ClientId = _configuration["IdentityFileService:ClientId"],
-                    ClientSecret = _configuration["IdentityFileService:ClientSecret"],
-                    Scope = _configuration["IdentityFileService:Scope"]
-                });
-                return $"Bearer {response.Result.AccessToken}";
-            }
+                Address = _configuration["IdentityFileService:Address"] + "/connect/token",
+                ClientId = _configuration["IdentityFileService:ClientId"],
+                ClientSecret = _configuration["IdentityFileService:ClientSecret"],
+                Scope = _configuration["IdentityFileService:Scope"]
+            });
+            return $"Bearer {response.Result.AccessToken}";
         }
     }
 }

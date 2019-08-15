@@ -8,12 +8,13 @@ using Microsoft.Extensions.Configuration;
 using System.Linq;
 using Zhouli.DbEntity.Views;
 using System.Linq.Expressions;
+using Zhouli.Enum;
 
 namespace Zhouli.DAL.Implements
 {
     public class BlogArticleDAL : BaseDAL<BlogArticle>, IBlogArticleDAL
     {
-        public BlogArticleDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration)
+        public BlogArticleDAL(ZhouLiContext db, IDbConnection dbConnection) : base(db, dbConnection)
         {
         }
         /// <summary>
@@ -26,10 +27,10 @@ namespace Zhouli.DAL.Implements
         public PageModel GetBlogArticleList(string page, string limit, string searchstr)
         {
             Expression<Func<BlogArticle, bool>> expression = t => t.ArticleTitle.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
-                && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted);
+                && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted);
             var query = GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime,
                t => t.ArticleTitle.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
-               && t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+               && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
             var list = from blogArticle in query
                        join user in _db.SysUser
                        on blogArticle.CreateUserId equals user.UserId
@@ -39,9 +40,13 @@ namespace Zhouli.DAL.Implements
                        {
                            blogArticle.ArticleTitle,
                            blogArticle.ArticleThrink,
+                           blogArticle.ArticleBodySummary,
                            blogArticle.ArticleId,
                            blogArticle.CreateTime,
-                           CreateUser = tt.UserNikeName
+                           blogArticle.ArticleSortValue,
+                           ArticleTop = blogArticle.ArticleSortValue == GetMaxArticleSortValue(),
+                           CreateUser = tt.UserNikeName,
+                           LableId = _db.BlogRelated.Where(t => t.RelatedArticleId.Equals(blogArticle.ArticleId)).Select(t => t.RelatedLableId)
                        };
             return new PageModel
             {

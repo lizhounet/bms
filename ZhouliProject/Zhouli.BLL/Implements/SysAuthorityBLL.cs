@@ -6,6 +6,7 @@ using System.Text;
 using Zhouli.BLL.Interface;
 using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
+using Zhouli.Enum;
 
 namespace Zhouli.BLL.Implements
 {
@@ -28,7 +29,7 @@ namespace Zhouli.BLL.Implements
         /// <param name="RoleId">角色Id</param>
         /// <param name="authorityType">权限类型</param>
         /// <returns></returns>
-        public MessageModel GetRoleAuthoritieList(string RoleId, ZhouLiEnum.Enum_AuthorityType authorityType)
+        public MessageModel GetRoleAuthoritieList(string RoleId, AuthorityType authorityType)
         {
             var RoleList = sysRoleBLL.GetModels(t => t.RoleId.Equals(RoleId));
             return new MessageModel
@@ -42,7 +43,7 @@ namespace Zhouli.BLL.Implements
         /// <param name="user"></param>
         /// <param name="authorityType"></param>
         /// <returns></returns>
-        public MessageModel GetSysAuthorities(SysUser user, ZhouLiEnum.Enum_AuthorityType authorityType)
+        public MessageModel GetSysAuthorities(SysUser user, AuthorityType authorityType)
         {
             List<SysRole> roles = new List<SysRole>(user.sysRoles);
             if (user.sysUserGroup != null)

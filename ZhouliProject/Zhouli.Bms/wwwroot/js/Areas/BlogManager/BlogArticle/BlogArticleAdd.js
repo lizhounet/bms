@@ -12,9 +12,10 @@ require(["jquery", 'layui'], function ($) {
             laydate = layui.laydate,
             $ = layui.jquery;
         var editIndex = layedit.build("articleBody", {
+            height: 1000,
             uploadImage: {
                 url: "/upload",
-                method: "post",
+                method: "post"
             }
         });
 
@@ -77,15 +78,18 @@ require(["jquery", 'layui'], function ($) {
                 arr[i] = $(this).val();
             });
             data.field.lableId = arr;
+            console.log(data.field);
             //弹出loading
             var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: 5000, shade: 0.8 });
             $.post("/blog/blogarticle/addorupdateblogarticle", {
+                articleId: data.field.articleId,//文章id
                 articleTitle: data.field.articleTitle,  //文章标题
+                articleSortValue: data.field.articleSortValue,
                 articleBodySummary: data.field.articleBodySummary,  //文章摘要
                 articleBody: data.field.content,  //文章内容
                 articleThrink: $("#articleThrink").attr("src"),  //缩略图
                 LableId: data.field.lableId,//所选标签
-                articleTop: data.field.articleTop == "on" ? "true" : "false"    //是否置顶
+                articleTop: data.field.articleTop == "on" ? "true" : "false"  //是否置顶
             }, function (res) {
                 top.layer.close(index);
                 layer.closeAll("iframe");

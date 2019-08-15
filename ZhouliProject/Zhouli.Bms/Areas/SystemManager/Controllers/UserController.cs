@@ -13,6 +13,7 @@ using ZhouliSystem.Filters;
 using ZhouliSystem.Models;
 using ZhouliSystem.Data;
 using Zhouli.CommonEntity;
+using Zhouli.Enum;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
 {
@@ -35,7 +36,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         }
         public IActionResult UserAdd()
         {
-            ViewBag.UserGroupList = _sysUserGroupBLL.GetModels(t => t.DeleteSign.Equals((int)ZhouLiEnum.Enum_DeleteSign.Sing_Deleted));
+            ViewBag.UserGroupList = _sysUserGroupBLL.GetModels(t => t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
             return View();
         }
         #region 获取用户列表

@@ -6,12 +6,13 @@ using System.Text;
 using System.Linq;
 using Dapper;
 using Microsoft.Extensions.Configuration;
+using System.Data;
 
 namespace Zhouli.DAL.Implements
 {
     public class SysRoleDAL : BaseDAL<SysRole>, ISysRoleDAL
     {
-        public SysRoleDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration)
+        public SysRoleDAL(ZhouLiContext db, IDbConnection dbConnection) : base(db, dbConnection)
         {
         }
         /// <summary>
@@ -23,12 +24,12 @@ namespace Zhouli.DAL.Implements
         public bool AddRoleMenu(string RoleId, List<SysMenu> menus)
         {
             StringBuilder builderSql = new StringBuilder(20);
-            using (var conn = Connection)
+            using (var conn = _dbConnection)
             {
                 //var list = conn.Query<string>($@"SELECT AuthorityId
                 //                      FROM Sys_RaRelated
                 //                      WHERE RoleId ='{RoleId}')
-                //                     AND AuthorityType={(int)ZhouLiEnum.Enum_AuthorityType.Type_Menu}");
+                //                     AND AuthorityType={(int)AuthorityType.Type_Menu}");
                 ////删除角色权限关联表数据
                 //builderSql.AppendLine($@"DELETE FROM Sys_RaRelated
                 //                        WHERE RaRelatedId IN (
@@ -36,7 +37,7 @@ namespace Zhouli.DAL.Implements
                 //                          FROM Sys_RaRelated T, Sys_Authority T1
                 //                          WHERE T.AuthorityId = T1.AuthorityId
                 //                           AND T.RoleId = '{RoleId}'
-                //                           AND T1.AuthorityType = {(int)ZhouLiEnum.Enum_AuthorityType.Type_Menu}
+                //                           AND T1.AuthorityType = {(int)AuthorityType.Type_Menu}
                 //                         )");
                 //删除权限表对应数据
                 //builderSql.AppendLine($@"DELETE FROM Sys_Authority

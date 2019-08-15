@@ -10,7 +10,7 @@ namespace Zhouli.DAL.Implements
 {
    public class BlogArticleSeeInfoDAL : BaseDAL<BlogArticleSeeInfo>, IBlogArticleSeeInfoDAL
     {
-        public BlogArticleSeeInfoDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration)
+        public BlogArticleSeeInfoDAL(ZhouLiContext db, IDbConnection dbConnection) : base(db, dbConnection)
         {
         }
     }

@@ -13,6 +13,7 @@ using ZhouliSystem.Filters;
 using System.Collections;
 using Zhouli.Dto.ModelDto;
 using Zhouli.CommonEntity;
+using Zhouli.Enum;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
 {
@@ -79,7 +80,7 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
                     //添加权限
                     bResult = _sysAuthorityBLL.Add(new SysAuthority
                     {
-                        AuthorityType = (int)ZhouLiEnum.Enum_AuthorityType.Type_Menu,
+                        AuthorityType = (int)AuthorityType.Type_Menu,
                         AuthorityId = AuthorityId.ToString(),
                         CreateUserId = user.UserId,
                         CreateTime = DateTime.Now

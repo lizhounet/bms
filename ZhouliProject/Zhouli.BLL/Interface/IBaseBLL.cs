@@ -12,6 +12,8 @@ namespace Zhouli.BLL.Interface
         bool Add(T t);
         bool AddRange(IEnumerable<T> t);
         bool Delete(T t);
+        bool Delete(IEnumerable<T> t);
+        bool Delete(Expression<Func<T, bool>> WhereLambda);
         bool Update(T t);
         int GetCount(Expression<Func<T, bool>> WhereLambda);
         //int ExecuteSql(string sql, SqlParameter parameter);

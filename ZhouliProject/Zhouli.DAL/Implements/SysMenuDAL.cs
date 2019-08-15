@@ -10,7 +10,7 @@ namespace Zhouli.DAL.Implements
 {
     public class SysMenuDAL : BaseDAL<SysMenu>, ISysMenuDAL
     {
-        public SysMenuDAL(ZhouLiContext db, IConfiguration configuration) : base(db, configuration)
+        public SysMenuDAL(ZhouLiContext db, IDbConnection dbConnection) : base(db, dbConnection)
         {
         }
     }
