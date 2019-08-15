@@ -4,7 +4,7 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{16BB8A97-CC4C-4787-97FD-38EFEAF7BC3F}" Name="BMS" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="BMS.pdm"/>
+		<Model Expanded="Yes" ID="{8E8521F3-FCF0-4494-B6BA-13AA0C113F72}" Name="bms" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="BMS.pdm"/>
 	</Local>
 	<BrowserModule Name="仓库(&amp;R)"/>
 </Workspace>
