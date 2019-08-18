@@ -11,77 +11,111 @@ require(["jquery", 'layui'], function ($) {
             layedit = layui.layedit,
             laydate = layui.laydate,
             $ = layui.jquery;
+        
+        var editIndex = layedit.build("articleBody", {
+            height: 500,
+            uploadImage: {
+                url: "/upload",
+                method: "post"
+            }
+        });
+        if ($(".articleId").val() != "") {
+            //获取文章内容(内容字符太长 没有随列表一起查询出 怕影响效率)
+            $.get("/Blog/BlogArticle/GetBlogArticleBody", { ArticleId: $(".articleId").val() }, function (res) {
+                if (res.RetCode == 200) {
+                    layedit.setContent(editIndex, res.Data, false);
+                    //$(".articleBody").val(res.Data);
+                }
+            });
+        }
+        $.ajaxSettings.async = false;
         //获取上传文件token
         var fileAccessToken = "";
-        $.ajaxSettings.async = false;
-        $.post("/User/GetToken", function (res) {
-            if (res.stateCode != 200) {
-                layer.msg(res.messages);
+        $.post("/Token/GetFileServiceToken", function (res) {
+            if (res.RetCode != 200) {
+                layer.msg(res.RetMsg);
             }
             else {
-                fileAccessToken = res.jsonData;
+                fileAccessToken = res.Data;
 
             }
         });
         $.ajaxSettings.async = true;
-        //用于同步编辑器内容到textarea
-        layedit.sync(editIndex);
-
         //上传缩略图
         upload.render({
             elem: '.thumbBox',
-            url: '/blog/article/uploadAbbreviation',
-            method: "post",  //此处是为了演示之用，实际使用中请将此删除，默认用post方式提交
+            url: $('#FileServiceAdress').val(),
+            method: "post",
             headers: {
                 "Authorization": fileAccessToken
             },
             data: {
-                StorageMethod: "qiniuyun",
-                FileSpaceType: "public"
+                StorageMethod: "bendi",
+                FileSpaceType: ""
             },
             done: function (res, index, upload) {
-                var num = parseInt(4 * Math.random());  //生成0-4的随机数，随机显示一个头像信息
-                $('.thumbImg').attr('src', res.data[num].src);
+                console.log(res);
+                if (res.RetCode == 200) {
+                    $('.thumbImg').attr('src', res.Data.FileAddress);
+                }
+                else
+                    layer.msg(res.RetMsg);
                 $('.thumbBox').css("background", "#fff");
             }
         });
         form.verify({
-            newsName: function (val) {
+            articleTitle: function (val) {
+
                 if (val == '') {
                     return "文章标题不能为空";
                 }
             },
             content: function (val) {
-                if (val == '') {
-                    return "文章内容不能为空";
-                }
+                return layedit.sync(editIndex);
             }
         });
         form.on("submit(addNews)", function (data) {
-            //截取文章内容中的一部分文字放入文章摘要
-            var abstract = layedit.getText(editIndex).substring(0, 50);
+            if ($("#articleThrink").attr("src") == "") {
+                layer.msg("请选择文章缩略图");
+            }
+            if (data.field.articleBodySummary == "") {
+                //截取文章内容中的一部分文字放入文章摘要
+                data.field.articleBodySummary = layedit.getText(editIndex).substring(0, 50);
+            }
+            var arr = new Array();
+            $("input:checkbox[name='lableId']:checked").each(function (i) {
+                arr[i] = $(this).val();
+            });
+            data.field.lableId = arr;
+            console.log(data.field);
             //弹出loading
-            var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: false, shade: 0.8 });
-            // 实际使用时的提交信息
-            // $.post("上传路径",{
-            //     newsName : $(".newsName").val(),  //文章标题
-            //     abstract : $(".abstract").val(),  //文章摘要
-            //     content : layedit.getContent(editIndex).split('<audio controls="controls" style="display: none;"></audio>')[0],  //文章内容
-            //     newsImg : $(".thumbImg").attr("src"),  //缩略图
-            //     classify : '1',    //文章分类
-            //     newsStatus : $('.newsStatus select').val(),    //发布状态
-            //     newsTime : submitTime,    //发布时间
-            //     newsTop : data.filed.newsTop == "on" ? "checked" : "",    //是否置顶
-            // },function(res){
-            //
-            // })
-            setTimeout(function () {
+            var index = top.layer.msg('数据提交中，请稍候', { icon: 16, time: 5000, shade: 0.8 });
+            $.post("/blog/blogarticle/addorupdateblogarticle", {
+                articleId: data.field.articleId,//文章id
+                articleTitle: data.field.articleTitle,  //文章标题
+                articleSortValue: data.field.articleSortValue,
+                articleBodySummary: data.field.articleBodySummary,  //文章摘要
+                articleBody: data.field.content,  //文章内容
+                articleThrink: $("#articleThrink").attr("src"),  //缩略图
+                LableId: data.field.lableId,//所选标签
+                articleTop: data.field.articleTop == "on" ? "true" : "false"  //是否置顶
+            }, function (res) {
                 top.layer.close(index);
-                top.layer.msg("文章添加成功！");
                 layer.closeAll("iframe");
-                //刷新父页面
-                parent.location.reload();
-            }, 500);
+                layer.msg(res.RetMsg);
+                if (res.RetCode == 200) {
+                    //刷新父页面
+                    parent.location.reload();
+                }
+
+            });
+            //setTimeout(function () {
+            //    top.layer.close(index);
+            //    top.layer.msg("文章添加成功！");
+            //    layer.closeAll("iframe");
+            //    //刷新父页面
+            //    parent.location.reload();
+            //}, 500);
             return false;
         });
 
@@ -89,14 +123,6 @@ require(["jquery", 'layui'], function ($) {
         form.on("submit(look)", function () {
             layer.alert("此功能需要前台展示，实际开发中传入对应的必要参数进行文章内容页面访问");
             return false;
-        });
-
-        //创建一个编辑器
-        var editIndex = layedit.build('news_content', {
-            height: 535,
-            uploadImage: {
-                url: "../../json/newsImg.json"
-            }
         });
     });
 });

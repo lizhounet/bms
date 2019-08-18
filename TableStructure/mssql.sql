@@ -1,189 +1,189 @@
--- ´´½¨Êý¾Ý¿â
-CREATE DATABASE  ZhouLi; -- --¸öÈËÍøÕ¾
+ï»¿-- åˆ›å»ºæ•°æ®åº“
+CREATE DATABASE  ZhouLi; -- --ä¸ªäººç½‘ç«™
 GO 
 USE ZhouLi;
 go
--- ------------------------------------------------------------´´½¨ÏµÍ³ÐèÒªµÄ±í
- -- --ÓÃ»§±í 
+-- ------------------------------------------------------------åˆ›å»ºç³»ç»Ÿéœ€è¦çš„è¡¨
+ -- --ç”¨æˆ·è¡¨ 
  CREATE TABLE Sys_User(
- UserId VARCHAR(36)  PRIMARY KEY NOT NULL ,-- --Ö÷¼ü ÓÃ»§id
- UserName NVARCHAR(20) NOT NULL UNIQUE,-- --ÓÃ»§ÕÊºÅ
- UserNikeName NVARCHAR(20),-- --ÓÃ»§êÇ³Æ
- UserPwd NVARCHAR(50)  NOT NULL,-- --ÓÃ»§ÃÜÂë
- UserSex INT DEFAULT 1 NULL,-- --ÓÃ»§ÐÔ±ð 1ÄÐ 2Å®
- UserBirthday DATE  NULL,-- --ÓÃ»§³öÉúÄêÔÂÈÕ
- UserEmail VARCHAR(50)  NULL,-- --ÓÃ»§ÓÊÏä
- UserQq VARCHAR(15)  NULL,-- --ÓÃ»§QQ
- UserWx VARCHAR(50)  NULL,-- --ÓÃ»§Î¢ÐÅ
- UserAvatar VARCHAR(150)  NULL,-- --ÓÃ»§Í·Ïñ
- UserPhone VARCHAR(11) NULL,-- --ÓÃ»§ÊÖ»ú
- UserGroupId  VARCHAR(36) NULL,-- --ËùÊôÓÃ»§×é
- UserStatus INT  DEFAULT 1 NOT NULL,-- --ÓÃ»§×´Ì¬(ÓëDict_UserStatusµÄid¹ØÁª)
- CreateUserId  VARCHAR(36) NULL,-- --´´½¨ÕßID(¶ÔÓ¦Sys_Users±íUserId×Ö¶Î)
- CreateTime DATETIME   NOT NULL,-- --´´½¨Ê±¼ä
- EditTime DATETIME  NULL ,-- --ÐÞ¸ÄÊ±¼ä
- DeleteSign INT DEFAULT 1 NOT NULL,-- --1 Î´É¾³ý 2 ÒÑÉ¾³ý
- DeleteTime DATETIME NULL,-- --É¾³ýÊ±¼ä
- Note NVARCHAR(2048) NULL-- --±¸×¢
+ UserId VARCHAR(36)  PRIMARY KEY NOT NULL ,-- --ä¸»é”® ç”¨æˆ·id
+ UserName NVARCHAR(20) NOT NULL UNIQUE,-- --ç”¨æˆ·å¸å·
+ UserNikeName NVARCHAR(20),-- --ç”¨æˆ·æ˜µç§°
+ UserPwd NVARCHAR(50)  NOT NULL,-- --ç”¨æˆ·å¯†ç 
+ UserSex INT DEFAULT 1 NULL,-- --ç”¨æˆ·æ€§åˆ« 1ç”· 2å¥³
+ UserBirthday DATE  NULL,-- --ç”¨æˆ·å‡ºç”Ÿå¹´æœˆæ—¥
+ UserEmail VARCHAR(50)  NULL,-- --ç”¨æˆ·é‚®ç®±
+ UserQq VARCHAR(15)  NULL,-- --ç”¨æˆ·QQ
+ UserWx VARCHAR(50)  NULL,-- --ç”¨æˆ·å¾®ä¿¡
+ UserAvatar VARCHAR(150)  NULL,-- --ç”¨æˆ·å¤´åƒ
+ UserPhone VARCHAR(11) NULL,-- --ç”¨æˆ·æ‰‹æœº
+ UserGroupId  VARCHAR(36) NULL,-- --æ‰€å±žç”¨æˆ·ç»„
+ UserStatus INT  DEFAULT 1 NOT NULL,-- --ç”¨æˆ·çŠ¶æ€(ä¸ŽDict_UserStatusçš„idå…³è”)
+ CreateUserId  VARCHAR(36) NULL,-- --åˆ›å»ºè€…ID(å¯¹åº”Sys_Usersè¡¨UserIdå­—æ®µ)
+ CreateTime DATETIME   NOT NULL,-- --åˆ›å»ºæ—¶é—´
+ EditTime DATETIME  NULL ,-- --ä¿®æ”¹æ—¶é—´
+ DeleteSign INT DEFAULT 1 NOT NULL,-- --1 æœªåˆ é™¤ 2 å·²åˆ é™¤
+ DeleteTime DATETIME NULL,-- --åˆ é™¤æ—¶é—´
+ Note NVARCHAR(2048) NULL-- --å¤‡æ³¨
  );
- -- --½ÇÉ«±í
+ -- --è§’è‰²è¡¨
  CREATE TABLE Sys_Role(
- RoleId  VARCHAR(36) PRIMARY KEY NOT NULL  ,-- --Ö÷¼ü ½ÇÉ«Id
- RoleName NVARCHAR(50) NOT NULL,-- --½ÇÉ«Ãû
- CreateUserId  VARCHAR(36) NULL,-- --´´½¨ÕßID(¶ÔÓ¦Sys_Users±íUserId×Ö¶Î)
- CreateTime DATETIME   NOT NULL,-- --´´½¨Ê±¼ä
- EditTime DATETIME  NULL ,-- --ÐÞ¸ÄÊ±¼ä
- DeleteSign INT DEFAULT 1 NOT NULL,-- --1 Î´É¾³ý 2 ÒÑÉ¾³ý
- DeleteTime DATETIME NULL,-- --É¾³ýÊ±¼ä
- Note NVARCHAR(2048) NULL-- --±¸×¢
+ RoleId  VARCHAR(36) PRIMARY KEY NOT NULL  ,-- --ä¸»é”® è§’è‰²Id
+ RoleName NVARCHAR(50) NOT NULL,-- --è§’è‰²å
+ CreateUserId  VARCHAR(36) NULL,-- --åˆ›å»ºè€…ID(å¯¹åº”Sys_Usersè¡¨UserIdå­—æ®µ)
+ CreateTime DATETIME   NOT NULL,-- --åˆ›å»ºæ—¶é—´
+ EditTime DATETIME  NULL ,-- --ä¿®æ”¹æ—¶é—´
+ DeleteSign INT DEFAULT 1 NOT NULL,-- --1 æœªåˆ é™¤ 2 å·²åˆ é™¤
+ DeleteTime DATETIME NULL,-- --åˆ é™¤æ—¶é—´
+ Note NVARCHAR(2048) NULL-- --å¤‡æ³¨
  );
 
- -- --È¨ÏÞ±í
+ -- --æƒé™è¡¨
  CREATE TABLE Sys_Authority(
- AuthorityId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- --Ö÷¼ü
- AuthorityType INT NOT NULL,-- --È¨ÏÞÀàÐÍ
- CreateUserId  VARCHAR(36) NULL,-- --´´½¨ÕßID(¶ÔÓ¦Sys_Users±íUserId×Ö¶Î)
- CreateTime DATETIME  NOT NULL,-- --´´½¨Ê±¼ä
- EditTime DATETIME  NULL ,-- --ÐÞ¸ÄÊ±¼ä
- DeleteSign INT DEFAULT 1 NOT NULL,-- --1 Î´É¾³ý 2 ÒÑÉ¾³ý
- DeleteTime DATETIME NULL,-- --É¾³ýÊ±¼ä
- Note NVARCHAR(2048) NULL-- --±¸×¢
+ AuthorityId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- --ä¸»é”®
+ AuthorityType INT NOT NULL,-- --æƒé™ç±»åž‹
+ CreateUserId  VARCHAR(36) NULL,-- --åˆ›å»ºè€…ID(å¯¹åº”Sys_Usersè¡¨UserIdå­—æ®µ)
+ CreateTime DATETIME  NOT NULL,-- --åˆ›å»ºæ—¶é—´
+ EditTime DATETIME  NULL ,-- --ä¿®æ”¹æ—¶é—´
+ DeleteSign INT DEFAULT 1 NOT NULL,-- --1 æœªåˆ é™¤ 2 å·²åˆ é™¤
+ DeleteTime DATETIME NULL,-- --åˆ é™¤æ—¶é—´
+ Note NVARCHAR(2048) NULL-- --å¤‡æ³¨
  );
-  -- --È¨ÏÞÀàÐÍ±í
+  -- --æƒé™ç±»åž‹è¡¨
  CREATE TABLE Dict_AuthorityType(
- AuthorityTypeId  VARCHAR(36)  PRIMARY KEY NOT NULL ,-- --Ö÷¼üId
- AuthorityTypeName NVARCHAR(20) NOT NULL-- --È¨ÏÞÀàÐÍÃû³Æ
+ AuthorityTypeId  VARCHAR(36)  PRIMARY KEY NOT NULL ,-- --ä¸»é”®Id
+ AuthorityTypeName NVARCHAR(20) NOT NULL-- --æƒé™ç±»åž‹åç§°
  );
- -- --ÓÃ»§½ÇÉ«¹ØÁª±í
+ -- --ç”¨æˆ·è§’è‰²å…³è”è¡¨
  CREATE TABLE Sys_UrRelated(
- UrRelatedId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- --Ö÷¼ü
- UserId  VARCHAR(36) NOT NULL,-- --ÓÃ»§id
- RoleId  VARCHAR(36) NOT NULL-- --½ÇÉ«id
+ UrRelatedId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- --ä¸»é”®
+ UserId  VARCHAR(36) NOT NULL,-- --ç”¨æˆ·id
+ RoleId  VARCHAR(36) NOT NULL-- --è§’è‰²id
  );
-  -- --½ÇÉ«È¨ÏÞ¹ØÁª±í
+  -- --è§’è‰²æƒé™å…³è”è¡¨
  CREATE TABLE Sys_RaRelated(
- RaRelatedId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- --Ö÷¼ü
- RoleId  VARCHAR(36) NOT NULL,-- --½ÇÉ«id
- AuthorityId  VARCHAR(36) NOT NULL-- --È¨ÏÞid
+ RaRelatedId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- --ä¸»é”®
+ RoleId  VARCHAR(36) NOT NULL,-- --è§’è‰²id
+ AuthorityId  VARCHAR(36) NOT NULL-- --æƒé™id
  );
- -- --ÓÃ»§×é±í
+ -- --ç”¨æˆ·ç»„è¡¨
  CREATE TABLE Sys_UserGroup(
- UserGroupId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- --Ö÷¼ü
- UserGroupName NVARCHAR(50) NOT NULL, -- --ÓÃ»§×éÃû³Æ
- ParentUserGroupId  VARCHAR(36) NULL,-- --¸¸ÓÃ»§×éid
- CreateUserId  VARCHAR(36) NULL,-- --´´½¨ÕßID(¶ÔÓ¦Sys_Users±íUserId×Ö¶Î)
- CreateTime DATETIME  NOT NULL,-- --´´½¨Ê±¼ä
- EditTime DATETIME  NULL ,-- --ÐÞ¸ÄÊ±¼ä
- DeleteSign INT DEFAULT 1 NOT NULL,-- --1 Î´É¾³ý 2 ÒÑÉ¾³ý
- DeleteTime DATETIME NULL,-- --É¾³ýÊ±¼ä
- Note NVARCHAR(2048) NULL-- --±¸×¢
+ UserGroupId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- --ä¸»é”®
+ UserGroupName NVARCHAR(50) NOT NULL, -- --ç”¨æˆ·ç»„åç§°
+ ParentUserGroupId  VARCHAR(36) NULL,-- --çˆ¶ç”¨æˆ·ç»„id
+ CreateUserId  VARCHAR(36) NULL,-- --åˆ›å»ºè€…ID(å¯¹åº”Sys_Usersè¡¨UserIdå­—æ®µ)
+ CreateTime DATETIME  NOT NULL,-- --åˆ›å»ºæ—¶é—´
+ EditTime DATETIME  NULL ,-- --ä¿®æ”¹æ—¶é—´
+ DeleteSign INT DEFAULT 1 NOT NULL,-- --1 æœªåˆ é™¤ 2 å·²åˆ é™¤
+ DeleteTime DATETIME NULL,-- --åˆ é™¤æ—¶é—´
+ Note NVARCHAR(2048) NULL-- --å¤‡æ³¨
  );
---  ----ÓÃ»§ÓëÓÃ»§×é¹ØÁª±í
+--  ----ç”¨æˆ·ä¸Žç”¨æˆ·ç»„å…³è”è¡¨
 --  -- CREATE TABLE Sys_UuRelated(
---  --UuRelatedId uniqueidentifier PRIMARY KEY DEFAULT newid() NOT NULL ,--Ö÷¼ü
---  --UserId uniqueidentifier NOT NULL, --ÓÃ»§id
---  --UserGroupId uniqueidentifier NOT NULL,--ÓÃ»§×éid
+--  --UuRelatedId uniqueidentifier PRIMARY KEY DEFAULT newid() NOT NULL ,--ä¸»é”®
+--  --UserId uniqueidentifier NOT NULL, --ç”¨æˆ·id
+--  --UserGroupId uniqueidentifier NOT NULL,--ç”¨æˆ·ç»„id
 --  --)
- -- --²Ëµ¥±í
+ -- --èœå•è¡¨
  CREATE TABLE Sys_Menu(
- MenuId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- Ö÷¼ü
- MenuName NVARCHAR(50) NOT NULL,-- ²Ëµ¥Ãû³Æ
- MenuIcon NVARCHAR(50) NULL,-- ²Ëµ¥Í¼±ê(Ö»Ö§³ÖlayuiÍ¼±ê)
- MenuUrl VARCHAR(80) NULL,-- ²Ëµ¥url
- MenuSort INT NOT NULL,-- ²Ëµ¥ÅÅÐòºÅ
- ParentMenuId  VARCHAR(36)   NULL,-- ¸¸²Ëµ¥id
- CreateUserId  VARCHAR(36) NULL,-- ´´½¨ÕßID(¶ÔÓ¦Sys_Users±íUserId×Ö¶Î)
- CreateTime DATETIME  NOT NULL,-- ´´½¨Ê±¼ä
- EditTime DATETIME  NULL ,-- ÐÞ¸ÄÊ±¼ä
- DeleteSign INT DEFAULT 1 NOT NULL,-- 1 Î´É¾³ý 2 ÒÑÉ¾³ý
- DeleteTime DATETIME NULL,-- É¾³ýÊ±¼ä
- Note NVARCHAR(2048) NULL-- ±¸×¢
+ MenuId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- ä¸»é”®
+ MenuName NVARCHAR(50) NOT NULL,-- èœå•åç§°
+ MenuIcon NVARCHAR(50) NULL,-- èœå•å›¾æ ‡(åªæ”¯æŒlayuiå›¾æ ‡)
+ MenuUrl VARCHAR(80) NULL,-- èœå•url
+ MenuSort INT NOT NULL,-- èœå•æŽ’åºå·
+ ParentMenuId  VARCHAR(36)   NULL,-- çˆ¶èœå•id
+ CreateUserId  VARCHAR(36) NULL,-- åˆ›å»ºè€…ID(å¯¹åº”Sys_Usersè¡¨UserIdå­—æ®µ)
+ CreateTime DATETIME  NOT NULL,-- åˆ›å»ºæ—¶é—´
+ EditTime DATETIME  NULL ,-- ä¿®æ”¹æ—¶é—´
+ DeleteSign INT DEFAULT 1 NOT NULL,-- 1 æœªåˆ é™¤ 2 å·²åˆ é™¤
+ DeleteTime DATETIME NULL,-- åˆ é™¤æ—¶é—´
+ Note NVARCHAR(2048) NULL-- å¤‡æ³¨
  );
 
- -- È¨ÏÞ²Ëµ¥¹ØÁª±í
+ -- æƒé™èœå•å…³è”è¡¨
  CREATE TABLE Sys_AmRelated(
- AmRelatedId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- Ö÷¼ü
- AuthorityId  VARCHAR(36) NOT NULL,-- È¨ÏÞid
- MenuId  VARCHAR(36) NOT NULL-- ²Ëµ¥id
+ AmRelatedId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- ä¸»é”®
+ AuthorityId  VARCHAR(36) NOT NULL,-- æƒé™id
+ MenuId  VARCHAR(36) NOT NULL-- èœå•id
  );
- -- ÓÃ»§×éÓë½ÇÉ«¹ØÁª±í
+ -- ç”¨æˆ·ç»„ä¸Žè§’è‰²å…³è”è¡¨
  CREATE TABLE Sys_UgrRelated(
- UgrRelatedId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- Ö÷¼ü
- UserGroupId  VARCHAR(36) NOT NULL,-- ÓÃ»§×éid
- RoleId  VARCHAR(36) NOT NULL-- ½ÇÉ«id
+ UgrRelatedId  VARCHAR(36) PRIMARY KEY NOT NULL ,-- ä¸»é”®
+ UserGroupId  VARCHAR(36) NOT NULL,-- ç”¨æˆ·ç»„id
+ RoleId  VARCHAR(36) NOT NULL-- è§’è‰²id
  );
--- -------------------------------------------------------------------- ´´½¨²©¿ÍÐèÒªµÄ±í
--- ²©¿ÍÎÄÕÂ±í
+-- -------------------------------------------------------------------- åˆ›å»ºåšå®¢éœ€è¦çš„è¡¨
+-- åšå®¢æ–‡ç« è¡¨
 CREATE TABLE Blog_Article(
-Article_Id INT IDENTITY PRIMARY KEY NOT NULL,-- Ö÷¼ü
-Article_Title NVARCHAR(50) NOT NULL,-- ²©¿ÍÎÄÕÂ±êÌâ,
-Article_Thrink VARCHAR(100) NOT NULL,--²©¿ÍÎÄÕÂËõÂÔÍ¼
-Article_Body TEXT NOT NULL,-- ²©¿ÍÎÄÕÂÄÚÈÝ
-Article_Body_Markdown TEXT  NULL,-- ²©¿ÍÎÄÕÂÄÚÈÝ,
-Article_Body_Summary NVARCHAR(100)  NULL,-- ²©¿ÍÎÄÕÂÕªÒª,
-Article_SortValue INT DEFAULT 0 NOT NULL,-- ÅÅÐòÖµ,
-CreateUserId  VARCHAR(36) NULL,-- ´´½¨ÕßID(¶ÔÓ¦Sys_Users±íUserId×Ö¶Î)
-CreateTime DATETIME  NOT NULL,-- ´´½¨Ê±¼ä
-EditTime DATETIME  NULL ,-- ÐÞ¸ÄÊ±¼ä
-DeleteSign INT DEFAULT 1 NOT NULL,-- 1 Î´É¾³ý 2 ÒÑÉ¾³ý
-DeleteTime DATETIME NULL,-- É¾³ýÊ±¼ä
-Note NVARCHAR(2048) NULL-- ±¸×¢
+Article_Id INT IDENTITY PRIMARY KEY NOT NULL,-- ä¸»é”®
+Article_Title NVARCHAR(50) NOT NULL,-- åšå®¢æ–‡ç« æ ‡é¢˜,
+Article_Thrink VARCHAR(100) NOT NULL,--åšå®¢æ–‡ç« ç¼©ç•¥å›¾
+Article_Body TEXT NOT NULL,-- åšå®¢æ–‡ç« å†…å®¹
+Article_Body_Markdown TEXT  NULL,-- åšå®¢æ–‡ç« å†…å®¹,
+Article_Body_Summary NVARCHAR(100)  NULL,-- åšå®¢æ–‡ç« æ‘˜è¦,
+Article_SortValue INT DEFAULT 0 NOT NULL,-- æŽ’åºå€¼,
+CreateUserId  VARCHAR(36) NULL,-- åˆ›å»ºè€…ID(å¯¹åº”Sys_Usersè¡¨UserIdå­—æ®µ)
+CreateTime DATETIME  NOT NULL,-- åˆ›å»ºæ—¶é—´
+EditTime DATETIME  NULL ,-- ä¿®æ”¹æ—¶é—´
+DeleteSign INT DEFAULT 1 NOT NULL,-- 1 æœªåˆ é™¤ 2 å·²åˆ é™¤
+DeleteTime DATETIME NULL,-- åˆ é™¤æ—¶é—´
+Note NVARCHAR(2048) NULL-- å¤‡æ³¨
 );
--- ²©¿Í±êÇ©±í
+-- åšå®¢æ ‡ç­¾è¡¨
 CREATE TABLE Blog_Lable(
-Lable_Id INT IDENTITY PRIMARY KEY NOT NULL,-- ²©¿Í±êÇ©±àºÅ(Ö÷¼ü)
-Lable_Name NVARCHAR(20) NOT NULL UNIQUE,-- ²©¿Í±êÇ©Ãû³Æ
-Lable_SortValue INT DEFAULT 0 NOT NULL,-- ÅÅÐòÖµ,
-Lable_ClickNum BIGINT DEFAULT 0 NOT NULL,-- ²©¿Í±êÇ©µã»÷Á¿
-CreateUserId  VARCHAR(36) NULL,-- ´´½¨ÕßID(¶ÔÓ¦Sys_Users±íUserId×Ö¶Î)
-CreateTime DATETIME  NOT NULL,-- ´´½¨Ê±¼ä
-EditTime DATETIME  NULL ,-- ÐÞ¸ÄÊ±¼ä
-DeleteSign INT DEFAULT 1 NOT NULL,-- 1 Î´É¾³ý 2 ÒÑÉ¾³ý
-DeleteTime DATETIME NULL,-- É¾³ýÊ±¼ä
-Note NVARCHAR(2048) NULL-- ±¸×¢
+Lable_Id INT IDENTITY PRIMARY KEY NOT NULL,-- åšå®¢æ ‡ç­¾ç¼–å·(ä¸»é”®)
+Lable_Name NVARCHAR(20) NOT NULL UNIQUE,-- åšå®¢æ ‡ç­¾åç§°
+Lable_SortValue INT DEFAULT 0 NOT NULL,-- æŽ’åºå€¼,
+Lable_ClickNum BIGINT DEFAULT 0 NOT NULL,-- åšå®¢æ ‡ç­¾ç‚¹å‡»é‡
+CreateUserId  VARCHAR(36) NULL,-- åˆ›å»ºè€…ID(å¯¹åº”Sys_Usersè¡¨UserIdå­—æ®µ)
+CreateTime DATETIME  NOT NULL,-- åˆ›å»ºæ—¶é—´
+EditTime DATETIME  NULL ,-- ä¿®æ”¹æ—¶é—´
+DeleteSign INT DEFAULT 1 NOT NULL,-- 1 æœªåˆ é™¤ 2 å·²åˆ é™¤
+DeleteTime DATETIME NULL,-- åˆ é™¤æ—¶é—´
+Note NVARCHAR(2048) NULL-- å¤‡æ³¨
 );
--- ±êÇ©¹ØÁª±í
+-- æ ‡ç­¾å…³è”è¡¨
 CREATE TABLE Blog_Related(
 Blog_RelatedId INT IDENTITY PRIMARY KEY NOT NULL,
-Related_Article_Id INT  NOT NULL,-- ²©¿ÍÎÄÕÂId
-Related_Lable_Id INT NOT NULL-- ²©¿Í±êÇ©±àºÅ
+Related_Article_Id INT  NOT NULL,-- åšå®¢æ–‡ç« Id
+Related_Lable_Id INT NOT NULL-- åšå®¢æ ‡ç­¾ç¼–å·
 );
--- ²©¿ÍÎÄÕÂ-²é¿´ÐÅÏ¢±í
+-- åšå®¢æ–‡ç« -æŸ¥çœ‹ä¿¡æ¯è¡¨
 CREATE TABLE Blog_ArticleSeeInfo
 (
-ArticleSeeInfo_ArticleId INT IDENTITY PRIMARY KEY NOT NULL ,-- ²©¿ÍÎÄÕÂId
-ArticleSeeInfo_ArticleBrowsingNum INT DEFAULT 0 NOT NULL,-- ²©¿ÍÎÄÕÂä¯ÀÀÁ¿
-ArticleSeeInfo_ArticleLikeNum INT DEFAULT 0 NOT NULL,-- ²©¿ÍÎÄÕÂµãÔÞÁ¿
-ArticleSeeInfo_ArticleCommentNum INT DEFAULT 0 NOT NULL-- ²©¿ÍÎÄÕÂÆÀÂÛÁ¿
+ArticleSeeInfo_ArticleId INT IDENTITY PRIMARY KEY NOT NULL ,-- åšå®¢æ–‡ç« Id
+ArticleSeeInfo_ArticleBrowsingNum INT DEFAULT 0 NOT NULL,-- åšå®¢æ–‡ç« æµè§ˆé‡
+ArticleSeeInfo_ArticleLikeNum INT DEFAULT 0 NOT NULL,-- åšå®¢æ–‡ç« ç‚¹èµžé‡
+ArticleSeeInfo_ArticleCommentNum INT DEFAULT 0 NOT NULL-- åšå®¢æ–‡ç« è¯„è®ºé‡
 );
--- ²©¿Í ÓÑÇéÁ´½Ó±í
+-- åšå®¢ å‹æƒ…é“¾æŽ¥è¡¨
 CREATE TABLE Blog_FriendshipLink
 (
-FriendshipLink_Id INT IDENTITY PRIMARY KEY NOT NULL ,-- ×ÔÔöid
-FriendshipLink_Name NVARCHAR(40) NOT NULL,-- Õ¾µãÃû³Æ
-FriendshipLink_Url VARCHAR(40)  NOT NULL,-- Õ¾µãUrl
-FriendshipLink_Email VARCHAR(40) NOT NULL,-- Õ¾³¤ÓÊÏä
-FriendshipLink_SortValue INT DEFAULT 0 NOT NULL,-- ÅÅÐòÖµ,
-FriendshipLink_Sfsh INT DEFAULT 0 NOT NULL,-- ÊÇ·ñÉóºË(1-ÒÑÉóºË 0-Î´ÉóºË)
-CreateUserId  VARCHAR(36) NULL,-- ´´½¨ÕßID(¶ÔÓ¦Sys_Users±íUserId×Ö¶Î)
-CreateTime DATETIME  NOT NULL,-- ´´½¨Ê±¼ä
-EditTime DATETIME  NULL ,-- ÐÞ¸ÄÊ±¼ä
-DeleteSign INT DEFAULT 1 NOT NULL,-- 1 Î´É¾³ý 2 ÒÑÉ¾³ý
-DeleteTime DATETIME NULL,-- É¾³ýÊ±¼ä
-Note NVARCHAR(2048) NULL-- ±¸×¢
+FriendshipLink_Id INT IDENTITY PRIMARY KEY NOT NULL ,-- è‡ªå¢žid
+FriendshipLink_Name NVARCHAR(40) NOT NULL,-- ç«™ç‚¹åç§°
+FriendshipLink_Url VARCHAR(40)  NOT NULL,-- ç«™ç‚¹Url
+FriendshipLink_Email VARCHAR(40) NOT NULL,-- ç«™é•¿é‚®ç®±
+FriendshipLink_SortValue INT DEFAULT 0 NOT NULL,-- æŽ’åºå€¼,
+FriendshipLink_Sfsh INT DEFAULT 0 NOT NULL,-- æ˜¯å¦å®¡æ ¸(1-å·²å®¡æ ¸ 0-æœªå®¡æ ¸)
+CreateUserId  VARCHAR(36) NULL,-- åˆ›å»ºè€…ID(å¯¹åº”Sys_Usersè¡¨UserIdå­—æ®µ)
+CreateTime DATETIME  NOT NULL,-- åˆ›å»ºæ—¶é—´
+EditTime DATETIME  NULL ,-- ä¿®æ”¹æ—¶é—´
+DeleteSign INT DEFAULT 1 NOT NULL,-- 1 æœªåˆ é™¤ 2 å·²åˆ é™¤
+DeleteTime DATETIME NULL,-- åˆ é™¤æ—¶é—´
+Note NVARCHAR(2048) NULL-- å¤‡æ³¨
 );
--- ²©¿Í Ê×Ò³µ¼º½Í¼±í
+-- åšå®¢ é¦–é¡µå¯¼èˆªå›¾è¡¨
 CREATE TABLE Blog_NavigationImg
 (
-NavigationImg_Id INT IDENTITY PRIMARY KEY NOT NULL ,-- ×ÔÔöid(Ö÷¼ü)
-NavigationImg_Url VARCHAR(200) NOT NULL,-- Í¼Æ¬Url
-NavigationImg_SortValue INT DEFAULT 0 NOT NULL,-- ÅÅÐòÖµ,
-NavigationImg_Describe NVARCHAR(2048) DEFAULT '0' NOT NULL,-- ÃèÊö
-NavigationImg_IsEnable INT DEFAULT '1' NOT NULL,-- ÊÇ·ñÆôÓÃ(1ÆôÓÃ,0²»ÆôÓÃ)
-CreateUserId  VARCHAR(36) NULL,-- ´´½¨ÕßID(¶ÔÓ¦Sys_Users±íUserId×Ö¶Î)
-CreateTime DATETIME  NOT NULL,-- ´´½¨Ê±¼ä
-EditTime DATETIME  NULL ,-- ÐÞ¸ÄÊ±¼ä
-DeleteSign INT DEFAULT 1 NOT NULL,-- 1 Î´É¾³ý 2 ÒÑÉ¾³ý
-DeleteTime DATETIME NULL,-- É¾³ýÊ±¼ä
-Note NVARCHAR(2048) NULL-- ±¸×¢
+NavigationImg_Id INT IDENTITY PRIMARY KEY NOT NULL ,-- è‡ªå¢žid(ä¸»é”®)
+NavigationImg_Url VARCHAR(200) NOT NULL,-- å›¾ç‰‡Url
+NavigationImg_SortValue INT DEFAULT 0 NOT NULL,-- æŽ’åºå€¼,
+NavigationImg_Describe NVARCHAR(2048) DEFAULT '0' NOT NULL,-- æè¿°
+NavigationImg_IsEnable INT DEFAULT '1' NOT NULL,-- æ˜¯å¦å¯ç”¨(1å¯ç”¨,0ä¸å¯ç”¨)
+CreateUserId  VARCHAR(36) NULL,-- åˆ›å»ºè€…ID(å¯¹åº”Sys_Usersè¡¨UserIdå­—æ®µ)
+CreateTime DATETIME  NOT NULL,-- åˆ›å»ºæ—¶é—´
+EditTime DATETIME  NULL ,-- ä¿®æ”¹æ—¶é—´
+DeleteSign INT DEFAULT 1 NOT NULL,-- 1 æœªåˆ é™¤ 2 å·²åˆ é™¤
+DeleteTime DATETIME NULL,-- åˆ é™¤æ—¶é—´
+Note NVARCHAR(2048) NULL-- å¤‡æ³¨
 );

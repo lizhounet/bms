@@ -7,12 +7,12 @@
             laydate = layui.laydate;
         var fileAccessToken = "";
         $.ajaxSettings.async = false;
-        $.post("/User/GetToken", function (res) {
-            if (res.stateCode != 200) {
-                layer.msg(res.messages);
+        $.post("/Token/GetFileServiceToken", function (res) {
+            if (res.RetCode != 200) {
+                layer.msg(res.RetMsg);
             }
             else {
-                fileAccessToken = res.jsonData;
+                fileAccessToken = res.Data;
 
             }
         });
@@ -45,10 +45,10 @@
             },
             done: function (res) {
                 console.log(res);
-                if (res.StateCode == 200) {
+                if (res.RetCode == 200) {
                     //layer.close();
                     layer.msg("头像上传成功");
-                    $('#userFace').attr('src', res.JsonData.FileAddress);
+                    $('#userFace').attr('src', res.Data.FileAddress);
                 }
 
             },
@@ -124,14 +124,14 @@
             $.post("/system/user/addoredituser", postdata, function (res) {
                 console.log(res);
                 layer.close(index);
-                if (res.StateCode == 200) {
-                    layer.msg(res.Messages + ",请重新登录");
+                if (res.RetCode == 200) {
+                    layer.msg(res.RetMsg + ",请重新登录");
                     setTimeout(function () {
                         window.parent.location.href = '/user/login';
                     }, 500);
                 }
                 else {
-                    layer.msg(res.Messages);
+                    layer.msg(res.RetMsg);
                 }
 
             }, 'json');

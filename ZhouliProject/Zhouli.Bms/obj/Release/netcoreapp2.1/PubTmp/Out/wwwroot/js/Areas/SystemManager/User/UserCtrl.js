@@ -111,9 +111,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/System/User/DelUser", {
                         UserId: UserId  //将需要删除的UserId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");
@@ -148,8 +148,8 @@ require(["jquery", 'layui'], function ($) {
                         UserId: data.UserId
                     }, function (res) {
                         layer.close(index);
-                        layer.msg(res.Messages);
-                        if (res.StateCode == 200) {
+                        layer.msg(res.RetMsg);
+                        if (res.RetCode == 200) {
                             $(obj.tr).find(".laytable-cell-1-UserStatus").text($(obj.tr).find(".laytable-cell-1-UserStatus").text() == "正常" ? "停用" : "正常");
                             _this.text(btnText);
                         }
@@ -162,9 +162,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/System/User/DelUser", {
                         UserId: data.UserId  //将需要删除的UserId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");

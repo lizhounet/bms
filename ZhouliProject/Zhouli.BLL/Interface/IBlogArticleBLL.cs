@@ -8,7 +8,7 @@ namespace Zhouli.BLL.Interface
     public interface IBlogArticleBLL : IBaseBLL<BlogArticle>
     {
         /// <summary>
-        /// »ñÈ¡ÎÄÕÂÁĞ±í
+        /// è·å–æ–‡ç« åˆ—è¡¨
         /// </summary>
         /// <param name="page"></param>
         /// <param name="limit"></param>
@@ -16,14 +16,14 @@ namespace Zhouli.BLL.Interface
         /// <returns></returns>
         MessageModel GetBlogArticlelist(string page, string limit, string searchstr);
         /// <summary>
-        /// Ìí¼Ó/ĞŞ¸ÄÎÄÕÂ
+        /// æ·»åŠ /ä¿®æ”¹æ–‡ç« 
         /// </summary>
         /// <param name="blogArticleDto"></param>
         /// <param name="OnLineUserId"></param>
         /// <returns></returns>
         MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto, string OnLineUserId);
         /// <summary>
-        /// »ñÈ¡ÎÄÕÂ×î´óÅÅĞòÖµ
+        /// è·å–æ–‡ç« æœ€å¤§æ’åºå€¼
         /// </summary>
         /// <returns></returns>
         MessageModel GetMaxArticleSortValue();

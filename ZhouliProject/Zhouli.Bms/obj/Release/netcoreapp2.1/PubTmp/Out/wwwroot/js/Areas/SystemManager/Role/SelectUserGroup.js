@@ -55,8 +55,8 @@
             console.log(postData);
             //刷新父页面
             $.post("/System/Role/AssignmentRoleUserGroup", postData, function (res) {
-                layer.msg(res.Messages);
-                if (res.StateCode == 200) {
+                layer.msg(res.RetMsg);
+                if (res.RetCode == 200) {
                     parent.location.reload();
                 }
             }, "json");

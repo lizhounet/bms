@@ -18,7 +18,7 @@ namespace Zhouli.DAL.Implements
         {
         }
         /// <summary>
-        /// ╩Ях║ндубап╠М
+        /// Х▌╥Е▐√Ф√┤Г╚═Е┬≈Х║╗
         /// </summary>
         /// <param name="page"></param>
         /// <param name="limit"></param>
@@ -46,17 +46,26 @@ namespace Zhouli.DAL.Implements
                            blogArticle.ArticleSortValue,
                            ArticleTop = blogArticle.ArticleSortValue == GetMaxArticleSortValue(),
                            CreateUser = tt.UserNikeName,
-                           LableId = _db.BlogRelated.Where(t => t.RelatedArticleId.Equals(blogArticle.ArticleId)).Select(t => t.RelatedLableId)
+                           LableId = _db.BlogRelated.Where(t => t.RelatedArticleId.Equals(blogArticle.ArticleId)).Select(t => t.RelatedLableId),
+                           LableName = _db.BlogLable.Where(s => _db.BlogRelated
+                           .Where(t => t.RelatedArticleId.Equals(blogArticle.ArticleId))
+                           .Select(t => t.RelatedLableId).Contains(s.LableId))
+                           .Select(q => q.LableName),
+                           ArticleBrowsingNum = _db.BlogArticleSeeInfo.Where(t => t.ArticleSeeInfoArticleId == blogArticle.ArticleId).Sum(t => t.ArticleSeeInfoArticleBrowsingNum),
+                           ArticleCommentNum = _db.BlogArticleSeeInfo.Where(t => t.ArticleSeeInfoArticleId == blogArticle.ArticleId).Sum(t => t.ArticleSeeInfoArticleCommentNum),
+                           ArticleLikeNum = _db.BlogArticleSeeInfo.Where(t => t.ArticleSeeInfoArticleId == blogArticle.ArticleId).Sum(t => t.ArticleSeeInfoArticleLikeNum)
                        };
             return new PageModel
             {
                 RowCount = GetCount(expression),
-                Data = list.ToList()
+                Data = list.ToList(),
+                PageIndex = Convert.ToInt32(page),
+                PageSize = Convert.ToInt32(limit)
             };
         }
 
         /// <summary>
-        /// ╩Ях║ндубвН╢СеепРж╣
+        /// О©╫О©╫х║О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ж╣
         /// </summary>
         /// <returns></returns>
         public int GetMaxArticleSortValue()

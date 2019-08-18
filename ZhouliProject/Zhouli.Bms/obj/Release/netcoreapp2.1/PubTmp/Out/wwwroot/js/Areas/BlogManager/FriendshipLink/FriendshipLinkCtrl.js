@@ -94,9 +94,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/Blog/FriendshipLink/DeleteFriendshipLink", {
                         FriendshipLinkId: FriendshipLinkId  //将需要删除的UserId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");
@@ -116,9 +116,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/Blog/FriendshipLink/DeleteFriendshipLink", {
                         FriendshipLinkId: data.FriendshipLinkId  //将需要删除的UserId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");
@@ -142,8 +142,8 @@ require(["jquery", 'layui'], function ($) {
                         FriendshipLinkId: data.FriendshipLinkId
                     }, function (res) {
                         layer.close(index);
-                        layer.msg(res.Messages);
-                        if (res.StateCode == 200) {
+                        layer.msg(res.RetMsg);
+                        if (res.RetCode == 200) {
                             _this.text(btnText);
                         }
                     }, "json");

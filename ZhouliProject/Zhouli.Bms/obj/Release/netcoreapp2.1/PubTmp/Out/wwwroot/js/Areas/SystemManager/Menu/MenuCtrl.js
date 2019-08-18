@@ -7,11 +7,11 @@
     form.on('submit(saveMenu)', function (data) {
         //layer.msg(JSON.stringify(data.field));
         $.post("/system/menu/addoreditmenu", data.field, function (res) {
-            if (res.StateCode == 200) {
+            if (res.RetCode == 200) {
                 zhouliMenu.loadMenu();
             }
             else {
-                layer.msg(res.Messages);
+                layer.msg(res.RetMsg);
             }
         }, "json");
         return false;
@@ -135,8 +135,8 @@ function zTreeBeforeRemove(treeId, treeNode) {
         dataType: "json",
         async: false,
         success: function (res) {
-            if (res.StateCode != 200) {
-                layer.msg(res.Messages);
+            if (res.RetCode != 200) {
+                layer.msg(res.RetMsg);
                 return false;
             }
             else
@@ -172,8 +172,8 @@ function zTreeBeforeDrop(treeId, treeNodes, targetNode, moveType) {
             dataType: "json",
             async: false,
             success: function (res) {
-                if (res.StateCode != 200) {
-                    layer.msg(res.Messages);
+                if (res.RetCode != 200) {
+                    layer.msg(res.RetMsg);
                     zhouliMenu.loadMenu();
                 }
             },
@@ -220,7 +220,7 @@ var zhouliMenu = {
             function (data) {
                 console.log(data);
                 //绑定zTree
-                $.fn.zTree.init($("#treeMenu"), setting, data.JsonData);
+                $.fn.zTree.init($("#treeMenu"), setting, data.Data);
                 //展开所有节点
                 $.fn.zTree.getZTreeObj("treeMenu").expandAll(true);
             }, "json");
