@@ -53,21 +53,21 @@
     "CSRedisCore/3.0.31": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sZzt0BPdRyYARcRianz1A/FddA+y5jb65tIdpfe3D395jQtrisA6DWLJUtzD5d51Eil9dZSoxalgoU977AZqyQ==",
+      "sha512": "sha512-o1ANXU5THq9sKN52ClbqbNtPFX7ZpA89AVqjleqrOY1HvhHNSrtwmzO+vKDgOhD8QwcYbwZUE2xkWjwyWfYDoA==",
       "path": "csrediscore/3.0.31",
       "hashPath": "csrediscore.3.0.31.nupkg.sha512"
     },
     "Newtonsoft.Json/12.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
+      "sha512": "sha512-jmVyoEyk0In8r+AObYQyFKVFm7uSRzE0XSHSbEtBJcZDMV6DqJoyB4FLcHwprPVhAh826so0db3DIKXVnpGoPA==",
       "path": "newtonsoft.json/12.0.1",
       "hashPath": "newtonsoft.json.12.0.1.nupkg.sha512"
     },
     "SafeObjectPool/1.0.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-XR0OftbbTP8+CuwfFYpxlyHw/DJWwthYYIR4ZhCTFYoYNLBSbQy/YblOicI3fqPJwGmi90a+/v1h0CKPgHyF3A==",
+      "sha512": "sha512-hSIyCs5wWWnqjaIiN6Ba5aTfdZVCQ4S0t5nXUCCPE+buw8b3TN+frjjdkq/tTRcDqSVoVVgH9+GSPghzAAa0rQ==",
       "path": "safeobjectpool/1.0.12",
       "hashPath": "safeobjectpool.1.0.12.nupkg.sha512"
     }

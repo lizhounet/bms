@@ -19,6 +19,7 @@ namespace Zhouli.BlogWebApi.Controllers
     /// </summary>
     [Route("api/blog/[controller]")]
     [ApiController]
+    [Authorize]
     public class ArticleController : Controller
     {
         private readonly IBlogArticleBLL _blogArticleBLL;

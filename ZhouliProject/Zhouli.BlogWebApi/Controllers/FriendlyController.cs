@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Zhouli.BLL.Interface;
 using Zhouli.CommonEntity;
@@ -15,6 +16,7 @@ namespace Zhouli.BlogWebApi.Controllers
     /// </summary>
     [Route("api/blog/[controller]")]
     [ApiController]
+    [Authorize]
     public class FriendlyController : Controller
     {
         private readonly IBlogFriendshipLinkBLL _blogFriendshipLinkBLL;

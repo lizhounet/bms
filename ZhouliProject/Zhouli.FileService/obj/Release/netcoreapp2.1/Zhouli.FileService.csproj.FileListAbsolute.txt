@@ -49,3 +49,5 @@ F:\zhouli\code\project\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcorea
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.csproj.CopyComplete
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Zhouli.CommonEntity.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\netcoreapp2.1\Zhouli.CommonEntity.pdb
