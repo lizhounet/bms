@@ -66,10 +66,10 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         public IActionResult AddorUpdateFriendshipLink(BlogFriendshipLinkDto blog)
         {
             var resModel = new ResponseModel();
-            MessageModel model = _blogFriendshipLinkBLL.AddorEditFriendshipLink(blog, _userAccount.GetUserInfo().UserId);
-            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.RetMsg = model.Message;
-            resModel.Data = model.Data;
+            var handleResult = _blogFriendshipLinkBLL.AddorEditFriendshipLink(blog, _userAccount.GetUserInfo().UserId);
+            resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = handleResult.Msg;
+            resModel.Data = handleResult.Data;
             return Ok(resModel);
         }
         #endregion
@@ -84,9 +84,9 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = _blogFriendshipLinkBLL.DelFriendshipLink(friendshipLinkId);
-            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.RetMsg = model.Message;
+            var handleResult = _blogFriendshipLinkBLL.DelFriendshipLink(friendshipLinkId);
+            resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = handleResult.Msg;
             return Ok(resModel);
         }
         #endregion
@@ -99,9 +99,9 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         public IActionResult SfFriendshipLink(int friendshipLinkId)
         {
             var resModel = new ResponseModel();
-            MessageModel model = _blogFriendshipLinkBLL.SfFriendshipLinkList(friendshipLinkId);
-            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.RetMsg = model.Message;
+            var handleResult = _blogFriendshipLinkBLL.SfFriendshipLinkList(friendshipLinkId);
+            resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = handleResult.Msg;
             return Ok(resModel);
         }
         #endregion

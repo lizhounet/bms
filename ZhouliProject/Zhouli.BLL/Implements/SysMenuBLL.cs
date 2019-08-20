@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Transactions;
 using Zhouli.BLL.Interface;
+using Zhouli.Common.ResultModel;
 using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.Dto.ModelDto;
@@ -37,7 +38,7 @@ namespace Zhouli.BLL.Implements
         /// </summary>
         /// <param name="user">用户实体</param>
         /// <returns></returns>
-        public MessageModel GetMenusBy(SysUser user)
+        public HandleResult<List<SysMenuDto>> GetMenusBy(SysUser user)
         {
             var listMenuDto = new List<SysMenuDto>();
             listMenuDtos = Mapper.Map<List<SysMenuDto>>(((List<SysAuthority>)(sysAuthorityBLL.GetSysAuthorities(user, AuthorityType.Type_Menu).Data)).Select(t => t.sysMenu).ToList());
@@ -47,7 +48,7 @@ namespace Zhouli.BLL.Implements
             {
                 item.children = GetMenuChildren(item.MenuId);
             }
-            return new MessageModel
+            return new HandleResult<List<SysMenuDto>>
             {
                 Data = listMenuDto
             };
@@ -72,7 +73,7 @@ namespace Zhouli.BLL.Implements
         /// </summary>
         /// <param name="MenuId"></param>
         /// <returns></returns>
-        public MessageModel DelMenu(string MenuId)
+        public HandleResult<bool> DelMenu(string MenuId)
         {
             bool bResult = false;
             //获取菜单
@@ -84,9 +85,9 @@ namespace Zhouli.BLL.Implements
             sysAmRelatedDAL.Delete(relatedModel);
             sysAmRelatedDAL.SaveChanges();
             sysAuthorityBLL.Delete(authorityModel);
-            return new MessageModel
+            return new HandleResult<bool>
             {
-                Message = "删除成功",
+                Msg = "删除成功",
                 Result = bResult
             };
         }
@@ -95,11 +96,11 @@ namespace Zhouli.BLL.Implements
         /// </summary>
         /// <param name="RoleId"></param>
         /// <returns></returns>
-        public MessageModel GetRoleMenuList(string RoleId)
+        public HandleResult<List<SysMenuDto>> GetRoleMenuList(string RoleId)
         {
 
             var list = Mapper.Map<List<SysMenuDto>>(((List<SysAuthority>)sysAuthorityBLL.GetRoleAuthoritieList(RoleId, AuthorityType.Type_Menu).Data).Select(t => t.sysMenu).ToList());
-            return new MessageModel
+            return new HandleResult<List<SysMenuDto>>
             {
                 Data = list
             };

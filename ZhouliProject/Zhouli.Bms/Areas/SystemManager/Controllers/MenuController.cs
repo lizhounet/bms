@@ -134,11 +134,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public IActionResult DelMenu(string MenuId)
         {
-            var messageModel = _sysMenuBLL.DelMenu(MenuId);
+            var handleResult = _sysMenuBLL.DelMenu(MenuId);
             return Ok(new ResponseModel
             {
-                RetMsg = messageModel.Message,
-                RetCode = messageModel.Result ? StatesCode.success : StatesCode.failure
+                RetMsg = handleResult.Msg,
+                RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure
             });
         }
 

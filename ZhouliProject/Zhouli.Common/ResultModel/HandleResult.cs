@@ -8,7 +8,7 @@ namespace Zhouli.Common.ResultModel
     /// 处理结果
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class HandleResult<T> where T : class
+    public class HandleResult<T>
     {
         /// <summary>
         /// 结果(默认:true)

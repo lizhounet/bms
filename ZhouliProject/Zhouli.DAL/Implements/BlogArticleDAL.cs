@@ -23,25 +23,23 @@ namespace Zhouli.DAL.Implements
         /// </summary>
         /// <param name="articleId"></param>
         /// <returns></returns>
-        public HandleResult<dynamic> GetArticleDetails(int articleId)
+        public dynamic GetArticleDetails(int articleId)
         {
-            var handelResult = new HandleResult<dynamic>();
-            handelResult.Data = GetModels(t => t.ArticleId == articleId).Select(t => new
+            return GetModels(t => t.ArticleId == articleId).Select(t => new
             {
-                ArticleId = t.ArticleId,
-                ArticleTitle = t.ArticleTitle,
-                CreateTime = t.CreateTime,
-                ArticleBody = t.ArticleBody,
+                t.ArticleId,
+                t.ArticleTitle,
+                t.CreateTime,
+                t.ArticleBody,
                 CreateUser = _db.SysUser.Where(s => s.UserId.Equals(t.CreateUserId)).Select(s => s.UserNikeName).First(),
                 LableName = _db.BlogLable.Where(s => _db.BlogRelated
                           .Where(ss => ss.RelatedArticleId.Equals(articleId))
                           .Select(tt => tt.RelatedLableId).Contains(s.LableId))
-                           .Select(q => q.LableName).ToArray(),
+                            .Select(q => q.LableName).ToArray(),
                 ArticleBrowsingNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleBrowsingNum),
                 ArticleCommentNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleCommentNum),
                 ArticleLikeNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleLikeNum)
             }).First();
-            return handelResult;
         }
 
         /// <summary>

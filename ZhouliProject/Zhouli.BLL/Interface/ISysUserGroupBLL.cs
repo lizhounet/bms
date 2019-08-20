@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Zhouli.Common.ResultModel;
 using Zhouli.DbEntity.Models;
+using Zhouli.DbEntity.Views;
 
 namespace Zhouli.BLL.Interface
 {
@@ -15,7 +17,7 @@ namespace Zhouli.BLL.Interface
         /// <param name="limit">页容量</param>
         /// <param name="searchstr">搜索内容</param>
         /// <returns></returns>
-        MessageModel GetUserGroupList(string page, string limit, string searchstr);
+        HandleResult<PageModel> GetUserGroupList(string page, string limit, string searchstr);
         #endregion
         #region 删除用户组(批量删除)
         /// <summary>
@@ -23,7 +25,7 @@ namespace Zhouli.BLL.Interface
         /// </summary>
         /// <param name="UserGroupId"></param>
         /// <returns></returns>
-        MessageModel DelUserGroup(IEnumerable<string> UserGroupId);
+        HandleResult<bool> DelUserGroup(IEnumerable<string> UserGroupId);
        
         #endregion
     }

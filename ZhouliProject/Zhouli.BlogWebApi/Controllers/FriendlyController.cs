@@ -31,11 +31,11 @@ namespace Zhouli.BlogWebApi.Controllers
         [HttpGet("")]
         public async Task<IActionResult> Friendly()
         {
-            var messageModel = await Task.Run(() =>
+            var handleResult = await Task.Run(() =>
             _blogFriendshipLinkBLL.GetAuditedFriendshipLinkList());
             return Ok(new ResponseModel
             {
-                Data = Mapper.Map<List<BlogFriendshipLinkDto>>(messageModel.Data.Data)
+                Data = Mapper.Map<List<BlogFriendshipLinkDto>>(handleResult.Data.Data)
             });
         }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Zhouli.BlogWebApi.Controllers
         {
 
             var responseModel = new ResponseModel();
-            var messageModel = await Task.Run(() =>
+            var handleResult = await Task.Run(() =>
             _blogFriendshipLinkBLL.AddFriendshipLink(new BlogFriendshipLinkDto
             {
                 FriendshipLinkName = siteName,
@@ -59,7 +59,7 @@ namespace Zhouli.BlogWebApi.Controllers
                 FriendshipLinkEmail = siteEmail,
                 Note = siteSummary
             }));
-            if (messageModel.Result)
+            if (handleResult.Result)
             {
                 responseModel.RetCode = StatesCode.success;
                 responseModel.RetMsg = "提交成功!管理员审核后生效";
@@ -67,7 +67,7 @@ namespace Zhouli.BlogWebApi.Controllers
             else
             {
                 responseModel.RetCode = StatesCode.failure;
-                responseModel.RetMsg = messageModel.Message;
+                responseModel.RetMsg = handleResult.Msg;
             }
             return Ok(responseModel);
         }

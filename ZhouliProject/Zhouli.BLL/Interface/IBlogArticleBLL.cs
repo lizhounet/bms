@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Zhouli.Common.ResultModel;
 using Zhouli.DbEntity.Models;
+using Zhouli.DbEntity.Views;
 
 namespace Zhouli.BLL.Interface
 {
@@ -15,19 +16,19 @@ namespace Zhouli.BLL.Interface
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        MessageModel GetBlogArticlelist(string page, string limit, string searchstr);
+        HandleResult<PageModel> GetBlogArticlelist(string page, string limit, string searchstr);
         /// <summary>
         /// 添加/修改文章
         /// </summary>
         /// <param name="blogArticleDto"></param>
-        /// <param name="OnLineUserId"></param>
+        /// <param name="onLineUserId"></param>
         /// <returns></returns>
-        MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto, string OnLineUserId);
+        HandleResult<bool> AddOrUpdateArticlelist(BlogArticleDto blogArticleDto, string onLineUserId);
         /// <summary>
         /// 获取文章最大排序值
         /// </summary>
         /// <returns></returns>
-        MessageModel GetMaxArticleSortValue();
+        HandleResult<int> GetMaxArticleSortValue();
         /// <summary>
         /// 获取文章详情
         /// </summary>

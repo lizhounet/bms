@@ -10,26 +10,26 @@ namespace Zhouli.DAL.Interface
    public interface IBlogArticleDAL : IBaseDAL<BlogArticle>
     {
         /// <summary>
-        /// »ñÈ¡ÎÄÕÂ×î´óÅÅĞòÖµ
+        /// è·å–æ–‡ç« æœ€å¤§æ’åºå€¼
         /// </summary>
         /// <returns></returns>
         int GetMaxArticleSortValue();
-        #region »ñÈ¡ÎÄÕÂÁĞ±í
+        #region è·å–åˆ†é¡µæ–‡ç« åˆ—è¡¨
         /// <summary>
-        /// »ñÈ¡ÎÄÕÂÁĞ±í
+        /// è·å–åˆ†é¡µæ–‡ç« åˆ—è¡¨
         /// </summary>
-        /// <param name="page">µÚ¼¸Ò³</param>
-        /// <param name="limit">Ò³ÈİÁ¿</param>
-        /// <param name="searchstr">ËÑË÷ÄÚÈİ</param>
-        /// <returns>·ÖÒ³¶ÔÏó</returns>
+        /// <param name="page"></param>
+        /// <param name="limit"></param>
+        /// <param name="searchstr"></param>
+        /// <returns></returns>
         PageModel GetBlogArticleList(string page, string limit, string searchstr);
         #endregion
         /// <summary>
-        /// »ñÈ¡ÎÄÕÂÏêÇé
+        /// è·å–æ–‡ç« è¯¦æƒ…
         /// </summary>
         /// <param name="articleId"></param>
         /// <returns></returns>
-        HandleResult<dynamic> GetArticleDetails(int articleId);
+        dynamic GetArticleDetails(int articleId);
 
     }
 }

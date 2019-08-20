@@ -70,10 +70,10 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var resModel = new ResponseModel();
             var userLogin = _userAccount.GetUserInfo();
-            var mModel = _sysUserBLL.AddorEditUser(userDto, userLogin.UserId);
-            resModel.RetCode = mModel.Result ? StatesCode.success : StatesCode.failure;
-            resModel.RetMsg = mModel.Message;
-            resModel.Data = mModel.Data;
+            var handleResult = _sysUserBLL.AddorEditUser(userDto, userLogin.UserId);
+            resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = handleResult.Msg;
+            resModel.Data = handleResult.Data;
             return Ok(resModel);
         }
         #endregion
@@ -111,9 +111,9 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = _sysUserBLL.DelUser(UserId);
-            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.RetMsg = model.Message;
+            var handleResult = _sysUserBLL.DelUser(UserId);
+            resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = handleResult.Msg;
             return Ok(resModel);
         }
         #endregion

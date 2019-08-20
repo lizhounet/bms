@@ -113,9 +113,9 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = _sysUserGroupBLL.DelUserGroup(UserGroupId);
-            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.RetMsg = model.Message;
+            var handleResult = _sysUserGroupBLL.DelUserGroup(UserGroupId);
+            resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = handleResult.Msg;
             return Ok(resModel);
         }
         #endregion
