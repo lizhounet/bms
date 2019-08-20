@@ -14,7 +14,7 @@ namespace Zhouli.BlogWebApi.Controllers
     /// <summary>
     /// 友情链接api
     /// </summary>
-    [Route("api/blog/[controller]")]
+    [Route("api/blog/friendly")]
     [ApiController]
     [Authorize]
     public class FriendlyController : Controller
@@ -41,23 +41,23 @@ namespace Zhouli.BlogWebApi.Controllers
         /// <summary>
         /// 提交友情链接
         /// </summary>
-        /// <param name="SiteName">站点名称</param>
-        /// <param name="SiteUrl">站点地址</param>
-        /// <param name="SiteEmail">站长邮箱</param>
-        /// <param name="SiteSummary">网站简介</param>
+        /// <param name="siteName">站点名称</param>
+        /// <param name="siteUrl">站点地址</param>
+        /// <param name="siteEmail">站长邮箱</param>
+        /// <param name="siteSummary">网站简介</param>
         /// <returns></returns>
         [HttpPost()]
-        public async Task<IActionResult> Friendly([FromForm]string SiteName, [FromForm]string SiteUrl, [FromForm]string SiteEmail, [FromForm]string SiteSummary)
+        public async Task<IActionResult> Friendly([FromForm]string siteName, [FromForm]string siteUrl, [FromForm]string siteEmail, [FromForm]string siteSummary)
         {
 
             var responseModel = new ResponseModel();
             var messageModel = await Task.Run(() =>
             _blogFriendshipLinkBLL.AddFriendshipLink(new BlogFriendshipLinkDto
             {
-                FriendshipLinkName = SiteName,
-                FriendshipLinkUrl = SiteUrl,
-                FriendshipLinkEmail = SiteEmail,
-                Note = SiteSummary
+                FriendshipLinkName = siteName,
+                FriendshipLinkUrl = siteUrl,
+                FriendshipLinkEmail = siteEmail,
+                Note = siteSummary
             }));
             if (messageModel.Result)
             {

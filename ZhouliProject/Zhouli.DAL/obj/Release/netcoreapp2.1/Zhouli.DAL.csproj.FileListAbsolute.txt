@@ -30,3 +30,5 @@ F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DAL\bin\Release\netcoreapp2.1\Zh
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DAL\bin\Release\netcoreapp2.1\Zhouli.Enum.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.DAL\bin\Release\netcoreapp2.1\Zhouli.Enum.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.DAL\bin\Release\netcoreapp2.1\Zhouli.Enum.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.DAL\bin\Release\netcoreapp2.1\Zhouli.Common.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.DAL\bin\Release\netcoreapp2.1\Zhouli.Common.pdb

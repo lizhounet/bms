@@ -5095,6 +5095,7 @@
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
           "Dapper": "1.50.5",
+          "Zhouli.Common": "1.0.0",
           "Zhouli.DbEntity": "1.0.0",
           "Zhouli.Dto": "1.0.0",
           "Zhouli.Enum": "1.0.0"

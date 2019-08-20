@@ -18,6 +18,13 @@
             <param name="searchstr">关键字(文章标题,文章内容)</param>
             <returns></returns>
         </member>
+        <member name="M:Zhouli.BlogWebApi.Controllers.ArticleController.Details(System.Int32)">
+            <summary>
+            获取文章详情
+            </summary>
+            <param name="articleId">文章id</param>
+            <returns></returns>
+        </member>
         <member name="T:Zhouli.BlogWebApi.Controllers.FriendlyController">
             <summary>
             友情链接api
@@ -33,10 +40,10 @@
             <summary>
             提交友情链接
             </summary>
-            <param name="SiteName">站点名称</param>
-            <param name="SiteUrl">站点地址</param>
-            <param name="SiteEmail">站长邮箱</param>
-            <param name="SiteSummary">网站简介</param>
+            <param name="siteName">站点名称</param>
+            <param name="siteUrl">站点地址</param>
+            <param name="siteEmail">站长邮箱</param>
+            <param name="siteSummary">网站简介</param>
             <returns></returns>
         </member>
         <member name="T:Zhouli.BlogWebApi.Data.Log4netHelper">

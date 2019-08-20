@@ -9,6 +9,7 @@ using System.Linq;
 using Zhouli.DbEntity.Views;
 using System.Linq.Expressions;
 using Zhouli.Enum;
+using Zhouli.Common.ResultModel;
 
 namespace Zhouli.DAL.Implements
 {
@@ -17,6 +18,32 @@ namespace Zhouli.DAL.Implements
         public BlogArticleDAL(ZhouLiContext db, IDbConnection dbConnection) : base(db, dbConnection)
         {
         }
+        /// <summary>
+        /// 获取文章详情
+        /// </summary>
+        /// <param name="articleId"></param>
+        /// <returns></returns>
+        public HandleResult<dynamic> GetArticleDetails(int articleId)
+        {
+            var handelResult = new HandleResult<dynamic>();
+            handelResult.Data = GetModels(t => t.ArticleId == articleId).Select(t => new
+            {
+                ArticleId = t.ArticleId,
+                ArticleTitle = t.ArticleTitle,
+                CreateTime = t.CreateTime,
+                ArticleBody = t.ArticleBody,
+                CreateUser = _db.SysUser.Where(s => s.UserId.Equals(t.CreateUserId)).Select(s => s.UserNikeName).First(),
+                LableName = _db.BlogLable.Where(s => _db.BlogRelated
+                          .Where(ss => ss.RelatedArticleId.Equals(articleId))
+                          .Select(tt => tt.RelatedLableId).Contains(s.LableId))
+                           .Select(q => q.LableName).ToArray(),
+                ArticleBrowsingNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleBrowsingNum),
+                ArticleCommentNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleCommentNum),
+                ArticleLikeNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleLikeNum)
+            }).First();
+            return handelResult;
+        }
+
         /// <summary>
         /// 获取文章列表
         /// </summary>
@@ -65,7 +92,7 @@ namespace Zhouli.DAL.Implements
         }
 
         /// <summary>
-        /// ��ȡ�����������ֵ
+        /// 获取文章最大排序值
         /// </summary>
         /// <returns></returns>
         public int GetMaxArticleSortValue()

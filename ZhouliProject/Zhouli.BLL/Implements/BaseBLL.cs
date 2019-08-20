@@ -36,9 +36,9 @@ namespace Zhouli.BLL.Implements
             Dal.Delete(t);
             return Dal.SaveChanges();
         }
-        public bool Delete(Expression<Func<T, bool>> WhereLambda)
+        public bool Delete(Expression<Func<T, bool>> whereLambda)
         {
-            Dal.Delete(WhereLambda);
+            Dal.Delete(whereLambda);
             return Dal.SaveChanges();
         }
         public bool Update(T t)
@@ -51,9 +51,9 @@ namespace Zhouli.BLL.Implements
         //{
         //    return Dal.ExecuteSql(sql, parameter);
         //}
-        public int GetCount(Expression<Func<T, bool>> WhereLambda)
+        public int GetCount(Expression<Func<T, bool>> whereLambda)
         {
-            return Dal.GetCount(WhereLambda);
+            return Dal.GetCount(whereLambda);
         }
         public List<T> GetModels(Expression<Func<T, bool>> whereLambda)
         {
@@ -61,9 +61,9 @@ namespace Zhouli.BLL.Implements
         }
 
         public List<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc,
-            Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda)
+            Expression<Func<T, type>> orderByLambda, Expression<Func<T, bool>> whereLambda)
         {
-            return Dal.GetModelsByPage(pageSize, pageIndex, isAsc, OrderByLambda, WhereLambda).ToList();
+            return Dal.GetModelsByPage(pageSize, pageIndex, isAsc, orderByLambda, whereLambda).ToList();
         }
 
        

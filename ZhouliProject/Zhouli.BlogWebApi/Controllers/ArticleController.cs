@@ -17,7 +17,7 @@ namespace Zhouli.BlogWebApi.Controllers
     /// <summary>
     /// 博客文章api
     /// </summary>
-    [Route("api/blog/[controller]")]
+    [Route("api/blog/article")]
     [ApiController]
     [Authorize]
     public class ArticleController : Controller
@@ -38,6 +38,19 @@ namespace Zhouli.BlogWebApi.Controllers
         public IActionResult GetArticles(string page, string limit, string searchstr)
         {
             return Ok(new ResponseModel { Data = _blogArticleBLL.GetBlogArticlelist(page, limit, searchstr).Data });
+        }
+        /// <summary>
+        /// 获取文章详情
+        /// </summary>
+        /// <param name="articleId">文章id</param>
+        /// <returns></returns>
+        [HttpGet("details")]
+        public IActionResult Details(int articleId)
+        {
+            return Ok(new ResponseModel
+            {
+                Data = _blogArticleBLL.GetArticleDetails(articleId).Data
+            });
         }
     }
 }

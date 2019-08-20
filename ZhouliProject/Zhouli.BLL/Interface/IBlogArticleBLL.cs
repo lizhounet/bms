@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Zhouli.Common.ResultModel;
 using Zhouli.DbEntity.Models;
 
 namespace Zhouli.BLL.Interface
@@ -27,5 +28,12 @@ namespace Zhouli.BLL.Interface
         /// </summary>
         /// <returns></returns>
         MessageModel GetMaxArticleSortValue();
+        /// <summary>
+        /// 获取文章详情
+        /// </summary>
+        /// <param name="articleId"></param>
+        /// <returns></returns>
+        HandleResult<dynamic> GetArticleDetails(int articleId);
+
     }
 }

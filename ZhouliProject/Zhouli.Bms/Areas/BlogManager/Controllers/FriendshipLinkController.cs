@@ -80,11 +80,11 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// </summary>
         /// <param name="FriendshipLinkId"></param>
         /// <returns></returns>
-        public IActionResult DeleteFriendshipLink(List<string> FriendshipLinkId)
+        public IActionResult DeleteFriendshipLink(List<string> friendshipLinkId)
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = _blogFriendshipLinkBLL.DelFriendshipLink(FriendshipLinkId);
+            MessageModel model = _blogFriendshipLinkBLL.DelFriendshipLink(friendshipLinkId);
             resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.RetMsg = model.Message;
             return Ok(resModel);
@@ -96,10 +96,10 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// </summary>
         /// <param name="FriendshipLinkId"></param>
         /// <returns></returns>
-        public IActionResult SfFriendshipLink(int FriendshipLinkId)
+        public IActionResult SfFriendshipLink(int friendshipLinkId)
         {
             var resModel = new ResponseModel();
-            MessageModel model = _blogFriendshipLinkBLL.SfFriendshipLinkList(FriendshipLinkId);
+            MessageModel model = _blogFriendshipLinkBLL.SfFriendshipLinkList(friendshipLinkId);
             resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
             resModel.RetMsg = model.Message;
             return Ok(resModel);

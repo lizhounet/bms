@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Zhouli.Common.ResultModel;
 using Zhouli.DbEntity.Models;
 using Zhouli.DbEntity.Views;
 
@@ -23,5 +24,12 @@ namespace Zhouli.DAL.Interface
         /// <returns>分页对象</returns>
         PageModel GetBlogArticleList(string page, string limit, string searchstr);
         #endregion
+        /// <summary>
+        /// 获取文章详情
+        /// </summary>
+        /// <param name="articleId"></param>
+        /// <returns></returns>
+        HandleResult<dynamic> GetArticleDetails(int articleId);
+
     }
 }

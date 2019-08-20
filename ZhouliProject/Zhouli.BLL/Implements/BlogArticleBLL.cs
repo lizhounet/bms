@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Zhouli.BLL.Interface;
+using Zhouli.Common.ResultModel;
 using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.DbEntity.Views;
@@ -131,6 +132,15 @@ namespace Zhouli.BLL.Implements
             {
                 Data = _blogArticle.GetMaxArticleSortValue()
             };
+        }
+        /// <summary>
+        /// 获取文章详情
+        /// </summary>
+        /// <param name="articleId"></param>
+        /// <returns></returns>
+        public HandleResult<dynamic> GetArticleDetails(int articleId)
+        {
+            return _blogArticle.GetArticleDetails(articleId);
         }
     }
 }
