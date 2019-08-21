@@ -16,7 +16,6 @@ namespace Zhouli.DbEntity.Models
         }
 
         public virtual DbSet<BlogArticle> BlogArticle { get; set; }
-        public virtual DbSet<BlogArticleSeeInfo> BlogArticleSeeInfo { get; set; }
         public virtual DbSet<BlogFriendshipLink> BlogFriendshipLink { get; set; }
         public virtual DbSet<BlogLable> BlogLable { get; set; }
         public virtual DbSet<BlogNavigationImg> BlogNavigationImg { get; set; }
@@ -93,32 +92,6 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
                 entity.Property(e => e.Note).HasColumnType("varchar(2048)");
-            });
-
-            modelBuilder.Entity<BlogArticleSeeInfo>(entity =>
-            {
-                entity.HasKey(e => e.ArticleSeeInfoArticleId);
-
-                entity.ToTable("Blog_ArticleSeeInfo");
-
-                entity.Property(e => e.ArticleSeeInfoArticleId)
-                    .HasColumnName("ArticleSeeInfo_ArticleId")
-                    .HasColumnType("int(11)");
-
-                entity.Property(e => e.ArticleSeeInfoArticleBrowsingNum)
-                    .HasColumnName("ArticleSeeInfo_ArticleBrowsingNum")
-                    .HasColumnType("int(11)")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.ArticleSeeInfoArticleCommentNum)
-                    .HasColumnName("ArticleSeeInfo_ArticleCommentNum")
-                    .HasColumnType("int(11)")
-                    .HasDefaultValueSql("'0'");
-
-                entity.Property(e => e.ArticleSeeInfoArticleLikeNum)
-                    .HasColumnName("ArticleSeeInfo_ArticleLikeNum")
-                    .HasColumnType("int(11)")
-                    .HasDefaultValueSql("'0'");
             });
 
             modelBuilder.Entity<BlogFriendshipLink>(entity =>

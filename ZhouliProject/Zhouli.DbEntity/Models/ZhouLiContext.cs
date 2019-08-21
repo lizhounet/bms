@@ -16,7 +16,8 @@ namespace Zhouli.DbEntity.Models
         }
 
         public virtual DbSet<BlogArticle> BlogArticle { get; set; }
-        public virtual DbSet<BlogArticleSeeInfo> BlogArticleSeeInfo { get; set; }
+        public virtual DbSet<BlogArticleBrowsing> BlogArticleBrowsing { get; set; }
+        public virtual DbSet<BlogArticleLike> BlogArticleLike { get; set; }
         public virtual DbSet<BlogFriendshipLink> BlogFriendshipLink { get; set; }
         public virtual DbSet<BlogLable> BlogLable { get; set; }
         public virtual DbSet<BlogNavigationImg> BlogNavigationImg { get; set; }
@@ -32,6 +33,14 @@ namespace Zhouli.DbEntity.Models
         public virtual DbSet<SysUser> SysUser { get; set; }
         public virtual DbSet<SysUserGroup> SysUserGroup { get; set; }
 
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseSqlServer("Server=.;Database=ZhouLi;Trusted_Connection=True;");
+//            }
+//        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -84,19 +93,32 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.Note).HasMaxLength(2048);
             });
 
-            modelBuilder.Entity<BlogArticleSeeInfo>(entity =>
+            modelBuilder.Entity<BlogArticleBrowsing>(entity =>
             {
-                entity.HasKey(e => e.ArticleSeeInfoArticleId);
+                entity.ToTable("Blog_ArticleBrowsing");
 
-                entity.ToTable("Blog_ArticleSeeInfo");
+                entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.ArticleSeeInfoArticleId).HasColumnName("ArticleSeeInfo_ArticleId");
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.ArticleSeeInfoArticleBrowsingNum).HasColumnName("ArticleSeeInfo_ArticleBrowsingNum");
+                entity.Property(e => e.Ip)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+            });
 
-                entity.Property(e => e.ArticleSeeInfoArticleCommentNum).HasColumnName("ArticleSeeInfo_ArticleCommentNum");
+            modelBuilder.Entity<BlogArticleLike>(entity =>
+            {
+                entity.ToTable("Blog_ArticleLike");
 
-                entity.Property(e => e.ArticleSeeInfoArticleLikeNum).HasColumnName("ArticleSeeInfo_ArticleLikeNum");
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.CreateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Ip)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<BlogFriendshipLink>(entity =>
@@ -150,7 +172,7 @@ namespace Zhouli.DbEntity.Models
                 entity.ToTable("Blog_Lable");
 
                 entity.HasIndex(e => e.LableName)
-                    .HasName("UQ__Blog_Lab__AE42081BAF5C4716")
+                    .HasName("UQ__Blog_Lab__AE42081B686F1CB0")
                     .IsUnique();
 
                 entity.Property(e => e.LableId).HasColumnName("Lable_Id");
@@ -239,7 +261,8 @@ namespace Zhouli.DbEntity.Models
 
                 entity.Property(e => e.AuthorityTypeId)
                     .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AuthorityTypeName)
                     .IsRequired()
@@ -254,7 +277,8 @@ namespace Zhouli.DbEntity.Models
 
                 entity.Property(e => e.AmRelatedId)
                     .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AuthorityId)
                     .IsRequired()
@@ -276,7 +300,7 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.AuthorityId)
                     .HasMaxLength(36)
                     .IsUnicode(false)
-                    ;
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
@@ -302,7 +326,7 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.MenuId)
                     .HasMaxLength(36)
                     .IsUnicode(false)
-                    ;
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
@@ -342,7 +366,7 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.RaRelatedId)
                     .HasMaxLength(36)
                     .IsUnicode(false)
-                    ;
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.AuthorityId)
                     .IsRequired()
@@ -364,7 +388,7 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.RoleId)
                     .HasMaxLength(36)
                     .IsUnicode(false)
-                    ;
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
@@ -394,7 +418,7 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.UgrRelatedId)
                     .HasMaxLength(36)
                     .IsUnicode(false)
-                    ;
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.RoleId)
                     .IsRequired()
@@ -415,7 +439,8 @@ namespace Zhouli.DbEntity.Models
 
                 entity.Property(e => e.UrRelatedId)
                     .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.RoleId)
                     .IsRequired()
@@ -435,12 +460,13 @@ namespace Zhouli.DbEntity.Models
                 entity.ToTable("Sys_User");
 
                 entity.HasIndex(e => e.UserName)
-                    .HasName("UQ__Sys_User__C9F284560B22F238")
+                    .HasName("UQ__Sys_User__C9F284560586F551")
                     .IsUnique();
 
                 entity.Property(e => e.UserId)
                     .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
@@ -505,7 +531,8 @@ namespace Zhouli.DbEntity.Models
 
                 entity.Property(e => e.UserGroupId)
                     .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .IsUnicode(false)
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 

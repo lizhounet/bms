@@ -24,11 +24,11 @@ namespace Zhouli.BlogWebApi.Controllers
     public class ArticleController : Controller
     {
         private readonly IBlogArticleBLL _blogArticleBLL;
-        private readonly IBlogArticleSeeInfoBLL _blogArticleSeeInfoBLL;
-        public ArticleController(IBlogArticleBLL blogArticleBLL, IBlogArticleSeeInfoBLL blogArticleSeeInfoBLL)
+        private readonly IBlogArticleBrowsingBLL _blogArticleBrowsingBLL;
+        public ArticleController(IBlogArticleBLL blogArticleBLL, IBlogArticleBrowsingBLL blogArticleBrowsingBLL)
         {
             _blogArticleBLL = blogArticleBLL;
-            _blogArticleSeeInfoBLL = blogArticleSeeInfoBLL;
+            _blogArticleBrowsingBLL = blogArticleBrowsingBLL;
         }
         /// <summary>
         /// 获取文章列表
@@ -48,7 +48,7 @@ namespace Zhouli.BlogWebApi.Controllers
         /// <param name="articleId">文章id</param>
         /// <returns></returns>
         [HttpGet("details")]
-        [ServiceFilter(typeof(ArticleBrowsingFilterAttribute))]
+        [TypeFilter(typeof(ArticleBrowsingFilterAttribute))]
         public IActionResult Details(int articleId)
         {
 
@@ -65,10 +65,10 @@ namespace Zhouli.BlogWebApi.Controllers
         public IActionResult Popular()
         {
             //获取前五篇浏览量最高的文章id
-            var listBlogArticleId = _blogArticleSeeInfoBLL.GetModelsByPage(5, 1, false, t => t.ArticleSeeInfoArticleBrowsingNum, t => true).Select(t => t.ArticleSeeInfoArticleId);
+           // var listBlogArticleId = _blogArticleBrowsingBLL.;
             return Ok(new ResponseModel
             {
-                Data = _blogArticleBLL.GetModels(t => listBlogArticleId.Contains(t.ArticleId))
+               // Data = _blogArticleBLL.GetModels(t => listBlogArticleId.Contains(t.ArticleId))
             });
         }
     }

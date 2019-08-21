@@ -36,9 +36,9 @@ namespace Zhouli.DAL.Implements
                           .Where(ss => ss.RelatedArticleId.Equals(articleId))
                           .Select(tt => tt.RelatedLableId).Contains(s.LableId))
                             .Select(q => q.LableName).ToArray(),
-                ArticleBrowsingNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleBrowsingNum),
-                ArticleCommentNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleCommentNum),
-                ArticleLikeNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleLikeNum),
+                ArticleBrowsingNum = _db.BlogArticleBrowsing.Count(b => b.ArticleId == articleId),
+                ArticleCommentNum = 0,
+                ArticleLikeNum = _db.BlogArticleLike.Count(b => b.ArticleId == articleId),
                 LastArticle = _db.BlogArticle.Where(b => b.ArticleId < articleId).OrderByDescending(b => b.ArticleId).Select(s => new { s.ArticleId, s.ArticleTitle }).FirstOrDefault(),
                 NextArticle = _db.BlogArticle.Where(b => b.ArticleId > articleId).OrderBy(b => b.ArticleId).Select(s => new { s.ArticleId, s.ArticleTitle }).FirstOrDefault()
             }).First();
@@ -78,9 +78,9 @@ namespace Zhouli.DAL.Implements
                            .Where(t => t.RelatedArticleId.Equals(blogArticle.ArticleId))
                            .Select(t => t.RelatedLableId).Contains(s.LableId))
                            .Select(q => q.LableName),
-                           ArticleBrowsingNum = _db.BlogArticleSeeInfo.Where(t => t.ArticleSeeInfoArticleId == blogArticle.ArticleId).Sum(t => t.ArticleSeeInfoArticleBrowsingNum),
-                           ArticleCommentNum = _db.BlogArticleSeeInfo.Where(t => t.ArticleSeeInfoArticleId == blogArticle.ArticleId).Sum(t => t.ArticleSeeInfoArticleCommentNum),
-                           ArticleLikeNum = _db.BlogArticleSeeInfo.Where(t => t.ArticleSeeInfoArticleId == blogArticle.ArticleId).Sum(t => t.ArticleSeeInfoArticleLikeNum)
+                           ArticleBrowsingNum = _db.BlogArticleBrowsing.Count(b => b.ArticleId == blogArticle.ArticleId),
+                           ArticleCommentNum =0,
+                           ArticleLikeNum = _db.BlogArticleLike.Count(b => b.ArticleId == blogArticle.ArticleId)
                        };
             return new PageModel
             {
