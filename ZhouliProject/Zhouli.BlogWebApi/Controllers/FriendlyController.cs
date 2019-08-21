@@ -6,7 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Zhouli.BLL.Interface;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.Dto.ModelDto;
 
 namespace Zhouli.BlogWebApi.Controllers

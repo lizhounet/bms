@@ -122,9 +122,7 @@ F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\obj\Release\netcoreapp2.1\Zh
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\obj\Release\netcoreapp2.1\Zhouli.Bms.pdb
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.Enum.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.Enum.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.CommonEntity.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.Enum.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.CommonEntity.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.Enum.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Release\netcoreapp2.1\Razor\Areas\BlogManager\Views\BlogArticle\BlogArticleAdd.g.cshtml.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Release\netcoreapp2.1\Razor\Areas\BlogManager\Views\BlogArticle\Index.g.cshtml.cs

@@ -53,8 +53,6 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netc
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netcoreapp2.1\Zhouli.FileService.xml
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netcoreapp2.1\Microsoft.Extensions.PlatformAbstractions.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netcoreapp2.1\Zhouli.Common.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netcoreapp2.1\Zhouli.CommonEntity.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netcoreapp2.1\Zhouli.CommonEntity.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netcoreapp2.1\Zhouli.Common.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netcoreapp2.1\Microsoft.Extensions.PlatformAbstractions.xml
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Debug\netcoreapp2.1\Zhouli.FileService.csprojAssemblyReference.cache

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.DbEntity.Models;
 using Zhouli.DI;
 using ZhouliSystem.Data;
@@ -55,10 +55,10 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         public IActionResult AddorUpdateBlogArticle(BlogArticleDto blogArticleDto)
         {
             var resModel = new ResponseModel();
-            MessageModel model = _blogArticleBLL.AddOrUpdateArticlelist(blogArticleDto, _userAccount.GetUserInfo().UserId);
-            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.RetMsg = model.Message;
-            resModel.Data = model.Data;
+            var handleResult = _blogArticleBLL.AddOrUpdateArticlelist(blogArticleDto, _userAccount.GetUserInfo().UserId);
+            resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = handleResult.Msg;
+            resModel.Data = handleResult.Data;
             return Ok(resModel);
         }
         #endregion

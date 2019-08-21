@@ -29,7 +29,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Zhouli.BlogWebApi.Data;
 using Zhouli.Common.Expansion;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 
 namespace Zhouli.BlogWebApi.Filters
 {

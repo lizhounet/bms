@@ -34,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zhouli.CommonEntity\Zhouli.CommonEntity.csproj" />
     <ProjectReference Include="..\Zhouli.Common\Zhouli.Common.csproj" />
   </ItemGroup>
 

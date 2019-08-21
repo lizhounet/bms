@@ -38,7 +38,9 @@ namespace Zhouli.DAL.Implements
                             .Select(q => q.LableName).ToArray(),
                 ArticleBrowsingNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleBrowsingNum),
                 ArticleCommentNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleCommentNum),
-                ArticleLikeNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleLikeNum)
+                ArticleLikeNum = _db.BlogArticleSeeInfo.Where(tt => tt.ArticleSeeInfoArticleId == articleId).Sum(tt => tt.ArticleSeeInfoArticleLikeNum),
+                LastArticle = _db.BlogArticle.Where(b => b.ArticleId < articleId).OrderByDescending(b => b.ArticleId).Select(s => new { s.ArticleId, s.ArticleTitle }).FirstOrDefault(),
+                NextArticle = _db.BlogArticle.Where(b => b.ArticleId > articleId).OrderBy(b => b.ArticleId).Select(s => new { s.ArticleId, s.ArticleTitle }).FirstOrDefault()
             }).First();
         }
 

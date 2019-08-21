@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
 using Zhouli.Common;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.DI;
 using Zhouli.Dto.ModelDto;
 using ZhouliSystem.Data;

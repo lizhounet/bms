@@ -12,7 +12,7 @@ using ZhouliSystem.Models;
 using ZhouliSystem.Filters;
 using System.Collections;
 using Zhouli.Dto.ModelDto;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.Enum;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers

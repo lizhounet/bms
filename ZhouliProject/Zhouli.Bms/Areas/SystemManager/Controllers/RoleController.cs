@@ -11,7 +11,7 @@ using ZhouliSystem.Data;
 using ZhouliSystem.Models;
 using ZhouliSystem.Filters;
 using Zhouli.Dto.ModelDto;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.Enum;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers

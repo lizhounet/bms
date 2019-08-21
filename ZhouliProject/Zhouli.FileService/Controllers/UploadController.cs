@@ -17,7 +17,7 @@ using Qiniu.IO;
 using Qiniu.IO.Model;
 using Qiniu.Util;
 using Zhouli.Common;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.FileService.Filters;
 using Zhouli.FileService.Models;
 
