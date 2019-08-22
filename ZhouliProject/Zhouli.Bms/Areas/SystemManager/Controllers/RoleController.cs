@@ -153,9 +153,9 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public IActionResult GetRoleMenuList(string RoleId)
         {
             //用户可以操作的菜单
-            var menuList = (List<SysMenuDto>)(_sysMenuBLL.GetMenusBy(_userAccount.GetUserInfo()).Data);
+            var menuList = _sysMenuBLL.GetMenusBy(_userAccount.GetUserInfo()).Data;
             //角色所拥有的菜单
-            var roleMenuList = string.IsNullOrEmpty(RoleId) ? new List<SysMenuDto>() : ((List<SysMenuDto>)_sysMenuBLL.GetRoleMenuList(RoleId).Data);
+            var roleMenuList = string.IsNullOrEmpty(RoleId) ? new List<SysMenuDto>() : _sysMenuBLL.GetRoleMenuList(RoleId).Data;
             return Ok(new ResponseModel
             {
                 Data = new

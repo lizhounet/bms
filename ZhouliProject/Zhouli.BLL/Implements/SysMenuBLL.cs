@@ -99,7 +99,7 @@ namespace Zhouli.BLL.Implements
         public HandleResult<List<SysMenuDto>> GetRoleMenuList(string RoleId)
         {
 
-            var list = Mapper.Map<List<SysMenuDto>>(((List<SysAuthority>)sysAuthorityBLL.GetRoleAuthoritieList(RoleId, AuthorityType.Type_Menu).Data).Select(t => t.sysMenu).ToList());
+            var list = Mapper.Map<List<SysMenuDto>>(sysAuthorityBLL.GetRoleAuthoritieList(RoleId, AuthorityType.Type_Menu).Data.Select(t => t.sysMenu).ToList());
             return new HandleResult<List<SysMenuDto>>
             {
                 Data = list

@@ -146,5 +146,16 @@ namespace Zhouli.BLL.Implements
                 Data = _blogArticle.GetArticleDetails(articleId)
             };
         }
+        /// <summary>
+        /// 获取热门文章(前五条)
+        /// </summary>
+        /// <returns></returns>
+        public HandleResult<dynamic> GetPopularArticle()
+        {
+            return new HandleResult<dynamic>
+            {
+                Data = _blogArticle.GetPopularArticle()
+            };
+        }
     }
 }

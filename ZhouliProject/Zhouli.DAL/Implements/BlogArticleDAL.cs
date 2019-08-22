@@ -9,7 +9,7 @@ using System.Linq;
 using Zhouli.DbEntity.Views;
 using System.Linq.Expressions;
 using Zhouli.Enum;
-using Zhouli.Common.ResultModel;
+using Dapper;
 
 namespace Zhouli.DAL.Implements
 {
@@ -79,7 +79,7 @@ namespace Zhouli.DAL.Implements
                            .Select(t => t.RelatedLableId).Contains(s.LableId))
                            .Select(q => q.LableName),
                            ArticleBrowsingNum = _db.BlogArticleBrowsing.Count(b => b.ArticleId == blogArticle.ArticleId),
-                           ArticleCommentNum =0,
+                           ArticleCommentNum = 0,
                            ArticleLikeNum = _db.BlogArticleLike.Count(b => b.ArticleId == blogArticle.ArticleId)
                        };
             return new PageModel
@@ -98,6 +98,25 @@ namespace Zhouli.DAL.Implements
         public int GetMaxArticleSortValue()
         {
             return _db.BlogArticle.Select(t => t.ArticleSortValue).DefaultIfEmpty().Max();
+        }
+        /// <summary>
+        /// 获取热门文章(前五条)
+        /// </summary>
+        /// <returns></returns>
+        public dynamic GetPopularArticle()
+        {
+            
+            return _dbConnection.Query(@"SELECT BB.ArticleId, BB.ArticleBrowsingNum, BA.Article_Title ArticleTitle
+                                FROM (
+	                                SELECT ArticleId, ArticleBrowsingNum
+	                                FROM (
+		                                SELECT ROW_NUMBER() OVER (ORDER BY COUNT(1) DESC) AS row, ArticleId, COUNT(1) AS ArticleBrowsingNum
+		                                FROM Blog_ArticleBrowsing BA
+		                                GROUP BY ArticleId
+	                                ) T
+	                                WHERE T.row < 6
+                                ) BB
+	                                LEFT JOIN Blog_Article BA ON BB.ArticleId = BA.Article_Id"); ;
         }
     }
 }

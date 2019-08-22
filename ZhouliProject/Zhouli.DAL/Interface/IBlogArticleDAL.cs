@@ -30,6 +30,11 @@ namespace Zhouli.DAL.Interface
         /// <param name="articleId"></param>
         /// <returns></returns>
         dynamic GetArticleDetails(int articleId);
+        /// <summary>
+        /// 获取热门文章(前五条)
+        /// </summary>
+        /// <returns></returns>
+        dynamic GetPopularArticle();
 
     }
 }

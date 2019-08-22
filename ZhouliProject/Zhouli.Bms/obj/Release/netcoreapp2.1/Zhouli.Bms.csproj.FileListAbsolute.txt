@@ -64,13 +64,11 @@ F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zh
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.Bms.Views.pdb
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.BLL.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.Common.dll
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.CommonEntity.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.DAL.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.DbEntity.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.DI.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.Dto.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.BLL.pdb
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.CommonEntity.pdb
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.Common.pdb
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.DbEntity.pdb
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Bms\bin\Release\netcoreapp2.1\Zhouli.DI.pdb

@@ -35,6 +35,11 @@ namespace Zhouli.BLL.Interface
         /// <param name="articleId"></param>
         /// <returns></returns>
         HandleResult<dynamic> GetArticleDetails(int articleId);
+        /// <summary>
+        /// 获取热门文章(前五条)
+        /// </summary>
+        /// <returns></returns>
+        HandleResult<dynamic> GetPopularArticle();
 
     }
 }

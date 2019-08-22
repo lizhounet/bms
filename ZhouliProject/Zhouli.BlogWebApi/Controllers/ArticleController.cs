@@ -64,9 +64,11 @@ namespace Zhouli.BlogWebApi.Controllers
         [HttpGet("popular")]
         public IActionResult Popular()
         {
-            //获取前五篇浏览量最高的文章id
-           // var listBlogArticleId = _blogArticleBrowsingBLL.;
-            return Ok();
+            
+            return Ok(new ResponseModel
+            {
+                Data = _blogArticleBLL.GetPopularArticle().Data
+            });
         }
     }
 }

@@ -53,15 +53,12 @@ namespace Zhouli.DAL.Implements
                             WHERE AuthorityType = {(int)authorityType}");
                     break;
             }
-            using (var conn = _dbConnection)
-            {
-                var list = conn.Query<SysAuthority, SysMenu, SysAuthority>(builder.ToString(), (a, b) =>
-               {
-                   a.sysMenu = b;
-                   return a;
-               }, splitOn: "MenuId").ToList();
-                return list;
-            }
+            var list = _dbConnection.Query<SysAuthority, SysMenu, SysAuthority>(builder.ToString(), (a, b) =>
+           {
+               a.sysMenu = b;
+               return a;
+           }, splitOn: "MenuId").ToList();
+            return list;
 
         }
     }

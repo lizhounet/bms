@@ -96,10 +96,8 @@ namespace Zhouli.DAL.Implements
         }
         public IEnumerable<TR> SqlQuery<TR>(string sql)
         {
-            using (var conn = _dbConnection)
-            {
-                return conn.Query<TR>(sql);
-            }
+
+            return _dbConnection.Query<TR>(sql);
 
         }
         public bool SaveChanges()
