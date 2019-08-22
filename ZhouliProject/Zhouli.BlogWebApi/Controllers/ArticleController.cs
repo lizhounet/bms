@@ -66,10 +66,7 @@ namespace Zhouli.BlogWebApi.Controllers
         {
             //获取前五篇浏览量最高的文章id
            // var listBlogArticleId = _blogArticleBrowsingBLL.;
-            return Ok(new ResponseModel
-            {
-               // Data = _blogArticleBLL.GetModels(t => listBlogArticleId.Contains(t.ArticleId))
-            });
+            return Ok();
         }
     }
 }

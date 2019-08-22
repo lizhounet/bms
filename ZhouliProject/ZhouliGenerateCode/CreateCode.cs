@@ -122,7 +122,6 @@ namespace ZhouliGenerateCode
                     strDALImplements.AppendLine("using System.Data;");
                     strDALImplements.AppendLine("using Zhouli.DAL.Interface;");
                     strDALImplements.AppendLine("using Zhouli.DbEntity.Models;");
-                    strDALImplements.AppendLine("using System.Data;");
                     strDALImplements.AppendLine("");
                     strDALImplements.AppendLine("namespace Zhouli.DAL.Implements");
                     strDALImplements.AppendLine("{");

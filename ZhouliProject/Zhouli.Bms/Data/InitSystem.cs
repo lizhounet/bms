@@ -52,7 +52,9 @@ namespace ZhouliSystem.Data
                             //添加权限类型
                             context.DictAuthorityType.AddRange(new DictAuthorityType
                             {
-                                AuthorityTypeName = "菜单权限"
+                                AuthorityTypeName = "菜单权限",
+                                AuthorityTypeId = Guid.NewGuid().ToString()
+
                             });
 
                             //初始化字典表---------------------------------------------------------结束
@@ -72,7 +74,8 @@ namespace ZhouliSystem.Data
                                 UserNikeName = "感谢有梦",
                                 CreateTime = DateTime.Now,
                                 CreateUserId = Guid.Empty.ToString(),
-                                Note = "系统初始化自动添加的"
+                                Note = "系统初始化自动添加的",
+                                UserId=Guid.NewGuid().ToString()
                             });
 
                             //这里不对超级管理员做任何授权,因为超级管理没有任何限制
@@ -131,6 +134,7 @@ namespace ZhouliSystem.Data
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
+                                AmRelatedId = Guid.NewGuid().ToString(),
                                 MenuId = entityMenu.Entity.MenuId,
                                 AuthorityId = entityAuthority.Entity.AuthorityId
                             });
@@ -155,6 +159,7 @@ namespace ZhouliSystem.Data
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
+                                AmRelatedId = Guid.NewGuid().ToString(),
                                 MenuId = entityMenu2.Entity.MenuId,
                                 AuthorityId = entityAuthority2.Entity.AuthorityId
                             });
@@ -179,6 +184,7 @@ namespace ZhouliSystem.Data
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
+                                AmRelatedId = Guid.NewGuid().ToString(),
                                 MenuId = entityMenu3.Entity.MenuId,
                                 AuthorityId = entityAuthority3.Entity.AuthorityId
                             });
@@ -203,6 +209,7 @@ namespace ZhouliSystem.Data
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
+                                AmRelatedId = Guid.NewGuid().ToString(),
                                 MenuId = entityMenu4.Entity.MenuId,
                                 AuthorityId = entityAuthority4.Entity.AuthorityId
                             });
@@ -226,6 +233,7 @@ namespace ZhouliSystem.Data
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
+                                AmRelatedId = Guid.NewGuid().ToString(),
                                 MenuId = entityMenu5.Entity.MenuId,
                                 AuthorityId = entityAuthority5.Entity.AuthorityId
                             });
@@ -254,6 +262,7 @@ namespace ZhouliSystem.Data
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
+                                AmRelatedId = Guid.NewGuid().ToString(),
                                 MenuId = entityBlog.Entity.MenuId,
                                 AuthorityId = entityBlogAuthority.Entity.AuthorityId
                             });
@@ -265,7 +274,7 @@ namespace ZhouliSystem.Data
                                 MenuSort = 1,
                                 MenuIcon = "layui-icon-share",
                                 CreateTime = DateTime.Now,
-                                MenuUrl= "/Blog/FriendshipLink/Index",
+                                MenuUrl = "/Blog/FriendshipLink/Index",
                                 CreateUserId = Guid.Empty.ToString(),
                                 ParentMenuId = entityBlog.Entity.MenuId,
                                 MenuId = Guid.NewGuid().ToString()
@@ -280,6 +289,7 @@ namespace ZhouliSystem.Data
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
+                                AmRelatedId = Guid.NewGuid().ToString(),
                                 MenuId = entityBlogYqlj.Entity.MenuId,
                                 AuthorityId = entityBlogYqljAuthority.Entity.AuthorityId
                             });
@@ -290,7 +300,7 @@ namespace ZhouliSystem.Data
                                 MenuName = "文章管理",
                                 MenuSort = 1,
                                 MenuIcon = "layui-icon-read",
-                                MenuUrl= "/Blog/BlogArticle/Index",
+                                MenuUrl = "/Blog/BlogArticle/Index",
                                 CreateTime = DateTime.Now,
                                 CreateUserId = Guid.Empty.ToString(),
                                 ParentMenuId = entityBlog.Entity.MenuId,
@@ -306,6 +316,7 @@ namespace ZhouliSystem.Data
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
+                                AmRelatedId = Guid.NewGuid().ToString(),
                                 MenuId = entityBlogWz.Entity.MenuId,
                                 AuthorityId = entityBlogWzAuthority.Entity.AuthorityId
                             });
@@ -332,6 +343,7 @@ namespace ZhouliSystem.Data
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
+                                AmRelatedId=Guid.NewGuid().ToString(),
                                 MenuId = entityBlogBq.Entity.MenuId,
                                 AuthorityId = entityBlogBqAuthority.Entity.AuthorityId
                             });

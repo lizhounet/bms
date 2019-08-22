@@ -4,7 +4,6 @@ using System.Text;
 using System.Data;
 using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
-using System.Data;
 
 namespace Zhouli.DAL.Implements
 {

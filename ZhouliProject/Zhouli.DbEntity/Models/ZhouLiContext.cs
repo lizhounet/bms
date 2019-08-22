@@ -38,7 +38,7 @@ namespace Zhouli.DbEntity.Models
 //            if (!optionsBuilder.IsConfigured)
 //            {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseSqlServer("Server=.;Database=ZhouLi;Trusted_Connection=True;");
+//                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=123456;port=3306;database=ZhouLi;");
 //            }
 //        }
 
@@ -50,7 +50,9 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Blog_Article");
 
-                entity.Property(e => e.ArticleId).HasColumnName("Article_Id");
+                entity.Property(e => e.ArticleId)
+                    .HasColumnName("Article_Id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.ArticleBody)
                     .IsRequired()
@@ -63,62 +65,66 @@ namespace Zhouli.DbEntity.Models
 
                 entity.Property(e => e.ArticleBodySummary)
                     .HasColumnName("Article_Body_Summary")
-                    .HasMaxLength(100);
+                    .HasColumnType("varchar(100)");
 
-                entity.Property(e => e.ArticleSortValue).HasColumnName("Article_SortValue");
+                entity.Property(e => e.ArticleSortValue)
+                    .HasColumnName("Article_SortValue")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.ArticleThrink)
                     .IsRequired()
                     .HasColumnName("Article_Thrink")
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(100)");
 
                 entity.Property(e => e.ArticleTitle)
                     .IsRequired()
                     .HasColumnName("Article_Title")
-                    .HasMaxLength(50);
+                    .HasColumnType("varchar(50)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.CreateUserId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });
 
             modelBuilder.Entity<BlogArticleBrowsing>(entity =>
             {
                 entity.ToTable("Blog_ArticleBrowsing");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnType("int(11)");
+
+                entity.Property(e => e.ArticleId).HasColumnType("int(11)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
                 entity.Property(e => e.Ip)
                     .IsRequired()
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(20)");
             });
 
             modelBuilder.Entity<BlogArticleLike>(entity =>
             {
                 entity.ToTable("Blog_ArticleLike");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnType("int(11)");
+
+                entity.Property(e => e.ArticleId).HasColumnType("int(11)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
                 entity.Property(e => e.Ip)
                     .IsRequired()
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(20)");
             });
 
             modelBuilder.Entity<BlogFriendshipLink>(entity =>
@@ -127,15 +133,17 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Blog_FriendshipLink");
 
-                entity.Property(e => e.FriendshipLinkId).HasColumnName("FriendshipLink_Id");
+                entity.Property(e => e.FriendshipLinkId)
+                    .HasColumnName("FriendshipLink_Id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.CreateUserId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
@@ -144,25 +152,29 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.FriendshipLinkEmail)
                     .IsRequired()
                     .HasColumnName("FriendshipLink_Email")
-                    .HasMaxLength(40)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(40)");
 
                 entity.Property(e => e.FriendshipLinkName)
                     .IsRequired()
                     .HasColumnName("FriendshipLink_Name")
-                    .HasMaxLength(40);
+                    .HasColumnType("varchar(40)");
 
-                entity.Property(e => e.FriendshipLinkSfsh).HasColumnName("FriendshipLink_Sfsh");
+                entity.Property(e => e.FriendshipLinkSfsh)
+                    .HasColumnName("FriendshipLink_Sfsh")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
 
-                entity.Property(e => e.FriendshipLinkSortValue).HasColumnName("FriendshipLink_SortValue");
+                entity.Property(e => e.FriendshipLinkSortValue)
+                    .HasColumnName("FriendshipLink_SortValue")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.FriendshipLinkUrl)
                     .IsRequired()
                     .HasColumnName("FriendshipLink_Url")
-                    .HasMaxLength(40)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(40)");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });
 
             modelBuilder.Entity<BlogLable>(entity =>
@@ -171,34 +183,38 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Blog_Lable");
 
-                entity.HasIndex(e => e.LableName)
-                    .HasName("UQ__Blog_Lab__AE42081B686F1CB0")
-                    .IsUnique();
-
-                entity.Property(e => e.LableId).HasColumnName("Lable_Id");
+                entity.Property(e => e.LableId)
+                    .HasColumnName("Lable_Id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.CreateUserId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.LableClickNum).HasColumnName("Lable_ClickNum");
+                entity.Property(e => e.LableClickNum)
+                    .HasColumnName("Lable_ClickNum")
+                    .HasColumnType("bigint(20)")
+                    .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.LableName)
                     .IsRequired()
                     .HasColumnName("Lable_Name")
-                    .HasMaxLength(20);
+                    .HasColumnType("varchar(20)");
 
-                entity.Property(e => e.LableSortValue).HasColumnName("Lable_SortValue");
+                entity.Property(e => e.LableSortValue)
+                    .HasColumnName("Lable_SortValue")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });
 
             modelBuilder.Entity<BlogNavigationImg>(entity =>
@@ -207,15 +223,17 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Blog_NavigationImg");
 
-                entity.Property(e => e.NavigationImgId).HasColumnName("NavigationImg_Id");
+                entity.Property(e => e.NavigationImgId)
+                    .HasColumnName("NavigationImg_Id")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.CreateUserId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
@@ -224,33 +242,42 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.NavigationImgDescribe)
                     .IsRequired()
                     .HasColumnName("NavigationImg_Describe")
-                    .HasMaxLength(2048)
-                    .HasDefaultValueSql("('0')");
+                    .HasColumnType("varchar(2048)")
+                    .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.NavigationImgIsEnable)
                     .HasColumnName("NavigationImg_IsEnable")
-                    .HasDefaultValueSql("('1')");
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
-                entity.Property(e => e.NavigationImgSortValue).HasColumnName("NavigationImg_SortValue");
+                entity.Property(e => e.NavigationImgSortValue)
+                    .HasColumnName("NavigationImg_SortValue")
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'0'");
 
                 entity.Property(e => e.NavigationImgUrl)
                     .IsRequired()
                     .HasColumnName("NavigationImg_Url")
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(200)");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });
 
             modelBuilder.Entity<BlogRelated>(entity =>
             {
                 entity.ToTable("Blog_Related");
 
-                entity.Property(e => e.BlogRelatedId).HasColumnName("Blog_RelatedId");
+                entity.Property(e => e.BlogRelatedId)
+                    .HasColumnName("Blog_RelatedId")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.RelatedArticleId).HasColumnName("Related_Article_Id");
+                entity.Property(e => e.RelatedArticleId)
+                    .HasColumnName("Related_Article_Id")
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.RelatedLableId).HasColumnName("Related_Lable_Id");
+                entity.Property(e => e.RelatedLableId)
+                    .HasColumnName("Related_Lable_Id")
+                    .HasColumnType("int(11)");
             });
 
             modelBuilder.Entity<DictAuthorityType>(entity =>
@@ -259,14 +286,11 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Dict_AuthorityType");
 
-                entity.Property(e => e.AuthorityTypeId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.AuthorityTypeId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.AuthorityTypeName)
                     .IsRequired()
-                    .HasMaxLength(20);
+                    .HasColumnType("varchar(20)");
             });
 
             modelBuilder.Entity<SysAmRelated>(entity =>
@@ -275,20 +299,15 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Sys_AmRelated");
 
-                entity.Property(e => e.AmRelatedId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.AmRelatedId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.AuthorityId)
                     .IsRequired()
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(36)");
 
                 entity.Property(e => e.MenuId)
                     .IsRequired()
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(36)");
             });
 
             modelBuilder.Entity<SysAuthority>(entity =>
@@ -297,24 +316,23 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Sys_Authority");
 
-                entity.Property(e => e.AuthorityId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.AuthorityId).HasColumnType("varchar(36)");
+
+                entity.Property(e => e.AuthorityType).HasColumnType("int(11)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.CreateUserId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
             });
 
             modelBuilder.Entity<SysMenu>(entity =>
@@ -323,38 +341,33 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Sys_Menu");
 
-                entity.Property(e => e.MenuId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.MenuId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.CreateUserId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.MenuIcon).HasMaxLength(50);
+                entity.Property(e => e.MenuIcon).HasColumnType("varchar(50)");
 
                 entity.Property(e => e.MenuName)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasColumnType("varchar(50)");
 
-                entity.Property(e => e.MenuUrl)
-                    .HasMaxLength(80)
-                    .IsUnicode(false);
+                entity.Property(e => e.MenuSort).HasColumnType("int(11)");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.MenuUrl).HasColumnType("varchar(80)");
 
-                entity.Property(e => e.ParentMenuId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
+
+                entity.Property(e => e.ParentMenuId).HasColumnType("varchar(36)");
             });
 
             modelBuilder.Entity<SysRaRelated>(entity =>
@@ -363,20 +376,15 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Sys_RaRelated");
 
-                entity.Property(e => e.RaRelatedId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.RaRelatedId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.AuthorityId)
                     .IsRequired()
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(36)");
 
                 entity.Property(e => e.RoleId)
                     .IsRequired()
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(36)");
             });
 
             modelBuilder.Entity<SysRole>(entity =>
@@ -385,28 +393,25 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Sys_Role");
 
-                entity.Property(e => e.RoleId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.RoleId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.CreateUserId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
 
                 entity.Property(e => e.RoleName)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasColumnType("varchar(50)");
             });
 
             modelBuilder.Entity<SysUgrRelated>(entity =>
@@ -415,20 +420,15 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Sys_UgrRelated");
 
-                entity.Property(e => e.UgrRelatedId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.UgrRelatedId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.RoleId)
                     .IsRequired()
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(36)");
 
                 entity.Property(e => e.UserGroupId)
                     .IsRequired()
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(36)");
             });
 
             modelBuilder.Entity<SysUrRelated>(entity =>
@@ -437,20 +437,15 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Sys_UrRelated");
 
-                entity.Property(e => e.UrRelatedId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.UrRelatedId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.RoleId)
                     .IsRequired()
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(36)");
 
                 entity.Property(e => e.UserId)
                     .IsRequired()
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                    .HasColumnType("varchar(36)");
             });
 
             modelBuilder.Entity<SysUser>(entity =>
@@ -459,68 +454,53 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Sys_User");
 
-                entity.HasIndex(e => e.UserName)
-                    .HasName("UQ__Sys_User__C9F284560586F551")
-                    .IsUnique();
-
-                entity.Property(e => e.UserId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.UserId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.CreateUserId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
 
-                entity.Property(e => e.UserAvatar)
-                    .HasMaxLength(150)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserAvatar).HasColumnType("varchar(150)");
 
-                entity.Property(e => e.UserBirthday).HasColumnType("date");
+                entity.Property(e => e.UserBirthday).HasColumnType("datetime");
 
-                entity.Property(e => e.UserEmail)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserEmail).HasColumnType("varchar(50)");
 
-                entity.Property(e => e.UserGroupId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserGroupId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.UserName)
                     .IsRequired()
-                    .HasMaxLength(20);
+                    .HasColumnType("varchar(20)");
 
-                entity.Property(e => e.UserNikeName).HasMaxLength(20);
+                entity.Property(e => e.UserNikeName).HasColumnType("varchar(20)");
 
-                entity.Property(e => e.UserPhone)
-                    .HasMaxLength(11)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserPhone).HasColumnType("varchar(11)");
 
                 entity.Property(e => e.UserPwd)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasColumnType("varchar(50)");
 
-                entity.Property(e => e.UserQq)
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserQq).HasColumnType("varchar(15)");
 
-                entity.Property(e => e.UserSex).HasDefaultValueSql("((1))");
+                entity.Property(e => e.UserSex)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
-                entity.Property(e => e.UserStatus).HasDefaultValueSql("((1))");
+                entity.Property(e => e.UserStatus)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
-                entity.Property(e => e.UserWx)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.UserWx).HasColumnType("varchar(50)");
             });
 
             modelBuilder.Entity<SysUserGroup>(entity =>
@@ -529,32 +509,27 @@ namespace Zhouli.DbEntity.Models
 
                 entity.ToTable("Sys_UserGroup");
 
-                entity.Property(e => e.UserGroupId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false)
-                    .ValueGeneratedNever();
+                entity.Property(e => e.UserGroupId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.CreateTime).HasColumnType("datetime");
 
-                entity.Property(e => e.CreateUserId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.CreateUserId).HasColumnType("varchar(36)");
 
-                entity.Property(e => e.DeleteSign).HasDefaultValueSql("((1))");
+                entity.Property(e => e.DeleteSign)
+                    .HasColumnType("int(11)")
+                    .HasDefaultValueSql("'1'");
 
                 entity.Property(e => e.DeleteTime).HasColumnType("datetime");
 
                 entity.Property(e => e.EditTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Note).HasMaxLength(2048);
+                entity.Property(e => e.Note).HasColumnType("varchar(2048)");
 
-                entity.Property(e => e.ParentUserGroupId)
-                    .HasMaxLength(36)
-                    .IsUnicode(false);
+                entity.Property(e => e.ParentUserGroupId).HasColumnType("varchar(36)");
 
                 entity.Property(e => e.UserGroupName)
                     .IsRequired()
-                    .HasMaxLength(50);
+                    .HasColumnType("varchar(50)");
             });
         }
     }
