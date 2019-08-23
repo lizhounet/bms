@@ -16,7 +16,7 @@ namespace Zhouli.BLL.Interface
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        HandleResult<PageModel> GetBlogArticlelist(string page, string limit, string searchstr);
+        HandleResult<PageModel> GetBlogArticlelist(string page, string limit, string searchstr, int lableId);
         /// <summary>
         /// 添加/修改文章
         /// </summary>
@@ -36,10 +36,11 @@ namespace Zhouli.BLL.Interface
         /// <returns></returns>
         HandleResult<dynamic> GetArticleDetails(int articleId);
         /// <summary>
-        /// 获取热门文章(前五条)
+        /// 热门推荐文章
         /// </summary>
+        /// <param name="bWeek">是否本周热门(为true时获取本周热门文章)</param>
         /// <returns></returns>
-        HandleResult<dynamic> GetPopularArticle();
+        HandleResult<dynamic> GetPopularArticle(bool bWeek);
 
     }
 }

@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ZhouLi                                       */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019-08-22 17:33:51                          */
+/* Created on:     2019-08-23 10:07:57                          */
 /*==============================================================*/
 
 
@@ -22,18 +22,18 @@ go
 /*==============================================================*/
 create table Blog_Article (
    Article_Id           int                  identity,
-   Article_Title        varchar(50)          not null,
+   Article_Title        nvarchar(50)         not null,
    Article_Thrink       varchar(100)         not null,
    Article_Body         text                 not null,
    Article_Body_Markdown text                 null,
-   Article_Body_Summary varchar(100)         null,
+   Article_Body_Summary nvarchar(100)        null,
    Article_SortValue    int                  not null default 0,
    CreateUserId         varchar(36)          null,
    CreateTime           datetime             not null,
    EditTime             datetime             null,
    DeleteSign           int                  not null default 1,
    DeleteTime           datetime             null,
-   Note                 varchar(2048)        null,
+   Note                 nvarchar(2048)       null,
    constraint PK_BLOG_ARTICLE primary key nonclustered (Article_Id)
 )
 go
@@ -483,7 +483,7 @@ go
 /*==============================================================*/
 create table Blog_FriendshipLink (
    FriendshipLink_Id    int                  identity,
-   FriendshipLink_Name  varchar(40)          not null,
+   FriendshipLink_Name  nvarchar(40)         not null,
    FriendshipLink_Url   varchar(40)          not null,
    FriendshipLink_Email varchar(40)          not null,
    FriendshipLink_SortValue int                  not null default 0,
@@ -493,7 +493,7 @@ create table Blog_FriendshipLink (
    EditTime             datetime             null,
    DeleteSign           int                  not null default 1,
    DeleteTime           datetime             null,
-   Note                 varchar(2048)        null,
+   Note                 nvarchar(2048)       null,
    constraint PK_BLOG_FRIENDSHIPLINK primary key nonclustered (FriendshipLink_Id)
 )
 go
@@ -731,7 +731,7 @@ go
 /*==============================================================*/
 create table Blog_Lable (
    Lable_Id             int                  identity,
-   Lable_Name           varchar(20)          not null,
+   Lable_Name           nvarchar(20)         not null,
    Lable_SortValue      int                  not null default 0,
    Lable_ClickNum       bigint               not null default 0,
    CreateUserId         varchar(36)          null,
@@ -739,7 +739,7 @@ create table Blog_Lable (
    EditTime             datetime             null,
    DeleteSign           int                  not null default 1,
    DeleteTime           datetime             null,
-   Note                 varchar(2048)        null,
+   Note                 nvarchar(2048)       null,
    constraint PK_BLOG_LABLE primary key nonclustered (Lable_Id)
 )
 go
@@ -941,14 +941,14 @@ create table Blog_NavigationImg (
    NavigationImg_Id     int                  identity,
    NavigationImg_Url    varchar(200)         not null,
    NavigationImg_SortValue int                  not null default 0,
-   NavigationImg_Describe varchar(2048)        not null default '0',
+   NavigationImg_Describe nvarchar(2048)       not null default '0',
    NavigationImg_IsEnable int                  not null default 1,
    CreateUserId         varchar(36)          null,
    CreateTime           datetime             not null,
    EditTime             datetime             null,
    DeleteSign           int                  not null default 1,
    DeleteTime           datetime             null,
-   Note                 varchar(2048)        null,
+   Note                 nvarchar(2048)       null,
    constraint PK_BLOG_NAVIGATIONIMG primary key nonclustered (NavigationImg_Id)
 )
 go
@@ -1235,7 +1235,7 @@ go
 /*==============================================================*/
 create table Dict_AuthorityType (
    AuthorityTypeId      varchar(36)          not null,
-   AuthorityTypeName    varchar(20)          not null,
+   AuthorityTypeName    nvarchar(20)         not null,
    constraint PK_DICT_AUTHORITYTYPE primary key nonclustered (AuthorityTypeId)
 )
 go
@@ -1519,7 +1519,7 @@ go
 /*==============================================================*/
 create table Sys_Menu (
    MenuId               varchar(36)          not null,
-   MenuName             varchar(50)          not null,
+   MenuName             nvarchar(50)         not null,
    MenuIcon             varchar(50)          null,
    MenuUrl              varchar(80)          null,
    MenuSort             int                  not null,
@@ -1529,7 +1529,7 @@ create table Sys_Menu (
    EditTime             datetime             null,
    DeleteSign           int                  not null default 1,
    DeleteTime           datetime             null,
-   Note                 varchar(2048)        null,
+   Note                 nvarchar(2048)       null,
    constraint PK_SYS_MENU primary key nonclustered (MenuId)
 )
 go
@@ -1835,13 +1835,13 @@ go
 /*==============================================================*/
 create table Sys_Role (
    RoleId               varchar(36)          not null,
-   RoleName             varchar(50)          not null,
+   RoleName             nvarchar(50)         not null,
    CreateUserId         varchar(36)          null,
    CreateTime           datetime             not null,
    EditTime             datetime             null,
    DeleteSign           int                  not null default 1,
    DeleteTime           datetime             null,
-   Note                 varchar(2048)        null,
+   Note                 nvarchar(2048)       null,
    constraint PK_SYS_ROLE primary key nonclustered (RoleId)
 )
 go
@@ -2140,7 +2140,7 @@ go
 create table Sys_User (
    UserId               varchar(36)          not null,
    UserName             varchar(20)          not null,
-   UserNikeName         varchar(20)          null,
+   UserNikeName         nvarchar(20)         null,
    UserPwd              varchar(50)          not null,
    UserSex              int                  null default 1,
    UserBirthday         datetime             null,
@@ -2156,7 +2156,7 @@ create table Sys_User (
    EditTime             datetime             null,
    DeleteSign           int                  not null default 1,
    DeleteTime           datetime             null,
-   Note                 varchar(2048)        null,
+   Note                 nvarchar(2048)       null,
    constraint PK_SYS_USER primary key nonclustered (UserId)
 )
 go
@@ -2527,14 +2527,14 @@ go
 /*==============================================================*/
 create table Sys_UserGroup (
    UserGroupId          varchar(36)          not null,
-   UserGroupName        varchar(50)          not null,
+   UserGroupName        nvarchar(50)         not null,
    ParentUserGroupId    varchar(36)          null,
    CreateUserId         varchar(36)          null,
    CreateTime           datetime             not null,
    EditTime             datetime             null,
    DeleteSign           int                  not null default 1,
    DeleteTime           datetime             null,
-   Note                 varchar(2048)        null,
+   Note                 nvarchar(2048)       null,
    constraint PK_SYS_USERGROUP primary key nonclustered (UserGroupId)
 )
 go

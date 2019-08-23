@@ -24,11 +24,11 @@ namespace Zhouli.BlogWebApi.Controllers
     public class ArticleController : Controller
     {
         private readonly IBlogArticleBLL _blogArticleBLL;
-        private readonly IBlogArticleBrowsingBLL _blogArticleBrowsingBLL;
-        public ArticleController(IBlogArticleBLL blogArticleBLL, IBlogArticleBrowsingBLL blogArticleBrowsingBLL)
+        private readonly IBlogArticleLikeBLL _blogArticleLikeBLL;
+        public ArticleController(IBlogArticleBLL blogArticleBLL, IBlogArticleLikeBLL blogArticleLikeBLL)
         {
             _blogArticleBLL = blogArticleBLL;
-            _blogArticleBrowsingBLL = blogArticleBrowsingBLL;
+            _blogArticleLikeBLL = blogArticleLikeBLL;
         }
         /// <summary>
         /// 获取文章列表
@@ -36,11 +36,12 @@ namespace Zhouli.BlogWebApi.Controllers
         /// <param name="page">当前第几页</param>
         /// <param name="limit">页容量</param>
         /// <param name="searchstr">关键字(文章标题,文章内容)</param>
+        /// <param name="lableId">标签id</param>
         /// <returns></returns>
         [HttpGet("")]
-        public IActionResult GetArticles(string page, string limit, string searchstr)
+        public IActionResult GetArticles(string page, string limit, string searchstr, int lableId)
         {
-            return Ok(new ResponseModel { Data = _blogArticleBLL.GetBlogArticlelist(page, limit, searchstr).Data });
+            return Ok(new ResponseModel { Data = _blogArticleBLL.GetBlogArticlelist(page, limit, searchstr, lableId).Data });
         }
         /// <summary>
         /// 获取文章详情
@@ -58,17 +59,49 @@ namespace Zhouli.BlogWebApi.Controllers
             });
         }
         /// <summary>
-        /// 热门推荐文章(前五篇)
+        /// 热门推荐文章
         /// </summary>
+        /// <param name="bWeek">是否本周热门(为true时获取本周热门文章)</param>
         /// <returns></returns>
         [HttpGet("popular")]
-        public IActionResult Popular()
+        public IActionResult Popular(bool bWeek)
         {
-            
+
             return Ok(new ResponseModel
             {
-                Data = _blogArticleBLL.GetPopularArticle().Data
+                Data = _blogArticleBLL.GetPopularArticle(bWeek).Data
             });
+        }
+        /// <summary>
+        /// 文章点赞
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("like")]
+        public IActionResult Like([FromForm]bool isLike, [FromForm] int articleId)
+        {
+            var response = new ResponseModel();
+            var ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            if (!isLike)
+            {
+                if (_blogArticleLikeBLL.GetCount(t => t.Ip.Equals(ipAddress) && t.ArticleId == articleId) == 0)
+                {
+                    //点赞
+                    _blogArticleLikeBLL.Add(new DbEntity.Models.BlogArticleLike
+                    {
+                        ArticleId = articleId,
+                        Ip = ipAddress,
+                        CreateTime = DateTime.Now
+                    });
+                    response.RetMsg = "点赞成功";
+                }
+            }
+            else
+            {
+                //取消点赞
+                _blogArticleLikeBLL.Delete(t => t.Ip.Equals(ipAddress) && t.ArticleId == articleId);
+                response.RetMsg = "取消点赞成功";
+            }
+            return Ok(response);
         }
     }
 }

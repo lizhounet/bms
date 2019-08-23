@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ZhouLi                                       */
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019-08-22 17:34:15                          */
+/* Created on:     2019-08-23 10:05:38                          */
 /*==============================================================*/
 
 
@@ -20,18 +20,18 @@ use ZhouLi;
 create table Blog_Article
 (
    Article_Id           int not null auto_increment comment '文章id',
-   Article_Title        varchar(50) not null comment '文章标题',
+   Article_Title        nvarchar(50) not null comment '文章标题',
    Article_Thrink       varchar(100) not null comment '文章图片',
    Article_Body         text not null comment '文章内容',
    Article_Body_Markdown text comment '文章Markdown内容',
-   Article_Body_Summary varchar(100) comment '文章摘要',
+   Article_Body_Summary nvarchar(100) comment '文章摘要',
    Article_SortValue    int not null default 0 comment '排序号',
    CreateUserId         varchar(36) comment '创建人id',
    CreateTime           datetime not null comment '创建时间',
    EditTime             datetime comment '修改时间',
    DeleteSign           int not null default 1 comment '删除标识',
    DeleteTime           datetime comment '删除时间',
-   Note                 varchar(2048) comment '备注',
+   Note                 nvarchar(2048) comment '备注',
    primary key (Article_Id)
 );
 
@@ -67,7 +67,7 @@ create table Blog_ArticleLike
 create table Blog_FriendshipLink
 (
    FriendshipLink_Id    int not null auto_increment comment '友情链接id',
-   FriendshipLink_Name  varchar(40) not null comment '站点名称',
+   FriendshipLink_Name  nvarchar(40) not null comment '站点名称',
    FriendshipLink_Url   varchar(40) not null comment '站点url',
    FriendshipLink_Email varchar(40) not null comment '站长邮箱',
    FriendshipLink_SortValue int not null default 0 comment '排序号',
@@ -77,7 +77,7 @@ create table Blog_FriendshipLink
    EditTime             datetime comment '修改时间',
    DeleteSign           int not null default 1 comment '删除标识',
    DeleteTime           datetime comment '删除时间',
-   Note                 varchar(2048) comment '备注',
+   Note                 nvarchar(2048) comment '备注',
    primary key (FriendshipLink_Id)
 );
 
@@ -87,7 +87,7 @@ create table Blog_FriendshipLink
 create table Blog_Lable
 (
    Lable_Id             int not null auto_increment comment '博客标签id',
-   Lable_Name           varchar(20) not null comment '标签名称',
+   Lable_Name           nvarchar(20) not null comment '标签名称',
    Lable_SortValue      int not null default 0 comment '标签排序号',
    Lable_ClickNum       bigint not null default 0 comment '标签点击量',
    CreateUserId         varchar(36) comment '创建人id',
@@ -95,7 +95,7 @@ create table Blog_Lable
    EditTime             datetime comment '修改时间',
    DeleteSign           int not null default 1 comment '删除标识',
    DeleteTime           datetime comment '删除时间',
-   Note                 varchar(2048) comment '备注',
+   Note                 nvarchar(2048) comment '备注',
    primary key (Lable_Id)
 );
 
@@ -107,14 +107,14 @@ create table Blog_NavigationImg
    NavigationImg_Id     int not null auto_increment comment '博客轮播图id',
    NavigationImg_Url    varchar(200) not null comment '轮播图url',
    NavigationImg_SortValue int not null default 0 comment '轮播图排序号',
-   NavigationImg_Describe varchar(2048) not null default '0' comment '轮播图描述',
+   NavigationImg_Describe nvarchar(2048) not null default '0' comment '轮播图描述',
    NavigationImg_IsEnable int not null default 1 comment '是否启用',
    CreateUserId         varchar(36) comment '创建人id',
    CreateTime           datetime not null comment '创建时间',
    EditTime             datetime comment '修改时间',
    DeleteSign           int not null default 1 comment '删除标识',
    DeleteTime           datetime comment '删除时间',
-   Note                 varchar(2048) comment '备注',
+   Note                 nvarchar(2048) comment '备注',
    primary key (NavigationImg_Id)
 );
 
@@ -135,7 +135,7 @@ create table Blog_Related
 create table Dict_AuthorityType
 (
    AuthorityTypeId      varchar(36) not null comment '权限类型id',
-   AuthorityTypeName    varchar(20) not null comment '权限类型名称',
+   AuthorityTypeName    nvarchar(20) not null comment '权限类型名称',
    primary key (AuthorityTypeId)
 );
 
@@ -172,7 +172,7 @@ create table Sys_Authority
 create table Sys_Menu
 (
    MenuId               varchar(36) not null comment '菜单id',
-   MenuName             varchar(50) not null comment '菜单名称',
+   MenuName             nvarchar(50) not null comment '菜单名称',
    MenuIcon             varchar(50) comment '菜单图标',
    MenuUrl              varchar(80) comment '菜单url',
    MenuSort             int not null comment '菜单排序号',
@@ -182,7 +182,7 @@ create table Sys_Menu
    EditTime             datetime comment '修改时间',
    DeleteSign           int not null default 1 comment '删除标识',
    DeleteTime           datetime comment '删除时间',
-   Note                 varchar(2048) comment '备注',
+   Note                 nvarchar(2048) comment '备注',
    primary key (MenuId)
 );
 
@@ -203,13 +203,13 @@ create table Sys_RaRelated
 create table Sys_Role
 (
    RoleId               varchar(36) not null comment '角色id',
-   RoleName             varchar(50) not null comment '角色名称',
+   RoleName             nvarchar(50) not null comment '角色名称',
    CreateUserId         varchar(36) comment '创建人id',
    CreateTime           datetime not null comment '创建时间',
    EditTime             datetime comment '修改时间',
    DeleteSign           int not null default 1 comment '删除标识',
    DeleteTime           datetime comment '删除时间',
-   Note                 varchar(2048) comment '备注',
+   Note                 nvarchar(2048) comment '备注',
    primary key (RoleId)
 );
 
@@ -242,7 +242,7 @@ create table Sys_User
 (
    UserId               varchar(36) not null comment '用户id',
    UserName             varchar(20) not null comment '账号',
-   UserNikeName         varchar(20) comment '昵称',
+   UserNikeName         nvarchar(20) comment '昵称',
    UserPwd              varchar(50) not null comment '密码',
    UserSex              int default 1 comment '性别',
    UserBirthday         datetime comment '生日',
@@ -258,7 +258,7 @@ create table Sys_User
    EditTime             datetime comment '修改时间',
    DeleteSign           int not null default 1 comment '删除标识',
    DeleteTime           datetime comment '删除时间',
-   Note                 varchar(2048) comment '备注',
+   Note                 nvarchar(2048) comment '备注',
    primary key (UserId)
 );
 
@@ -268,14 +268,14 @@ create table Sys_User
 create table Sys_UserGroup
 (
    UserGroupId          varchar(36) not null comment '用户组id',
-   UserGroupName        varchar(50) not null comment '用户组名称',
+   UserGroupName        nvarchar(50) not null comment '用户组名称',
    ParentUserGroupId    varchar(36) comment '父级用户组id',
    CreateUserId         varchar(36) comment '创建人id',
    CreateTime           datetime not null comment '创建时间',
    EditTime             datetime comment '修改时间',
    DeleteSign           int not null default 1 comment '删除标识',
    DeleteTime           datetime comment '删除时间',
-   Note                 varchar(2048) comment '备注',
+   Note                 nvarchar(2048) comment '备注',
    primary key (UserGroupId)
 );
 

@@ -22,7 +22,7 @@ namespace Zhouli.DAL.Interface
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        PageModel GetBlogArticleList(string page, string limit, string searchstr);
+        PageModel GetBlogArticleList(string page, string limit, string searchstr, int lableId);
         #endregion
         /// <summary>
         /// 获取文章详情
@@ -31,10 +31,11 @@ namespace Zhouli.DAL.Interface
         /// <returns></returns>
         dynamic GetArticleDetails(int articleId);
         /// <summary>
-        /// 获取热门文章(前五条)
+        /// 热门推荐文章
         /// </summary>
+        /// <param name="bWeek">是否本周热门(为true时获取本周热门文章)</param>
         /// <returns></returns>
-        dynamic GetPopularArticle();
+        dynamic GetPopularArticle(bool bWeek);
 
     }
 }

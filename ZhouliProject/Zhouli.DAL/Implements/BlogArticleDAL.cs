@@ -51,10 +51,14 @@ namespace Zhouli.DAL.Implements
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        public PageModel GetBlogArticleList(string page, string limit, string searchstr)
+        public PageModel GetBlogArticleList(string page, string limit, string searchstr, int lableId)
         {
-            Expression<Func<BlogArticle, bool>> expression = t => t.ArticleTitle.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
-                && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted);
+            Expression<Func<BlogArticle, bool>> expression =
+                t => t.ArticleTitle.Contains(searchstr) ||
+            string.IsNullOrEmpty(searchstr)
+                && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted) &&
+                ((_db.BlogRelated.Where(r => r.RelatedLableId == lableId).Select(s => s.RelatedArticleId).Contains(t.ArticleId))
+                || lableId == 0);
             var query = GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime,
                t => t.ArticleTitle.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
                && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
@@ -100,23 +104,29 @@ namespace Zhouli.DAL.Implements
             return _db.BlogArticle.Select(t => t.ArticleSortValue).DefaultIfEmpty().Max();
         }
         /// <summary>
-        /// 获取热门文章(前五条)
+        /// 热门推荐文章
         /// </summary>
+        /// <param name="bWeek">是否本周热门(为true时获取本周热门文章)</param>
         /// <returns></returns>
-        public dynamic GetPopularArticle()
+        public dynamic GetPopularArticle(bool bWeek)
         {
-            
-            return _dbConnection.Query(@"SELECT BB.ArticleId, BB.ArticleBrowsingNum, BA.Article_Title ArticleTitle
+            string strWhere = "";
+            if (bWeek)
+            {
+                strWhere = $"AND BA.CreateTime BETWEEN '{DateTime.Now.GetTimeStartByType("Week")}' AND '{DateTime.Now.GetTimeEndByType("Week")}'";
+            }
+            return _dbConnection.Query($@"SELECT BB.ArticleId, BB.ArticleBrowsingNum, BA.Article_Title ArticleTitle,BA.Article_Thrink ArticleThrink
                                 FROM (
 	                                SELECT ArticleId, ArticleBrowsingNum
 	                                FROM (
 		                                SELECT ROW_NUMBER() OVER (ORDER BY COUNT(1) DESC) AS row, ArticleId, COUNT(1) AS ArticleBrowsingNum
 		                                FROM Blog_ArticleBrowsing BA
+                                        WHERE 1=1 {strWhere}
 		                                GROUP BY ArticleId
 	                                ) T
 	                                WHERE T.row < 6
                                 ) BB
-	                                LEFT JOIN Blog_Article BA ON BB.ArticleId = BA.Article_Id"); ;
+	                                LEFT JOIN Blog_Article BA ON BB.ArticleId = BA.Article_Id");
         }
     }
 }

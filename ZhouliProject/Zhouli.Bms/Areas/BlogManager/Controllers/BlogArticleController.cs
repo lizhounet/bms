@@ -70,10 +70,10 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        public IActionResult GetBlogArticlelist(string page, string limit, string searchstr)
+        public IActionResult GetBlogArticlelist(string page, string limit, string searchstr, int ladbleId)
         {
             var messageModel = _blogArticleBLL
-                .GetBlogArticlelist(page, limit, searchstr);
+                .GetBlogArticlelist(page, limit, searchstr, ladbleId);
             return Ok(new
             {
                 code = 0,

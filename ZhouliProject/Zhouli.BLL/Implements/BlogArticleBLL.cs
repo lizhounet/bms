@@ -32,11 +32,11 @@ namespace Zhouli.BLL.Implements
         /// <param name="limit">页容量</param>
         /// <param name="searchstr">搜索内容</param>
         /// <returns></returns>
-        public HandleResult<PageModel> GetBlogArticlelist(string page, string limit, string searchstr)
+        public HandleResult<PageModel> GetBlogArticlelist(string page, string limit, string searchstr, int lableId)
         {
             return new HandleResult<PageModel>
             {
-                Data = _blogArticle.GetBlogArticleList(page, limit, searchstr)
+                Data = _blogArticle.GetBlogArticleList(page, limit, searchstr, lableId)
             };
         }
         /// <summary>
@@ -147,14 +147,15 @@ namespace Zhouli.BLL.Implements
             };
         }
         /// <summary>
-        /// 获取热门文章(前五条)
+        /// 热门推荐文章
         /// </summary>
+        /// <param name="bWeek">是否本周热门(为true时获取本周热门文章)</param>
         /// <returns></returns>
-        public HandleResult<dynamic> GetPopularArticle()
+        public HandleResult<dynamic> GetPopularArticle(bool bWeek)
         {
             return new HandleResult<dynamic>
             {
-                Data = _blogArticle.GetPopularArticle()
+                Data = _blogArticle.GetPopularArticle(bWeek)
             };
         }
     }
