@@ -32,10 +32,10 @@ namespace Zhouli.DAL.Implements
                 t.CreateTime,
                 t.ArticleBody,
                 CreateUser = _db.SysUser.Where(s => s.UserId.Equals(t.CreateUserId)).Select(s => s.UserNikeName).First(),
-                LableName = _db.BlogLable.Where(s => _db.BlogRelated
+                LableInfo = _db.BlogLable.Where(s => _db.BlogRelated
                           .Where(ss => ss.RelatedArticleId.Equals(articleId))
                           .Select(tt => tt.RelatedLableId).Contains(s.LableId))
-                            .Select(q => q.LableName).ToArray(),
+                            .Select(q => new { q.LableName, q.LableId }).ToArray(),
                 ArticleBrowsingNum = _db.BlogArticleBrowsing.Count(b => b.ArticleId == articleId),
                 ArticleCommentNum = 0,
                 ArticleLikeNum = _db.BlogArticleLike.Count(b => b.ArticleId == articleId),
@@ -59,9 +59,7 @@ namespace Zhouli.DAL.Implements
                 && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted) &&
                 ((_db.BlogRelated.Where(r => r.RelatedLableId == lableId).Select(s => s.RelatedArticleId).Contains(t.ArticleId))
                 || lableId == 0);
-            var query = GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime,
-               t => t.ArticleTitle.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
-               && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
+            var query = GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime, expression);
             var list = from blogArticle in query
                        join user in _db.SysUser
                        on blogArticle.CreateUserId equals user.UserId
@@ -77,11 +75,10 @@ namespace Zhouli.DAL.Implements
                            blogArticle.ArticleSortValue,
                            ArticleTop = blogArticle.ArticleSortValue == GetMaxArticleSortValue(),
                            CreateUser = tt.UserNikeName,
-                           LableId = _db.BlogRelated.Where(t => t.RelatedArticleId.Equals(blogArticle.ArticleId)).Select(t => t.RelatedLableId),
-                           LableName = _db.BlogLable.Where(s => _db.BlogRelated
+                           LableInfo = _db.BlogLable.Where(s => _db.BlogRelated
                            .Where(t => t.RelatedArticleId.Equals(blogArticle.ArticleId))
                            .Select(t => t.RelatedLableId).Contains(s.LableId))
-                           .Select(q => q.LableName),
+                           .Select(q => new { q.LableName, q.LableId }),
                            ArticleBrowsingNum = _db.BlogArticleBrowsing.Count(b => b.ArticleId == blogArticle.ArticleId),
                            ArticleCommentNum = 0,
                            ArticleLikeNum = _db.BlogArticleLike.Count(b => b.ArticleId == blogArticle.ArticleId)
