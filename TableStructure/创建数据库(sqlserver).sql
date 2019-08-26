@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  ZhouLi                                       */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019-08-23 10:07:57                          */
+/* Created on:     2019/8/26 星期一 21:59:52                       */
 /*==============================================================*/
 
 
@@ -1512,6 +1512,94 @@ select @CurrentUser = user_name()
 execute sp_addextendedproperty 'MS_Description', 
    '备注',
    'user', @CurrentUser, 'table', 'Sys_Authority', 'column', 'Note'
+go
+
+/*==============================================================*/
+/* Table: Sys_Button                                            */
+/*==============================================================*/
+create table Sys_Button (
+   ButtonId             varchar(36)          not null,
+   MenuId               varchar(36)          not null,
+   ButtonName           nvarchar(20)         not null,
+   ButtonShowType       int                  not null,
+   constraint PK_SYS_BUTTON primary key (ButtonId)
+)
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Sys_Button')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ButtonId')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Sys_Button', 'column', 'ButtonId'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   '按钮Id',
+   'user', @CurrentUser, 'table', 'Sys_Button', 'column', 'ButtonId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Sys_Button')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'MenuId')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Sys_Button', 'column', 'MenuId'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   '菜单Id',
+   'user', @CurrentUser, 'table', 'Sys_Button', 'column', 'MenuId'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Sys_Button')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ButtonName')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Sys_Button', 'column', 'ButtonName'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   '按钮名称',
+   'user', @CurrentUser, 'table', 'Sys_Button', 'column', 'ButtonName'
+go
+
+if exists(select 1 from sys.extended_properties p where
+      p.major_id = object_id('Sys_Button')
+  and p.minor_id = (select c.column_id from sys.columns c where c.object_id = p.major_id and c.name = 'ButtonShowType')
+)
+begin
+   declare @CurrentUser sysname
+select @CurrentUser = user_name()
+execute sp_dropextendedproperty 'MS_Description', 
+   'user', @CurrentUser, 'table', 'Sys_Button', 'column', 'ButtonShowType'
+
+end
+
+
+select @CurrentUser = user_name()
+execute sp_addextendedproperty 'MS_Description', 
+   '按钮显示类型(1=显示可用,2=显示不可用,3=不显示)',
+   'user', @CurrentUser, 'table', 'Sys_Button', 'column', 'ButtonShowType'
 go
 
 /*==============================================================*/
