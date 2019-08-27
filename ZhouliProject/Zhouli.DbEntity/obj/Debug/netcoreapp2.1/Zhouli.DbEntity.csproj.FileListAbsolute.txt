@@ -35,14 +35,3 @@ C:\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.Ass
 C:\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
 C:\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
 C:\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.csprojAssemblyReference.cache
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.deps.json
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.runtimeconfig.json
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.runtimeconfig.dev.json
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\bin\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.csprojAssemblyReference.cache
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.csproj.CoreCompileInputs.cache
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.AssemblyInfoInputs.cache
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.AssemblyInfo.cs
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
-F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb

@@ -32,7 +32,6 @@
     });
     $(function () {
         setTimeout(function () {
-            console.log($(".roleId").val());
             zhouliMenu.loadMenu($(".roleId").val());
         }, 200);
 
@@ -68,11 +67,11 @@ var zhouliMenu = {
     loadMenu: function (RoleId) {
         $.get("/System/Role/GetRoleMenuList", { RoleId: RoleId },
             function (data) {
-                console.log(data);
                 //绑定zTree
                 $.fn.zTree.init($("#treeMenu"), setting, data.Data.MenuList);
                 //展开所有节点
                 $.fn.zTree.getZTreeObj("treeMenu").expandAll(true);
+                console.log(data);
                 if (data.Data.RoleMenuList.length > 0) {
                     for (var i = 0; i < data.Data.RoleMenuList.length; i++) {
                         var node = $.fn.zTree.getZTreeObj("treeMenu").getNodeByParam("MenuId", data.Data.RoleMenuList[i].MenuId);

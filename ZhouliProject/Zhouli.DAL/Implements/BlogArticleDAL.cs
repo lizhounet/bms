@@ -110,20 +110,20 @@ namespace Zhouli.DAL.Implements
             string strWhere = "";
             if (bWeek)
             {
-                strWhere = $"AND BA.CreateTime BETWEEN '{DateTime.Now.GetTimeStartByType("Week")}' AND '{DateTime.Now.GetTimeEndByType("Week")}'";
+                strWhere = $"AND BA.create_time BETWEEN '{DateTime.Now.GetTimeStartByType("Week")}' AND '{DateTime.Now.GetTimeEndByType("Week")}'";
             }
-            return _dbConnection.Query($@"SELECT BB.ArticleId, BB.ArticleBrowsingNum, BA.Article_Title ArticleTitle,BA.Article_Thrink ArticleThrink
+            return _dbConnection.Query($@"SELECT BB.ArticleId, BB.ArticleBrowsingNum, BA.article_title 'ArticleTitle',BA.article_thrink 'ArticleThrink'
                                 FROM (
 	                                SELECT ArticleId, ArticleBrowsingNum
 	                                FROM (
-		                                SELECT ROW_NUMBER() OVER (ORDER BY COUNT(1) DESC) AS row, ArticleId, COUNT(1) AS ArticleBrowsingNum
-		                                FROM Blog_ArticleBrowsing BA
-                                        WHERE 1=1 {strWhere}
-		                                GROUP BY ArticleId
+		                                SELECT ROW_NUMBER() OVER (ORDER BY COUNT(1) DESC)  'row', BA.article_id 'ArticleId', COUNT(1) 'ArticleBrowsingNum'
+		                                FROM blog_article_browsing BA
+                                        WHERE 1=1  {strWhere}
+		                                GROUP BY BA.article_id
 	                                ) T
 	                                WHERE T.row < 6
                                 ) BB
-	                                LEFT JOIN Blog_Article BA ON BB.ArticleId = BA.Article_Id");
+	                                LEFT JOIN blog_article BA ON BB.ArticleId = BA.article_id");
         }
     }
 }

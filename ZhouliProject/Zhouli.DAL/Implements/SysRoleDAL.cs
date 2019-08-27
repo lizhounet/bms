@@ -44,10 +44,10 @@ namespace Zhouli.DAL.Implements
             //删除权限表数据
             //builderSql.AppendLine($"DELETE FROM Sys_Authority WHERE AuthorityId IN (SELECT AuthorityId FROM Sys_AmRelated WHERE MenuId IN('{string.Join("','", menus.Select(t => t.MenuId))}'))");
             //删除角色权限表数据
-            builderSql.AppendLine($@"DELETE FROM Sys_RaRelated
-                                        WHERE RoleId = '{roleId}' ;");
-            var list = _dbConnection.Query<SysAmRelated>($"SELECT * FROM Sys_AmRelated WHERE MenuId IN('{string.Join("','", menus.Select(t => t.MenuId))}')");
-            builderSql.AppendLine("INSERT INTO Sys_RaRelated(RaRelatedId,RoleId,AuthorityId)");
+            builderSql.AppendLine($@"DELETE FROM sys_ra_related
+                                        WHERE role_id = '{roleId}' ;");
+            var list = _dbConnection.Query<SysAmRelated>($"SELECT  am_related_id 'AmRelatedId', authority_id 'AuthorityId', menu_id 'MenuId' FROM sys_am_related WHERE menu_id IN('{string.Join("','", menus.Select(t => t.MenuId))}')");
+            builderSql.AppendLine("INSERT INTO sys_ra_related(ra_related_id,role_id,authority_id)");
             foreach (var item in list)
             {
                 builderSql.AppendLine($"SELECT '{Guid.NewGuid().ToString()}','{roleId}','{item.AuthorityId}' UNION ALL");

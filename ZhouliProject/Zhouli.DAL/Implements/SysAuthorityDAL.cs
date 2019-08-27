@@ -27,30 +27,31 @@ namespace Zhouli.DAL.Implements
         public List<SysAuthority> GetSysAuthorities(Boolean isAdmin, List<SysRole> roles, AuthorityType authorityType)
         {
             StringBuilder builder = new StringBuilder(20);
-            builder.AppendLine($@"SELECT SAT.*, SM.*
+            builder.AppendLine($@"SELECT SAT.authority_id 'AuthorityId',SAT.authority_type 'AuthorityType',SM.menu_id 'MenuId',SM.menu_name 'MenuName', 
+                      SM.menu_icon 'MenuIcon',SM.menu_url 'MenuUrl',SM.menu_sort 'MenuSort',SM.parent_menu_id 'ParentMenuId'
                                 FROM(
                                     SELECT SAT.*
-                                    FROM Sys_Authority SAT WHERE DeleteSign={(int)DeleteSign.Sing_Deleted} ) SAT");
+                                    FROM sys_authority SAT WHERE delete_sign={(int)DeleteSign.Sing_Deleted} ) SAT");
             if (!isAdmin)
             {
                 var roleList = roles.Select(t => t.RoleId).ToList();
                 if (roleList.Count() == 0)
                     roleList.Add(Guid.Empty.ToString());
                 builder.AppendLine($@"INNER JOIN (
-                                SELECT srar.AuthorityId
-                                FROM Sys_Role srol, Sys_RaRelated srar
-                                WHERE srol.RoleId = srar.RoleId
-                                    AND srol.RoleId IN ('{string.Join("','", roleList)}')
+                                SELECT srar.authority_id
+                                FROM sys_role srol, sys_ra_related srar
+                                WHERE srol.role_id = srar.role_id
+                                    AND srol.role_id IN ('{string.Join("','", roleList)}')
                             ) t
-                            ON t.AuthorityId = SAT.AuthorityId");
+                            ON t.authority_id = SAT.authority_id");
             }
             switch (authorityType)
             {
                 case AuthorityType.Type_Menu:
                     builder.AppendLine($@"
-                                INNER JOIN Sys_AmRelated SAR ON SAR.AuthorityId = SAT.AuthorityId
-                                LEFT JOIN Sys_Menu SM ON SAR.MenuId = SM.MenuId
-                            WHERE AuthorityType = {(int)authorityType}");
+                                INNER JOIN sys_am_related SAR ON SAR.authority_id = SAT.authority_id
+                                LEFT JOIN sys_menu SM ON SAR.menu_id = SM.menu_id
+                            WHERE authority_type = {(int)authorityType}");
                     break;
             }
             var list = _dbConnection.Query<SysAuthority, SysMenu, SysAuthority>(builder.ToString(), (a, b) =>

@@ -1,293 +1,304 @@
 /*==============================================================*/
-/* Database name:  ZhouLi                                       */
+/* Database name:  zhouli                                       */
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/8/26 星期一 22:01:07                       */
+/* Created on:     2019/8/27 星期二 23:33:23                       */
 /*==============================================================*/
 
 
-drop database if exists ZhouLi;
+drop database if exists zhouli;
 
 /*==============================================================*/
-/* Database: ZhouLi                                             */
+/* Database: zhouli                                             */
 /*==============================================================*/
-create database ZhouLi;
+create database zhouli;
 
-use ZhouLi;
+use zhouli;
 
 /*==============================================================*/
-/* Table: Blog_Article                                          */
+/* Table: blog_article                                          */
 /*==============================================================*/
-create table Blog_Article
+create table blog_article
 (
-   Article_Id           int not null auto_increment comment '文章id',
-   Article_Title        national varchar(50) not null comment '文章标题',
-   Article_Thrink       varchar(100) not null comment '文章图片',
-   Article_Body         text not null comment '文章内容',
-   Article_Body_Markdown text comment '文章Markdown内容',
-   Article_Body_Summary national varchar(100) comment '文章摘要',
-   Article_SortValue    int not null default 0 comment '排序号',
-   CreateUserId         varchar(36) comment '创建人id',
-   CreateTime           datetime not null comment '创建时间',
-   EditTime             datetime comment '修改时间',
-   DeleteSign           int not null default 1 comment '删除标识',
-   DeleteTime           datetime comment '删除时间',
-   Note                 national varchar(2048) comment '备注',
-   primary key (Article_Id)
+   article_id           int not null auto_increment comment '文章id',
+   article_title        national varchar(50) not null comment '文章标题',
+   article_thrink       varchar(100) not null comment '文章图片',
+   article_body         text not null comment '文章内容',
+   article_body_markdown text comment '文章Markdown内容',
+   article_body_summary national varchar(100) comment '文章摘要',
+   article_sort_value   int not null default 0 comment '排序号',
+   create_user_id       varchar(36) comment '创建人id',
+   create_time          datetime not null comment '创建时间',
+   edit_time            datetime comment '修改时间',
+   delete_sign          int not null default 1 comment '删除标识',
+   delete_time          datetime comment '删除时间',
+   note                 national varchar(2048) comment '备注',
+   primary key (article_id)
 );
 
-alter table Blog_Article comment '博客文章表';
+alter table blog_article comment '博客文章表';
 
 /*==============================================================*/
-/* Table: Blog_ArticleBrowsing                                  */
+/* Table: blog_article_browsing                                 */
 /*==============================================================*/
-create table Blog_ArticleBrowsing
+create table blog_article_browsing
 (
-   Id                   int not null auto_increment comment '博客文章浏览量表id',
-   ArticleId            int not null comment '文章id',
-   Ip                   varchar(20) not null comment 'ip地址',
-   CreateTime           datetime not null comment '创建时间',
-   primary key (Id)
-);
-
-/*==============================================================*/
-/* Table: Blog_ArticleLike                                      */
-/*==============================================================*/
-create table Blog_ArticleLike
-(
-   Id                   int not null auto_increment comment '博客文章点赞量表id',
-   ArticleId            int not null comment '文章id',
-   Ip                   varchar(20) not null comment 'ip地址',
-   CreateTime           datetime not null comment '创建时间',
-   primary key (Id)
+   id                   int not null auto_increment comment '博客文章浏览量表id',
+   article_id           int not null comment '文章id',
+   ip                   varchar(20) not null comment 'ip地址',
+   create_time          datetime not null comment '创建时间',
+   primary key (id)
 );
 
 /*==============================================================*/
-/* Table: Blog_FriendshipLink                                   */
+/* Table: blog_article_like                                     */
 /*==============================================================*/
-create table Blog_FriendshipLink
+create table blog_article_like
 (
-   FriendshipLink_Id    int not null auto_increment comment '友情链接id',
-   FriendshipLink_Name  national varchar(40) not null comment '站点名称',
-   FriendshipLink_Url   varchar(40) not null comment '站点url',
-   FriendshipLink_Email varchar(40) not null comment '站长邮箱',
-   FriendshipLink_SortValue int not null default 0 comment '排序号',
-   FriendshipLink_Sfsh  int not null default 0 comment '是否审核',
-   CreateUserId         varchar(36) comment '创建人id',
-   CreateTime           datetime not null comment '创建时间',
-   EditTime             datetime comment '修改时间',
-   DeleteSign           int not null default 1 comment '删除标识',
-   DeleteTime           datetime comment '删除时间',
-   Note                 national varchar(2048) comment '备注',
-   primary key (FriendshipLink_Id)
+   id                   int not null auto_increment comment '博客文章点赞量表id',
+   article_id           int not null comment '文章id',
+   ip                   varchar(20) not null comment 'ip地址',
+   create_time          datetime not null comment '创建时间',
+   primary key (id)
 );
 
 /*==============================================================*/
-/* Table: Blog_Lable                                            */
+/* Table: blog_friendship_link                                  */
 /*==============================================================*/
-create table Blog_Lable
+create table blog_friendship_link
 (
-   Lable_Id             int not null auto_increment comment '博客标签id',
-   Lable_Name           national varchar(20) not null comment '标签名称',
-   Lable_SortValue      int not null default 0 comment '标签排序号',
-   Lable_ClickNum       bigint not null default 0 comment '标签点击量',
-   CreateUserId         varchar(36) comment '创建人id',
-   CreateTime           datetime not null comment '创建时间',
-   EditTime             datetime comment '修改时间',
-   DeleteSign           int not null default 1 comment '删除标识',
-   DeleteTime           datetime comment '删除时间',
-   Note                 national varchar(2048) comment '备注',
-   primary key (Lable_Id)
+   friendship_link_id   int not null auto_increment comment '友情链接id',
+   friendship_link_name national varchar(40) not null comment '站点名称',
+   friendship_link_url  varchar(40) not null comment '站点url',
+   friendship_link_email varchar(40) not null comment '站长邮箱',
+   friendship_link_sort_value int not null default 0 comment '排序号',
+   friendship_link_sfsh int not null default 0 comment '是否审核',
+   create_user_id       varchar(36) comment '创建人id',
+   create_time          datetime not null comment '创建时间',
+   edit_time            datetime comment '修改时间',
+   delete_sign          int not null default 1 comment '删除标识',
+   delete_time          datetime comment '删除时间',
+   note                 national varchar(2048) comment '备注',
+   primary key (friendship_link_id)
 );
 
 /*==============================================================*/
-/* Table: Blog_NavigationImg                                    */
+/* Table: blog_lable                                            */
 /*==============================================================*/
-create table Blog_NavigationImg
+create table blog_lable
 (
-   NavigationImg_Id     int not null auto_increment comment '博客轮播图id',
-   NavigationImg_Url    varchar(200) not null comment '轮播图url',
-   NavigationImg_SortValue int not null default 0 comment '轮播图排序号',
-   NavigationImg_Describe national varchar(2048) not null default '0' comment '轮播图描述',
-   NavigationImg_IsEnable int not null default 1 comment '是否启用',
-   CreateUserId         varchar(36) comment '创建人id',
-   CreateTime           datetime not null comment '创建时间',
-   EditTime             datetime comment '修改时间',
-   DeleteSign           int not null default 1 comment '删除标识',
-   DeleteTime           datetime comment '删除时间',
-   Note                 national varchar(2048) comment '备注',
-   primary key (NavigationImg_Id)
+   lable_id             int not null auto_increment comment '博客标签id',
+   lable_name           national varchar(20) not null comment '标签名称',
+   lable_sort_value     int not null default 0 comment '标签排序号',
+   lable_click_num      bigint not null default 0 comment '标签点击量',
+   create_user_id       varchar(36) comment '创建人id',
+   create_time          datetime not null comment '创建时间',
+   edit_time            datetime comment '修改时间',
+   delete_sign          int not null default 1 comment '删除标识',
+   delete_time          datetime comment '删除时间',
+   note                 national varchar(2048) comment '备注',
+   primary key (lable_id)
 );
 
 /*==============================================================*/
-/* Table: Blog_Related                                          */
+/* Table: blog_navigation_img                                   */
 /*==============================================================*/
-create table Blog_Related
+create table blog_navigation_img
 (
-   Blog_RelatedId       int not null auto_increment comment '博客文章标签关联表',
-   Related_Article_Id   int not null comment '文章id',
-   Related_Lable_Id     int not null comment '标签id',
-   primary key (Blog_RelatedId)
+   navigation_img_id    int not null auto_increment comment '博客轮播图id',
+   navigation_img_url   varchar(200) not null comment '轮播图url',
+   navigation_img_sort_value int not null default 0 comment '轮播图排序号',
+   navigation_img_describe national varchar(2048) not null default '0' comment '轮播图描述',
+   navigation_img_is_enable int not null default 1 comment '是否启用',
+   create_user_id       varchar(36) comment '创建人id',
+   create_time          datetime not null comment '创建时间',
+   edit_time            datetime comment '修改时间',
+   delete_sign          int not null default 1 comment '删除标识',
+   delete_time          datetime comment '删除时间',
+   note                 national varchar(2048) comment '备注',
+   primary key (navigation_img_id)
 );
 
 /*==============================================================*/
-/* Table: Dict_AuthorityType                                    */
+/* Table: blog_related                                          */
 /*==============================================================*/
-create table Dict_AuthorityType
+create table blog_related
 (
-   AuthorityTypeId      varchar(36) not null comment '权限类型id',
-   AuthorityTypeName    national varchar(20) not null comment '权限类型名称',
-   primary key (AuthorityTypeId)
+   blog_related_id      int not null auto_increment comment '博客文章标签关联表',
+   related_article_id   int not null comment '文章id',
+   related_lable_id     int not null comment '标签id',
+   primary key (blog_related_id)
 );
 
 /*==============================================================*/
-/* Table: Sys_AmRelated                                         */
+/* Table: dict_authority_type                                   */
 /*==============================================================*/
-create table Sys_AmRelated
+create table dict_authority_type
 (
-   AmRelatedId          varchar(36) not null comment '权限菜单关联id',
-   AuthorityId          varchar(36) not null comment '权限id',
-   MenuId               varchar(36) not null comment '菜单id',
-   primary key (AmRelatedId)
+   authority_type_id    varchar(36) not null comment '权限类型id',
+   authority_type_name  national varchar(20) not null comment '权限类型名称',
+   primary key (authority_type_id)
 );
 
 /*==============================================================*/
-/* Table: Sys_Authority                                         */
+/* Table: sys_ab_related                                        */
 /*==============================================================*/
-create table Sys_Authority
+create table sys_ab_related
 (
-   AuthorityId          varchar(36) not null comment '权限id',
-   AuthorityType        int not null comment '权限类型',
-   CreateUserId         varchar(36) comment '创建人id',
-   CreateTime           datetime not null comment '创建时间',
-   EditTime             datetime comment '修改时间',
-   DeleteSign           int not null default 1 comment '删除标识',
-   DeleteTime           datetime comment '删除时间',
-   Note                 varchar(2048) comment '备注',
-   primary key (AuthorityId)
+   ab_related_id        varchar(36) not null comment '权限按钮关联id',
+   authority_id         varchar(36) not null comment '权限id',
+   button_id            varchar(36) not null comment '按钮id',
+   primary key (ab_related_id)
 );
 
 /*==============================================================*/
-/* Table: Sys_Button                                            */
+/* Table: sys_am_related                                        */
 /*==============================================================*/
-create table Sys_Button
+create table sys_am_related
 (
-   ButtonId             varchar(36) not null comment '按钮Id',
-   MenuId               varchar(36) not null comment '菜单Id',
-   ButtonName           national varchar(20) not null comment '按钮名称',
-   ButtonShowType       int not null comment '按钮显示类型(1=显示可用,2=显示不可用,3=不显示)',
-   primary key (ButtonId)
+   am_related_id        varchar(36) not null comment '权限菜单关联id',
+   authority_id         varchar(36) not null comment '权限id',
+   menu_id              varchar(36) not null comment '菜单id',
+   primary key (am_related_id)
 );
 
 /*==============================================================*/
-/* Table: Sys_Menu                                              */
+/* Table: sys_authority                                         */
 /*==============================================================*/
-create table Sys_Menu
+create table sys_authority
 (
-   MenuId               varchar(36) not null comment '菜单id',
-   MenuName             national varchar(50) not null comment '菜单名称',
-   MenuIcon             varchar(50) comment '菜单图标',
-   MenuUrl              varchar(80) comment '菜单url',
-   MenuSort             int not null comment '菜单排序号',
-   ParentMenuId         varchar(36) comment '父级菜单id',
-   CreateUserId         varchar(36) comment '创建人id',
-   CreateTime           datetime not null comment '创建时间',
-   EditTime             datetime comment '修改时间',
-   DeleteSign           int not null default 1 comment '删除标识',
-   DeleteTime           datetime comment '删除时间',
-   Note                 national varchar(2048) comment '备注',
-   primary key (MenuId)
+   authority_id         varchar(36) not null comment '权限id',
+   authority_type       int not null comment '权限类型',
+   create_user_id       varchar(36) comment '创建人id',
+   create_time          datetime not null comment '创建时间',
+   edit_time            datetime comment '修改时间',
+   delete_sign          int not null default 1 comment '删除标识',
+   delete_time          datetime comment '删除时间',
+   note                 varchar(2048) comment '备注',
+   primary key (authority_id)
 );
 
 /*==============================================================*/
-/* Table: Sys_RaRelated                                         */
+/* Table: sys_button                                            */
 /*==============================================================*/
-create table Sys_RaRelated
+create table sys_button
 (
-   RaRelatedId          varchar(36) not null comment '角色权限关联表id',
-   RoleId               varchar(36) not null comment '角色id',
-   AuthorityId          varchar(36) not null comment '权限id',
-   primary key (RaRelatedId)
+   button_id            varchar(36) not null comment '按钮Id',
+   menu_id              varchar(36) not null comment '菜单Id',
+   button_name          national varchar(20) not null comment '按钮名称',
+   button_show_type     int not null comment '按钮显示类型(1=显示可用,2=显示不可用,3=不显示)',
+   primary key (button_id)
 );
 
 /*==============================================================*/
-/* Table: Sys_Role                                              */
+/* Table: sys_menu                                              */
 /*==============================================================*/
-create table Sys_Role
+create table sys_menu
 (
-   RoleId               varchar(36) not null comment '角色id',
-   RoleName             national varchar(50) not null comment '角色名称',
-   CreateUserId         varchar(36) comment '创建人id',
-   CreateTime           datetime not null comment '创建时间',
-   EditTime             datetime comment '修改时间',
-   DeleteSign           int not null default 1 comment '删除标识',
-   DeleteTime           datetime comment '删除时间',
-   Note                 national varchar(2048) comment '备注',
-   primary key (RoleId)
+   menu_id              varchar(36) not null comment '菜单id',
+   menu_name            national varchar(50) not null comment '菜单名称',
+   menu_icon            varchar(50) comment '菜单图标',
+   menu_url             varchar(80) comment '菜单url',
+   menu_sort            int not null comment '菜单排序号',
+   parent_menu_id       varchar(36) comment '父级菜单id',
+   create_user_id       varchar(36) comment '创建人id',
+   create_time          datetime not null comment '创建时间',
+   edit_time            datetime comment '修改时间',
+   delete_sign          int not null default 1 comment '删除标识',
+   delete_time          datetime comment '删除时间',
+   note                 national varchar(2048) comment '备注',
+   primary key (menu_id)
 );
 
 /*==============================================================*/
-/* Table: Sys_UgrRelated                                        */
+/* Table: sys_ra_related                                        */
 /*==============================================================*/
-create table Sys_UgrRelated
+create table sys_ra_related
 (
-   UgrRelatedId         varchar(36) not null comment '用户组角色管理表',
-   UserGroupId          varchar(36) not null comment '用户组id',
-   RoleId               varchar(36) not null comment '角色id',
-   primary key (UgrRelatedId)
+   ra_related_id        varchar(36) not null comment '角色权限关联表id',
+   role_id              varchar(36) not null comment '角色id',
+   authority_id         varchar(36) not null comment '权限id',
+   primary key (ra_related_id)
 );
 
 /*==============================================================*/
-/* Table: Sys_UrRelated                                         */
+/* Table: sys_role                                              */
 /*==============================================================*/
-create table Sys_UrRelated
+create table sys_role
 (
-   UrRelatedId          varchar(36) not null comment '用户角色管理表id',
-   UserId               varchar(36) not null comment '用户id',
-   RoleId               varchar(36) not null comment '角色id',
-   primary key (UrRelatedId)
+   role_id              varchar(36) not null comment '角色id',
+   role_name            national varchar(50) not null comment '角色名称',
+   create_user_id       varchar(36) comment '创建人id',
+   create_time          datetime not null comment '创建时间',
+   edit_time            datetime comment '修改时间',
+   delete_sign          int not null default 1 comment '删除标识',
+   delete_time          datetime comment '删除时间',
+   note                 national varchar(2048) comment '备注',
+   primary key (role_id)
 );
 
 /*==============================================================*/
-/* Table: Sys_User                                              */
+/* Table: sys_ugr_related                                       */
 /*==============================================================*/
-create table Sys_User
+create table sys_ugr_related
 (
-   UserId               varchar(36) not null comment '用户id',
-   UserName             varchar(20) not null comment '账号',
-   UserNikeName         national varchar(20) comment '昵称',
-   UserPwd              varchar(50) not null comment '密码',
-   UserSex              int default 1 comment '性别',
-   UserBirthday         datetime comment '生日',
-   UserEmail            varchar(50) comment '邮箱',
-   UserQq               varchar(15) comment 'qq',
-   UserWx               varchar(50) comment '微信',
-   UserAvatar           varchar(150) comment '头像',
-   UserPhone            varchar(11) comment '电话',
-   UserGroupId          varchar(36) comment '所属用户组',
-   UserStatus           int not null default 1 comment '用户状态',
-   CreateUserId         varchar(36) comment '创建人id',
-   CreateTime           datetime not null comment '创建时间',
-   EditTime             datetime comment '修改时间',
-   DeleteSign           int not null default 1 comment '删除标识',
-   DeleteTime           datetime comment '删除时间',
-   Note                 national varchar(2048) comment '备注',
-   primary key (UserId)
+   ugr_related_id       varchar(36) not null comment '用户组角色管理表',
+   user_group_id        varchar(36) not null comment '用户组id',
+   role_id              varchar(36) not null comment '角色id',
+   primary key (ugr_related_id)
 );
 
 /*==============================================================*/
-/* Table: Sys_UserGroup                                         */
+/* Table: sys_ur_related                                        */
 /*==============================================================*/
-create table Sys_UserGroup
+create table sys_ur_related
 (
-   UserGroupId          varchar(36) not null comment '用户组id',
-   UserGroupName        national varchar(50) not null comment '用户组名称',
-   ParentUserGroupId    varchar(36) comment '父级用户组id',
-   CreateUserId         varchar(36) comment '创建人id',
-   CreateTime           datetime not null comment '创建时间',
-   EditTime             datetime comment '修改时间',
-   DeleteSign           int not null default 1 comment '删除标识',
-   DeleteTime           datetime comment '删除时间',
-   Note                 national varchar(2048) comment '备注',
-   primary key (UserGroupId)
+   ur_related_id        varchar(36) not null comment '用户角色管理表id',
+   user_id              varchar(36) not null comment '用户id',
+   role_id              varchar(36) not null comment '角色id',
+   primary key (ur_related_id)
+);
+
+/*==============================================================*/
+/* Table: sys_user                                              */
+/*==============================================================*/
+create table sys_user
+(
+   user_id              varchar(36) not null comment '用户id',
+   user_name            varchar(20) not null comment '账号',
+   user_nike_name       national varchar(20) comment '昵称',
+   user_pwd             varchar(50) not null comment '密码',
+   user_sex             int default 1 comment '性别',
+   user_birthday        datetime comment '生日',
+   user_email           varchar(50) comment '邮箱',
+   user_qq              varchar(15) comment 'qq',
+   user_wx              varchar(50) comment '微信',
+   user_avatar          varchar(150) comment '头像',
+   user_phone           varchar(11) comment '电话',
+   user_group_id        varchar(36) comment '所属用户组',
+   user_status          int not null default 1 comment '用户状态',
+   create_user_id       varchar(36) comment '创建人id',
+   create_time          datetime not null comment '创建时间',
+   edit_time            datetime comment '修改时间',
+   delete_sign          int not null default 1 comment '删除标识',
+   delete_time          datetime comment '删除时间',
+   note                 national varchar(2048) comment '备注',
+   primary key (user_id)
+);
+
+/*==============================================================*/
+/* Table: sys_user_group                                        */
+/*==============================================================*/
+create table sys_user_group
+(
+   user_group_id        varchar(36) not null comment '用户组id',
+   user_group_name      national varchar(50) not null comment '用户组名称',
+   parent_user_group_id varchar(36) comment '父级用户组id',
+   create_user_id       varchar(36) comment '创建人id',
+   create_time          datetime not null comment '创建时间',
+   edit_time            datetime comment '修改时间',
+   delete_sign          int not null default 1 comment '删除标识',
+   delete_time          datetime comment '删除时间',
+   note                 national varchar(2048) comment '备注',
+   primary key (user_group_id)
 );
 
