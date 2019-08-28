@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  zhouli                                       */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019/8/27 ÐÇÆÚ¶þ 23:33:43                       */
+/* Created on:     2019-08-28 11:46:49                          */
 /*==============================================================*/
 
 
@@ -22,18 +22,18 @@ go
 /*==============================================================*/
 create table blog_article (
    article_id           int                  identity,
-   article_title        national varchar(50) not null,
+   article_title        nvarchar(50)         not null,
    article_thrink       varchar(100)         not null,
    article_body         text                 not null,
    article_body_markdown text                 null,
-   article_body_summary national varchar(100) null,
+   article_body_summary nvarchar(100)        null,
    article_sort_value   int                  not null default 0,
    create_user_id       varchar(36)          null,
    create_time          datetime             not null,
    edit_time            datetime             null,
    delete_sign          int                  not null default 1,
    delete_time          datetime             null,
-   note                 national varchar(2048) null,
+   note                 nvarchar(2048)       null,
    constraint PK_BLOG_ARTICLE primary key nonclustered (article_id)
 )
 go
@@ -483,7 +483,7 @@ go
 /*==============================================================*/
 create table blog_friendship_link (
    friendship_link_id   int                  identity,
-   friendship_link_name national varchar(40) not null,
+   friendship_link_name nvarchar(40)         not null,
    friendship_link_url  varchar(40)          not null,
    friendship_link_email varchar(40)          not null,
    friendship_link_sort_value int                  not null default 0,
@@ -493,7 +493,7 @@ create table blog_friendship_link (
    edit_time            datetime             null,
    delete_sign          int                  not null default 1,
    delete_time          datetime             null,
-   note                 national varchar(2048) null,
+   note                 nvarchar(2048)       null,
    constraint PK_BLOG_FRIENDSHIP_LINK primary key nonclustered (friendship_link_id)
 )
 go
@@ -731,7 +731,7 @@ go
 /*==============================================================*/
 create table blog_lable (
    lable_id             int                  identity,
-   lable_name           national varchar(20) not null,
+   lable_name           nvarchar(20)         not null,
    lable_sort_value     int                  not null default 0,
    lable_click_num      bigint               not null default 0,
    create_user_id       varchar(36)          null,
@@ -739,7 +739,7 @@ create table blog_lable (
    edit_time            datetime             null,
    delete_sign          int                  not null default 1,
    delete_time          datetime             null,
-   note                 national varchar(2048) null,
+   note                 nvarchar(2048)       null,
    constraint PK_BLOG_LABLE primary key nonclustered (lable_id)
 )
 go
@@ -941,14 +941,14 @@ create table blog_navigation_img (
    navigation_img_id    int                  identity,
    navigation_img_url   varchar(200)         not null,
    navigation_img_sort_value int                  not null default 0,
-   navigation_img_describe national varchar(2048) not null default '0',
+   navigation_img_describe nvarchar(2048)       not null default '0',
    navigation_img_is_enable int                  not null default 1,
    create_user_id       varchar(36)          null,
    create_time          datetime             not null,
    edit_time            datetime             null,
    delete_sign          int                  not null default 1,
    delete_time          datetime             null,
-   note                 national varchar(2048) null,
+   note                 nvarchar(2048)       null,
    constraint PK_BLOG_NAVIGATION_IMG primary key nonclustered (navigation_img_id)
 )
 go
@@ -1235,7 +1235,7 @@ go
 /*==============================================================*/
 create table dict_authority_type (
    authority_type_id    varchar(36)          not null,
-   authority_type_name  national varchar(20) not null,
+   authority_type_name  nvarchar(20)         not null,
    constraint PK_DICT_AUTHORITY_TYPE primary key nonclustered (authority_type_id)
 )
 go
@@ -1588,7 +1588,7 @@ go
 create table sys_button (
    button_id            varchar(36)          not null,
    menu_id              varchar(36)          not null,
-   button_name          national varchar(20) not null,
+   button_name          nvarchar(20)         not null,
    button_show_type     int                  not null,
    constraint PK_SYS_BUTTON primary key nonclustered (button_id)
 )
@@ -1675,7 +1675,7 @@ go
 /*==============================================================*/
 create table sys_menu (
    menu_id              varchar(36)          not null,
-   menu_name            national varchar(50) not null,
+   menu_name            nvarchar(50)         not null,
    menu_icon            varchar(50)          null,
    menu_url             varchar(80)          null,
    menu_sort            int                  not null,
@@ -1685,7 +1685,7 @@ create table sys_menu (
    edit_time            datetime             null,
    delete_sign          int                  not null default 1,
    delete_time          datetime             null,
-   note                 national varchar(2048) null,
+   note                 nvarchar(2048)       null,
    constraint PK_SYS_MENU primary key nonclustered (menu_id)
 )
 go
@@ -1991,13 +1991,13 @@ go
 /*==============================================================*/
 create table sys_role (
    role_id              varchar(36)          not null,
-   role_name            national varchar(50) not null,
+   role_name            nvarchar(50)         not null,
    create_user_id       varchar(36)          null,
    create_time          datetime             not null,
    edit_time            datetime             null,
    delete_sign          int                  not null default 1,
    delete_time          datetime             null,
-   note                 national varchar(2048) null,
+   note                 nvarchar(2048)       null,
    constraint PK_SYS_ROLE primary key nonclustered (role_id)
 )
 go
@@ -2296,7 +2296,7 @@ go
 create table sys_user (
    user_id              varchar(36)          not null,
    user_name            varchar(20)          not null,
-   user_nike_name       national varchar(20) null,
+   user_nike_name       nvarchar(20)         null,
    user_pwd             varchar(50)          not null,
    user_sex             int                  null default 1,
    user_birthday        datetime             null,
@@ -2312,7 +2312,7 @@ create table sys_user (
    edit_time            datetime             null,
    delete_sign          int                  not null default 1,
    delete_time          datetime             null,
-   note                 national varchar(2048) null,
+   note                 nvarchar(2048)       null,
    constraint PK_SYS_USER primary key nonclustered (user_id)
 )
 go
@@ -2683,14 +2683,14 @@ go
 /*==============================================================*/
 create table sys_user_group (
    user_group_id        varchar(36)          not null,
-   user_group_name      national varchar(50) not null,
+   user_group_name      nvarchar(50)         not null,
    parent_user_group_id varchar(36)          null,
    create_user_id       varchar(36)          null,
    create_time          datetime             not null,
    edit_time            datetime             null,
    delete_sign          int                  not null default 1,
    delete_time          datetime             null,
-   note                 national varchar(2048) null,
+   note                 nvarchar(2048)       null,
    constraint PK_SYS_USER_GROUP primary key nonclustered (user_group_id)
 )
 go
