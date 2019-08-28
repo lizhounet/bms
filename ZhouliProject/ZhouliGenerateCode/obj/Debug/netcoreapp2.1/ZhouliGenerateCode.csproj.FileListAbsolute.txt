@@ -1,0 +1,14 @@
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.csproj.CoreCompileInputs.cache
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.AssemblyInfoInputs.cache
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.AssemblyInfo.cs
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\bin\Debug\netcoreapp2.1\ZhouliGenerateCode.deps.json
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\bin\Debug\netcoreapp2.1\ZhouliGenerateCode.runtimeconfig.json
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\bin\Debug\netcoreapp2.1\ZhouliGenerateCode.runtimeconfig.dev.json
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\bin\Debug\netcoreapp2.1\ZhouliGenerateCode.dll
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\bin\Debug\netcoreapp2.1\ZhouliGenerateCode.pdb
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\bin\Debug\netcoreapp2.1\Zhouli.Common.dll
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\bin\Debug\netcoreapp2.1\Zhouli.Common.pdb
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.csprojAssemblyReference.cache
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.csproj.CopyComplete
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.dll
+D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.pdb
