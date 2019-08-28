@@ -59,7 +59,7 @@ namespace Zhouli.DAL.Implements
                 && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted) &&
                 ((_db.BlogRelated.Where(r => r.RelatedLableId == lableId).Select(s => s.RelatedArticleId).Contains(t.ArticleId))
                 || lableId == 0);
-            var query = GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime, expression);
+            var query = GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.ArticleId, expression);
             var list = from blogArticle in query
                        join user in _db.SysUser
                        on blogArticle.CreateUserId equals user.UserId

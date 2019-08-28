@@ -105,7 +105,7 @@ namespace Zhouli.BLL.Implements
         /// <returns></returns>
         public HandleResult<PageModel> GetBlogLableList(string page, string limit, string searchstr)
         {
-            var query = _blogLableDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime,
+            var query = _blogLableDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.LableId,
                 t => t.LableName.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
                 && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
             return new HandleResult<PageModel>

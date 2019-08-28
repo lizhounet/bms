@@ -65,3 +65,4 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Debug\netcoreapp2.1\Zhou
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Debug\netcoreapp2.1\Zhouli.FileService.csproj.CopyComplete
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Debug\netcoreapp2.1\Zhouli.FileService.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Debug\netcoreapp2.1\Zhouli.FileService.pdb
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netcoreapp2.1\Zhouli.FileService.deps.json
