@@ -56,3 +56,4 @@ F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.AssemblyInfo.cs
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.DbEntity\obj\Debug\netcoreapp2.1\Zhouli.DbEntity.csprojAssemblyReference.cache
