@@ -110,7 +110,7 @@ namespace Zhouli.DAL.Implements
             string strWhere = "";
             if (bWeek)
             {
-                strWhere = $"AND BA.create_time BETWEEN '{DateTime.Now.GetTimeStartByType("Week")}' AND '{DateTime.Now.GetTimeEndByType("Week")}'";
+                strWhere = $"AND BA.create_time BETWEEN '{DateTime.Now.GetTimeStartByType("Week").ToString("yyy-MM-dd")}' AND '{DateTime.Now.GetTimeEndByType("Week").ToString("yyy-MM-dd")}'";
             }
             return _dbConnection.Query($@"SELECT BB.ArticleId, BB.ArticleBrowsingNum, BA.article_title 'ArticleTitle',BA.article_thrink 'ArticleThrink'
                                 FROM (

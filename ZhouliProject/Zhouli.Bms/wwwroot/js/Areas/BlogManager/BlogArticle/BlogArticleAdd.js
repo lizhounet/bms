@@ -55,8 +55,8 @@ require(["jquery", 'layui'], function ($) {
                 "Authorization": fileAccessToken
             },
             data: {
-                StorageMethod: "bendi",
-                FileSpaceType: ""
+                StorageMethod: "qiniuyun",
+                FileSpaceType: "public"
             },
             done: function (res, index, upload) {
                 console.log(res);
