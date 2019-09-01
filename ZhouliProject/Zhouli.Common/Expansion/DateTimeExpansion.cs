@@ -15,7 +15,6 @@ namespace System
         /// <returns></returns>
         public static DateTime GetTimeStartByType(this DateTime now, string TimeType)
         {
-            now = now.Date;
             switch (TimeType)
             {
                 case "Week":
@@ -39,7 +38,6 @@ namespace System
         /// <returns></returns>
         public static DateTime GetTimeEndByType(this DateTime now, string TimeType)
         {
-            now = now.Date;
             switch (TimeType)
             {
                 case "Week":
