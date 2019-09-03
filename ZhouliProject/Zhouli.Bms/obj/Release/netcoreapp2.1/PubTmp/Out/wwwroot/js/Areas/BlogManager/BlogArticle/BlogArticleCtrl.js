@@ -31,7 +31,9 @@ require(["jquery", 'layui'], function ($) {
                 { field: 'ArticleId', title: 'ID', width: 60, align: "center" },
                 { field: 'ArticleTitle', title: '文章标题', width: 400, align: "center" },
                 {
-                    field: 'ArticleThrink', title: '文章缩略图', align: "center", templet: '<div><img src="{{ d.ArticleThrink}}"></div>'
+                    field: 'ArticleThrink', title: '文章缩略图', align: "center", templet: function (d) {
+                        return '<div><img  src="' + d.ArticleThrink+'" /></div>';
+                    }
                 },
                 { field: 'ArticleLikeNum', title: '点赞量', align: "center" },
                 { field: 'ArticleCommentNum', title: '评论量', align: "center" },
