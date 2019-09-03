@@ -673,7 +673,8 @@
         "dependencies": {
           "Zhouli.Common": "1.0.0",
           "Zhouli.DAL": "1.0.0",
-          "Zhouli.DbEntity": "1.0.0"
+          "Zhouli.DbEntity": "1.0.0",
+          "Zhouli.Enum": "1.0.0"
         },
         "runtime": {
           "Zhouli.BLL.dll": {}
@@ -681,6 +682,8 @@
       },
       "Zhouli.Common/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.0",
+          "Microsoft.AspNetCore.Http.Features": "2.1.0",
           "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
@@ -690,8 +693,10 @@
       "Zhouli.DAL/1.0.0": {
         "dependencies": {
           "Dapper": "1.50.5",
+          "Zhouli.Common": "1.0.0",
           "Zhouli.DbEntity": "1.0.0",
-          "Zhouli.Dto": "1.0.0"
+          "Zhouli.Dto": "1.0.0",
+          "Zhouli.Enum": "1.0.0"
         },
         "runtime": {
           "Zhouli.DAL.dll": {}
@@ -714,6 +719,11 @@
         },
         "runtime": {
           "Zhouli.Dto.dll": {}
+        }
+      },
+      "Zhouli.Enum/1.0.0": {
+        "runtime": {
+          "Zhouli.Enum.dll": {}
         }
       }
     }
@@ -1228,6 +1238,11 @@
       "sha512": ""
     },
     "Zhouli.Dto/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Zhouli.Enum/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

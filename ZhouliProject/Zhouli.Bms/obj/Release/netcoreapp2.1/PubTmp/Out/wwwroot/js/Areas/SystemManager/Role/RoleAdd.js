@@ -21,8 +21,8 @@
         }, function (res) {
             console.log(res);
             top.layer.close(index);
-            top.layer.msg(res.Messages);
-            if (res.StateCode == 200) {
+            top.layer.msg(res.RetMsg);
+            if (res.RetCode == 200) {
                 layer.closeAll("iframe");
                 //刷新父页面
                 parent.location.reload();
@@ -32,7 +32,6 @@
     });
     $(function () {
         setTimeout(function () {
-            console.log($(".roleId").val());
             zhouliMenu.loadMenu($(".roleId").val());
         }, 200);
 
@@ -68,14 +67,14 @@ var zhouliMenu = {
     loadMenu: function (RoleId) {
         $.get("/System/Role/GetRoleMenuList", { RoleId: RoleId },
             function (data) {
-                console.log(data);
                 //绑定zTree
-                $.fn.zTree.init($("#treeMenu"), setting, data.JsonData.MenuList);
+                $.fn.zTree.init($("#treeMenu"), setting, data.Data.MenuList);
                 //展开所有节点
                 $.fn.zTree.getZTreeObj("treeMenu").expandAll(true);
-                if (data.JsonData.RoleMenuList.length > 0) {
-                    for (var i = 0; i < data.JsonData.RoleMenuList.length; i++) {
-                        var node = $.fn.zTree.getZTreeObj("treeMenu").getNodeByParam("MenuId", data.JsonData.RoleMenuList[i].MenuId);
+                console.log(data);
+                if (data.Data.RoleMenuList.length > 0) {
+                    for (var i = 0; i < data.Data.RoleMenuList.length; i++) {
+                        var node = $.fn.zTree.getZTreeObj("treeMenu").getNodeByParam("MenuId", data.Data.RoleMenuList[i].MenuId);
                         $.fn.zTree.getZTreeObj("treeMenu").checkNode(node, true,false,true);
                     }
                 }

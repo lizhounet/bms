@@ -11,7 +11,7 @@ using ZhouliSystem.Data;
 using ZhouliSystem.Models;
 using ZhouliSystem.Filters;
 using Zhouli.Dto.ModelDto;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.Enum;
 
 namespace ZhouliSystem.Areas.SystemManager.Controllers
@@ -138,9 +138,9 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         {
             var resModel = new ResponseModel();
             //此处删除进行逻辑删除
-            MessageModel model = _sysRoleBLL.DelRole(RoleId);
-            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.RetMsg = model.Message;
+            var handleResult = _sysRoleBLL.DelRole(RoleId);
+            resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = handleResult.Msg;
             return Ok(resModel);
         }
         #endregion
@@ -153,9 +153,9 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         public IActionResult GetRoleMenuList(string RoleId)
         {
             //用户可以操作的菜单
-            var menuList = (List<SysMenuDto>)(_sysMenuBLL.GetMenusBy(_userAccount.GetUserInfo()).Data);
+            var menuList = _sysMenuBLL.GetMenusBy(_userAccount.GetUserInfo()).Data;
             //角色所拥有的菜单
-            var roleMenuList = string.IsNullOrEmpty(RoleId) ? new List<SysMenuDto>() : ((List<SysMenuDto>)_sysMenuBLL.GetRoleMenuList(RoleId).Data);
+            var roleMenuList = string.IsNullOrEmpty(RoleId) ? new List<SysMenuDto>() : _sysMenuBLL.GetRoleMenuList(RoleId).Data;
             return Ok(new ResponseModel
             {
                 Data = new
@@ -188,11 +188,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public IActionResult AssignmentRoleUser(string RoleId, List<string> UserIds)
         {
-            var messageModel = _sysRoleBLL.AssignmentRoleUser(RoleId, UserIds);
+            var handleResult = _sysRoleBLL.AssignmentRoleUser(RoleId, UserIds);
             return Ok(new ResponseModel
             {
-                RetMsg = messageModel.Message,
-                RetCode = messageModel.Result ? StatesCode.success : StatesCode.failure
+                RetMsg = handleResult.Msg,
+                RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure
             });
         }
         #endregion
@@ -204,11 +204,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <param name="UserIds"></param>
         public IActionResult CancelUserAssignment(string RoleId, List<string> UserIds)
         {
-            var messageModel = _sysRoleBLL.CancelUserAssignment(RoleId, UserIds);
+            var handleResult = _sysRoleBLL.CancelUserAssignment(RoleId, UserIds);
             return Ok(new ResponseModel
             {
-                RetMsg = messageModel.Message,
-                RetCode = messageModel.Result ? StatesCode.success : StatesCode.failure
+                RetMsg = handleResult.Msg,
+                RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure
             });
         }
         #endregion
@@ -242,11 +242,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <returns></returns>
         public IActionResult AssignmentRoleUserGroup(string RoleId, List<string> UserGroupIds)
         {
-            var messageModel = _sysRoleBLL.AssignmentRoleUserGroup(RoleId, UserGroupIds);
+            var handleResult = _sysRoleBLL.AssignmentRoleUserGroup(RoleId, UserGroupIds);
             return Ok(new ResponseModel
             {
-                RetMsg = messageModel.Message,
-                RetCode = messageModel.Result ? StatesCode.success : StatesCode.failure
+                RetMsg = handleResult.Msg,
+                RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure
             });
         }
         #endregion
@@ -258,11 +258,11 @@ namespace ZhouliSystem.Areas.SystemManager.Controllers
         /// <param name="UserGroupIds"></param>
         public IActionResult CancelUserGroupAssignment(string RoleId, List<string> UserGroupIds)
         {
-            var messageModel = _sysRoleBLL.CancelUserGroupAssignment(RoleId, UserGroupIds);
+            var handleResult = _sysRoleBLL.CancelUserGroupAssignment(RoleId, UserGroupIds);
             return Ok(new ResponseModel
             {
-                RetMsg = messageModel.Message,
-                RetCode = messageModel.Result ? StatesCode.success : StatesCode.failure
+                RetMsg = handleResult.Msg,
+                RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure
             });
         }
         #endregion

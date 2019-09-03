@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Zhouli.Dto.ModelDto;
 using Zhouli.DbEntity.Models;
+using Zhouli.Common.ResultModel;
+using Zhouli.DbEntity.Views;
 
 namespace Zhouli.BLL.Interface
 {
@@ -16,7 +18,7 @@ namespace Zhouli.BLL.Interface
         /// <param name="limit">页容量</param>
         /// <param name="searchstr">搜索内容</param>
         /// <returns></returns>
-        MessageModel GetRoleList(string page, string limit, string searchstr);
+        HandleResult<PageModel> GetRoleList(string page, string limit, string searchstr);
         #endregion
         #region 删除角色(批量删除)
         /// <summary>
@@ -24,68 +26,68 @@ namespace Zhouli.BLL.Interface
         /// </summary>
         /// <param name="RoleId"></param>
         /// <returns></returns>
-        MessageModel DelRole(IEnumerable<string> RoleId);
+        HandleResult<bool> DelRole(IEnumerable<string> RoleId);
         #endregion
         #region 为角色添加功能菜单
         /// <summary>
         /// 为角色添加功能菜单
         /// </summary>
-        /// <param name="RoleId"></param>
+        /// <param name="roleId"></param>
         /// <param name="menuDtos"></param>
         /// <returns></returns>
-        MessageModel AddRoleMenu(string RoleId, List<SysMenuDto> menuDtos);
+        HandleResult<bool> AddRoleMenu(string roleId, List<SysMenuDto> menuDtos);
         #endregion
         #region 获取角色所分配的用户
         /// <summary>
         /// 获取角色所分配的用户
         /// </summary>
-        /// <param name="RoleId"></param>
+        /// <param name="roleId"></param>
         /// <returns></returns>
-        MessageModel GetRoleUserList(string RoleId, string page, string limit, string searchstr);
+        HandleResult<PageModel> GetRoleUserList(string roleId, string page, string limit, string searchstr);
         #endregion
         #region 为角色分配用户
         /// <summary>
         /// 为角色分配用户
         /// </summary>
-        /// <param name="RoleId"></param>
-        /// <param name="UserIds"></param>
+        /// <param name="roleId"></param>
+        /// <param name="userIds"></param>
         /// <returns></returns>
-        MessageModel AssignmentRoleUser(string RoleId, List<string> UserIds);
+        HandleResult<bool> AssignmentRoleUser(string roleId, List<string> userIds);
         #endregion
         #region 取消用户角色
         /// <summary>
         /// 取消用户角色
         /// </summary>
-        /// <param name="RoleId"></param>
-        /// <param name="UserIds"></param>
+        /// <param name="roleId"></param>
+        /// <param name="userIds"></param>
         /// <returns></returns>
-        MessageModel CancelUserAssignment(string RoleId, List<string> UserIds);
+        HandleResult<bool> CancelUserAssignment(string roleId, List<string> userIds);
         #endregion
         #region 获取角色所分配的用户组
         /// <summary>
         /// 获取角色所分配的用户组
         /// </summary>
-        /// <param name="RoleId"></param>
+        /// <param name="roleId"></param>
         /// <returns></returns>
-        MessageModel GetRoleUserGroupList(string RoleId, string page, string limit, string searchstr);
+        HandleResult<PageModel> GetRoleUserGroupList(string roleId, string page, string limit, string searchstr);
         #endregion
         #region 为角色分配用户组
         /// <summary>
         /// 为角色分配用户组
         /// </summary>
-        /// <param name="RoleId"></param>
-        /// <param name="UserGroupIds"></param>
+        /// <param name="roleId"></param>
+        /// <param name="userGroupIds"></param>
         /// <returns></returns>
-        MessageModel AssignmentRoleUserGroup(string RoleId, List<string> UserGroupIds);
+        HandleResult<bool> AssignmentRoleUserGroup(string roleId, List<string> userGroupIds);
         #endregion
         #region 取消用户组角色
         /// <summary>
         /// 取消用户组角色
         /// </summary>
-        /// <param name="RoleId"></param>
-        /// <param name="UserIds"></param>
+        /// <param name="roleId"></param>
+        /// <param name="userGroupIds"></param>
         /// <returns></returns>
-        MessageModel CancelUserGroupAssignment(string RoleId, List<string> UserGroupIds);
+        HandleResult<bool> CancelUserGroupAssignment(string roleId, List<string> userGroupIds);
         #endregion
     }
 }

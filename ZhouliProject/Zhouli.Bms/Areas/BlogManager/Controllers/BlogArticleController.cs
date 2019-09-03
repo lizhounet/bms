@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Zhouli.BLL;
 using Zhouli.BLL.Interface;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.DbEntity.Models;
 using Zhouli.DI;
 using ZhouliSystem.Data;
@@ -55,10 +56,10 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         public IActionResult AddorUpdateBlogArticle(BlogArticleDto blogArticleDto)
         {
             var resModel = new ResponseModel();
-            MessageModel model = _blogArticleBLL.AddOrUpdateArticlelist(blogArticleDto, _userAccount.GetUserInfo().UserId);
-            resModel.RetCode = model.Result ? StatesCode.success : StatesCode.failure;
-            resModel.RetMsg = model.Message;
-            resModel.Data = model.Data;
+            var handleResult = _blogArticleBLL.AddOrUpdateArticlelist(blogArticleDto, _userAccount.GetUserInfo().UserId);
+            resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = handleResult.Msg;
+            resModel.Data = handleResult.Data;
             return Ok(resModel);
         }
         #endregion
@@ -70,10 +71,10 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        public IActionResult GetBlogArticlelist(string page, string limit, string searchstr)
+        public IActionResult GetBlogArticlelist(string page, string limit, string searchstr, int ladbleId)
         {
             var messageModel = _blogArticleBLL
-                .GetBlogArticlelist(page, limit, searchstr);
+                .GetBlogArticlelist(page, limit, searchstr, ladbleId);
             return Ok(new
             {
                 code = 0,
@@ -103,10 +104,10 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// </summary>
         /// <param name="articleId">文章id</param>
         /// <returns></returns>
-        public IActionResult DeleteBlogArticle(List<int> ArticleId)
+        public IActionResult DeleteBlogArticle(List<int> articleId)
         {
             var responseModel = new ResponseModel();
-            if (_blogArticleBLL.Delete(t => ArticleId.Contains(t.ArticleId)) && _blogRelatedBLL.Delete(t => ArticleId.Contains(t.RelatedArticleId)))
+            if (_blogArticleBLL.Delete(t => articleId.Contains(t.ArticleId)) && _blogRelatedBLL.Delete(t => articleId.Contains(t.RelatedArticleId)))
             {
                 responseModel.RetMsg = "删除成功";
             }
@@ -122,25 +123,25 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
         /// <summary>
         /// 置顶/取消置顶 文章
         /// </summary>
-        /// <param name="ArticleId">文章id</param>
-        /// <param name="ArticleTop">是否置顶</param>
+        /// <param name="articleId">文章id</param>
+        /// <param name="articleTop">是否置顶</param>
         /// <returns></returns>
-        public IActionResult IsBlogArticleTop(int ArticleId, bool ArticleTop)
+        public IActionResult IsBlogArticleTop(int articleId, bool articleTop)
         {
             var responseModel = new ResponseModel();
-            var blogArticle = _blogArticleBLL.GetModels(t => t.ArticleId == ArticleId).First();
+            var blogArticle = _blogArticleBLL.GetModels(t => t.ArticleId == articleId).First();
             //获取所有文章最大排序值
             var intMaxArticleSort = _blogArticleBLL.GetMaxArticleSortValue().Data;
-            blogArticle.ArticleSortValue = ArticleTop ? intMaxArticleSort + 1 : 0;
+            blogArticle.ArticleSortValue = articleTop ? intMaxArticleSort + 1 : 0;
             blogArticle.EditTime = DateTime.Now;
             if (_blogArticleBLL.Update(blogArticle))
             {
-                responseModel.RetMsg = ArticleTop ? "置顶成功" : "取消置顶成功";
+                responseModel.RetMsg = articleTop ? "置顶成功" : "取消置顶成功";
             }
             else
             {
                 responseModel.RetCode = StatesCode.failure;
-                responseModel.RetMsg = ArticleTop ? "置顶失败" : "取消置顶失败";
+                responseModel.RetMsg = articleTop ? "置顶失败" : "取消置顶失败";
             }
             return Ok(responseModel);
         }

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "e516497e6bbf8e84574f53d184e0b153856435b3"
+    "signature": "015e4949c2e8818ae1de177568c063e64dd45b16"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,7 +10,8 @@
         "dependencies": {
           "Zhouli.Common": "1.0.0",
           "Zhouli.DAL": "1.0.0",
-          "Zhouli.DbEntity": "1.0.0"
+          "Zhouli.DbEntity": "1.0.0",
+          "Zhouli.Enum": "1.0.0"
         },
         "runtime": {
           "Zhouli.BLL.dll": {}
@@ -38,6 +39,29 @@
           "lib/netstandard2.0/Dapper.dll": {
             "assemblyVersion": "1.50.5.0",
             "fileVersion": "1.50.5.0"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Abstractions/2.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.1.0",
+          "System.Text.Encodings.Web": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.18136"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.1.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "2.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.18136"
           }
         }
       },
@@ -627,6 +651,14 @@
           }
         }
       },
+      "System.Text.Encodings.Web/4.5.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Text.Encodings.Web.dll": {
+            "assemblyVersion": "4.0.3.0",
+            "fileVersion": "4.6.26515.6"
+          }
+        }
+      },
       "System.Threading/4.0.11": {
         "dependencies": {
           "System.Runtime": "4.3.0",
@@ -640,6 +672,8 @@
       },
       "Zhouli.Common/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.0",
+          "Microsoft.AspNetCore.Http.Features": "2.1.0",
           "Newtonsoft.Json": "12.0.1"
         },
         "runtime": {
@@ -649,8 +683,10 @@
       "Zhouli.DAL/1.0.0": {
         "dependencies": {
           "Dapper": "1.50.5",
+          "Zhouli.Common": "1.0.0",
           "Zhouli.DbEntity": "1.0.0",
-          "Zhouli.Dto": "1.0.0"
+          "Zhouli.Dto": "1.0.0",
+          "Zhouli.Enum": "1.0.0"
         },
         "runtime": {
           "Zhouli.DAL.dll": {}
@@ -674,6 +710,11 @@
         "runtime": {
           "Zhouli.Dto.dll": {}
         }
+      },
+      "Zhouli.Enum/1.0.0": {
+        "runtime": {
+          "Zhouli.Enum.dll": {}
+        }
       }
     }
   },
@@ -696,6 +737,20 @@
       "sha512": "sha512-1vPpX7WQmQCIb7rwlGOUoVs/yWZhVKvdhuG7WrJV+V+qsP8btnrrCqVWHENAlJxBAnUw5rhWfmuba9/Egei9MA==",
       "path": "dapper/1.50.5",
       "hashPath": "dapper.1.50.5.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Abstractions/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vbFDyKsSYBnxl3+RABtN79b0vsTcG66fDY8vD6Nqvu9uLtSej70Q5NcbGlnN6bJpZci5orSdgFTHMhBywivDPg==",
+      "path": "microsoft.aspnetcore.http.abstractions/2.1.0",
+      "hashPath": "microsoft.aspnetcore.http.abstractions.2.1.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Features/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UmkUePxRjsQW0j5euFFscBwjvTu25b8+qIK/2fI3GvcqQ+mkwgbWNAT8b/Gkoei1m2bTWC07lSdutuRDPPLcJA==",
+      "path": "microsoft.aspnetcore.http.features/2.1.0",
+      "hashPath": "microsoft.aspnetcore.http.features.2.1.0.nupkg.sha512"
     },
     "Microsoft.CSharp/4.5.0": {
       "type": "package",
@@ -1131,6 +1186,13 @@
       "path": "system.text.encoding.codepages/4.5.0",
       "hashPath": "system.text.encoding.codepages.4.5.0.nupkg.sha512"
     },
+    "System.Text.Encodings.Web/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Xg4G4Indi4dqP1iuAiMSwpiWS54ZghzR644OtsRCm/m/lBMG8dUBhLVN7hLm8NNrNTR+iGbshCPTwrvxZPlm4g==",
+      "path": "system.text.encodings.web/4.5.0",
+      "hashPath": "system.text.encodings.web.4.5.0.nupkg.sha512"
+    },
     "System.Threading/4.0.11": {
       "type": "package",
       "serviceable": true,
@@ -1161,6 +1223,11 @@
       "sha512": ""
     },
     "Zhouli.Dto/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Zhouli.Enum/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

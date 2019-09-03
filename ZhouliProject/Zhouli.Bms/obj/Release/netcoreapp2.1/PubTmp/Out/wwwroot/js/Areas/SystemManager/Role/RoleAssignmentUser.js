@@ -105,8 +105,8 @@
         layer.confirm('确认取消授权吗?', { icon: 3, title: '温馨提示' }, function (index) {
             layer.close(index);
             $.post("/System/Role/CancelUserAssignment", { RoleId: RoleId, UserIds: UserIds }, function (res) {
-                layer.msg(res.Messages);
-                if (res.StateCode == 200) {
+                layer.msg(res.RetMsg);
+                if (res.RetCode == 200) {
                     table.reload("userListTable", {
                         page: {
                             curr: 1 //重新从第 1 页开始

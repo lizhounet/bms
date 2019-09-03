@@ -57,11 +57,7 @@ namespace AspNetCore
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(109, 58, false);
-<<<<<<< HEAD:ZhouliProject/Zhouli.Bms/obj/Debug/netcoreapp2.1/Razor/Areas/SystemManager/Views/Role/Index.g.cshtml.cs
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c1cadeca4c5c419fb11e9c03032fd7a7", async() => {
-=======
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "3f92a38faa824a2eb890dc0cba5ff1f3", async() => {
->>>>>>> 2c70842624fefe25ae92e1e962c2a3cee79a4114:ZhouliProject/Zhouli.Bms/obj/Release/netcoreapp2.1/Razor/Areas/BlogManager/Views/BlogArticle/Index.g.cshtml.cs
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8509eb6ca93b4d93b90ab8041ad09dce", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -80,11 +76,7 @@ namespace AspNetCore
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(173, 49, false);
-<<<<<<< HEAD:ZhouliProject/Zhouli.Bms/obj/Debug/netcoreapp2.1/Razor/Areas/SystemManager/Views/Role/Index.g.cshtml.cs
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "61f18b8903a944e1928e9f52ad80851c", async() => {
-=======
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "624430c9e1ca4f438fa28da7699ae371", async() => {
->>>>>>> 2c70842624fefe25ae92e1e962c2a3cee79a4114:ZhouliProject/Zhouli.Bms/obj/Release/netcoreapp2.1/Razor/Areas/BlogManager/Views/BlogArticle/Index.g.cshtml.cs
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b20613dca1e246d884861f46529d0e60", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -136,13 +128,8 @@ namespace AspNetCore
 </div>
 ");
             EndContext();
-<<<<<<< HEAD:ZhouliProject/Zhouli.Bms/obj/Debug/netcoreapp2.1/Razor/Areas/SystemManager/Views/Role/Index.g.cshtml.cs
-            BeginContext(1527, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "03f121998ce04d8581298f366251afac", async() => {
-=======
             BeginContext(1526, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d0b160784ecf41b39803d77e911be2fb", async() => {
->>>>>>> 2c70842624fefe25ae92e1e962c2a3cee79a4114:ZhouliProject/Zhouli.Bms/obj/Release/netcoreapp2.1/Razor/Areas/BlogManager/Views/BlogArticle/Index.g.cshtml.cs
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e04cdbf231f94a428f5817c3ea908348", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -159,13 +146,8 @@ namespace AspNetCore
             BeginContext(1563, 2, true);
             WriteLiteral("\r\n");
             EndContext();
-<<<<<<< HEAD:ZhouliProject/Zhouli.Bms/obj/Debug/netcoreapp2.1/Razor/Areas/SystemManager/Views/Role/Index.g.cshtml.cs
-            BeginContext(1566, 100, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2e282912f68a47f3ab0b239754234251", async() => {
-=======
             BeginContext(1565, 112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b2fc6aecaf694fb9a3aaa00b1295d249", async() => {
->>>>>>> 2c70842624fefe25ae92e1e962c2a3cee79a4114:ZhouliProject/Zhouli.Bms/obj/Release/netcoreapp2.1/Razor/Areas/BlogManager/Views/BlogArticle/Index.g.cshtml.cs
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3a3c9249d0704a92bd5024adefa1ea7a", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

@@ -26,6 +26,12 @@ namespace Zhouli.Identity.Certification
                 "zhoulikey.pfx"), Base64Helper.DecodeBase64("OTkwMTIyNjYxOWxs")))
                 .AddInMemoryApiResources(Config.GetApiResources())
                 .AddInMemoryClients(Config.GetClients());
+            //配置跨域
+            services.AddCors(options => options.AddPolicy("Zhouli.Identity.Certification", builder =>
+              builder.AllowAnyOrigin().
+              AllowAnyMethod().
+              AllowAnyHeader())
+              );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +41,7 @@ namespace Zhouli.Identity.Certification
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("Zhouli.Identity.Certification");//跨域
             app.UseIdentityServer();
             app.Run(async (context) =>
             {

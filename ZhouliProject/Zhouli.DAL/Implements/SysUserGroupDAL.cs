@@ -30,17 +30,16 @@ namespace Zhouli.DAL.Implements
             pageModel.RowCount = GetCount(expression);
             int iBeginRow = Convert.ToInt32(limit) * (Convert.ToInt32(page) - 1) + 1, iEndRow = Convert.ToInt32(page) * Convert.ToInt32(limit);
             pageModel.Data = SqlQuery<SysUserGroupDto>($@"
-                                           SELECT *
-                                            FROM (
-	                                            SELECT ROW_NUMBER() OVER (ORDER BY T1.CREATETIME DESC) AS RN, T1.*
+                                           SELECT *   FROM (SELECT ROW_NUMBER() OVER (ORDER BY T1.create_time DESC) AS RN, T1.user_group_id 'UserGroupId',T1.user_group_name 'UserGroupName',
+T1.parent_user_group_id 'ParentUserGroupId',T1.create_time 'CreateTime',T1.note 'Note'
 		                                            , (
-			                                            SELECT UserGroupName
-			                                            FROM Sys_UserGroup s
-			                                            WHERE s.UserGroupId = t1.ParentUserGroupId
+			                                            SELECT user_group_name
+			                                            FROM sys_user_group s
+			                                            WHERE s.user_group_id = T1.parent_user_group_id
 		                                            ) AS ParentUserGroupName
-	                                            FROM Sys_UserGroup T1
-	                                            WHERE T1.UserGroupName LIKE '%{searchstr}%'
-		                                            AND T1.DeleteSign = 1
+	                                            FROM sys_user_group T1
+	                                            WHERE T1.user_group_name LIKE '%{searchstr}%'
+		                                            AND T1.delete_sign = 1
                                             ) T
                                             WHERE RN BETWEEN {iBeginRow} AND {iEndRow}");
             return pageModel;

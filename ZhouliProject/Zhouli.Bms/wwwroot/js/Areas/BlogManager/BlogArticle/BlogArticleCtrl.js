@@ -29,7 +29,15 @@ require(["jquery", 'layui'], function ($) {
                 { type: "checkbox", fixed: "left", width: 50 },
                 { field: 'ArticleSortValue', title: '排序号' },
                 { field: 'ArticleId', title: 'ID', width: 60, align: "center" },
-                { field: 'ArticleTitle', title: '文章标题', width: 350 },
+                { field: 'ArticleTitle', title: '文章标题', width: 400, align: "center" },
+                {
+                    field: 'ArticleThrink', title: '文章缩略图', align: "center", templet: function (d) {
+                        return '<div><img  src="' + d.ArticleThrink+'" /></div>';
+                    }
+                },
+                { field: 'ArticleLikeNum', title: '点赞量', align: "center" },
+                { field: 'ArticleCommentNum', title: '评论量', align: "center" },
+                { field: 'ArticleBrowsingNum', title: '浏览量', align: "center" },
                 { field: 'CreateUser', title: '创建者', align: 'center' },
                 {
                     field: 'ArticleTop', title: '是否置顶', align: 'center', templet: function (d) {
@@ -40,9 +48,9 @@ require(["jquery", 'layui'], function ($) {
                     }
                 },
                 {
-                    field: 'CreateTime', title: '创建时间', align: 'center', minWidth: 110
+                    field: 'CreateTime', title: '创建时间', align: 'center'
                 },
-                { title: '操作', width: 170, templet: '#blogArticleListBar', fixed: "right", align: "center" }
+                { title: '操作', minWidth: 175, templet: '#blogArticleListBar', fixed: "right", align: "center" }
             ]]
         });
         form.on("switch(switchArticleTop)", function (obj) {
@@ -90,9 +98,9 @@ require(["jquery", 'layui'], function ($) {
                         body.find(".articleBodySummary").val(edit.ArticleBodySummary);  //内容摘要
                         body.find(".articleThrink").attr("src", edit.ArticleThrink);    //文章缩略图
                         var lableCheckbox = body.find("input[name='lableId']");
-                        for (var j = 0; j < edit.LableId.length; j++) { //数据库返回的需要选中项的值                      
+                        for (var j = 0; j < edit.LableInfo.length; j++) { //数据库返回的需要选中项的值                      
                             for (var i = 0; i < lableCheckbox.length; i++) {//遍历checkbox所有项
-                                if (lableCheckbox[i].value == edit.LableId[j]) {
+                                if (lableCheckbox[i].value == edit.LableInfo[j].LableId) {
                                     lableCheckbox[i].checked = true;//设置选中项
                                 }
                             }

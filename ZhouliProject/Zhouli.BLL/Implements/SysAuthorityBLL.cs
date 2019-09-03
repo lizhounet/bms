@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using Zhouli.BLL.Interface;
+using Zhouli.Common.ResultModel;
 using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.Enum;
@@ -29,10 +30,10 @@ namespace Zhouli.BLL.Implements
         /// <param name="RoleId">角色Id</param>
         /// <param name="authorityType">权限类型</param>
         /// <returns></returns>
-        public MessageModel GetRoleAuthoritieList(string RoleId, AuthorityType authorityType)
+        public HandleResult<List<SysAuthority>> GetRoleAuthoritieList(string RoleId, AuthorityType authorityType)
         {
             var RoleList = sysRoleBLL.GetModels(t => t.RoleId.Equals(RoleId));
-            return new MessageModel
+            return new HandleResult<List<SysAuthority>>
             {
                 Data = sysAuthorityDAL.GetSysAuthorities(false, RoleList, authorityType)
             };
@@ -43,12 +44,12 @@ namespace Zhouli.BLL.Implements
         /// <param name="user"></param>
         /// <param name="authorityType"></param>
         /// <returns></returns>
-        public MessageModel GetSysAuthorities(SysUser user, AuthorityType authorityType)
+        public HandleResult<List<SysAuthority>> GetSysAuthorities(SysUser user, AuthorityType authorityType)
         {
             List<SysRole> roles = new List<SysRole>(user.sysRoles);
             if (user.sysUserGroup != null)
                 roles.AddRange(user.sysUserGroup.sysRoles);
-            return new MessageModel
+            return new HandleResult<List<SysAuthority>>
             {
                 Data = sysAuthorityDAL.GetSysAuthorities(user.isAdministrctor, roles.Distinct().ToList(), authorityType)
             };

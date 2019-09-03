@@ -85,9 +85,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/Blog/BlogLable/DeleteBlogLable", {
                         blogLableId: LableId //将需要删除的LableId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");
@@ -107,9 +107,9 @@ require(["jquery", 'layui'], function ($) {
                     $.post("/Blog/BlogLable/DeleteBlogLable", {
                         blogLableId: data.LableId  //将需要删除的LableId作为参数传入
                     }, function (res) {
-                        layer.msg(res.Messages);
+                        layer.msg(res.RetMsg);
                         layer.close(index);
-                        if (res.StateCode == 200) {
+                        if (res.RetCode == 200) {
                             tableIns.reload();
                         }
                     }, "json");

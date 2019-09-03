@@ -11,6 +11,7 @@ using AutoMapper;
 using Zhouli.Dto.ModelDto;
 using Zhouli.Common;
 using Zhouli.Enum;
+using Zhouli.Common.ResultModel;
 
 namespace Zhouli.BLL.Implements
 {
@@ -30,9 +31,9 @@ namespace Zhouli.BLL.Implements
         /// 获取需要登录的用户所有信息
         /// </summary>
         /// <returns></returns>
-        public MessageModel GetLoginSysUser(SysUser user)
+        public HandleResult<SysUser> GetLoginSysUser(SysUser user)
         {
-            return new MessageModel
+            return new HandleResult<SysUser>
             {
                 Data = usersDAL.SetLoginSysUser(user)
             };
@@ -46,9 +47,9 @@ namespace Zhouli.BLL.Implements
         /// <param name="limit">页容量</param>
         /// <param name="searchstr">搜索内容</param>
         /// <returns></returns>
-        public MessageModel GetUserList(string page, string limit, string searchstr)
+        public HandleResult<PageModel> GetUserList(string page, string limit, string searchstr)
         {
-            var messageModel = new MessageModel();
+            var handleResult = new HandleResult<PageModel>();
             var PageModel = new PageModel();
             Expression<Func<SysUser, bool>> expression = t => (string.IsNullOrEmpty(searchstr) || t.UserName.Contains(searchstr) ||
                 t.UserNikeName.Contains(searchstr) ||
@@ -73,8 +74,8 @@ namespace Zhouli.BLL.Implements
             //                    WHERE RN BETWEEN {iBeginRow} AND {iEndRow}");
             var list = usersDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime, expression);
             PageModel.Data = Mapper.Map<List<SysUserDto>>(list.ToList());
-            messageModel.Data = PageModel;
-            return messageModel;
+            handleResult.Data = PageModel;
+            return handleResult;
         }
         #endregion
         #region 添加/编辑用户
@@ -84,9 +85,9 @@ namespace Zhouli.BLL.Implements
         /// <param name="userDto"></param>
         /// <param name="userId">当前登录用户id</param>
         /// <returns></returns>
-        public MessageModel AddorEditUser(SysUserDto userDto, string userId)
+        public HandleResult<bool> AddorEditUser(SysUserDto userDto, string userId)
         {
-            var messageModel = new MessageModel();
+            var handleResult = new HandleResult<bool>();
             var user = Mapper.Map<SysUser>(userDto);
             //添加
             if (string.IsNullOrEmpty(user.UserId))
@@ -96,8 +97,8 @@ namespace Zhouli.BLL.Implements
                 t.UserPhone.Equals(user.UserPhone)) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
                 if (intcount > 0)
                 {
-                    messageModel.Message = "用户名或手机号或邮箱已经被注册";
-                    messageModel.Result = false;
+                    handleResult.Msg = "用户名或手机号或邮箱已经被注册";
+                    handleResult.Result = false;
                 }
                 else
                 {
@@ -109,12 +110,12 @@ namespace Zhouli.BLL.Implements
                                                                     //添加用户
                     if (Add(user))
                     {
-                        messageModel.Message = "添加成功";
+                        handleResult.Msg = "添加成功";
                     }
                     else
                     {
-                        messageModel.Message = "添加失败";
-                        messageModel.Result = false;
+                        handleResult.Msg = "添加失败";
+                        handleResult.Result = false;
                     }
                 }
             }
@@ -137,15 +138,15 @@ namespace Zhouli.BLL.Implements
                     user_edit.UserAvatar = user.UserAvatar;
                 if (Update(user_edit))
                 {
-                    messageModel.Message = "修改成功";
+                    handleResult.Msg = "修改成功";
                 }
                 else
                 {
-                    messageModel.Message = "修改失败";
+                    handleResult.Msg = "修改失败";
                 }
 
             }
-            return messageModel;
+            return handleResult;
         }
         #endregion
         #region 删除用户(批量删除)
@@ -154,9 +155,9 @@ namespace Zhouli.BLL.Implements
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns></returns>
-        public MessageModel DelUser(IEnumerable<string> UserId)
+        public HandleResult<bool> DelUser(IEnumerable<string> UserId)
         {
-            var model = new MessageModel();
+            var handleResult = new HandleResult<bool>();
             var sysUsers = usersDAL.GetModels(t => UserId.Any(a => a.Equals(t.UserId)));
             foreach (var item in sysUsers)
             {
@@ -164,9 +165,9 @@ namespace Zhouli.BLL.Implements
                 item.EditTime = DateTime.Now;
             }
             bool bResult = usersDAL.SaveChanges();
-            model.Result = bResult;
-            model.Message = bResult ? "删除成功" : "删除失败";
-            return model;
+            handleResult.Result = bResult;
+            handleResult.Msg = bResult ? "删除成功" : "删除失败";
+            return handleResult;
         }
         #endregion
     }

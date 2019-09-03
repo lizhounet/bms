@@ -5,6 +5,7 @@ using System.Text;
 using Zhouli.DbEntity.Views;
 using Zhouli.DbEntity.Models;
 using Zhouli.Dto.ModelDto;
+using Zhouli.Common.ResultModel;
 
 namespace Zhouli.BLL.Interface
 {
@@ -15,7 +16,7 @@ namespace Zhouli.BLL.Interface
         /// 获取需要登录的用户所有信息
         /// </summary>
         /// <returns></returns>
-        MessageModel GetLoginSysUser(SysUser sysUsers);
+        HandleResult<SysUser> GetLoginSysUser(SysUser sysUsers);
         #endregion
         #region 获取用户列表
         /// <summary>
@@ -25,7 +26,7 @@ namespace Zhouli.BLL.Interface
         /// <param name="limit">页容量</param>
         /// <param name="searchstr">搜索内容</param>
         /// <returns></returns>
-        MessageModel GetUserList(string page, string limit, string searchstr);
+        HandleResult<PageModel> GetUserList(string page, string limit, string searchstr);
         #endregion
         #region 添加/编辑用户
         /// <summary>
@@ -34,7 +35,7 @@ namespace Zhouli.BLL.Interface
         /// <param name="userDto"></param>
         /// <param name="userId">当前登录用户id</param>
         /// <returns></returns>
-        MessageModel AddorEditUser(SysUserDto userDto, string userId);
+        HandleResult<bool> AddorEditUser(SysUserDto userDto, string userId);
         #endregion
         #region 删除用户(批量删除)
         /// <summary>
@@ -42,7 +43,7 @@ namespace Zhouli.BLL.Interface
         /// </summary>
         /// <param name="UserId"></param>
         /// <returns></returns>
-        MessageModel DelUser(IEnumerable<string> UserId);
+        HandleResult<bool> DelUser(IEnumerable<string> UserId);
         #endregion
     }
 }

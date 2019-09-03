@@ -5080,21 +5080,12 @@
           "bin/placeholder/Zhouli.Common.dll": {}
         }
       },
-      "Zhouli.CommonEntity/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "compile": {
-          "bin/placeholder/Zhouli.CommonEntity.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Zhouli.CommonEntity.dll": {}
-        }
-      },
       "Zhouli.DAL/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
           "Dapper": "1.50.5",
+          "Zhouli.Common": "1.0.0",
           "Zhouli.DbEntity": "1.0.0",
           "Zhouli.Dto": "1.0.0",
           "Zhouli.Enum": "1.0.0"
@@ -11340,6 +11331,7 @@
       "path": "system.reflection.emit.lightweight/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -13794,11 +13786,6 @@
       "path": "../Zhouli.Common/Zhouli.Common.csproj",
       "msbuildProject": "../Zhouli.Common/Zhouli.Common.csproj"
     },
-    "Zhouli.CommonEntity/1.0.0": {
-      "type": "project",
-      "path": "../Zhouli.CommonEntity/Zhouli.CommonEntity.csproj",
-      "msbuildProject": "../Zhouli.CommonEntity/Zhouli.CommonEntity.csproj"
-    },
     "Zhouli.DAL/1.0.0": {
       "type": "project",
       "path": "../Zhouli.DAL/Zhouli.DAL.csproj",
@@ -13834,7 +13821,6 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.1.9",
       "Zhouli.BLL >= 1.0.0",
       "Zhouli.Common >= 1.0.0",
-      "Zhouli.CommonEntity >= 1.0.0",
       "Zhouli.DI >= 1.0.0",
       "Zhouli.DbEntity >= 1.0.0",
       "Zhouli.Enum >= 1.0.0",
@@ -13873,9 +13859,6 @@
           "projectReferences": {
             "F:\\zhouli\\code\\project\\bms\\ZhouliProject\\Zhouli.BLL\\Zhouli.BLL.csproj": {
               "projectPath": "F:\\zhouli\\code\\project\\bms\\ZhouliProject\\Zhouli.BLL\\Zhouli.BLL.csproj"
-            },
-            "F:\\zhouli\\code\\project\\bms\\ZhouliProject\\Zhouli.CommonEntity\\Zhouli.CommonEntity.csproj": {
-              "projectPath": "F:\\zhouli\\code\\project\\bms\\ZhouliProject\\Zhouli.CommonEntity\\Zhouli.CommonEntity.csproj"
             },
             "F:\\zhouli\\code\\project\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj": {
               "projectPath": "F:\\zhouli\\code\\project\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj"

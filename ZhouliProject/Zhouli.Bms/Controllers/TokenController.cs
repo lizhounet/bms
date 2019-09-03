@@ -7,7 +7,7 @@ using IdentityModel.Client;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.DI;
 
 namespace Zhouli.Bms.Controllers

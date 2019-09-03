@@ -16,9 +16,9 @@ namespace Zhouli.DAL.Interface
         /// <summary>
         /// 为角色添加功能菜单
         /// </summary>
-        /// <param name="RoleId"></param>
+        /// <param name="roleId"></param>
         /// <param name="menuDtos"></param>
         /// <returns></returns>
-        bool AddRoleMenu(string RoleId, List<SysMenu> menus);
+        bool AddRoleMenu(string roleId, List<SysMenu> menus);
     }
 }

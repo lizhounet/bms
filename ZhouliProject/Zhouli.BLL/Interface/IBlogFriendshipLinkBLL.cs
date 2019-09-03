@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using Zhouli.Common.ResultModel;
 using Zhouli.DbEntity.Models;
+using Zhouli.DbEntity.Views;
 using Zhouli.Dto.ModelDto;
 
 namespace Zhouli.BLL.Interface
@@ -13,37 +15,37 @@ namespace Zhouli.BLL.Interface
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        MessageModel GetFriendshipLinkList(string page, string limit, string searchstr);
+        HandleResult<PageModel> GetFriendshipLinkList(string page, string limit, string searchstr);
         /// <summary>
         /// 添加/编辑友情链接
         /// </summary>
-        /// <param name="blog"></param>
+        /// <param name="friendshipLinkDto"></param>
         /// <param name="userId"></param>
         /// <returns></returns>
-        MessageModel AddorEditFriendshipLink(BlogFriendshipLinkDto blog, string UserId);
+        HandleResult<bool> AddorEditFriendshipLink(BlogFriendshipLinkDto friendshipLinkDto, string userId);
         /// <summary>
         /// 删除友情链接
         /// </summary>
-        /// <param name="blog"></param>
+        /// <param name="friendshipLinkId"></param>
         /// <returns></returns>
-        MessageModel DelFriendshipLink(IEnumerable<string> FriendshipLinkId);
+        HandleResult<bool> DelFriendshipLink(IEnumerable<string> friendshipLinkId);
         /// <summary>
         /// 添加未审核友情链接
         /// </summary>
-        /// <param name="blog"></param>
+        /// <param name="friendshipLinkDto"></param>
         /// <returns></returns>
-        MessageModel AddFriendshipLink(BlogFriendshipLinkDto blog);
+        HandleResult<bool> AddFriendshipLink(BlogFriendshipLinkDto friendshipLinkDto);
         /// <summary>
         /// 获取已审核友情链接
         /// </summary>
         /// <returns></returns>
-        MessageModel GetAuditedFriendshipLinkList();
+        HandleResult<PageModel> GetAuditedFriendshipLinkList();
         /// <summary>
         /// 审核友情链接
         /// </summary>
-        /// <param name="FriendshipLinkId"></param>
+        /// <param name="friendshipLinkId"></param>
         /// <returns></returns>
-        MessageModel SfFriendshipLinkList(int FriendshipLinkId);
+        HandleResult<bool> SfFriendshipLinkList(int friendshipLinkId);
 
     }
 }

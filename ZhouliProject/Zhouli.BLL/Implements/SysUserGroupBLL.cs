@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using Zhouli.BLL.Interface;
+using Zhouli.Common.ResultModel;
 using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.DbEntity.Views;
@@ -32,13 +33,14 @@ namespace Zhouli.BLL.Implements
         /// <param name="limit">页容量</param>
         /// <param name="searchstr">搜索内容</param>
         /// <returns></returns>
-        public MessageModel GetUserGroupList(string page, string limit, string searchstr)
+        public HandleResult<PageModel> GetUserGroupList(string page, string limit, string searchstr)
         {
-            var messageModel = new MessageModel();
             var pageModel = userGroupDAL.GetUserGroupList(page, limit, searchstr);
             pageModel.Data = Mapper.Map<List<SysUserGroupDto>>(pageModel.Data);
-            messageModel.Data = pageModel;
-            return messageModel;
+            return new HandleResult<PageModel>
+            {
+                Data = pageModel
+            };
         }
         #endregion
         #region 删除用户组(批量删除)
@@ -47,9 +49,9 @@ namespace Zhouli.BLL.Implements
         /// </summary>
         /// <param name="UserGroupId"></param>
         /// <returns></returns>
-        public MessageModel DelUserGroup(IEnumerable<string> UserGroupId)
+        public HandleResult<bool> DelUserGroup(IEnumerable<string> UserGroupId)
         {
-            var model = new MessageModel();
+            var handleResult = new HandleResult<bool>();
             var sysUserGroups = userGroupDAL.GetModels(t => UserGroupId.Any(a => a.Equals(t.UserGroupId)));
             foreach (var item in sysUserGroups)
             {
@@ -58,9 +60,9 @@ namespace Zhouli.BLL.Implements
                 userGroupDAL.Update(item);
             }
             bool bResult = userGroupDAL.SaveChanges();
-            model.Result = bResult;
-            model.Message = bResult ? "删除成功" : "删除失败";
-            return model;
+            handleResult.Result = bResult;
+            handleResult.Msg = bResult ? "删除成功" : "删除失败";
+            return handleResult;
         }
         #endregion
     }

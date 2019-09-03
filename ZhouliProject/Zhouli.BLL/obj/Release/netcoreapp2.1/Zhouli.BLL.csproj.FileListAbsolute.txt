@@ -34,3 +34,7 @@ F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BLL\obj\Release\netcoreapp2.1\Zh
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BLL\obj\Release\netcoreapp2.1\Zhouli.BLL.csproj.CopyComplete
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BLL\obj\Release\netcoreapp2.1\Zhouli.BLL.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BLL\obj\Release\netcoreapp2.1\Zhouli.BLL.pdb
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BLL\bin\Release\netcoreapp2.1\Zhouli.Enum.dll
+F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BLL\bin\Release\netcoreapp2.1\Zhouli.Enum.pdb
+D:\周黎\code\bms\ZhouliProject\Zhouli.BLL\bin\Release\netcoreapp2.1\Zhouli.Enum.dll
+D:\周黎\code\bms\ZhouliProject\Zhouli.BLL\bin\Release\netcoreapp2.1\Zhouli.Enum.pdb

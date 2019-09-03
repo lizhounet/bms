@@ -5,9 +5,14 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>\Zhouli.BlogWebApi.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netcoreapp2.1\Zhouli.BlogWebApi.xml</DocumentationFile>
     <OutputPath>bin\Debug\netcoreapp2.1\</OutputPath>
     <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release\netcoreapp2.1\</OutputPath>
+    <DocumentationFile>bin\Release\netcoreapp2.1\Zhouli.BlogWebApi.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,12 +26,11 @@
     <PackageReference Include="log4net" Version="2.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="2.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Zhouli.CommonEntity\Zhouli.CommonEntity.csproj" />
     <ProjectReference Include="..\Zhouli.DI\Zhouli.DI.csproj" />
   </ItemGroup>
 
@@ -34,6 +38,12 @@
     <Reference Include="Microsoft.Extensions.PlatformAbstractions">
       <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.extensions.platformabstractions\1.1.0\lib\netstandard1.3\Microsoft.Extensions.PlatformAbstractions.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Zhouli.BlogWebApi11.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

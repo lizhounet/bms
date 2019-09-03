@@ -28,7 +28,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Zhouli.Common.Expansion;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.FileService.Data;
 using Zhouli.FileService.Models;
 

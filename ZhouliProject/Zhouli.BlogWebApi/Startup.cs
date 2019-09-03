@@ -60,7 +60,10 @@ namespace BlogWebApi
             }
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddJsonOptions(options => { options.SerializerSettings.ContractResolver = new DefaultContractResolver(); });
+                .AddJsonOptions(options => {
+                    options.SerializerSettings.ContractResolver = new DefaultContractResolver();
+                    options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
+                });
             //配置跨域
             services.AddCors(options => options.AddPolicy("blogWebApiServiceCors", builder =>
               builder.AllowAnyOrigin().

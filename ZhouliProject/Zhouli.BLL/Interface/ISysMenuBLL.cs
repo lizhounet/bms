@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Zhouli.Common.ResultModel;
 using Zhouli.DbEntity.Models;
+using Zhouli.Dto.ModelDto;
 
 namespace Zhouli.BLL.Interface
 {
@@ -15,18 +17,18 @@ namespace Zhouli.BLL.Interface
         /// </summary>
         /// <param name="user">用户实体</param>
         /// <returns></returns>
-        MessageModel GetMenusBy(SysUser user);
+        HandleResult<List<SysMenuDto>> GetMenusBy(SysUser user);
         /// <summary>
         /// 删除菜单
         /// </summary>
         /// <param name="MenuId"></param>
         /// <returns></returns>
-        MessageModel DelMenu(string MenuId);
+        HandleResult<bool> DelMenu(string MenuId);
         /// <summary>
         /// 获取角色的权限菜单
         /// </summary>
         /// <param name="RoleId"></param>
         /// <returns></returns>
-        MessageModel GetRoleMenuList(string RoleId);
+        HandleResult<List<SysMenuDto>> GetRoleMenuList(string RoleId);
     }
 }

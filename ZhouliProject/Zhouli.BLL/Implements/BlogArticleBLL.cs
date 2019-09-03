@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Zhouli.BLL.Interface;
+using Zhouli.Common.ResultModel;
 using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.DbEntity.Views;
@@ -31,21 +32,22 @@ namespace Zhouli.BLL.Implements
         /// <param name="limit">页容量</param>
         /// <param name="searchstr">搜索内容</param>
         /// <returns></returns>
-        public MessageModel GetBlogArticlelist(string page, string limit, string searchstr)
+        public HandleResult<PageModel> GetBlogArticlelist(string page, string limit, string searchstr, int lableId)
         {
-            return new MessageModel
+            return new HandleResult<PageModel>
             {
-                Data = _blogArticle.GetBlogArticleList(page, limit, searchstr)
+                Data = _blogArticle.GetBlogArticleList(page, limit, searchstr, lableId)
             };
         }
         /// <summary>
         /// 添加/修改文章
         /// </summary>
         /// <param name="blogArticleDto"></param>
+        /// <param name="onLineUserId"></param>
         /// <returns></returns>
-        public MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto, string OnLineUserId)
+        public HandleResult<bool> AddOrUpdateArticlelist(BlogArticleDto blogArticleDto, string onLineUserId)
         {
-            var megModel = new MessageModel();
+            var handleResult = new HandleResult<bool>();
             var blogArticle = Mapper.Map<BlogArticle>(blogArticleDto);
             //是否置顶
             if (blogArticleDto.ArticleTop)
@@ -59,7 +61,7 @@ namespace Zhouli.BLL.Implements
             if (blogArticle.ArticleId == 0)//新增
             {
                 blogArticle.CreateTime = DateTime.Now;
-                blogArticle.CreateUserId = OnLineUserId;
+                blogArticle.CreateUserId = onLineUserId;
                 //添加文章
                 _blogArticle.Add(blogArticle);
                 if (_blogArticle.SaveChanges())
@@ -75,18 +77,18 @@ namespace Zhouli.BLL.Implements
                     }
                     if (_blogRelated.SaveChanges())
                     {
-                        megModel.Message = "文章添加成功";
+                        handleResult.Msg = "文章添加成功";
                     }
                     else
                     {
-                        megModel.Message = "文章添加成功,文章标签添加失败!";
-                        megModel.Result = false;
+                        handleResult.Msg = "文章添加成功,文章标签添加失败!";
+                        handleResult.Result = false;
                     }
                 }
                 else
                 {
-                    megModel.Message = "文章添加失败";
-                    megModel.Result = false;
+                    handleResult.Msg = "文章添加失败";
+                    handleResult.Result = false;
                 }
             }
             else
@@ -111,25 +113,49 @@ namespace Zhouli.BLL.Implements
                 }
                 if (_blogRelated.SaveChanges())
                 {
-                    megModel.Message = "文章修改成功";
+                    handleResult.Msg = "文章修改成功";
                 }
                 else
                 {
-                    megModel.Message = "文章修改成功";
-                    megModel.Result = false;
+                    handleResult.Msg = "文章修改成功";
+                    handleResult.Result = false;
                 }
             }
-            return megModel;
+            return handleResult;
         }
         /// <summary>
         /// 获取文章最大排序值
         /// </summary>
         /// <returns></returns>
-        public MessageModel GetMaxArticleSortValue()
+        public HandleResult<int> GetMaxArticleSortValue()
         {
-            return new MessageModel
+            return new HandleResult<int>
             {
                 Data = _blogArticle.GetMaxArticleSortValue()
+            };
+        }
+        /// <summary>
+        /// 获取文章详情
+        /// </summary>
+        /// <param name="articleId"></param>
+        /// <returns></returns>
+        public HandleResult<dynamic> GetArticleDetails(int articleId)
+        {
+            return new HandleResult<dynamic>
+            {
+                Data = _blogArticle.GetArticleDetails(articleId)
+            };
+        }
+        /// <summary>
+        /// 热门推荐文章
+        /// </summary>
+        /// <param name="bWeek">是否本周热门(为true时获取本周热门文章)</param>
+        /// <returns></returns>
+        public HandleResult<dynamic> GetPopularArticle(bool bWeek)
+        {
+            return new HandleResult<dynamic>
+            {
+                Data = _blogArticle.GetPopularArticle(bWeek)
             };
         }
     }

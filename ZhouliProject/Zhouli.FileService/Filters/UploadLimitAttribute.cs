@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Zhouli.Common.Expansion;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Zhouli.FileService.Models;
 
 namespace Zhouli.FileService.Filters

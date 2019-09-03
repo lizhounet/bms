@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Zhouli.BLL.Interface;
+using Zhouli.Common.ResultModel;
 using Zhouli.DAL.Interface;
 using Zhouli.DbEntity.Models;
 using Zhouli.DbEntity.Views;
@@ -28,9 +29,9 @@ namespace Zhouli.BLL.Implements
         /// <param name="bl"></param>
         /// <param name="UserId"></param>
         /// <returns></returns>
-        public MessageModel AddorEditBlogLable(BlogLableDto bl, string UserId)
+        public HandleResult<bool> AddorEditBlogLable(BlogLableDto bl, string UserId)
         {
-            var messageModel = new MessageModel();
+            var handleResult = new HandleResult<bool>();
             var blogLable = Mapper.Map<BlogLable>(bl);
             //添加
             if (blogLable.LableId == 0)
@@ -38,8 +39,8 @@ namespace Zhouli.BLL.Implements
                 int intcount = _blogLableDAL.GetCount(t => t.LableName.Equals(blogLable.LableName) && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
                 if (intcount > 0)
                 {
-                    messageModel.Message = "博客标签名称已注册";
-                    messageModel.Result = false;
+                    handleResult.Msg = "博客标签名称已注册";
+                    handleResult.Result = false;
                 }
                 else
                 {
@@ -49,12 +50,12 @@ namespace Zhouli.BLL.Implements
                     blogLable.CreateUserId = UserId;
                     if (Add(blogLable))
                     {
-                        messageModel.Message = "添加成功";
+                        handleResult.Msg = "添加成功";
                     }
                     else
                     {
-                        messageModel.Message = "添加失败";
-                        messageModel.Result = false;
+                        handleResult.Msg = "添加失败";
+                        handleResult.Result = false;
                     }
                 }
 
@@ -68,32 +69,32 @@ namespace Zhouli.BLL.Implements
                 edit.EditTime = DateTime.Now;
                 if (Update(edit))
                 {
-                    messageModel.Message = "修改成功";
+                    handleResult.Msg = "修改成功";
                 }
                 else
                 {
-                    messageModel.Message = "修改失败";
+                    handleResult.Msg = "修改失败";
                 }
             }
-            return messageModel;
+            return handleResult;
         }
         /// <summary>
         /// 删除博客标签
         /// </summary>
         /// <param name="blogLableId"></param>
         /// <returns></returns>
-        public MessageModel DelBlogLable(IEnumerable<string> blogLableId)
+        public HandleResult<bool> DelBlogLable(IEnumerable<string> blogLableId)
         {
-            var model = new MessageModel();
+            var handleResult = new HandleResult<bool>();
             bool bResult = false;
             var blogLableList = GetModels(u => blogLableId.Any(a => a.Equals(u.LableId.ToString())));
             foreach (var item in blogLableList)
             {
                 bResult = Delete(item);
             }
-            model.Result = bResult;
-            model.Message = bResult ? "删除成功" : "删除失败";
-            return model;
+            handleResult.Result = bResult;
+            handleResult.Msg = bResult ? "删除成功" : "删除失败";
+            return handleResult;
         }
         /// <summary>
         /// 博客标签条件分页查询
@@ -102,12 +103,12 @@ namespace Zhouli.BLL.Implements
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        public MessageModel GetBlogLableList(string page, string limit, string searchstr)
+        public HandleResult<PageModel> GetBlogLableList(string page, string limit, string searchstr)
         {
-            var query = _blogLableDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.CreateTime,
+            var query = _blogLableDAL.GetModelsByPage(Convert.ToInt32(limit), Convert.ToInt32(page), false, t => t.LableId,
                 t => t.LableName.Contains(searchstr) || string.IsNullOrEmpty(searchstr)
                 && t.DeleteSign.Equals((int)DeleteSign.Sing_Deleted));
-            return new MessageModel
+            return new HandleResult<PageModel>
             {
                 Data = new PageModel
                 {

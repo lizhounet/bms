@@ -47,13 +47,13 @@ namespace Zhouli.DAL.Implements
         {
             _db.Set<T>().RemoveRange(t);
         }
-        public void Delete(Expression<Func<T, bool>> WhereLambda)
+        public void Delete(Expression<Func<T, bool>> whereLambda)
         {
-            _db.Set<T>().RemoveRange(_db.Set<T>().Where(WhereLambda));
+            _db.Set<T>().RemoveRange(_db.Set<T>().Where(whereLambda));
         }
-        public int GetCount(Expression<Func<T, bool>> WhereLambda)
+        public int GetCount(Expression<Func<T, bool>> whereLambda)
         {
-            return _db.Set<T>().Count(WhereLambda);
+            return _db.Set<T>().Count(whereLambda);
         }
         public void Update(T t)
         {
@@ -75,16 +75,16 @@ namespace Zhouli.DAL.Implements
             return _db.Set<T>().Where(whereLambda);
         }
         public IQueryable<T> GetModelsByPage<type>(int pageSize, int pageIndex, bool isAsc,
-            Expression<Func<T, type>> OrderByLambda, Expression<Func<T, bool>> WhereLambda)
+            Expression<Func<T, type>> orderByLambda, Expression<Func<T, bool>> whereLambda)
         {
             //是否升序
             if (isAsc)
             {
-                return _db.Set<T>().Where(WhereLambda).OrderBy(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return _db.Set<T>().Where(whereLambda).OrderBy(orderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
             else
             {
-                return _db.Set<T>().Where(WhereLambda).OrderByDescending(OrderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                return _db.Set<T>().Where(whereLambda).OrderByDescending(orderByLambda).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             }
         }
         public int ExecuteSql(string sql, SqlParameter parameter = null)
@@ -96,10 +96,8 @@ namespace Zhouli.DAL.Implements
         }
         public IEnumerable<TR> SqlQuery<TR>(string sql)
         {
-            using (var conn = _dbConnection)
-            {
-                return conn.Query<TR>(sql);
-            }
+
+            return _dbConnection.Query<TR>(sql);
 
         }
         public bool SaveChanges()

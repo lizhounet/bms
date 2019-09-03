@@ -1,31 +1,46 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Zhouli.Common.ResultModel;
 using Zhouli.DbEntity.Models;
+using Zhouli.DbEntity.Views;
 
 namespace Zhouli.BLL.Interface
 {
     public interface IBlogArticleBLL : IBaseBLL<BlogArticle>
     {
         /// <summary>
-        /// »ñÈ¡ÎÄÕÂÁĞ±í
+        /// è·å–æ–‡ç« åˆ—è¡¨
         /// </summary>
         /// <param name="page"></param>
         /// <param name="limit"></param>
         /// <param name="searchstr"></param>
         /// <returns></returns>
-        MessageModel GetBlogArticlelist(string page, string limit, string searchstr);
+        HandleResult<PageModel> GetBlogArticlelist(string page, string limit, string searchstr, int lableId);
         /// <summary>
-        /// Ìí¼Ó/ĞŞ¸ÄÎÄÕÂ
+        /// æ·»åŠ /ä¿®æ”¹æ–‡ç« 
         /// </summary>
         /// <param name="blogArticleDto"></param>
-        /// <param name="OnLineUserId"></param>
+        /// <param name="onLineUserId"></param>
         /// <returns></returns>
-        MessageModel AddOrUpdateArticlelist(BlogArticleDto blogArticleDto, string OnLineUserId);
+        HandleResult<bool> AddOrUpdateArticlelist(BlogArticleDto blogArticleDto, string onLineUserId);
         /// <summary>
-        /// »ñÈ¡ÎÄÕÂ×î´óÅÅĞòÖµ
+        /// è·å–æ–‡ç« æœ€å¤§æ’åºå€¼
         /// </summary>
         /// <returns></returns>
-        MessageModel GetMaxArticleSortValue();
+        HandleResult<int> GetMaxArticleSortValue();
+        /// <summary>
+        /// è·å–æ–‡ç« è¯¦æƒ…
+        /// </summary>
+        /// <param name="articleId"></param>
+        /// <returns></returns>
+        HandleResult<dynamic> GetArticleDetails(int articleId);
+        /// <summary>
+        /// çƒ­é—¨æ¨èæ–‡ç« 
+        /// </summary>
+        /// <param name="bWeek">æ˜¯å¦æœ¬å‘¨çƒ­é—¨(ä¸ºtrueæ—¶è·å–æœ¬å‘¨çƒ­é—¨æ–‡ç« )</param>
+        /// <returns></returns>
+        HandleResult<dynamic> GetPopularArticle(bool bWeek);
+
     }
 }

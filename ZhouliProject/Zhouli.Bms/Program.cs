@@ -18,7 +18,7 @@ namespace ZhouliSystem
         }
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
+                .UseStartup<Startup>().UseUrls("http://*:5005")
                 .Build();
     }
 }

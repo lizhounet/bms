@@ -25,8 +25,8 @@ require(["jquery", 'layui'], function ($) {
             }, function (res) {
                 console.log(res);
                 top.layer.close(index);
-                top.layer.msg(res.Messages);
-                if (res.StateCode == 200) {
+                top.layer.msg(res.RetMsg);
+                if (res.RetCode == 200) {
                     layer.closeAll("iframe");
                     //刷新父页面
                     parent.location.reload();

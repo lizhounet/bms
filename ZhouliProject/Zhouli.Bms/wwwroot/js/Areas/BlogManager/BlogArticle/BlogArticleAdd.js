@@ -4,6 +4,7 @@
 });
 require(["jquery", 'layui'], function ($) {
     layui.use(['form', 'layer', 'layedit', 'laydate', 'upload'], function () {
+      
         var form = layui.form,
             layer = parent.layer === undefined ? layui.layer : top.layer,
             laypage = layui.laypage,
@@ -11,7 +12,8 @@ require(["jquery", 'layui'], function ($) {
             layedit = layui.layedit,
             laydate = layui.laydate,
             $ = layui.jquery;
-        
+        //用于同步编辑器内容到textarea
+        layedit.sync(editIndex);
         var editIndex = layedit.build("articleBody", {
             height: 500,
             uploadImage: {
@@ -19,18 +21,21 @@ require(["jquery", 'layui'], function ($) {
                 method: "post"
             }
         });
-        if ($(".articleId").val() != "") {
-            //获取文章内容(内容字符太长 没有随列表一起查询出 怕影响效率)
-            $.get("/Blog/BlogArticle/GetBlogArticleBody", { ArticleId: $(".articleId").val() }, function (res) {
-                if (res.RetCode == 200) {
-                    layedit.setContent(editIndex, res.Data, false);
-                    //$(".articleBody").val(res.Data);
-                }
-            });
-        }
-        $.ajaxSettings.async = false;
+        setTimeout(function () {
+            if ($(".articleId").val() != "") {
+                //获取文章内容(内容字符太长 没有随列表一起查询出 怕影响效率)
+                $.get("/Blog/BlogArticle/GetBlogArticleBody", { ArticleId: $(".articleId").val() }, function (res) {
+                    if (res.RetCode == 200) {
+                        layedit.setContent(editIndex, res.Data, false);
+                        //$(".articleBody").val(res.Data);
+                        form.render();
+                    }
+                });
+            }
+        }, 100);
         //获取上传文件token
         var fileAccessToken = "";
+        $.ajaxSettings.async = false;
         $.post("/Token/GetFileServiceToken", function (res) {
             if (res.RetCode != 200) {
                 layer.msg(res.RetMsg);
@@ -50,8 +55,8 @@ require(["jquery", 'layui'], function ($) {
                 "Authorization": fileAccessToken
             },
             data: {
-                StorageMethod: "bendi",
-                FileSpaceType: ""
+                StorageMethod: "qiniuyun",
+                FileSpaceType: "public"
             },
             done: function (res, index, upload) {
                 console.log(res);
@@ -95,7 +100,7 @@ require(["jquery", 'layui'], function ($) {
                 articleTitle: data.field.articleTitle,  //文章标题
                 articleSortValue: data.field.articleSortValue,
                 articleBodySummary: data.field.articleBodySummary,  //文章摘要
-                articleBody: data.field.content,  //文章内容
+                articleBody: data.field.articleBody,  //文章内容
                 articleThrink: $("#articleThrink").attr("src"),  //缩略图
                 LableId: data.field.lableId,//所选标签
                 articleTop: data.field.articleTop == "on" ? "true" : "false"  //是否置顶
@@ -118,11 +123,11 @@ require(["jquery", 'layui'], function ($) {
             //}, 500);
             return false;
         });
-
         //预览
         form.on("submit(look)", function () {
             layer.alert("此功能需要前台展示，实际开发中传入对应的必要参数进行文章内容页面访问");
             return false;
         });
+        form.render();
     });
 });

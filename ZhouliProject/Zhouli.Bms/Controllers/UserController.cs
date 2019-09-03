@@ -34,7 +34,7 @@ using IdentityModel.Client;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System;
-using Zhouli.CommonEntity;
+using Zhouli.Common.ResultModel;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using Zhouli.Enum;

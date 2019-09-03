@@ -31,7 +31,6 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.9",
           "Zhouli.BLL": "1.0.0",
           "Zhouli.Common": "1.0.0",
-          "Zhouli.CommonEntity": "1.0.0",
           "Zhouli.DI": "1.0.0",
           "Zhouli.DbEntity": "1.0.0",
           "Zhouli.Enum": "1.0.0",
@@ -962,17 +961,10 @@
           "Zhouli.Common.dll": {}
         }
       },
-      "Zhouli.CommonEntity/1.0.0": {
-        "runtime": {
-          "Zhouli.CommonEntity.dll": {}
-        },
-        "compile": {
-          "Zhouli.CommonEntity.dll": {}
-        }
-      },
       "Zhouli.DAL/1.0.0": {
         "dependencies": {
           "Dapper": "1.50.5",
+          "Zhouli.Common": "1.0.0",
           "Zhouli.DbEntity": "1.0.0",
           "Zhouli.Dto": "1.0.0",
           "Zhouli.Enum": "1.0.0"
@@ -4324,11 +4316,6 @@
       "sha512": ""
     },
     "Zhouli.Common/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Zhouli.CommonEntity/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

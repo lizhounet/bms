@@ -46,12 +46,12 @@ namespace ZhouliSystem
                 case DataBaseType.SqlServer:
                     services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseSqlServer(strConnection, b => b.UseRowNumberForPaging()),
                ServiceLifetime.Scoped);
-                    services.AddScoped<IDbConnection, SqlConnection>(t => new SqlConnection(strConnection));
+                    services.AddTransient<IDbConnection, SqlConnection>(t => new SqlConnection(strConnection));
                     break;
                 case DataBaseType.MySql:
                     services.AddDbContext<Zhouli.DbEntity.Models.ZhouLiContext>(options => options.UseMySql(strConnection),
               ServiceLifetime.Scoped);
-                    services.AddScoped<IDbConnection, MySqlConnection>(t => new MySqlConnection(strConnection));
+                    services.AddTransient<IDbConnection, MySqlConnection>(t => new MySqlConnection(strConnection));
                     break;
             }
             //添加session依赖
