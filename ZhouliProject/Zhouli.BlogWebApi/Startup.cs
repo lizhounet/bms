@@ -58,9 +58,13 @@ namespace BlogWebApi
                     services.AddScoped<IDbConnection, MySqlConnection>(t => new MySqlConnection(strConnection));
                     break;
             }
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
-                .AddJsonOptions(options => {
+            services.AddMvc(o =>
+            {
+                // 注册全局异常过滤器
+                o.Filters.Add<HttpGlobalExceptionFilter>();
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddJsonOptions(options =>
+                {
                     options.SerializerSettings.ContractResolver = new DefaultContractResolver();
                     options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
                 });
@@ -124,7 +128,7 @@ namespace BlogWebApi
             ZhouliDtoMapper.Initialize();
             //.net core 2.1时默认不注入HttpContextAccessor依赖注入关系,所以再此手动注册
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-           // services.AddScoped(typeof(WholeInjection));
+            // services.AddScoped(typeof(WholeInjection));
             services.AddResolveAllTypes(new string[] { "Zhouli.DAL", "Zhouli.BLL" });
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

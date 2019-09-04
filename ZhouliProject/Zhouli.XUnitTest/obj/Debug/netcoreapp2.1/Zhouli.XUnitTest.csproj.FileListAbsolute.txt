@@ -1,16 +1,3 @@
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\obj\Debug\netcoreapp2.1\Zhouli.XUnitTest.csproj.CoreCompileInputs.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\obj\Debug\netcoreapp2.1\Zhouli.XUnitTest.AssemblyInfoInputs.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\obj\Debug\netcoreapp2.1\Zhouli.XUnitTest.AssemblyInfo.cs
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\bin\Debug\netcoreapp2.1\Zhouli.XUnitTest.deps.json
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\bin\Debug\netcoreapp2.1\Zhouli.XUnitTest.runtimeconfig.json
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\bin\Debug\netcoreapp2.1\Zhouli.XUnitTest.runtimeconfig.dev.json
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\bin\Debug\netcoreapp2.1\Zhouli.XUnitTest.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\bin\Debug\netcoreapp2.1\Zhouli.XUnitTest.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\obj\Debug\netcoreapp2.1\Zhouli.XUnitTest.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\obj\Debug\netcoreapp2.1\Zhouli.XUnitTest.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.XUnitTest\obj\Debug\netcoreapp2.1\Zhouli.XUnitTest.csprojAssemblyReference.cache
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.XUnitTest\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.XUnitTest\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll

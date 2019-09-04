@@ -1,12 +1,3 @@
-D:\周黎\code\bms\ZhouliProject\Zhouli.Enum\obj\Debug\netcoreapp2.1\Zhouli.Enum.csproj.CoreCompileInputs.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.Enum\obj\Debug\netcoreapp2.1\Zhouli.Enum.AssemblyInfoInputs.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.Enum\obj\Debug\netcoreapp2.1\Zhouli.Enum.AssemblyInfo.cs
-D:\周黎\code\bms\ZhouliProject\Zhouli.Enum\bin\Debug\netcoreapp2.1\Zhouli.Enum.deps.json
-D:\周黎\code\bms\ZhouliProject\Zhouli.Enum\bin\Debug\netcoreapp2.1\Zhouli.Enum.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.Enum\bin\Debug\netcoreapp2.1\Zhouli.Enum.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Enum\obj\Debug\netcoreapp2.1\Zhouli.Enum.dll
-D:\周黎\code\bms\ZhouliProject\Zhouli.Enum\obj\Debug\netcoreapp2.1\Zhouli.Enum.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Enum\obj\Debug\netcoreapp2.1\Zhouli.Enum.csprojAssemblyReference.cache
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Enum\bin\Debug\netcoreapp2.1\Zhouli.Enum.deps.json
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Enum\bin\Debug\netcoreapp2.1\Zhouli.Enum.dll
 F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Enum\bin\Debug\netcoreapp2.1\Zhouli.Enum.pdb
