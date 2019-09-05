@@ -40,10 +40,4 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Zhouli.BlogWebApi11.xml">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
