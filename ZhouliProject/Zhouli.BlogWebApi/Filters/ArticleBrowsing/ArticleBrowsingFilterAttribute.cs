@@ -18,22 +18,27 @@ namespace Zhouli.BlogWebApi.Filters.ArticleBrowsing
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-          
+
         }
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
             var ipAddress = context.HttpContext.Connection.RemoteIpAddress.ToString();
-            int.TryParse(context.HttpContext.Request.Query["articleId"][0], out int articleId);
-            if (articleId != 0)
+            if (!string.IsNullOrEmpty(ipAddress))
             {
-                if (_blogArticleBrowsingBLL.GetCount(t => t.ArticleId == articleId && t.Ip.Equals(ipAddress)) == 0)
-                    _blogArticleBrowsingBLL.Add(new BlogArticleBrowsing
-                    {
-                        ArticleId = articleId,
-                        Ip = ipAddress,
-                        CreateTime = DateTime.Now
-                    });
+                var arrIpAddress = ipAddress.Split(':');
+                string ip = "::1".Equals(ipAddress) ? "127.0.0.1" : arrIpAddress[arrIpAddress.Length - 1];
+                int.TryParse(context.HttpContext.Request.Query["articleId"][0], out int articleId);
+                if (articleId != 0)
+                {
+                    if (_blogArticleBrowsingBLL.GetCount(t => t.ArticleId == articleId && t.Ip.Equals(ip)) == 0)
+                        _blogArticleBrowsingBLL.Add(new BlogArticleBrowsing
+                        {
+                            ArticleId = articleId,
+                            Ip = ip,
+                            CreateTime = DateTime.Now
+                        });
+                }
             }
         }
     }

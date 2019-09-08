@@ -81,15 +81,17 @@ namespace Zhouli.BlogWebApi.Controllers
         {
             var response = new ResponseModel();
             var ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            var arrIpAddress = ipAddress.Split(':');
+            string ip = "::1".Equals(ipAddress) ? "127.0.0.1" : arrIpAddress[arrIpAddress.Length - 1];
             if (!isLike)
             {
-                if (_blogArticleLikeBLL.GetCount(t => t.Ip.Equals(ipAddress) && t.ArticleId == articleId) == 0)
+                if (_blogArticleLikeBLL.GetCount(t => t.Ip.Equals(ip) && t.ArticleId == articleId) == 0)
                 {
                     //点赞
                     _blogArticleLikeBLL.Add(new DbEntity.Models.BlogArticleLike
                     {
                         ArticleId = articleId,
-                        Ip = ipAddress,
+                        Ip = ip,
                         CreateTime = DateTime.Now
                     });
                     response.RetMsg = "点赞成功";
