@@ -33,7 +33,6 @@ namespace Zhouli.BlogWebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("")]
-        [TypeFilter(typeof(ArticleBrowsingFilterAttribute))]
         public IActionResult GetTags()
         {
             return Ok(new ResponseModel { Data = _blogLableBLL.GetModels(t => true).Select(t => new { t.LableId, t.LableName }) });
