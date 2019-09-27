@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Zhouli.DAL</id>
+    <version>1.0.0</version>
+    <authors>Zhouli.DAL</authors>
+    <owners>Zhouli.DAL</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.1">
+        <dependency id="Zhouli.Common" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Zhouli.DbEntity" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Zhouli.Dto" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Zhouli.Enum" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Dapper" version="1.50.5" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DAL\bin\Debug\netcoreapp2.1\Zhouli.DAL.dll" target="lib\netcoreapp2.1\Zhouli.DAL.dll" />
+  </files>
+</package>

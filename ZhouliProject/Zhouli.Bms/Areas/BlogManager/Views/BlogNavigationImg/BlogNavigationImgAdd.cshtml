@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Shared/Ordinary.cshtml";
+    ViewData["Title"] = "BlogNavigationImgAdd";
+}
+@section css{
+    <link href="~/lib/layui/css/layui.css" rel="stylesheet" />
+    <link href="~/css/public.css" rel="stylesheet" />
+    <style>
+        .thumbBox:after {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 153px;
+            z-index: -1;
+            text-align: center;
+            font-size: 20px;
+            content: "轮播图";
+            left: 0;
+            top: 0;
+            color: #9F9F9F;
+        }
+    </style>
+}
+<div style="padding:20px;">
+    <form class="layui-form" style="width:80%;">
+        <input type="hidden" class="lableId" />
+        <div class="layui-form-item">
+            <div class="layui-col-md3 layui-col-xs6">
+                <label class="layui-form-label">轮播图<i style="color:red;">*</i></label>
+                <div class="layui-input-block">
+                    <div class="layui-upload">
+                        <div class="layui-upload-list thumbBox mag0 magt3">
+                            <img class="layui-upload-img thumbImg" id="navigationimg" src="/" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-form-item layui-row layui-col-xs12">
+                <label class="layui-form-label">轮播图描述<i style="color:red;">*</i></label>
+                <div class="layui-input-block">
+                    <textarea placeholder="描述" class="layui-textarea describe"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-form-item layui-row layui-col-xs12">
+                <label class="layui-form-label">备注<i>&nbsp;</i></label>
+                <div class="layui-input-block">
+                    <textarea placeholder="备注" class="layui-textarea note"></textarea>
+                </div>
+            </div>
+        </div>
+        <input type="text" style="display:none;" class="userId">
+        <div class="layui-form-item layui-row layui-col-xs12">
+            <div class="layui-input-block">
+                @Html.AntiForgeryToken()
+                <button class="layui-btn layui-btn-sm" lay-submit="" lay-filter="addBlogNavigationImg">保存</button>
+                <button type="reset" class="layui-btn layui-btn-sm layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+<input type="hidden" id="FileServiceAdress" value="@ViewBag.FileServiceAdress" />
+<script src="~/lib/main.js"></script>
+<script src="~/lib/require/require.js" data-main="../js/Areas/BlogManager/BlogNavigationImg/BlogNavigationImgAdd"></script>

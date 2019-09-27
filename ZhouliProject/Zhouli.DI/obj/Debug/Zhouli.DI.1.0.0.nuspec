@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Zhouli.DI</id>
+    <version>1.0.0</version>
+    <authors>Zhouli.DI</authors>
+    <owners>Zhouli.DI</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.1">
+        <dependency id="Zhouli.BLL" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Zhouli.DAL" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Http.Abstractions" version="2.1.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="F:\zhouli\code\project\bms\ZhouliProject\Zhouli.DI\bin\Debug\netcoreapp2.1\Zhouli.DI.dll" target="lib\netcoreapp2.1\Zhouli.DI.dll" />
+  </files>
+</package>
