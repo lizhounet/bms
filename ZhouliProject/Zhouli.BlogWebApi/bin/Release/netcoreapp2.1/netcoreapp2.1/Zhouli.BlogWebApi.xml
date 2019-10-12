@@ -60,9 +60,20 @@
             <param name="siteSummary">网站简介</param>
             <returns></returns>
         </member>
+        <member name="T:Zhouli.BlogWebApi.Controllers.NavigationImgController">
+            <summary>
+            轮播图api
+            </summary>
+        </member>
+        <member name="M:Zhouli.BlogWebApi.Controllers.NavigationImgController.GetNavigationImgList">
+            <summary>
+            获取所有轮播图
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Zhouli.BlogWebApi.Controllers.TagsController">
             <summary>
-            博客文章api
+            博客标签api
             </summary>
         </member>
         <member name="M:Zhouli.BlogWebApi.Controllers.TagsController.GetTags">

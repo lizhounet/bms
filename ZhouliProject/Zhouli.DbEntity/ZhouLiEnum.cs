@@ -24,7 +24,7 @@ namespace Zhouli.DbEntity.Models
     /// <summary>
     /// 此类包含了项目所有枚举
     /// </summary>
-    public static class ZhouLiEnumd
+    public static class ZhouLiEnum
     {
 
         #region 用户状态

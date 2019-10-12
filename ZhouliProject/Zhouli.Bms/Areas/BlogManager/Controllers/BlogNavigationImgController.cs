@@ -53,42 +53,63 @@ namespace Zhouli.Bms.Areas.BlogManager.Controllers
             {
                 code = 0,
                 msg = "获取成功",
-                count = _blogNavigationImgBLL.GetCount(t => t.NavigationImgDescribe.Contains(searchstr)),
-                data = _blogNavigationImgBLL.GetModelsByPage(int.Parse(limit), int.Parse(page), false, t => t.NavigationImgSortValue, t => t.NavigationImgDescribe.Contains(searchstr))
+                count = _blogNavigationImgBLL.GetCount(t => t.NavigationImgDescribe.Contains(searchstr) || string.IsNullOrEmpty(searchstr)),
+                data = _blogNavigationImgBLL.GetModelsByPage(int.Parse(limit),
+                int.Parse(page),
+                false,
+                t => t.NavigationImgSortValue,
+                t => t.NavigationImgDescribe.Contains(searchstr)
+                || string.IsNullOrEmpty(searchstr))
             });
         }
         #endregion
-        //#region 添加博客轮播图链接
-        ///// <summary>
-        ///// 添加博客轮播图链接
-        ///// </summary>
-        ///// <param name="bl"></param>
-        ///// <returns></returns>
-        //public IActionResult AddorUpdateBlogNavigationImg(BlogNavigationImgDto bl)
-        //{
-        //    var resModel = new ResponseModel();
-        //    var handleResult = _blogNavigationImgBLL.AddorEditBlogNavigationImg(bl, _userAccount.GetUserInfo().UserId);
-        //    resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
-        //    resModel.RetMsg = handleResult.Msg;
-        //    resModel.Data = handleResult.Data;
-        //    return Ok(resModel);
-        //}
-        //#endregion
-        //#region 删除博客轮播图链接
-        ///// <summary>
-        ///// 删除博客轮播图链接
-        ///// </summary>
-        ///// <param name="blogNavigationImgId"></param>
-        ///// <returns></returns>
-        //public IActionResult DeleteBlogNavigationImg(List<string> blogNavigationImgId)
-        //{
-        //    var resModel = new ResponseModel();
-        //    //此处删除进行逻辑删除
-        //    var handleResult = _blogNavigationImgBLL.DelBlogNavigationImg(blogNavigationImgId);
-        //    resModel.RetCode = handleResult.Result ? StatesCode.success : StatesCode.failure;
-        //    resModel.RetMsg = handleResult.Msg;
-        //    return Ok(resModel);
-        //}
-        //#endregion
+        #region 添加博客轮播图链接
+        /// <summary>
+        /// 添加博客轮播图链接
+        /// </summary>
+        /// <param name="bl"></param>
+        /// <returns></returns>
+        public IActionResult AddorUpdateBlogNavigationImg(BlogNavigationImgDto blogNavigationImgDto)
+        {
+            var resModel = new ResponseModel();
+            var blogNavigationImgNew = AutoMapper.Mapper.Map<BlogNavigationImg>(blogNavigationImgDto);
+            if (blogNavigationImgNew.NavigationImgId == 0)
+            {
+                //新增
+                blogNavigationImgNew.CreateTime = DateTime.Now;
+                blogNavigationImgNew.CreateUserId = _userAccount.GetUserInfo().UserId;
+                bool boolResult = _blogNavigationImgBLL.Add(blogNavigationImgNew);
+                resModel.RetCode = boolResult ? StatesCode.success : StatesCode.failure;
+                resModel.RetMsg = boolResult ? "添加成功" : "添加失败";
+            }
+            else
+            {
+                //修改
+                var blogNavigationImg = _blogNavigationImgBLL.GetModels(t => t.NavigationImgId == blogNavigationImgNew.NavigationImgId).SingleOrDefault();
+                blogNavigationImg.NavigationImgDescribe = blogNavigationImgNew.NavigationImgDescribe;
+                blogNavigationImg.NavigationImgUrl = blogNavigationImgNew.NavigationImgUrl;
+                blogNavigationImg.EditTime = DateTime.Now;
+                bool boolResult = _blogNavigationImgBLL.Update(blogNavigationImg);
+                resModel.RetCode = boolResult ? StatesCode.success : StatesCode.failure;
+                resModel.RetMsg = boolResult ? "修改成功" : "修改失败";
+            }
+            return Ok(resModel);
+        }
+        #endregion
+        #region 删除博客轮播图
+        /// <summary>
+        /// 删除博客轮播图
+        /// </summary>
+        /// <param name="blogNavigationImgId"></param>
+        /// <returns></returns>
+        public IActionResult DeleteBlogNavigationImg(List<int> blogNavigationImgId)
+        {
+            var resModel = new ResponseModel();
+            var boolResult = _blogNavigationImgBLL.Delete(t => blogNavigationImgId.Contains(t.NavigationImgId));
+            resModel.RetCode = boolResult ? StatesCode.success : StatesCode.failure;
+            resModel.RetMsg = boolResult ? "删除成功" : "删除失败";
+            return Ok(resModel);
+        }
+        #endregion
     }
 }

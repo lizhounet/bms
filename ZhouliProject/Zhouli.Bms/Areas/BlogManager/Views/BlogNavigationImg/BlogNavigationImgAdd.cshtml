@@ -23,14 +23,14 @@
 }
 <div style="padding:20px;">
     <form class="layui-form" style="width:80%;">
-        <input type="hidden" class="lableId" />
+        <input type="hidden" class="NavigationImgId" />
         <div class="layui-form-item">
             <div class="layui-col-md3 layui-col-xs6">
                 <label class="layui-form-label">轮播图<i style="color:red;">*</i></label>
                 <div class="layui-input-block">
                     <div class="layui-upload">
-                        <div class="layui-upload-list thumbBox mag0 magt3">
-                            <img class="layui-upload-img thumbImg" id="navigationimg" src="/" />
+                        <div class="layui-upload-list thumbBox mag0 magt3" style="width:500px;">
+                            <img class="layui-upload-img thumbImg NavigationImgUrl" id="NavigationImgUrl" src="/" />
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">轮播图描述<i style="color:red;">*</i></label>
                 <div class="layui-input-block">
-                    <textarea placeholder="描述" class="layui-textarea describe"></textarea>
+                    <textarea placeholder="描述"  lay-verify="required" class="layui-textarea NavigationImgDescribe"></textarea>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">备注<i>&nbsp;</i></label>
                 <div class="layui-input-block">
-                    <textarea placeholder="备注" class="layui-textarea note"></textarea>
+                    <textarea placeholder="备注"   class="layui-textarea Note"></textarea>
                 </div>
             </div>
         </div>
