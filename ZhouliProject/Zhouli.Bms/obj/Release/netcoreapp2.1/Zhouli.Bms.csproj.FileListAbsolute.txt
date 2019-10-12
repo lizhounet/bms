@@ -128,3 +128,5 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Release\netcoreapp2.1\Razor\Area
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Release\netcoreapp2.1\Razor\Areas\BlogManager\Views\BlogLable\Index.g.cshtml.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Release\netcoreapp2.1\Razor\Areas\BlogManager\Views\FriendshipLink\FriendshipLinkAdd.g.cshtml.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Release\netcoreapp2.1\Razor\Areas\BlogManager\Views\FriendshipLink\Index.g.cshtml.cs
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Release\netcoreapp2.1\Razor\Areas\BlogManager\Views\BlogNavigationImg\BlogNavigationImgAdd.g.cshtml.cs
+D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Release\netcoreapp2.1\Razor\Areas\BlogManager\Views\BlogNavigationImg\Index.g.cshtml.cs

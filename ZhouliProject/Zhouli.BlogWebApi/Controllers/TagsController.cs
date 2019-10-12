@@ -16,7 +16,7 @@ using Zhouli.Dto.ModelDto;
 namespace Zhouli.BlogWebApi.Controllers
 {
     /// <summary>
-    /// 博客文章api
+    /// 博客标签api
     /// </summary>
     [Route("api/blog/tags")]
     [ApiController]

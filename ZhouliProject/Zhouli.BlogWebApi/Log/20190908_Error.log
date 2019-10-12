@@ -1,0 +1,54 @@
+2019-09-08 22:33:42,115 线程ID:[12] 日志级别：ERROR 出错类：Zhouli.BlogWebApi.Filters.HttpGlobalExceptionFilter property:[(null)] - 错误描述：System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Microsoft.Extensions.Primitives.StringValues.get_Item(Int32 index)
+   at Zhouli.BlogWebApi.Filters.ArticleBrowsing.ArticleBrowsingFilterAttribute.OnActionExecuting(ActionExecutingContext context) in F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BlogWebApi\Filters\ArticleBrowsing\ArticleBrowsingFilterAttribute.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync() 
+2019-09-08 22:35:34,072 线程ID:[7] 日志级别：ERROR 出错类：Zhouli.BlogWebApi.Filters.HttpGlobalExceptionFilter property:[(null)] - 错误描述：System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Microsoft.Extensions.Primitives.StringValues.get_Item(Int32 index)
+   at Zhouli.BlogWebApi.Filters.ArticleBrowsing.ArticleBrowsingFilterAttribute.OnActionExecuting(ActionExecutingContext context) in F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BlogWebApi\Filters\ArticleBrowsing\ArticleBrowsingFilterAttribute.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync() 
+2019-09-08 22:37:12,848 线程ID:[7] 日志级别：ERROR 出错类：Zhouli.BlogWebApi.Filters.HttpGlobalExceptionFilter property:[(null)] - 错误描述：System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Microsoft.Extensions.Primitives.StringValues.get_Item(Int32 index)
+   at Zhouli.BlogWebApi.Filters.ArticleBrowsing.ArticleBrowsingFilterAttribute.OnActionExecuting(ActionExecutingContext context) in F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BlogWebApi\Filters\ArticleBrowsing\ArticleBrowsingFilterAttribute.cs:line 27
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync() 
+2019-09-08 22:40:23,240 线程ID:[8] 日志级别：ERROR 出错类：Zhouli.BlogWebApi.Filters.HttpGlobalExceptionFilter property:[(null)] - 错误描述：System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Microsoft.Extensions.Primitives.StringValues.get_Item(Int32 index)
+   at Zhouli.BlogWebApi.Filters.ArticleBrowsing.ArticleBrowsingFilterAttribute.OnActionExecuting(ActionExecutingContext context) in F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BlogWebApi\Filters\ArticleBrowsing\ArticleBrowsingFilterAttribute.cs:line 29
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync() 
+2019-09-08 22:44:54,246 线程ID:[7] 日志级别：ERROR 出错类：Zhouli.BlogWebApi.Filters.HttpGlobalExceptionFilter property:[(null)] - 错误描述：System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Microsoft.Extensions.Primitives.StringValues.get_Item(Int32 index)
+   at Zhouli.BlogWebApi.Filters.ArticleBrowsing.ArticleBrowsingFilterAttribute.OnActionExecuting(ActionExecutingContext context) in F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BlogWebApi\Filters\ArticleBrowsing\ArticleBrowsingFilterAttribute.cs:line 31
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync() 
+2019-09-08 22:47:28,559 线程ID:[7] 日志级别：ERROR 出错类：Zhouli.BlogWebApi.Filters.HttpGlobalExceptionFilter property:[(null)] - 错误描述：System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Microsoft.Extensions.Primitives.StringValues.get_Item(Int32 index)
+   at Zhouli.BlogWebApi.Filters.ArticleBrowsing.ArticleBrowsingFilterAttribute.OnActionExecuting(ActionExecutingContext context) in F:\zhouli\code\project\bms\ZhouliProject\Zhouli.BlogWebApi\Filters\ArticleBrowsing\ArticleBrowsingFilterAttribute.cs:line 31
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextExceptionFilterAsync() 
