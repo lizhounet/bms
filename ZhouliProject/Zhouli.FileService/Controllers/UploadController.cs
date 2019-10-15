@@ -119,7 +119,7 @@ namespace Zhouli.FileService.Controllers
                 //服务器本地存储
                 else if (uploadModel.StorageMethod.Equals("bendi"))
                 {
-                    var filePath = $@"{environment.ContentRootPath}/Upload/{uploadModel.ContentType}";
+                    var filePath = $@"{environment.ContentRootPath}\Upload\{uploadModel.ContentType}";
                     if (!Directory.Exists(filePath)) Directory.CreateDirectory(filePath);
                     using (var stream = new FileStream(Path.Combine(filePath, fileName), FileMode.CreateNew))
                     {
