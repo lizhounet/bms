@@ -14,6 +14,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using Zhouli.Common.Middleware;
 using Zhouli.DbEntity.ModelDto;
 using Zhouli.DI;
 using Zhouli.Enum;
@@ -114,7 +115,7 @@ namespace ZhouliSystem
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-
+            app.UseRealIp();
             if (env.IsDevelopment())//开发环境
             {
                 app.UseDeveloperExceptionPage();

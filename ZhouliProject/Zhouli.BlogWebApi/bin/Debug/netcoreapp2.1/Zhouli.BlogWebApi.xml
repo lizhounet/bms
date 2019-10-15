@@ -60,6 +60,17 @@
             <param name="siteSummary">网站简介</param>
             <returns></returns>
         </member>
+        <member name="T:Zhouli.BlogWebApi.Controllers.IpController">
+            <summary>
+            获取客户端IP地址
+            </summary>
+        </member>
+        <member name="M:Zhouli.BlogWebApi.Controllers.IpController.GetClientIp">
+            <summary>
+            获取客户端IP地址
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Zhouli.BlogWebApi.Controllers.NavigationImgController">
             <summary>
             轮播图api
@@ -73,7 +84,7 @@
         </member>
         <member name="T:Zhouli.BlogWebApi.Controllers.TagsController">
             <summary>
-            博客文章api
+            博客标签api
             </summary>
         </member>
         <member name="M:Zhouli.BlogWebApi.Controllers.TagsController.GetTags">

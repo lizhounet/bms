@@ -21,6 +21,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Swagger;
+using Zhouli.Common.Middleware;
 using Zhouli.FileService.Filters;
 using Zhouli.FileService.Models;
 
@@ -113,6 +114,7 @@ namespace Zhouli.FileService
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseRealIp();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -146,7 +148,7 @@ namespace Zhouli.FileService
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/fileservice_v1/swagger.json", "FileService WebApi V1");
-                c.RoutePrefix = "swagger";
+                c.RoutePrefix = "";
                 c.OAuthClientId("zhouli");//客服端名称
                 c.OAuthClientSecret("991022");
             });

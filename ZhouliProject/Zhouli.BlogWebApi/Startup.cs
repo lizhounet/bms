@@ -22,6 +22,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using Zhouli.BlogWebApi.Filters;
+using Zhouli.Common.Middleware;
 using Zhouli.DbEntity.ModelDto;
 using Zhouli.DI;
 using Zhouli.Enum;
@@ -134,6 +135,7 @@ namespace BlogWebApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseRealIp();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -146,7 +148,7 @@ namespace BlogWebApi
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/Zhouli.BlogWebApi_v1/swagger.json", "Blog WebApi V1");
-                c.RoutePrefix = "swagger";
+                c.RoutePrefix = "";
                 c.OAuthClientId("zhouli");//客服端名称
                 c.OAuthClientSecret("991022");
             });
