@@ -7,7 +7,7 @@
       "sslPort": 0
     },
     "iisExpress": {
-      "applicationUrl": "http://localhost:8000/",
+      "applicationUrl": "http://localhost:5005/",
       "sslPort": 0
     }
   },
@@ -16,6 +16,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "ASPNETCORE_URLS": "http://localhost:5005/",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
@@ -23,9 +24,17 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Production"
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "ASPNETCORE_URLS": "http://localhost:5005/"
       },
       "applicationUrl": "http://localhost:52696/"
+    },
+    "Zhouli.Bms": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_URLS": "http://localhost:5005/",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   }
 }
