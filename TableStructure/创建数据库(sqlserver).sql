@@ -1,7 +1,7 @@
 /*==============================================================*/
 /* Database name:  zhouli                                       */
 /* DBMS name:      Microsoft SQL Server 2012                    */
-/* Created on:     2019-08-28 11:46:49                          */
+/* Created on:     2019-11-08 9:36:52                           */
 /*==============================================================*/
 
 
@@ -22,7 +22,7 @@ go
 /*==============================================================*/
 create table blog_article (
    article_id           int                  identity,
-   article_title        nvarchar(50)         not null,
+   article_title        nvarchar(200)        not null,
    article_thrink       varchar(100)         not null,
    article_body         text                 not null,
    article_body_markdown text                 null,

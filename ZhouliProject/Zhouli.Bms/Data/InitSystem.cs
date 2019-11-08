@@ -75,7 +75,7 @@ namespace ZhouliSystem.Data
                                 CreateTime = DateTime.Now,
                                 CreateUserId = Guid.Empty.ToString(),
                                 Note = "系统初始化自动添加的",
-                                UserId=Guid.NewGuid().ToString()
+                                UserId = Guid.NewGuid().ToString()
                             });
 
                             //这里不对超级管理员做任何授权,因为超级管理没有任何限制
@@ -343,7 +343,7 @@ namespace ZhouliSystem.Data
                             });
                             context.SysAmRelated.Add(new SysAmRelated
                             {
-                                AmRelatedId=Guid.NewGuid().ToString(),
+                                AmRelatedId = Guid.NewGuid().ToString(),
                                 MenuId = entityBlogBq.Entity.MenuId,
                                 AuthorityId = entityBlogBqAuthority.Entity.AuthorityId
                             });

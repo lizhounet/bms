@@ -132,7 +132,6 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.BLL\bin\Debug\netcoreapp2.1\Zhouli.DbEnt
 D:\周黎\code\bms\ZhouliProject\Zhouli.BLL\bin\Debug\netcoreapp2.1\Zhouli.Enum.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.BLL\bin\Debug\netcoreapp2.1\Zhouli.Dto.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.csprojAssemblyReference.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.AssemblyInfoInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.BLL\obj\Debug\netcoreapp2.1\Zhouli.BLL.csproj.CopyComplete

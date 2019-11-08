@@ -35,7 +35,6 @@ namespace Zhouli.FileService
         }
 
         public IConfiguration Configuration { get; }
-        public static ILoggerRepository Repository { get; set; }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -115,15 +114,13 @@ namespace Zhouli.FileService
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseRealIp();
+            app.UseLogReqResponseMiddleware();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            //日志记录中间件
-            Repository = LogManager.CreateRepository("NETCoreRepository");
-            XmlConfigurator.Configure(Repository, new FileInfo("log4net.config"));
             #region 配置文件访问中间件
-            string path = $@"{env.ContentRootPath}\Upload\";
+            string path = $@"{env.ContentRootPath}/Upload/";
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
             app.UseDirectoryBrowser(new DirectoryBrowserOptions
             {

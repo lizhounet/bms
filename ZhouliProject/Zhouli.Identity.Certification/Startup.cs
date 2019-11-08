@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Zhouli.Common;
+using Zhouli.Common.Middleware;
 
 namespace Zhouli.Identity.Certification
 {
@@ -37,6 +38,8 @@ namespace Zhouli.Identity.Certification
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseRealIp();
+            app.UseLogReqResponseMiddleware();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

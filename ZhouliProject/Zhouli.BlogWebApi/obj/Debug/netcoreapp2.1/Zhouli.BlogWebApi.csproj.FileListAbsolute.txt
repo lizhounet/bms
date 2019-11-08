@@ -103,7 +103,6 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\netco
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\netcoreapp2.1\Zhouli.Enum.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\bin\Debug\netcoreapp2.1\netcoreapp2.1\Microsoft.Extensions.PlatformAbstractions.xml
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.csprojAssemblyReference.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.RazorAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.RazorAssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.BlogWebApi\obj\Debug\netcoreapp2.1\Zhouli.BlogWebApi.AssemblyInfoInputs.cache

@@ -26,9 +26,8 @@ F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhou
 D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\bin\Debug\netcoreapp2.1\Zhouli.Dto.deps.json
 D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\bin\Debug\netcoreapp2.1\Zhouli.Dto.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\bin\Debug\netcoreapp2.1\Zhouli.Dto.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.csproj.CoreCompileInputs.cache
+D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.csprojAssemblyReference.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.AssemblyInfoInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Dto\obj\Debug\netcoreapp2.1\Zhouli.Dto.csprojAssemblyReference.cache

@@ -18,9 +18,12 @@
 *****************************************************************/
 #endregion
 using log4net;
+using log4net.Config;
+using log4net.Repository;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,6 +36,21 @@ namespace Zhouli.FileService.Data
     {
         private static readonly ConcurrentDictionary<Type, ILog> Loggers = new ConcurrentDictionary<Type, ILog>();
 
+        private static ILoggerRepository _loggerRepository;
+
+        private static ILoggerRepository LoggerRepository
+        {
+            get
+            {
+                if (_loggerRepository != null)
+                {
+                    return _loggerRepository;
+                }
+                _loggerRepository = LogManager.CreateRepository("Log4netHelper");
+                XmlConfigurator.ConfigureAndWatch(_loggerRepository, new FileInfo("log4net.config"));
+                return _loggerRepository;
+            }
+        }
         /// <summary>
         /// 获取记录器
         /// </summary>
@@ -46,7 +64,7 @@ namespace Zhouli.FileService.Data
             }
             else
             {
-                ILog logger = LogManager.GetLogger(Startup.Repository.Name, source);
+                ILog logger = LogManager.GetLogger(LoggerRepository.Name, source);
                 Loggers.TryAdd(source, logger);
                 return logger;
             }

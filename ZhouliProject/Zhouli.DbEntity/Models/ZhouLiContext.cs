@@ -40,7 +40,7 @@ namespace Zhouli.DbEntity.Models
 //            if (!optionsBuilder.IsConfigured)
 //            {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-//                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=123456;port=3306;database=zhouli;");
+//                optionsBuilder.UseMySql("server=localhost;uid=root;pwd=123456;port=3306;database=ZhouLi;");
 //            }
 //        }
 
@@ -82,7 +82,7 @@ namespace Zhouli.DbEntity.Models
                 entity.Property(e => e.ArticleTitle)
                     .IsRequired()
                     .HasColumnName("article_title")
-                    .HasColumnType("varchar(50)");
+                    .HasColumnType("varchar(200)");
 
                 entity.Property(e => e.CreateTime)
                     .HasColumnName("create_time")

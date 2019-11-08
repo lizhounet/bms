@@ -49,7 +49,6 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\bin\Debug\netcore
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\bin\Debug\netcoreapp2.1\Zhouli.Common.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\bin\Debug\netcoreapp2.1\Microsoft.Extensions.PlatformAbstractions.xml
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.csprojAssemblyReference.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.RazorAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.RazorAssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Identity.Certification\obj\Debug\netcoreapp2.1\Zhouli.Identity.Certification.AssemblyInfoInputs.cache

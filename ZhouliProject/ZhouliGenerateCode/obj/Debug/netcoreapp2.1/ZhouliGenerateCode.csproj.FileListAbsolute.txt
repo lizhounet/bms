@@ -6,7 +6,6 @@ D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\bin\Debug\netcoreapp2.1\Zhou
 D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\bin\Debug\netcoreapp2.1\Zhouli.Common.dll
 D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\bin\Debug\netcoreapp2.1\Zhouli.Common.pdb
 D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.csprojAssemblyReference.cache
-D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.AssemblyInfoInputs.cache
 D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\ZhouliGenerateCode\obj\Debug\netcoreapp2.1\ZhouliGenerateCode.csproj.CopyComplete

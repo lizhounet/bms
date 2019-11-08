@@ -263,7 +263,6 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Enum.
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.DAL.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\bin\Debug\netcoreapp2.1\Zhouli.Dto.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.csprojAssemblyReference.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.RazorAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\Zhouli.Bms.RazorAssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Bms\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs

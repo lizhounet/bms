@@ -56,7 +56,6 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netc
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netcoreapp2.1\Zhouli.Common.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Debug\netcoreapp2.1\netcoreapp2.1\Microsoft.Extensions.PlatformAbstractions.xml
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Debug\netcoreapp2.1\Zhouli.FileService.csprojAssemblyReference.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Debug\netcoreapp2.1\Zhouli.FileService.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Debug\netcoreapp2.1\Zhouli.FileService.RazorAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Debug\netcoreapp2.1\Zhouli.FileService.RazorAssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Debug\netcoreapp2.1\Zhouli.FileService.AssemblyInfoInputs.cache

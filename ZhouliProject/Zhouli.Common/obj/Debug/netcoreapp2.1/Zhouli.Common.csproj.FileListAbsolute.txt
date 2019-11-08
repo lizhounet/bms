@@ -45,9 +45,8 @@ F:\zhouli\code\project\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Z
 D:\周黎\code\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.deps.json
 D:\周黎\code\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Common\bin\Debug\netcoreapp2.1\Zhouli.Common.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.csproj.CoreCompileInputs.cache
+D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.csprojAssemblyReference.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.AssemblyInfoInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.pdb
-D:\周黎\code\bms\ZhouliProject\Zhouli.Common\obj\Debug\netcoreapp2.1\Zhouli.Common.csprojAssemblyReference.cache
