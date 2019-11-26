@@ -37,7 +37,6 @@ namespace BlogWebApi
         }
 
         public IConfiguration Configuration { get; }
-        public static ILoggerRepository Repository { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -136,13 +135,11 @@ namespace BlogWebApi
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseRealIp();
+            app.UseLogReqResponseMiddleware();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            //日志记录中间件
-            Repository = LogManager.CreateRepository("NETCoreRepository");
-            XmlConfigurator.Configure(Repository, new FileInfo("log4net.config"));
             app.UseCors("blogWebApiServiceCors");//跨域
             app.UseSwagger();
             app.UseSwaggerUI(c =>

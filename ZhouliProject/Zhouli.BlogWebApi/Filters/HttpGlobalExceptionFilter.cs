@@ -27,7 +27,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Zhouli.BlogWebApi.Data;
+using Zhouli.Common;
 using Zhouli.Common.Expansion;
 using Zhouli.Common.ResultModel;
 

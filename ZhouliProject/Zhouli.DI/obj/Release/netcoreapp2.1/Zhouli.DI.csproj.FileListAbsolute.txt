@@ -12,7 +12,6 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Release\netcoreapp2.1\Zhouli.Comm
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Release\netcoreapp2.1\Zhouli.DbEntity.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\bin\Release\netcoreapp2.1\Zhouli.Dto.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\obj\Release\netcoreapp2.1\Zhouli.DI.csprojAssemblyReference.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.DI\obj\Release\netcoreapp2.1\Zhouli.DI.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\obj\Release\netcoreapp2.1\Zhouli.DI.AssemblyInfoInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\obj\Release\netcoreapp2.1\Zhouli.DI.AssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.DI\obj\Release\netcoreapp2.1\Zhouli.DI.csproj.CopyComplete

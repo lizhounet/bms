@@ -1,0 +1,6 @@
+
+记录时间：2019-11-07 14:09:22,966 
+线程ID:[11] 
+日志级别：  INFO  
+日志描述：{"elaspedTime":"163ms","request.body":"","request.executeStartTime":"2019-11-07 14:09:22.661","request.headers":{"Cache-Control":"no-cache","Connection":"keep-alive","Pragma":"no-cache","Accept":"application/json","Accept-Encoding":"gzip, deflate, br","Accept-Language":"zh-CN,zh;q=0.9","Cookie":".AspNetCore.Session=CfDJ8GJvmh0e8GVMsw0wvBhCNEVVy2w4PdAJloPDWZQrjH7Qeq9QfLQ2Po4xJ%2BL1w%2BdXT36qCsrQY%2F7rl%2B6BwtfpveCIN8ooAI9EfP6Y4okpiHBbhC1ntob6H92QBLxy2ROhOpMvIsfctjE6CDyEydSli4GC5QGhsIh4JiEpmsodZfS2; .AspNetCore.Antiforgery.fdbgqRLTfZk=CfDJ8GJvmh0e8GVMsw0wvBhCNEViNaOAXUTj01pETic3MJfrfa4X-IGZ2021nuy1DB12oCXa2TF4aWzhusohFWoW3ARYOuobfNKJUGCxokAiWBoCfHGUD8n6LgvQFL0tSa3rjKwy51FSB-BJahaXvwgRccE","Host":"localhost:5003","Referer":"http://localhost:5003/index.html","User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"},"request.method":"GET","request.url":"http://localhost:5003/api/ip","response.body":"\"::1\"","response.executeEndTime":"2019-11-07 14:09:22.820"}
+ 

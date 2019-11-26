@@ -19,6 +19,6 @@ namespace Zhouli.FileService
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>().UseUrls("http://*:5004");
+                .UseStartup<Startup>();
     }
 }

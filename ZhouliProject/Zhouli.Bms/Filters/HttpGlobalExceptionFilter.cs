@@ -28,9 +28,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Zhouli.Common;
 using Zhouli.Common.Expansion;
 using Zhouli.Common.ResultModel;
-using ZhouliSystem.Data;
 using ZhouliSystem.Models;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -24,6 +25,18 @@ namespace Zhouli.Common.Middleware
                 context.Connection.RemoteIpAddress = IPAddress.Parse(headers["X-Forwarded-For"].ToString().Split(',', StringSplitOptions.RemoveEmptyEntries)[0]);
             }
             return _next(context);
+        }
+    }
+    public static class RealIpMiddlewareExtensions
+    {
+        /// <summary>
+        /// 搭配了nginx获取真实IP
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
+        public static IApplicationBuilder UseRealIp(this IApplicationBuilder app)
+        {
+            return app.UseMiddleware<RealIpMiddleware>();
         }
     }
 }

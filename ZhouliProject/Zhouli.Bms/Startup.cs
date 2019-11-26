@@ -32,7 +32,6 @@ namespace ZhouliSystem
         }
 
         public IConfiguration Configuration { get; }
-        public static ILoggerRepository repository { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -124,9 +123,6 @@ namespace ZhouliSystem
             {
                 app.UseExceptionHandler("/Error/Index");
             }
-            //日志记录中间件
-            repository = LogManager.CreateRepository("NETCoreRepository");
-            XmlConfigurator.Configure(repository, new FileInfo("log4net.config"));
             app.UseStatusCodePages();
             app.UseStaticFiles();
             app.UseSession();

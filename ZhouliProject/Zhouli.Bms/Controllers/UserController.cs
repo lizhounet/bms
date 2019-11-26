@@ -57,7 +57,6 @@ namespace ZhouliSystem.Controllers
         [ResponseCache(CacheProfileName = "default")]
         public IActionResult Login()
         {
-
             return View();
         }
         public IActionResult UserInfo()

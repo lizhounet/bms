@@ -20,7 +20,7 @@ use zhouli;
 create table blog_article
 (
    article_id           int not null auto_increment comment '文章id',
-   article_title        nvarchar(50) not null comment '文章标题',
+   article_title        nvarchar(200) not null comment '文章标题',
    article_thrink       varchar(100) not null comment '文章图片',
    article_body         text not null comment '文章内容',
    article_body_markdown text comment '文章Markdown内容',

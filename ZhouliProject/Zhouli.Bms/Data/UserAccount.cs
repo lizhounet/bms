@@ -47,10 +47,7 @@ namespace ZhouliSystem.Data
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public bool JudgeUserAdmin(SysUser user)
-        {
-            var adminAccount = _optionsSnapshot.Value.adminAccount;
-            return user.UserName.Equals(adminAccount);
-        }
+        public bool JudgeUserAdmin(SysUser user) =>
+            user.UserName.Equals(_optionsSnapshot.Value.adminAccount);
     }
 }

@@ -6,7 +6,6 @@ D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\Zh
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\Zhouli.Common.dll
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\bin\Release\netcoreapp2.1\Zhouli.Common.pdb
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.csprojAssemblyReference.cache
-D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.csproj.CoreCompileInputs.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.RazorAssemblyInfo.cache
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.RazorAssemblyInfo.cs
 D:\周黎\code\bms\ZhouliProject\Zhouli.FileService\obj\Release\netcoreapp2.1\Zhouli.FileService.AssemblyInfoInputs.cache

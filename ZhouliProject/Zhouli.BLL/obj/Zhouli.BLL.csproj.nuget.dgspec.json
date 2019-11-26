@@ -1,0 +1,388 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.BLL\\Zhouli.BLL.csproj": {}
+  },
+  "projects": {
+    "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.BLL\\Zhouli.BLL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.BLL\\Zhouli.BLL.csproj",
+        "projectName": "Zhouli.BLL",
+        "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.BLL\\Zhouli.BLL.csproj",
+        "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
+        "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.BLL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj": {
+                "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj"
+              },
+              "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DAL\\Zhouli.DAL.csproj": {
+                "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DAL\\Zhouli.DAL.csproj"
+              },
+              "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj": {
+                "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj"
+              },
+              "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Enum\\Zhouli.Enum.csproj": {
+                "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Enum\\Zhouli.Enum.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj",
+        "projectName": "Zhouli.Common",
+        "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj",
+        "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
+        "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "log4net": {
+              "target": "Package",
+              "version": "[2.0.8, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DAL\\Zhouli.DAL.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DAL\\Zhouli.DAL.csproj",
+        "projectName": "Zhouli.DAL",
+        "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DAL\\Zhouli.DAL.csproj",
+        "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
+        "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DAL\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj": {
+                "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Common\\Zhouli.Common.csproj"
+              },
+              "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj": {
+                "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj"
+              },
+              "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Dto\\Zhouli.Dto.csproj": {
+                "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Dto\\Zhouli.Dto.csproj"
+              },
+              "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Enum\\Zhouli.Enum.csproj": {
+                "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Enum\\Zhouli.Enum.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[1.50.5, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj",
+        "projectName": "Zhouli.DbEntity",
+        "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\Zhouli.DbEntity.csproj",
+        "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
+        "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.DbEntity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer.Design": {
+              "target": "Package",
+              "version": "[1.1.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Dto\\Zhouli.Dto.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Dto\\Zhouli.Dto.csproj",
+        "projectName": "Zhouli.Dto",
+        "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Dto\\Zhouli.Dto.csproj",
+        "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
+        "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Dto\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Enum\\Zhouli.Enum.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Enum\\Zhouli.Enum.csproj",
+        "projectName": "Zhouli.Enum",
+        "projectPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Enum\\Zhouli.Enum.csproj",
+        "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
+        "outputPath": "D:\\周黎\\code\\bms\\ZhouliProject\\Zhouli.Enum\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
